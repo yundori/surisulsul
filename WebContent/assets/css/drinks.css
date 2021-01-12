@@ -12,7 +12,7 @@ img{
 	position:absolute;
 }
 #drinks_name{
-	padding:20px;
+	padding:30px;
 	color:#fff;
 	position:absolute;
 	z-index:1000;
@@ -28,4 +28,7 @@ img{
 	position:relative;
 	margin:auto;
 	width:80%;
+}
+#drinks_content div{
+	line-height:150%;
 }
