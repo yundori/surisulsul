@@ -19,6 +19,7 @@ img{
 }
 #drinks_name h3{
 	line-height:150%;
+	font-weight:normal;
 }
 .go_drink_button{
 	padding:12px;
@@ -31,6 +32,9 @@ img{
 	position:relative;
 	margin:auto;
 	width:80%;
+}
+#drinks_content h2{
+	font-weight:550;
 }
 #drinks_content div{
 	line-height:150%;
