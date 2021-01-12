@@ -1,17 +1,17 @@
-  @charset "UTF-8";
-  @import url(http: //fonts.googleapis.com/earlyaccess/notosanskr.css);
+@charset "UTF-8";
 
-  /* 전체 공통 내용
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 전체 공통 내용
           --------------------------------------------*/
-  * {
-      font - family: "Noto Sans KR",
-          sans - serif;
-  }
+* {
+	font-family:"Noto Sans KR", sans - serif;
+}
 
-  a {
-      text - decoration: none;
-  }
+a {
+	text-decoration:none;
+}
 
-  hr {
-      display: none;
-  }
+hr {
+	display: none;
+}
