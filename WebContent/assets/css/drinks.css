@@ -17,6 +17,9 @@ img{
 	position:absolute;
 	z-index:1000;
 }
+#drinks_name h3{
+	line-height:150%;
+}
 .go_drink_button{
 	padding:12px;
 	margin-top:20px;

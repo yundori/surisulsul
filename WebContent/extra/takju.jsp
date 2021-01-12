@@ -10,7 +10,6 @@
      <!-- 크로스 브라우징 호환성 시작 -->
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <!-- 크로스 브라우징 호환성 끝 -->
-    <link rel="apple-touch-icon" href="img/icon.png" />
     <!-- CSS 파일 참조 처리 -->
     <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/drinks.css" />
