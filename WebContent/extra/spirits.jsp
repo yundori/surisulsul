@@ -21,7 +21,7 @@
 		<img src="../assets/img/soju.jpg" /> <span id="drinks_name">
 			<h1>한국의 다양한 증류주들</h1>
 			<h3>전통 방식으로 증류한 증류식 소주를 소개합니다.</h3> 
-			<input type="button" value="증류주 종류별 보기 > " id="go_fruit_drink" class="go_drink_button" />
+			<input type="button" value="증류주 종류별 보기 > " id="go_spirits" class="go_drink_button" />
 		</span>
 	</div>
 	<div id="drinks_content">
