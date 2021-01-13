@@ -5,13 +5,18 @@
 /* 전체 공통 내용
           --------------------------------------------*/
 * {
-	font-family:"Noto Sans KR", sans - serif;
+    font-family: "Noto Sans KR", sans - serif;
 }
 
 a {
-	text-decoration:none;
+    text-decoration: none;
 }
 
 hr {
+<<<<<<< HEAD
 	display: none;
 }
+=======
+    display: none;
+}
+>>>>>>> 964d387450827001f0cd761a9ca3e99355008f4d
