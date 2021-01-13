@@ -1,0 +1,42 @@
+@charset "UTF-8";
+#juneung_content{
+	width:80%;
+	margin:auto;
+	/*background-color:#6a60a9;*/
+	text-align:center;
+}
+#juneung_content .icon_box{
+	position:relative;
+	display:inline-block;
+	width:100px;
+	height:100px;
+	margin:20px;
+	border:2px solid #6a60a9;
+	overflow:hidden;
+	border-radius:50px;
+	text-align:center;
+}
+#juneung_content .icon_box img{
+	width:75%;
+	height:75%;
+	margin-top:10px;
+}
+#juneung_content .icon_box img:hover{
+	filter: opacity(70%);
+    /*  default */
+    transform: scale(1.1);
+    /*  크롬 */
+    -webkit-transform: scale(1.1);
+    /* FireFox */
+    -moz-transform: scale(1.1);
+    /* Opera */
+    -o-transform: scale(1.1);
+    transition: transform .35s;
+    -o-transition: transform .35s;
+    -moz-transition: transform .35s;
+    -webkit-transition: transform .35s;
+}
+#juneung_content .icon_box .icon_description{
+	position:absolute;
+	z-index:1000;
+}
