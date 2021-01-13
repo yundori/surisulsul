@@ -14,15 +14,16 @@
 	border:2px solid #6a60a9;
 	overflow:hidden;
 	border-radius:50px;
-	text-align:center;
 }
 #juneung_content .icon_box img{
-	width:75%;
-	height:75%;
-	margin-top:10px;
+	position:absolute;
+	width:75px;
+	height:75px;
+	top:10px;
+	left:12px;
 }
 #juneung_content .icon_box img:hover{
-	filter: opacity(70%);
+	filter: opacity(75%);
     /*  default */
     transform: scale(1.1);
     /*  크롬 */
@@ -37,6 +38,15 @@
     -webkit-transition: transform .35s;
 }
 #juneung_content .icon_box .icon_description{
+	display:inline-block;
+	width:100%;
 	position:absolute;
+	top:40px;
+	left:0;
 	z-index:1000;
+	font-weight:bold;
+	font-size:20px;
+}
+.text_visible{
+	visibility:hidden;		
 }
