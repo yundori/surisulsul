@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body link="none" vlink="none" alink="none">
    <div class="header">
         <h1>
             <a href="#"><img src="../assets/img/logo1.PNG" alt="로고" /></a>
