@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/**페이지 크기*/
+.psn_recommend {
+    width: 80%;
+    margin: auto;
+}
+
+/**페이지 타이틀 크기 설정*/
+.psn_title {
+    display: block;
+    width: 100%;
+    height: 140px;
+}
+
+/**페이지 메인 타이틀 */
+.psn_title_txt {
+    font-weight: 700;
+    font-size: 25px;
+    display: block;
+    width: 100%;
+    padding: 0 0 15px 0;
+    color: #5E5E5E;
+    margin-left: 20px;
+}
+
+/**페이지 서브 타이틀*/
+.psn_title_dsc {
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    padding: 0 0 15px 0;
+    color: #B0AFAF;
+    text-align: center;
+}
+
+/**나를 위한 추천 키워드*/
+.psn_keyword {
+    width: 100%;
+    text-align: center;
+    float: left;
+    line-height: 43px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.psn_keyword a {
+    background-color: #FBD14B;
+    border: 0px;
+    margin-right: 3px;
+    width: auto;
+    padding: 3px 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/**나를 위한 추천 상품*/
+.psn_result {
+    margin: auto;
+    height: 600px;
+    /**height 수정하기*/
+}
+
+.psn_result_inner {
+    height: inherit;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**나를 위한 추천 상품
+->아이템 좌측 정렬*/
+.pick_item {
+    float: left;
+    margin: 0 12px;
+}
+
+/**나를 위한 추천 상품 a 범위 설정*/
+.pick_item a {
+    width: 270px;
+    height: 360px;
+    display: block;
+}
+
+/**나를 위한 추천 상품 설정*/
+.psn_pick1 {
+    background: url(../img/mypage/rec_01.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 270px;
+    height: 360px;
+    display: block;
+}
+
+.psn_pick2 {
+    background: url(../img/mypage/rec_02.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 270px;
+    height: 360px;
+    display: block;
+}
+
+.psn_pick3 {
+    background: url(../img/mypage/rec_03.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 270px;
+    height: 360px;
+    display: block;
+}
+
+.psn_pick4 {
+    background: url(../img/mypage/rec_04.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 270px;
+    height: 360px;
+    display: block;
+}

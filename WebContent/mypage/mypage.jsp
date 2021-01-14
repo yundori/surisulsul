@@ -30,7 +30,7 @@
 					<td class="psn_td_tab">이름</td>
 					<td class="psn_td_normal">name</td>
 					<td class="psn_td_tab">이메일</td>
-					<td class="psn_td_special">email/sbd1234@sbd.com/sbd1234@sbd.com/sbd1234@sbd.com/sbd1234@sbd.com/</td>
+					<td class="psn_td_special">email/sbd1234@sbd.com/
 				</tr>
 				<tr>
 					<td class="psn_td_tab">핸드폰번호</td>
@@ -60,14 +60,17 @@
 			<li class="tab_item tab_wishlist">
 				<a href="#">관심있어요</a>
 			</li>
-			<li class="tab_item tab_forme">
+			<li class="tab_item tab_buy">
 				<a href="#">구매했어요</a>
 			</li>
-			<li class="tab_item tab_forme">
+			<li class="tab_item tab_comment">
 				<a href="#">나의 의견</a>
 			</li>
 		</ul>
 	</nav>
+	
+	<!-- Tab 서브페이지 -->
+	<%@ include file="../mypage/my_recommend.jsp" %>
 </body>
 
 </html>
