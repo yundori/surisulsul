@@ -5,6 +5,7 @@
     height: auto;
     margin: auto;
     padding: auto;
+    margin-top: 100px;
 }
 
 .best_items a {
@@ -15,20 +16,12 @@
 
 .best_items>ul {
     list-style: none;
-    /*text-align: center;*/
     width: auto;
     height: auto;
     margin: 0;
     padding: 0;
     padding-top: 20px;
     border-top: 1px solid #cccccc;
-}
-
-.best_items img {
-    width: 270px;
-    height: 440px;
-    margin-bottom: 13px;
-    object-fit: cover;
 }
 
 .best_items .title {
@@ -50,18 +43,49 @@
     font-weight: 600;
 }
 
+.best_item_list {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: auto;
+	padding: auto;
+	text-align: center;
+}
+
+.best_item > a{
+	display: block;
+}
+
 .best_item {
-    float: left;
-    width: 24.8%;
+	display: inline-block;
+    /*float: left;
+    width: 24.8%;*/
     height: auto;
-    padding: 0;
+    padding: 4px;
+    margin: 0 10px;
     margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.best_item:hover{
+	background-color: #ffefc5;
+}
+
+.best_item .item_img {
+	/*display: block;*/
+    width: auto;
+    height: auto;
+    margin:0;
+    padding:0;
+    margin-bottom: 13px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .best_item .item_title {
     display: block;
     max-width: 150px;
-    height: auto;
+    height: 20px;
     margin-bottom: 5px;
     font-size: 17px;
     color: black;
@@ -82,8 +106,6 @@
     font-weight: 500;
     letter-spacing: 0.015em;
     float: right;
-    position: relative;
-    right: 60px;
 }
 
 .best_item .item_rating {
@@ -91,23 +113,31 @@
     width: auto;
     height: auto;
     font-size: 15px;
-    text-align: left;
     float: left;
 }
 
+.best_item .item_tag_list {
+	display: block;
+	width: auto;
+	height: auto;
+	margin: auto;
+	margin-top: 5px;
+	padding: auto;
+	text-align: left;
+}
 
 .best_item .item_tag {
     display: inline-block;
     max-width: 80px;
     height: 15px;
-    margin-top: 5px;
     padding: 3px;
+    text-align: center;
     font-size: 12px;
-   /* text-align: center;*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 3px;
+
 }
 
 .item_type_tag {
