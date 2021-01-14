@@ -11,21 +11,25 @@
     <!-- 크로스 브라우징 호환성 끝 -->
     <link rel="apple-touch-icon" href="img/icon.png" />
     <!-- CSS 파일 참조 처리 -->
-    <link rel="stylesheet" type="text/css" href=".../assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
 </head>
 
 <body>
    <div class="header">
-    <a href=""><img src="assets/img/logo.png" alt="로고"/></a>
-    <span class="login_menu">
-    	<ul>
-	    	<li>로그인</li>
-	    	<li>회원가입</li>
-	    	<li>나의 수리술술</li>
-	    </ul>
-    </span>
-   </div>
+        <h1>
+            <a href="#"><img src="../assets/img/logo1.PNG" alt="로고" /></a>
+        </h1>
+        <span class="meue_bar">
+        <a href="#"><i class="fas fa-bars"></i></a>
+        </span>
+        <ul class="login_menu">
+            <a href="#"><li>로그인</li></a>
+            <a href="#"><li>회원가입</li></a>
+            <a href="#"><li>장바구니</li></a>
+        </ul>
+    </div>
 </body>
 
 </html>

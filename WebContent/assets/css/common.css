@@ -5,7 +5,7 @@
 /* 전체 공통 내용
           --------------------------------------------*/
 * {
-    font-family: "Noto Sans KR", sans - serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
@@ -13,10 +13,46 @@ a {
 }
 
 hr {
-<<<<<<< HEAD
 	display: none;
 }
-=======
-    display: none;
+
+li {
+	list-style: none;
 }
->>>>>>> 964d387450827001f0cd761a9ca3e99355008f4d
+
+.header {
+	width: 100%;
+    height: 100px;
+    background: #fff;
+    position:fixed;
+    left: 0;
+    top: 0;
+}
+
+h1 {
+	width:200px;
+    padding-top: 10px;
+    position:relative;
+	margin: auto;
+}
+
+.meue_bar {
+	position: absolute;
+	top: 35px;
+	left: 70px;
+    font-size: 25px;
+    color: #6a60a9;
+}
+
+.login_menu {
+	position: absolute;
+	right: 40px;
+	top: 45px;
+    width: 220px;
+}
+
+.login_menu li {
+    float: left;
+    margin-right: 20px;
+    font-size: 14px;
+}
