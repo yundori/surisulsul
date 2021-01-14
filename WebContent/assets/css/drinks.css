@@ -8,7 +8,7 @@
 	padding-top:100px;
 }
 
-#drinks_img img{
+#drinks_img>.drinks_img_detail{
 	filter: brightness(50%);
 	width:100%;
 	height:530px;
