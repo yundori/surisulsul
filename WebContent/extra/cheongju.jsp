@@ -18,7 +18,8 @@
 
 <body>
 	<div id="drinks_img">
-		<img src="../assets/img/cheongju.png" /> <span id="drinks_name">
+		<img src="../assets/img/cheongju.png" /> 
+		<span id="drinks_name">
 			<h1>한국의 다양한 약주/청주</h1>
 			<h3>
 				문화재로 지정된 발효주들이 대체로 청주가 아니라 약주에 속하며

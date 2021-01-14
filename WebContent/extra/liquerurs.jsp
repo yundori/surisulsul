@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8" />
-<title>기타주주</title>
+<title>기타주류</title>
 <!-- 크로스 브라우징 호환성 시작 -->
 <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
 <!-- 크로스 브라우징 호환성 끝 -->
@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<div id="content">
 	<div id="drinks_img">
 		<img src="../assets/img/extra_drink.jpg" /> 
 		<span id="drinks_name">
@@ -53,6 +54,7 @@
 			⑤ 그밖에 어떤 규정에서도 속하지 않은 술을 지칭한다.<br/>
 		</div>		
 		
+	</div>
 	</div>
 </body>
 
