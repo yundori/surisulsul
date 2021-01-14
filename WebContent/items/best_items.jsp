@@ -31,11 +31,112 @@
                     <div class="clean"></div>
 					<span class="item_rating">★★★★☆</span> <br/>
 					<ul>
+						<li class="item_tag item_type_tag">#종류123456afsaff</li>
+						<li class="item_tag item_area_tag">#지역ssdfaadffsdf</li>
+						<li class="item_tag item_keyword_tag">#키워드thsghssfdfsf</li>
+					</ul>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best2.PNG"/> <br/>
+                    <span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best3.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">000,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best4.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best1.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+                    <div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<ul>
 						<li class="item_tag item_type_tag">#종류</li>
 						<li class="item_tag item_area_tag">#지역</li>
 						<li class="item_tag item_keyword_tag">#키워드</li>
 					</ul>
-			</a></li>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best2.PNG"/> <br/>
+                    <span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best3.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">000,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best4.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+					<div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<span class="item_tag item_type_tag">#종류</span>
+					<span class="item_tag item_area_tag">#지역</span>
+					<span class="item_tag item_keyword_tag">#키워드</span>
+				</a>
+			</li>
+			<li class="best_item">
+				<a href="#">
+					<img src="../assets/img/best1.PNG" /> <br/>
+					<span class="item_title">상품명</span>
+					<span class="item_price">00,000 원</span> <br/>
+                    <div class="clean"></div>
+					<span class="item_rating">★★★★☆</span> <br/>
+					<ul>
+						<li class="item_tag item_type_tag">#종류</li>
+						<li class="item_tag item_area_tag">#지역</li>
+						<li class="item_tag item_keyword_tag">#키워드</li>
+					</ul>
+				</a>
+			</li>
 			<li class="best_item">
 				<a href="#">
 					<img src="../assets/img/best2.PNG"/> <br/>

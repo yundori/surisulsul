@@ -15,7 +15,7 @@
 
 .best_items>ul {
     list-style: none;
-    text-align: center;
+    /*text-align: center;*/
     width: auto;
     height: auto;
     margin: 0;
@@ -55,6 +55,7 @@
     width: 24.8%;
     height: auto;
     padding: 0;
+    margin-bottom: 20px;
 }
 
 .best_item .item_title {
@@ -70,8 +71,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     float: left;
-    position: relative;
-    left: 30px;
 }
 
 .best_item .item_price {
@@ -84,7 +83,7 @@
     letter-spacing: 0.015em;
     float: right;
     position: relative;
-    right: 30px;
+    right: 60px;
 }
 
 .best_item .item_rating {
@@ -94,25 +93,21 @@
     font-size: 15px;
     text-align: left;
     float: left;
-    position: relative;
-    left: 30px;
 }
 
 
 .best_item .item_tag {
     display: inline-block;
-    max-width: 70px;
+    max-width: 80px;
     height: 15px;
     margin-top: 5px;
     padding: 3px;
     font-size: 12px;
-    text-align: center;
+   /* text-align: center;*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 3px;
-    position: relative;
-    right: 67px;
 }
 
 .item_type_tag {
