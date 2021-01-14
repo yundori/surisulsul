@@ -27,13 +27,7 @@ li {
     position:fixed;
     left: 0;
     top: 0;
-<<<<<<< HEAD
-
     z-index: 20000;
-
-=======
-    z-index: 20000;
->>>>>>> 1cb2919ace9f9a8db631d79e9cb9ef0198a600e4
 }
 
 h1 {
