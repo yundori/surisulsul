@@ -1,17 +1,136 @@
 @charset "UTF-8";
 
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.best_items {
+    width: 70%;
+    height: auto;
+    margin: auto;
+    padding: auto;
 }
 
-a {
+.best_items a {
     text-decoration: none;
     cursor: pointer;
     color: black;
 }
 
-li {
+.best_items>ul {
     list-style: none;
+    text-align: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    border-top: 1px solid #cccccc;
+}
+
+.best_items img {
+    width: 270px;
+    height: 440px;
+    margin-bottom: 13px;
+    object-fit: cover;
+}
+
+.best_items .title {
+    width: auto;
+    height: 60px;
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+    color: #6a60a9;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.best_items .comment {
+    color: #b5acd4;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.best_item {
+    float: left;
+    width: 24.8%;
+    height: auto;
+    padding: 0;
+}
+
+.best_item .item_title {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: black;
+    font-weight: 550;
+    letter-spacing: 0.015em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    position: relative;
+    left: 30px;
+}
+
+.best_item .item_price {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    float: right;
+    position: relative;
+    right: 30px;
+}
+
+.best_item .item_rating {
+    display: block;
+    width: auto;
+    height: auto;
+    font-size: 15px;
+    text-align: left;
+    float: left;
+    position: relative;
+    left: 30px;
+}
+
+
+.best_item .item_tag {
+    display: inline-block;
+    max-width: 70px;
+    height: 15px;
+    margin-top: 5px;
+    padding: 3px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 3px;
+    position: relative;
+    right: 67px;
+}
+
+.item_type_tag {
+    color: white;
+    background-color: #9B59B6;
+}
+
+.item_area_tag {
+    color: white;
+    background-color: #5B44AD;
+}
+
+.item_keyword_tag {
+    color: white;
+    background-color: #6D2B88;
+}
+
+.clean {
+    float: none;
+    clear: both;
 }
