@@ -66,12 +66,7 @@
 
 <body>
     <h3>회원가입</h3>
-    <span>
-        <p>가입 시 입력한 비밀번호를 잊으셨나요?<br />
-            수리술술에 가입한 이름, 핸드폰 번호, 이메일을 정확히 입력해 주세요.</p>
-    </span>
-    <!-- 비밀번호 재발급에 필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
-    <!-- 형식 검사 할 것인지? -->
+    <!-- 형식 검사 필수 -->
     <form class="form-horizontal" name="join_form" id="join_form">
         <div class="form-group">
             <label for="email" class="col-md-2">이메일<span class="identify">*</span></label>
