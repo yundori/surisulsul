@@ -19,7 +19,7 @@
 <body>
 <div id="content">
 	<div id="drinks_img">
-		<img src="../assets/img/extra_drink.jpg" /> 
+		<img src="../assets/img/extra_drink.jpg" class="drinks_img_detail"/> 
 		<span id="drinks_name">
 			<h1>한국의 대표적인 리큐르/기타주류</h1>
 			<h3>인삼주와 매실주와 오카피주 등은 리큐르로 분류,<br/>

@@ -18,7 +18,8 @@
 
 <body>
 	<div id="drinks_img">
-		<img src="../assets/img/fruit_drink.jpg" /> <span id="drinks_name">
+		<img src="../assets/img/fruit_drink.jpg" class="drinks_img_detail"/> 
+		<span id="drinks_name">
 			<h1>한국의 다양한 과실주 제품들</h1>
 			<h3>
 				포도와 머루, 자두, 다래, 사과, 복분자 등으로 제조되는 와인
