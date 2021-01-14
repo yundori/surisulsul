@@ -47,8 +47,9 @@
     white-space: nowrap;
     width: 180px;
 }
-/**개인정보 표 설정 
-	->이메일 길어질 경우 대비하여 넓이 설정*/
+
+/**개인정보 표 설정
+    ->이메일 길어질 경우 대비하여 넓이 설정*/
 .psn_table .psn_td_normal {
     width: 220px;
 }
@@ -103,17 +104,100 @@
 
 /**탭 메뉴*/
 .psn_tab {
-    margin: auto;
+    margin: 60px auto;
     width: 80%;
-    height: 66px;
+    height: 93.75px;
+    border-bottom: solid 1px #DEDCEE;
 }
 
 .psn_tab_inner {
-    float: left;
-    height: 66px;
+    height: 93.75px;
     margin: 0 auto;
 }
 
 .tab_item {
     float: left;
+}
+
+/**탭 백그라운드 설정*/
+.tab_forme a {
+    background: url(../img/mypage/recommend_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_wishlist a {
+    background: url(../img/mypage/heart_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_buy a {
+    background: url(../img/mypage/buy_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment a {
+    background: url(../img/mypage/comment_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+/**탭 마우스 오버*/
+
+.tab_forme a:hover {
+    background: url(../img/mypage/recommend_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_wishlist a:hover {
+    background: url(../img/mypage/heart_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_buy a:hover {
+    background: url(../img/mypage/buy_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment a:hover {
+    background: url(../img/mypage/comment_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
 }
