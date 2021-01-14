@@ -27,6 +27,8 @@ li {
     position:fixed;
     left: 0;
     top: 0;
+    z-index: 20000;
+    
 }
 
 h1 {
@@ -36,7 +38,7 @@ h1 {
 	margin: auto;
 }
 
-.meue_bar {
+.menu_bar {
 	position: absolute;
 	top: 35px;
 	left: 70px;

@@ -9,7 +9,6 @@
     <!-- 크로스 브라우징 호환성 시작 -->
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <!-- 크로스 브라우징 호환성 끝 -->
-    <link rel="apple-touch-icon" href="img/icon.png" />
     <!-- CSS 파일 참조 처리 -->
     <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -21,7 +20,7 @@
         <h1>
             <a href="#"><img src="../assets/img/logo1.PNG" alt="로고" /></a>
         </h1>
-        <span class="meue_bar">
+        <span class="menu_bar">
         <a href="#"><i class="fas fa-bars"></i></a>
         </span>
         <ul class="login_menu">
