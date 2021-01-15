@@ -35,12 +35,12 @@
 				<img src="../assets/img/juneung/soju.png"/>
 				<span class="icon_description text_visible">소주</span>
 			</label>
-			<label> 
+			<label class="icons"> 
 				<input type="radio" name="drink" value="wine">
 				<img src="../assets/img/juneung/wine.png">
 				<span class="icon_description text_visible">와인</span>
 			</label>
-			<label> 
+			<label class="icons"> 
 				<input type="radio" name="drink" value="ricewine">
 				<img src="../assets/img/juneung/ricewine.png">
 				<span class="icon_description text_visible">막걸리</span>
