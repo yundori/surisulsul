@@ -1,67 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 <!doctype html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
     <title>수리술술 가입하기</title>
-    <style type="text/css">
-    .form-horizontal {
-        border: 5px solid #d5d5d5;
-        width: 500px;
-        margin: auto;
-        padding: 0 10px;
-    }
-
-    .form-group:after {
-        content: '';
-        display: block;
-        float: none;
-        clear: both;
-    }
-
-    .form-group {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px dotted #eee;
-    }
-
-    .form-group:last-child {
-        border-bottom: 0;
-    }
-
-    .col-md-2 {
-        width: 20%;
-        display: block;
-        float: left;
-        font-size: 14px;
-        padding-top: 7px;
-        text-indent: 5px;
-    }
-
-    .col-md-10 {
-        width: 80%;
-        display: block;
-        float: left;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 5px 0;
-        font-size: 14px;
-        border: 1px solid #eee;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .identify {
-        font-size: 14px;
-        color: #f00;
-    }
-    </style>
+        <!-- 크로스 브라우징 호환성 시작 -->
+<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+<!-- 크로스 브라우징 호환성 끝 -->
+<!-- CSS 파일 참조 처리 -->
+<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/join.css" />
 </head>
 
 <body>
@@ -135,3 +86,4 @@
 </body>
 
 </html>
+<%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
