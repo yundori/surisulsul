@@ -1,24 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!doctype html>
-<html>
 
-<head>
-<meta charset="UTF-8" />
-<title>과실주</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/drinks.css" />
-</head>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
-<body>
 	<div id="drinks_img">
-		<img src="../assets/img/drinks/fruit_drink.jpg" class="drinks_img_detail"/> 
+		<img src="${contextPath}/assets/img/drinks/fruit_drink.jpg" class="drinks_img_detail"/> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 과실주 제품들</h1>
 			<h3>
@@ -51,7 +38,5 @@
 			주정이나 증류주를 혼합할 때는, 발효한 과실주의 알코올분 총량이 20% 이상이고, 주정이나 증류주의 알코올분 총량이 80% 이하라야 과실주로 분류한다.
 		</div>
 	</div>
-</body>
 
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

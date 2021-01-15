@@ -7,51 +7,51 @@
 <div id="juneung_content">
     <h1>술학능력시험 - 주(酒)능</h1>
 
-    <form action="" method="get" name="imgradio">
+    <form action="" method="post" name="imgradio">
 
         <h2>나의 최애 주종+안주 조합 고르기</h2>
 
         <h4>내가 좋아하는 술</h4>
-        <label class="icons">
+        <label>
             <input type="radio" name="drink" value="beer" />
-            <img src="${contextPath}/assets/img/juneung/beer.png" />
+            <img src="${contextPath}/assets/img/juneung/beer.png"  class="icons"/>
             <span class="icon_description text_visible">맥주</span>
         </label>
-        <label class="icons">
+        <label>
             <input type="radio" name="drink" value="soju" />
-            <img src="${contextPath}/assets/img/juneung/soju.png" />
+            <img src="${contextPath}/assets/img/juneung/soju.png" class="icons"/>
             <span class="icon_description text_visible">소주</span>
         </label>
-        <label class="icons">
+        <label>
             <input type="radio" name="drink" value="wine">
-            <img src="${contextPath}/assets/img/juneung/wine.png">
+            <img src="${contextPath}/assets/img/juneung/wine.png" class="icons">
             <span class="icon_description text_visible">와인</span>
         </label>
-        <label class="icons">
+        <label>
             <input type="radio" name="drink" value="ricewine">
-            <img src="${contextPath}/assets/img/juneung/ricewine.png">
+            <img src="${contextPath}/assets/img/juneung/ricewine.png" class="icons">
             <span class="icon_description text_visible">막걸리</span>
         </label>
 
         <h4>내가 좋아하는 음식</h4>
         <label>
             <input type="radio" name="food" value="meat">
-            <img src="${contextPath}/assets/img/juneung/meat.png">
+            <img src="${contextPath}/assets/img/juneung/meat.png" class="icons">
             <span class="icon_description text_visible">고기</span>
         </label>
         <label>
             <input type="radio" name="food" value="fish">
-            <img src="${contextPath}/assets/img/juneung/fish.png">
+            <img src="${contextPath}/assets/img/juneung/fish.png" class="icons">
             <span class="icon_description text_visible">생선</span>
         </label>
         <label>
             <input type="radio" name="food" value="fruit">
-            <img src="${contextPath}/assets/img/juneung/fruit.png">
+            <img src="${contextPath}/assets/img/juneung/fruit.png" class="icons">
             <span class="icon_description text_visible">과일</span>
         </label>
         <label>
             <input type="radio" name="food" value="snack">
-            <img src="${contextPath}/assets/img/juneung/snack.png">
+            <img src="${contextPath}/assets/img/juneung/snack.png" class="icons">
             <span class="icon_description text_visible">견과류</span>
         </label>
 
@@ -60,41 +60,45 @@
         <h4>누구와 함께 하나요?</h4>
         <label>
             <input type="radio" name="people" value="alone">
-            <img src="${contextPath}/assets/img/juneung/alone.png">
+            <img src="${contextPath}/assets/img/juneung/alone.png" class="icons">
             <span class="icon_description text_visible">혼술</span>
         </label>
         <label>
             <input type="radio" name="people" value="lover">
-            <img src="${contextPath}/assets/img/juneung/lover.png">
+            <img src="${contextPath}/assets/img/juneung/lover.png" class="icons">
             <span class="icon_description text_visible">연인</span>
         </label>
         <label>
-            <input type="radio" name="people" value="friends">
-            <img src="${contextPath}/assets/img/juneung/friends.png">
+            <input type="radio" name="people" value="friends" >
+            <img src="${contextPath}/assets/img/juneung/friends.png" class="icons">
             <span class="icon_description text_visible">친구</span>
         </label>
         <label>
             <input type="radio" name="people" value="family">
-            <img src="${contextPath}/assets/img/juneung/family.png">
+            <img src="${contextPath}/assets/img/juneung/family.png" class="icons">
             <span class="icon_description text_visible">가족</span>
         </label>
 
         <h4>오늘 당신의 기분은?</h4>
         <label>
             <input type="radio" name="mood" value="sunny">
-            <img src="${contextPath}/assets/img/juneung/sunny.png">
+            <img src="${contextPath}/assets/img/juneung/sunny.png" class="icons">
             <span class="icon_description text_visible">맑음</span>
         </label>
         <label>
             <input type="radio" name="mood" value="cloudy">
-            <img src="${contextPath}/assets/img/juneung/cloudy.png">
+            <img src="${contextPath}/assets/img/juneung/cloudy.png" class="icons">
             <span class="icon_description text_visible">흐림</span>
         </label>
         <label>
             <input type="radio" name="mood" value="rainy">
-            <img src="${contextPath}/assets/img/juneung/rainy.png">
+            <img src="${contextPath}/assets/img/juneung/rainy.png" class="icons">
             <span class="icon_description text_visible">비</span>
         </label>
+        <div>
+	        <button type="submit" >나의주능결과</button>
+	        <button type=reset">다시하기</button>
+        </div>
     </form>
 </div>
 

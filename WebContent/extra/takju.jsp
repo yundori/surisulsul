@@ -1,21 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!doctype html>
-<html>
 
-<head>
-    <meta charset="UTF-8" />
-    <title>탁주</title>
-     <!-- 크로스 브라우징 호환성 시작 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-    <!-- 크로스 브라우징 호환성 끝 -->
-    <!-- CSS 파일 참조 처리 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/drinks.css" />
-</head>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
-<body>
 	<div id="drinks_img">
 	    <img src="../assets/img/drinks/takju.jpg" class="drinks_img_detail"/>
 	    <span id="drinks_name">
@@ -35,7 +23,5 @@
     	탁주의 주요한 원료는 멥쌀과 밀누룩과 물이다. 멥쌀 고두밥을 찐 뒤에, 이를 식혀서 물과 함께 빻은 누룩을 비벼 항아리에 담는다. 항아리를 25도 전후의 따뜻한 곳에 놓아두면 술이 발효되기 시작하여 빠르게는 4-5일 만에, 더디게는 7-8일 만에 완성된다. 발효가 다 끝난 상태에서 술항아리 윗부분의 맑은 술을 떠내면 청주가 되는데, 탁주는 청주를 떠내고 난 뒤에 가라앉아 있는 술지게미에 물을 부어 하루쯤 재웠다가 체에 걸러 마시는 형태를 이른다. 하지만 청주를 떠내지 않고 처음부터 술지게미까지 휘휘 저어서, 체에 걸러 탁주를 내리는 경우도 있다 .
     	</div>
     </div>
-</body>
 
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
