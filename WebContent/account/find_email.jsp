@@ -27,13 +27,13 @@
             </span>
         </div>
         <div class="form-group">
-            <label for='user_name' class="col-md-4">이름 <span class='identify'>*</span></label>
+            <label for='user_name' class="col-md-4">이름</label>
             <div class="col-md-8">
                 <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름을 입력하세요." />
             </div>
         </div>
         <div class="form-group">
-            <label for='tel' class="col-md-4">전화번호 <span class='identify'>*</span></label>
+            <label for='tel' class="col-md-4">전화번호</label>
             <div class="col-md-8">
                 <input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요." />
             </div>

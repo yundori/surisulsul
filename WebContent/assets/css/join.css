@@ -69,6 +69,12 @@ body {
     text-indent: 5px;
 }
 
+.col-md-6 {
+    width: 45%;
+    display: block;
+    float: left;
+}
+
 .col-md-8 {
     width: 66.7%;
     display: block;
@@ -82,12 +88,14 @@ body {
 .form-control {
     width: 100%;
     padding: 5px 0;
+    padding-left: 10px;
     font-size: 14px;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
 .form-control:focus {
-    border: 1px solid #6a60a9;
+    border: 2px solid #6a60a9;
     background-color: #dedcee;
 }
 
@@ -115,6 +123,17 @@ button {
     font-size: 16px;
     color: #eee;
     padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.chk-email {
+    margin-left: 20px;
+    background-color: #6a60a9;
+    font-size: 14px;
+    color: #eee;
+    padding: 5px 8px;
     border: 0px;
     box-shadow: none;
     border-radius: 3px;
