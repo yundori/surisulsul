@@ -1,16 +1,47 @@
 @charset "UTF-8";
 
+/*
+ * 헤더 높이만큼 여백 주기
+ * --------------------- */
 body {
     padding-top: 100px;
 }
 
-.form-horizontal {
-    border: 5px solid #d5d5d5;
-    width: 500px;
-    margin: auto;
-    padding: 0 10px;
+/*
+ * 입력 페이지명 (이메일 찾기, 비밀번호 찾기, 회원가입, 로그인 등)
+ * --------------------- */
+.account-menu {
+    font-size: 18px;
 }
 
+/*
+ * 입력 페이지 안내
+ * --------------------- */
+.account-menu-detail {
+    display: block;
+    padding-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.print-alert {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/*
+ * 입력 페이지 컨텐츠 영역 설정
+ * --------------------- */
+.form-horizontal {
+    border: 1px solid #dedcee;
+    width: 500px;
+    margin: 200px auto;
+    padding: 0 50px;
+}
+
+/*
+ * 입력 내용 영역 설정 및 clearfix
+ * --------------------- */
 .form-group:after {
     content: '';
     display: block;
@@ -21,27 +52,32 @@ body {
 .form-group {
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px dotted #eee;
+    margin: 20px 0;
 }
 
-.form-group:last-child {
-    border-bottom: 0;
-}
+/*
+ * 입력 내용의 라벨과 입력칸 그리드 설정 (1:2 비율)
+ * --------------------- */
 
-.col-md-2 {
-    width: 20%;
+.col-md-4 {
+    width: 33.3%;
     display: block;
     float: left;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
     padding-top: 7px;
     text-indent: 5px;
 }
 
-.col-md-10 {
-    width: 80%;
+.col-md-8 {
+    width: 66.7%;
     display: block;
     float: left;
 }
+
+/*
+ * 입력 칸의 모양 설정
+ * --------------------- */
 
 .form-control {
     width: 100%;
@@ -50,11 +86,36 @@ body {
     border: 1px solid #eee;
 }
 
-.text-center {
-    text-align: center;
+.form-control:focus {
+    border: 1px solid #6a60a9;
+    background-color: #dedcee;
 }
 
+/*
+ * 페이지 설명 텍스트 설정
+ * --------------------- */
+.text-center {
+    text-align: center;
+    line-height: 1.5;
+}
+
+/*
+ * 필수 항목 표시
+ * --------------------- */
 .identify {
     font-size: 14px;
     color: #f00;
+}
+
+/*
+ * 버튼 디자인
+ * --------------------- */
+button {
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
 }
