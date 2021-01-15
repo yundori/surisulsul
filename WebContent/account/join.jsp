@@ -44,19 +44,19 @@
         <div class="form-group">
             <label for="user_name" class="col-md-4">이름<span class="identify">*</span></label>
             <div class="col-md-6">
-                <input type="text" name="user_name" id="user_name" class="form-control" />
+                <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름을 입력하세요."/>
             </div>
         </div>
         <div class="form-group">
             <label for="tel" class="col-md-4">전화번호<span class="identify">*</span></label>
             <div class="col-md-6">
-                <input type="tel" name="tel" id="tel" class="form-control" />
+                <input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/>
             </div>
         </div>
         <div class="form-group">
             <label for='birthdate' class="col-md-4">생년월일 <span class='identify'>*</span></label>
             <div class="col-md-6">
-                <input type="date" name="birthdate" id="birthdate" class="form-control" />
+                <input type="date" name="birthdate" id="birthdate" class="form-control" placeholder="0000-00-00"/>
             </div>
         </div>
         <div class="form-group">

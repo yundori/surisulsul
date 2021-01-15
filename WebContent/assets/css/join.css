@@ -70,7 +70,7 @@ body {
 }
 
 .col-md-6 {
-    width: 50%;
+    width: 45%;
     display: block;
     float: left;
 }
@@ -88,12 +88,14 @@ body {
 .form-control {
     width: 100%;
     padding: 5px 0;
+    padding-left: 10px;
     font-size: 14px;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
 .form-control:focus {
-    border: 1px solid #6a60a9;
+    border: 2px solid #6a60a9;
     background-color: #dedcee;
 }
 
@@ -127,7 +129,7 @@ button {
 }
 
 .chk-email {
-    margin-left: 10px;
+    margin-left: 20px;
     background-color: #6a60a9;
     font-size: 14px;
     color: #eee;
