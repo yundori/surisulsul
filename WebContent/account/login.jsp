@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8" />
-    <title>로그인</title>
-            <!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/join.css" />
-</head>
-
-<body>
-
+ <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/join.css?time=${currentTime}" />
     <!-- 로그인에 필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
     <form class="form-horizontal" name="join_form" id="join_form">
         <div class="form-group">
@@ -53,7 +38,5 @@
         <a href="../find_email.jsp">이메일 찾기</a>
         <a href="../find.pw.jsp">비밀번호 찾기</a>
     </div>
-</body>
 
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
