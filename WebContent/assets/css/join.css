@@ -69,6 +69,12 @@ body {
     text-indent: 5px;
 }
 
+.col-md-6 {
+    width: 50%;
+    display: block;
+    float: left;
+}
+
 .col-md-8 {
     width: 66.7%;
     display: block;
@@ -115,6 +121,17 @@ button {
     font-size: 16px;
     color: #eee;
     padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.chk-email {
+    margin-left: 10px;
+    background-color: #6a60a9;
+    font-size: 14px;
+    color: #eee;
+    padding: 5px 8px;
     border: 0px;
     box-shadow: none;
     border-radius: 3px;
