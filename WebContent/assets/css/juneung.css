@@ -2,10 +2,12 @@
 
 #juneung_content {
 	width: 80%;
-	height: 800px; margin : auto;
+	/* height: 800px; */ 
+	margin : auto;
 	padding-top: 120px;
 	text-align: center;
 	margin: auto;
+	margin-bottom: 100px;
 }
 
 #juneung_content h1 {
@@ -41,6 +43,12 @@
 	margin: 40px;
 	border: 2px solid #6a60a9;
 	border-radius: 50px;
+    
+    /** 작아질 때 효과 */
+    transition: all .35s;
+    -o-transition: all .35s;
+    -moz-transition: all .35s;
+    -webkit-transition: all .35s;
 }
 
 [type=radio]+img:hover{
@@ -53,10 +61,12 @@
     -moz-transform: scale(1.1);
     /* Opera */
     -o-transform: scale(1.1);
-    transition: transform .35s;
-    -o-transition: transform .35s;
-    -moz-transition: transform .35s;
-    -webkit-transition: transform .35s;
+    
+    /** 커질 때 효과 */
+    transition: all .35s;
+    -o-transition: all .35s;
+    -moz-transition: all .35s;
+    -webkit-transition: all .35s;
 }
 
 /* CHECKED STYLES */
