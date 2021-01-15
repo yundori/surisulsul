@@ -95,7 +95,7 @@
             <img src="${contextPath}/assets/img/juneung/rainy.png" class="icons">
             <span class="icon_description text_visible">비</span>
         </label>
-        <div>
+        <div class="juneung_buttons">
 	        <button type="submit" >나의주능결과</button>
 	        <button type=reset">다시하기</button>
         </div>
