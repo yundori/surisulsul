@@ -1,24 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!doctype html>
-<html>
 
-<head>
-<meta charset="UTF-8" />
-<title>청주</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/drinks.css" />
-</head>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
-<body>
 	<div id="drinks_img">
-		<img src="../assets/img/drinks/cheongju.png" class="drinks_img_detail" /> 
+		<img src="${contextPath}/assets/img/drinks/cheongju.png" class="drinks_img_detail" /> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 약주/청주</h1>
 			<h3>
@@ -56,7 +43,4 @@
 			그리고 원료의 사용에서 청주는 ‘전분질 원료의 합계 중량을 기준으로 하여 누룩을 100분의 1미만으로 사용하여야 한다’고 규정하고 있다.
 		</div>
 	</div>
-</body>
-
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
