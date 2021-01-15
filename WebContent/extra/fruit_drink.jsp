@@ -18,7 +18,7 @@
 
 <body>
 	<div id="drinks_img">
-		<img src="../assets/img/fruit_drink.jpg" class="drinks_img_detail"/> 
+		<img src="../assets/img/drinks/fruit_drink.jpg" class="drinks_img_detail"/> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 과실주 제품들</h1>
 			<h3>

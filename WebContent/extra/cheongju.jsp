@@ -18,7 +18,7 @@
 
 <body>
 	<div id="drinks_img">
-		<img src="../assets/img/cheongju.png" class="drinks_img_detail" /> 
+		<img src="../assets/img/drinks/cheongju.png" class="drinks_img_detail" /> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 약주/청주</h1>
 			<h3>
