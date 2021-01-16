@@ -28,10 +28,32 @@
         <h1>
             <a href="${contextPath}"><img src="${contextPath}/assets/img/logo1.PNG" alt="로고" /></a>
         </h1>
-        <span class="menu_bar"> <a href="#"><i class="fas fa-bars"></i></a></span>
+        <div id="sidebar">
+            <div class="menu_bar" onclick="toggleSidebar(this)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="sidebar_logo">
+                <img src="${contextPath}/assets/img/logo1.PNG" alt="사이드바 로고" //>
+            </div>
+            <div class="list">
+                <div class="item"><a href="">인기 많은 술</a></div>
+                <div class="item"><a href="">내가 찾는 술</a></div>
+                <div class="item"><a href="">우리 술 종류</a></div>
+                <div class="item"><a href="${contextPath}/extra/juneung.jsp">주(酒)능</a></div>
+                <br />
+                <br />
+                <br />
+                <div class="item"><a href="">알립니다</a></div>
+                <div class="item"><a href="">자주 묻는 질문</a></div>
+            </div>
+        </div>
         <ul class="login_menu">
             <a href="${contextPath}"><li>로그인</li></a>
             <a href="${contextPath}"><li>회원가입</li></a>
             <a href="${contextPath}"><li>장바구니</li></a>
         </ul>
     </div>
+    
+    <script src="${contextPath}/assets/js/sidebar.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
