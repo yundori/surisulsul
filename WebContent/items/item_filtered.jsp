@@ -2,18 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!doctype html>
-<html>
 
-<head>
-	<meta charset="UTF-8" />
-	<title>수리술술_내가찾는술</title>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_filtered.css?time=${currentTime}" />
 
-	<!-- CSS 파일 참조 처리 -->
-	<link rel="stylesheet" type="text/css" href="../assets/css/item_filtered.css" />
-</head>
-
-<body>
 	<div class="item_filtered">
 		<form>
 			<div class="keyword_checkbox">
@@ -164,7 +155,4 @@
 		</div>
 	</div>
 
-</body>
-
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

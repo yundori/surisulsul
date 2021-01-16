@@ -2,22 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<!doctype html>
-<html>
 
-<head>
-    <meta charset="UTF-8" />
-    <title>수리술술_인기있는술</title>
-    <!-- 크로스 브라우징 호환성 시작 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-    <!-- 크로스 브라우징 호환성 끝 -->
-    <link rel="apple-touch-icon" href="img/icon.png" />
-    <!-- CSS 파일 참조 처리 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/best_items.css" />
-</head>
-
-<body>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/best_items.css?time=${currentTime}" />
+    
 	<div class="best_items">
 		<span class="title">인기 많은 술 <span class="comment">회원분들이
 				자주 찾는 인기 상품입니다.</span></span>
@@ -194,7 +181,4 @@
 		<div class="clean"></div>
 	</div>
 
-</body>
-
-</html>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
