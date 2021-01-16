@@ -1,25 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ include file="/WEB-INF/views/_inc/header.jsp"%>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
 
-<!doctype html>
-<html>
-
-<head>
-<meta charset="UTF-8" />
-<title>나를 위한 추천 술</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/mypage_detail.css" />
-
-</head>
-
-<body>
 <div class="psn_recommend">
 	<div class="psn_title">
 		<h2 class="psn_title_txt">나의 주(酒)능 결과 : Flower_type</h2>
@@ -34,53 +16,31 @@
 	
 	<div class="psn_result">
 	<ul class="psn_result_inner">
-		<li class="pick_item psn_pick1">
-			<a href="#" class="pick1">
-			<span class="psn_pick_title">
-			상품명
+		<li class="pick_item"><a href="#" class="pick_link"> <span
+				class="psn_pick_bg psn_pick1"></span> <span class="psn_pick_text">
+					<h3 class="psn_pick_title">상품명</h3>
+					<p class="psn_pick_price">00,000원</p>
 			</span>
-			<br/>
-			<span class="psn_pick_price">
-			00,000원
+		</a></li>
+		<li class="pick_item"><a href="#" class="pick_link"> <span
+				class="psn_pick_bg psn_pick2"></span> <span class="psn_pick_text">
+					<h3 class="psn_pick_title">상품명</h3>
+					<p class="psn_pick_price">00,000원</p>
 			</span>
-			</a>	
-		</li>
-		<li class="pick_item psn_pick2">
-			<a href="#" class="pick2">
-			<span class="psn_pick_title">
-			상품명
+		</a></li>
+		<li class="pick_item"><a href="#" class="pick_link"> <span
+				class="psn_pick_bg psn_pick3"></span> <span class="psn_pick_text">
+					<h3 class="psn_pick_title">상품명</h3>
+					<p class="psn_pick_price">00,000원</p>
 			</span>
-			<br/>
-			<span class="psn_pick_price">
-			00,000원
+		</a></li>
+		<li class="pick_item"><a href="#" class="pick_link"> <span
+				class="psn_pick_bg psn_pick4"></span> <span class="psn_pick_text">
+					<h3 class="psn_pick_title">상품명</h3>
+					<p class="psn_pick_price">00,000원</p>
 			</span>
-			</a>	
-		</li>
-		<li class="pick_item psn_pick3">
-			<a href="#" class="pick3">
-			<span class="psn_pick_title">
-			상품명
-			</span>
-			<br/>
-			<span class="psn_pick_price">
-			00,000원
-			</span>
-			</a>	
-		</li>
-		<li class="pick_item psn_pick4">
-			<a href="#" class="pick4">
-			<span class="psn_pick_title">
-			상품명
-			</span>
-			<br/>
-			<span class="psn_pick_price">
-			00,000원
-			</span>
-			</a>	
-		</li>
-		</ul>
-	</div>
+		</a></li>
+	</ul>
+	
 </div>
-</body>
-
-</html>
+</div>

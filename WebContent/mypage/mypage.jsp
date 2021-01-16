@@ -1,25 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
-<!doctype html>
-<html>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage.css?time=${currentTime}" />
 
-<head>
-<meta charset="UTF-8" />
-<title>나의 수리술술</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/mypage.css" />
-
-</head>
-
-<body>
 	<!-- 개인정보 확인 -->
 	<div class="psn_info clean">
 		<h2 class="psn_info_h2">나의 수리술술</h2>
@@ -71,7 +55,7 @@
 	
 	<!-- Tab 서브페이지 -->
 	<%@ include file="../mypage/my_recommend.jsp" %>
-</body>
 
-</html>
+
+<script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
