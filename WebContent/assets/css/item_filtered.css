@@ -1,21 +1,27 @@
 @charset "UTF-8";
 
 .item_filtered {
-    width: 70%;
-    height: auto;
-    margin: auto;
-    padding: auto;
-    margin-top: 100px;
+	width: 70%;
+	height: auto;
+	margin: 100px auto;
+	padding: auto;
+	margin-top: 200px;
+}
+
+.item_filtered button {
+	cursor: pointer;
 }
 
 .keyword_checkbox {
 	width: 100%;
 	height: auto;
 	margin: 0;
+	margin-bottom: 30px;
 	padding: 0;
 	text-align: center;
 	background-color: #dedcee;
 	border-radius: 15px;
+	padding: 0;
 }
 
 .check_boxes {
@@ -70,4 +76,88 @@
 	font-size: 16px;
 	line-height: 40px;
 	text-align: center;
+}
+
+.keyword_area {
+	width: 100%;
+	height: 18px;
+	margin: 0;
+	margin-bottom: 30px;
+	padding: 8px 0;
+	background-color: #F9F1FB;
+	vertical-align: middle;
+}
+
+.keyword_area>h4 {
+	width: 200px;
+	height: 18px;
+	margin: 0;
+	padding: 8px 0;
+	font-size: 17px;
+	font-weight: 400;
+	text-align: center;
+	line-height: 18px;
+	color: white;
+	background-color: #7C59B6;
+	position: relative;
+	bottom: 8px;
+}
+
+.search .result_list {
+	max-width: 700px;
+	height: 32px;
+	text-align: left;
+	line-height: 32px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    left: 230px;
+    bottom: 43px;
+	/*border: 1px solid red;*/
+}
+.search_result {
+	display: inline-block;
+	width: auto;
+	height: 16px;
+	margin: 0;
+	padding: 5px 5px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 16px;
+	color: white;
+	background-color: #9B59B6;
+	border-radius: 5px;
+}
+
+#title_search {
+	background: transparent;
+	width: 300px;
+	padding: 5px;
+	margin-right: 60px;
+	border: none;
+	float: right;
+	position: relative;
+	bottom: 61px;
+}
+
+#title_search::placeholder {
+	text-align: center;
+	color: #9e9aa0;
+}
+
+.search_btn {
+	width: 34px;
+	height: 34px;
+	margin: 0;
+	padding: 5px;
+	border: none;
+	outline: none;
+	float: right;
+	position: relative;
+	left: 360px;
+	bottom: 63px;
+	background: url("../img/best_items/item_search.png") no-repeat;
+	background-position: center;
+	text-indent: -10000px;
 }

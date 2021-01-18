@@ -3,9 +3,9 @@
 .best_items {
     width: 70%;
     height: auto;
-    margin: auto;
+    margin: 100px auto;
     padding: auto;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 .best_items a {
@@ -14,7 +14,7 @@
     color: black;
 }
 
-.best_items>ul {
+.item_list {
     list-style: none;
     width: auto;
     height: auto;
@@ -24,7 +24,7 @@
     border-top: 1px solid #cccccc;
 }
 
-.best_items .title {
+.item_contents .title {
     width: auto;
     height: 60px;
     margin: 0;
@@ -37,42 +37,44 @@
     font-weight: 600;
 }
 
-.best_items .comment {
+.item_contents .comment {
     color: #b5acd4;
     font-size: 18px;
     font-weight: 600;
 }
 
-.best_item_list {
+.item_list {
 	display: block;
 	width: 100%;
 	height: auto;
 	margin: auto;
 	padding: auto;
 	text-align: center;
+	list-style: none;
+    padding-top: 20px;
+    border-top: 1px solid #cccccc;
+    position: relative;
 }
 
-.best_item > a{
+.item_contents > a{
 	display: block;
 }
 
-.best_item {
+.item_info {
 	display: inline-block;
-    /*float: left;
-    width: 24.8%;*/
+	width: 270px;
     height: auto;
-    padding: 4px;
+    padding: 0 4px;
     margin: 0 10px;
     margin-bottom: 20px;
     overflow: hidden;
 }
 
-.best_item:hover{
+.item_info:hover{
 	background-color: #ffefc5;
 }
 
-.best_item .item_img {
-	/*display: block;*/
+.item_info .item_img {
     width: auto;
     height: auto;
     margin:0;
@@ -82,7 +84,7 @@
     overflow: hidden;
 }
 
-.best_item .item_title {
+.item_info .item_title {
     display: block;
     max-width: 150px;
     height: 20px;
@@ -97,7 +99,7 @@
     float: left;
 }
 
-.best_item .item_price {
+.item_info .item_price {
     display: block;
     max-width: 100px;
     height: auto;
@@ -108,7 +110,7 @@
     float: right;
 }
 
-.best_item .item_rating {
+.item_info .item_rating {
     display: block;
     width: auto;
     height: auto;
@@ -116,7 +118,7 @@
     float: left;
 }
 
-.best_item .item_tag_list {
+.item_info .item_tag_list {
 	display: block;
 	width: auto;
 	height: auto;
@@ -126,7 +128,7 @@
 	text-align: left;
 }
 
-.best_item .item_tag {
+.item_info .item_tag {
     display: inline-block;
     max-width: 80px;
     height: 15px;
@@ -153,6 +155,14 @@
 .item_keyword_tag {
     color: white;
     background-color: #6D2B88;
+}
+
+.best_ranking {
+	display: block;
+	z-index: 100;
+	position: absolute;
+	left: 280px;
+	margin: 0 5px;
 }
 
 .clean {
