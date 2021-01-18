@@ -1,21 +1,11 @@
 @charset "UTF-8";
 
-/**
-	order_result.jsp --> 기본 div 설정 (header와의 padding 조정 + text-align)
-*/
-#order_result{
+/** order 폴더 내 모든 content ==> div 기본 스타일 설정, 타이틀 사이즈 설정 */
+#order_result, #basket, #basket_order{
 	padding:150px 0;
 	text-align:center;
 }
-
-/**
-	order_result.jsp --> title 라인
-*/
-#order_result #result_icon{
-	width:50px;
-	height:50px;
-}
-#order_result h1{
+#order_result h1, #basket h1, #basket_order h1{
 	font-size:2em;
 	font-weight:bold;
 	margin:20px 0;
@@ -26,9 +16,15 @@
 	margin:20px 0;
 }
 
-/**
-	order_result.jsp --> 주문 상세 정보
-*/
+/** basket.jsp --> */
+
+/** order_result.jsp --> 아이콘 */
+#order_result #result_icon{
+	width:50px;
+	height:50px;
+}
+
+/** order_result.jsp --> 주문 상세 정보 */
 #order_result>#order_result_table{
 	margin:50px auto;
 	text-align:left;
@@ -49,9 +45,7 @@
 	margin-right:15px;
 }
 
-/**
-	order_result.jsp --> 버튼 처리
-*/
+/** order_result.jsp --> 버튼 처리 */
 #order_result a{
     background-color: #6a60a9;
     font-size: 16px;

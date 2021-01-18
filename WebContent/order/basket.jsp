@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<!doctype html>
-<html>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Hello JSP</title>
-</head>
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/order.css?time=${currentTime}" />
 
-<body>
-    
-</body>
+<div id="basket">
 
-</html>
+</div>
+
+<%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
