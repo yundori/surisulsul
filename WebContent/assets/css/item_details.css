@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.item_details {
+    width: 70%;
+    height: auto;
+    margin: 100px auto;
+    padding: auto;
+    margin-top: 200px;
+}
+
+.item_details .title {
+    width: auto;
+    height: 60px;
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+    color: #6a60a9;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.item_detail {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 10px 0;
+	border-top: 1px solid #cccccc;
+	text-align: center;
+}
+
+.item_info {
+	display: inline-block;
+	/*width: 60%;*/
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.item_img {
+	width: 400px;
+    height: 550px;
+    margin:0;
+    padding:0;
+    margin-bottom: 13px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.item_detail_info {
+	width: 300px;
+	height: auto;
+	margin: 25px;
+	padding: 10px;
+	float: right;
+}
+
+.item_name {
+	font-size: 30px;
+	margin-bottom: 40px;	
+}
+
+.item_plain_info, .item_ingre, .item_period, .item_price_text {
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+
+.order_info {
+	display: inline-block;
+	/*width: 40%;*/
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	vertical-align: top;
+}
