@@ -1,0 +1,41 @@
+@charset "UTF-8";
+#order_result{
+	padding:150px 0;
+	text-align:center;
+}
+#order_result #result_icon{
+	width:50px;
+	height:50px;
+}
+#order_result h1{
+	font-size:2em;
+	font-weight:bold;
+	margin:20px 0;
+}
+#order_result h2{
+	font-size:1.2em;
+	font-weight:bold;
+	margin:10px 0;
+}
+#order_result a{
+	padding:15px;
+	border:1px solid #000;
+}
+#order_result>#order_result_table{
+	margin:50px auto;
+	text-align:left;
+}
+#order_result_table tr{
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+#order_result_table td{
+	padding:20px;
+	line-height:150%;
+}
+#order_result_table td img{
+	display:inline-block;
+	width:100px;
+	height:200px;
+	vertical-align:middle;
+}
