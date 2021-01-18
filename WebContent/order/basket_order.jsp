@@ -32,6 +32,21 @@
 			<td colspan="2"><b>143,000원</b></td>
 		</tr>
 	</table>
+	<table id="order_sender">
+		<tr>
+			<td colspan="2" class="order_sm_title">주문자정보</td>
+		</tr>
+		<tr>
+			<th>주문자</th>
+			<td><input type="text" placeholder="이름" name="name" id="name"/></td>
+			<td><input type="text" placeholder="이메일" name="email" id="email"/></td>
+			<td><input type="text" placeholder="010-1234-5678" name="phone" id="phone"/></td>
+		</tr>
+	</table>
+	
+	<table id="order_recipient">
+	
+	</table>
 	
 	<h2>주문/결제하기</h2>
 	
