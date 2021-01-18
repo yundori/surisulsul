@@ -117,6 +117,19 @@
 			</span>
 			</a>	
 		</li>
+		<li class="pick_item swiper-slide">
+			<a href="#" class="pick_link">
+			<span class="psn_pick_bg psn_pick1"></span>
+			<span class="psn_pick_text">
+			<h3 class="psn_pick_title">
+			상품명
+			</h3>
+			<p class="psn_pick_price">
+			00,000원
+			</p>
+			</span>
+			</a>	
+		</li>
 		</ul>
 		<!-- Add Pagination -->
 	<div class="swiper-pagination"></div>

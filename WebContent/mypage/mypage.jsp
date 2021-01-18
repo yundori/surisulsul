@@ -54,8 +54,8 @@
 	</nav>
 	
 	<!-- Tab 서브페이지 -->
-	<%@ include file="../mypage/my_recommend.jsp" %>
+	<%@ include file="../mypage/wishlist.jsp" %>
 
 
-<script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
