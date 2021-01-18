@@ -11,6 +11,11 @@
     margin: auto;
 }
 
+.psn_past_order {
+    width: 80%;
+    margin: auto;
+}
+
 /**페이지 타이틀 크기 설정*/
 .psn_title {
     display: block;
@@ -213,23 +218,44 @@ li .pick_item .swiper-slide .swiper-slide-next {
     margin-bottom: 20px;
 }
 
-/**화살표 조절
-*******************************/
-/*.swiper-button-next {
-    background-image: url(../img/arrow_right_on.png);
-    background-repeat: no-repeat;
-    background-position: center;width: 50px;
-height: 50px;
-position: absolute;
-right: 16%;
+/*************************************************
+**************************************************
+**********PAST_ORDER******************************/
+/**구매했어요 표 크기 설정*/
+.order_table {
+    width: 80%;
+    font-size: 18px;
+    margin: 40px auto 20px;
+    border-collapse: collapse;
+
 }
 
-.swiper-button-prev {
-    background-image: url(../img/arrow_left_on.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    left: 18%;
+.order_table table {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/**구매했어요 표 border 설정*/
+.order_table th,
+td {
+    border-bottom: 1px solid #DEDCEE;
+    padding: 10px;
+}
+
+/**구매했어요 표 넓이 설정
+--> 주문상품 넓이 설정*/
+.order_table .psn_order_items {
+    min-width: 600px;
+}
+
+/**구매했어요 표 넓이 설정
+--> 결제일 넓이 설정*/
+.order_table .psn_order_date {
+    min-width: 200px;
+}
+
+/**구매했어요 표 넓이 설정
+--> 나머지 탭 넓이 설정*/
+.order_table th {
+    min-width: 150px;
 }

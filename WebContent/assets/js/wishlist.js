@@ -2,11 +2,8 @@ $(function() {
 	var swiper = new Swiper('.swiper-container', {
 		slidesPerView: '4', //동시에 보여줄 슬라이드 갯수
 		slidesPerGroup: '4', //그룹으로 묶을 그룹 수
-		slidesOffsetBefore : 30,
-		slidesOffsetAfter : 30,
-		loopFillGroupWithBlank : true,
+		//loopFillGroupWithBlank : true,
 		spaceBetween: 10,
-		// watchSlidesVisibility: true,
 		loop: false,
 		pagination: {
 			el: '.swiper-pagination',
