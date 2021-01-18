@@ -53,6 +53,7 @@
 	list-style: none;
     padding-top: 20px;
     border-top: 1px solid #cccccc;
+    position: relative;
 }
 
 .item_contents > a{
@@ -61,10 +62,9 @@
 
 .item_info {
 	display: inline-block;
-    /*float: left;
-    width: 24.8%;*/
+	width: 270px;
     height: auto;
-    padding: 4px;
+    padding: 0 4px;
     margin: 0 10px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -75,7 +75,6 @@
 }
 
 .item_info .item_img {
-	/*display: block;*/
     width: auto;
     height: auto;
     margin:0;
@@ -156,6 +155,14 @@
 .item_keyword_tag {
     color: white;
     background-color: #6D2B88;
+}
+
+.best_ranking {
+	display: block;
+	z-index: 100;
+	position: absolute;
+	left: 280px;
+	margin: 0 5px;
 }
 
 .clean {
