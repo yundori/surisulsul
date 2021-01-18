@@ -1,8 +1,16 @@
 @charset "UTF-8";
+
+/**
+	order_result.jsp --> 기본 div 설정 (header와의 padding 조정 + text-align)
+*/
 #order_result{
 	padding:150px 0;
 	text-align:center;
 }
+
+/**
+	order_result.jsp --> title 라인
+*/
 #order_result #result_icon{
 	width:50px;
 	height:50px;
@@ -15,12 +23,12 @@
 #order_result h2{
 	font-size:1.2em;
 	font-weight:bold;
-	margin:10px 0;
+	margin:20px 0;
 }
-#order_result a{
-	padding:15px;
-	border:1px solid #000;
-}
+
+/**
+	order_result.jsp --> 주문 상세 정보
+*/
 #order_result>#order_result_table{
 	margin:50px auto;
 	text-align:left;
@@ -32,10 +40,34 @@
 #order_result_table td{
 	padding:20px;
 	line-height:150%;
+	vertical-align:middle;
 }
 #order_result_table td img{
-	display:inline-block;
 	width:100px;
-	height:200px;
+	height:130px;
 	vertical-align:middle;
+	margin-right:15px;
+}
+
+/**
+	order_result.jsp --> 버튼 처리
+*/
+#order_result a{
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+    margin:30px 10px 0 0;
+}
+#order_result a:hover{
+    background-color: #eee;
+    color: #6a60a9;
+    border: 2px solid #6a60a9;
+}
+#blank{
+	width:auto;
+	height:20px;
 }

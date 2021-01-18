@@ -107,6 +107,7 @@ button{
   transition:800ms ease all;
   outline:none;
   margin:30px 40px 0 0;
+  border-radius: 3px;
 }
 button:hover{
   background:#fff;

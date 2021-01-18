@@ -23,9 +23,12 @@
     				<td><b>20210118-주문번호어쩌고</b></td>
     			</tr>
     			<tr>
-    				<td>주문상품</td>
+    				<td rowspan="2">주문상품</td>
     				<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
-    				<td><img src="${contextPath}/"/>블루베리 생 막걸리 * 6명 (1개)</td>
+    				<td><img src="${contextPath}/assets/img/best_items/best1.PNG"/>블루베리 생 막걸리 * 6명 (1개)</td>
+    			</tr>
+    			<tr>
+    				<td><img src="${contextPath}/assets/img/best_items/best2.PNG"/>아이엠더문 오리지날/화이트 에디션 (2개)</td>
     				<!--</c:forEach>-->
     			</tr>    			
     		</table>
@@ -38,6 +41,7 @@
     		<img src="${contextPath}/assets/img/order/order_fail.png" id="result_icon"/>
     		<h1>죄송합니다</h1>
     		<h2>주문 처리 중 문제가 발생하였습니다.</h2>
+    		<div id="blank"></div>
     		<a href="" id="go_basket">장바구니로 이동</a>
     	</c:otherwise>
     	
