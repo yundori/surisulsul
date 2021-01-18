@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/order.css?time=${currentTime}" />
 
 <div id="basket_order">
-	<h1>장바구니</h1>
+	<h1>주문하기</h1>
 </div>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

@@ -25,7 +25,7 @@
     			<tr>
     				<td rowspan="2">주문상품</td>
     				<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
-    				<td><img src="${contextPath}/assets/img/items/best1.PNG"/>블루베리 생 막걸리 * 6명 (1개)</td>
+    				<td><img src="${contextPath}/assets/img/items/best1.PNG"/>블루베리 생 막걸리 * 6병 (1개)</td>
     			</tr>
     			<tr>
     				<td><img src="${contextPath}/assets/img/items/best2.PNG"/>아이엠더문 오리지날/화이트 에디션 (2개)</td>

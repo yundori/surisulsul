@@ -16,7 +16,55 @@
 	margin:20px 0;
 }
 
-/** basket.jsp --> */
+/** order 폴더 내에 있는 모든 table에 들어갈 제품 img 크기 설정 */
+#order_result_table td img, #basket_table td img{
+	width:100px;
+	height:130px;
+	vertical-align:middle;
+	margin-right:15px;
+}
+
+/** 공통 float 마감제 */
+.clearfix:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+/** basket.jsp --> table 기본 css */
+#basket>#basket_table{
+	vertical-align:middle;
+	margin:auto;
+	width:800px;
+}
+#basket_table tr{
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;	
+}
+#basket_table td{
+	line-height:200%;
+}
+#basket_table #left_align{
+	float:left;
+	margin-left:50px;
+	margin-top:10px;
+}
+
+/** basket.jsp --> 선택상품 삭제 버튼 css */
+#basket #delete_this{
+	padding:1px 5px;
+	border:none;
+    background-color: #fbd14b;	
+    float:right;
+    line-height:145%;
+    margin:3px 10px 0 0;
+}
+#basket .check_all, #basket #basket_table label{
+	float:left;
+}
+
+
 
 /** order_result.jsp --> 아이콘 */
 #order_result #result_icon{
@@ -37,12 +85,6 @@
 	padding:20px;
 	line-height:150%;
 	vertical-align:middle;
-}
-#order_result_table td img{
-	width:100px;
-	height:130px;
-	vertical-align:middle;
-	margin-right:15px;
 }
 
 /** order_result.jsp --> 버튼 처리 */
