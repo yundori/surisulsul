@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.slides-container img {
+    width: 100%;
+    height: 100px;
+    padding-top: 100px;
+}
+
+.slides-pagination {
+    position: absolute;
+    z-index: 3;
+    bottom: 20px;
+    left: 45%;
+}
+
+.slides-pagination a {
+    background: #e1e2e0;
+    border-radius: 10px;
+    width: 5px;
+    height: 5px;
+    zoom: 1;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=");
+    margin: 2px;
+    overflow: hidden;
+    margin-right: 10px;
+    text-indent: -150%;
+    display: inline-block;
+}
+
+.slides-pagination a.current {
+    background: #fffcf0;
+}
+
+.main_testresult {
+    padding-top: 120px;
+}
+
+.test_img img {
+    width: 100%;
+    height: 400px;
+}
+
+.test_text {
+    font-size: 10px;
+}
