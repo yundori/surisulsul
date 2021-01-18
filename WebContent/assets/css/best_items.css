@@ -165,6 +165,14 @@
 	margin: 0 5px;
 }
 
+.rank2 {
+	left: 580px;
+}
+
+.rank3 {
+	left: 880px;
+}
+
 .clean {
     float: none;
     clear: both;
