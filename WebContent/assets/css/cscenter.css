@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-/*
- * 페이지 제목 설정
- * -------------------------- */
-
 /* 탭 박스 설정들 */
 
 /*
@@ -97,3 +93,75 @@
 }
 
 /* 탭에 보이는 패널 페이지 설정들  */
+
+/*
+ * 게시글 목록 영역
+ * -------------------------- */
+
+.collapse {
+    width: 80%;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/*
+ * 게시글 제목 영역 디자인
+ * -------------------------- */
+
+.collapse-title {
+    background: #eee;
+    border: 1px solid #d5d5d5;
+    text-align: center;
+}
+
+/*
+ * 게시글 제목 정렬
+ * -------------------------- */
+.article-number,
+.collapse-title>a,
+.reg-date {
+    display: inline-block;
+    float: left;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #222;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+.article-number {
+    width: 10%;
+}
+
+.reg-date {
+    width: 15%;
+}
+
+.collapse-title a {
+    width: 75%;
+    text-decoration: none
+}
+
+
+/*
+ * 게시글 내용 설정
+ * -------------------------- */
+.content {
+    padding: 20px 50px;
+    font-size: 14px;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    color: #444;
+    display: none;
+}
+
+.content:last-child {
+    border-bottom: 1px solid #d5d5d5;
+}

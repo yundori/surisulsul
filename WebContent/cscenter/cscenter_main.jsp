@@ -4,7 +4,6 @@
 
     <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/cscenter.css?time=${currentTime}" />
 
-    <h1 class="text-center">고객센터</h1>
     <!-- 버튼 클릭 시 페이지가 이동하는 게 아니라 include 하고 있는 두 페이지 중 hide 되는 것과 show 되는 것이바뀜 -->
     <div class="tab">
         <ul class="tab-button">
