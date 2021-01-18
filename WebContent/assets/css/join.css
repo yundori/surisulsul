@@ -131,3 +131,44 @@ button {
     box-shadow: none;
     border-radius: 3px;
 }
+
+.button-cancle {
+    background-color: #ddd;
+    color: #222;
+}
+
+/*
+ * 비밀번호 확인 박스 영역
+ * --------------------- */
+.chk-pw-box {
+    width: 500px;
+    margin: auto;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.box-title {
+    background-color: #6a60a9;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.box-alert {
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #666;
+    line-height: 20px;
+}
+
+.input-pw-box {
+    padding: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.input-pw-box label {
+    padding: 0 10px;
+}
