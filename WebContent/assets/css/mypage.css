@@ -119,6 +119,11 @@
     float: left;
 }
 
+/**선택하지 않은 탭 내용 가리기*/
+.hide {
+    display: none;
+}
+
 /**탭 백그라운드 설정*/
 .tab_forme a {
     background: url(../img/mypage/recommend_nor.png);
@@ -160,9 +165,19 @@
     display: block;
 }
 
-/**탭 마우스 오버*/
+/**탭 마우스 오버 & 클릭 후 변화*/
 
 .tab_forme a:hover {
+    background: url(../img/mypage/recommend_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_forme .selected {
     background: url(../img/mypage/recommend_foc.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -182,6 +197,16 @@
     display: block;
 }
 
+.tab_wishlist .selected {
+    background: url(../img/mypage/heart_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
 .tab_buy a:hover {
     background: url(../img/mypage/buy_foc.png);
     background-repeat: no-repeat;
@@ -192,7 +217,27 @@
     display: block;
 }
 
+.tab_buy .selected {
+    background: url(../img/mypage/buy_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
 .tab_comment a:hover {
+    background: url(../img/mypage/comment_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment .selected {
     background: url(../img/mypage/comment_foc.png);
     background-repeat: no-repeat;
     background-size: contain;

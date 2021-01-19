@@ -42,23 +42,34 @@
 	<nav class="psn_tab">
 		<ul class="psn_tab_inner">
 			<li class="tab_item tab_forme">
-				<a href="#">나를 위한 추천술</a>
+				<a class="tab-button-item-link selected" href="#tab-page-1">나를 위한 추천술</a>
 			</li>
 			<li class="tab_item tab_wishlist">
-				<a href="#">관심있어요</a>
+				<a class="tab-button-item-link" href="#tab-page-2">관심있어요</a>
 			</li>
 			<li class="tab_item tab_buy">
-				<a href="#">구매했어요</a>
+				<a class="tab-button-item-link" href="#tab-page-3">구매했어요</a>
 			</li>
 			<li class="tab_item tab_comment">
-				<a href="#">나의 의견</a>
+				<a class="tab-button-item-link" href="#tab-page-4">나의 의견</a>
 			</li>
 		</ul>
 	</nav>
-	
-	<!-- Tab 서브페이지 -->
-	<%@ include file="../mypage/past_order.jsp" %>
+	<div class="tab-panel">
+            <div id="tab-page-1">
+                <%@ include file="../mypage/my_recommend.jsp"%>
+            </div>
+            <div id="tab-page-2" class="hide">
+                <%@ include file="../mypage/wishlist.jsp"%>
+            </div>
+            <div id="tab-page-3" class="hide">
+                <%@ include file="../mypage/past_order.jsp"%>
+            </div>
+            <div id="tab-page-4" class="hide">
+                <%@ include file="../mypage/my_opinion.jsp"%>
+            </div>
+        </div>
 
 
-
+<script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
