@@ -34,7 +34,7 @@
 	</table>
 	
 	<h2>주문/결제하기</h2>
-	
+	<!-- 주문자 정보 table -->
 	<table class="order_detail">
 		<tr>
 			<th colspan="2" class="order_sm_title">주문자 정보</th>
@@ -56,7 +56,7 @@
 	<table class="order_detail">
 		<tr>
 			<td colspan="2" class="order_same">
-				<input type="checkbox" name="same" id="same"/>주문자 정보와 동일
+				<input type="checkbox" name="same" id="same"/><label>주문자 정보와 동일</label>
 			</td>
 		</tr>
 		<tr>
@@ -76,15 +76,27 @@
 		</tr>
 		<tr>
 			<td colspan="2" id="get_address">
-				<input type="text" placeholder="우편번호" name="postcode" id="postcode"/>
+				<input type="text" placeholder="우편번호" name="postcode" id="postcode" readonly/>
 				<input type="button" value="우편번호 찾기" id="findPC" onclick="execDaumPostcode()"/> <br/>
-				<input type="text" placeholder="주소" name="address" id="address"/><br/>
+				<input type="text" placeholder="주소" name="address" id="address" readonly /><br/>
 				<input type="text" placeholder="상세주소" name="detailAddress" id="detailAddress" />
-				<input type="text" placeholder="참고항목" id="extraAddress" />
-				<div id="shipping_details">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</td>
+				<input type="text" placeholder="참고항목" id="extraAddress" readonly />
+				<div id="shipping_details">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</div>
 			</td>
 		</tr>	
-	</table>                     
+	</table>
+	
+	<div class="sm_title2">결제방법</div>
+		<input type="checkbox" name="directly" id="directly"/><label>무통장 입금</label>
+		<input type="checkbox" name="card" id="card"/><label>카드결제</label>
+		
+	<div id="deposit_directly">
+		
+	</div>
+	
+	<div id="deposit_card">
+	
+	</div>                   
 </div>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${contextPath}/assets/js/order.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>

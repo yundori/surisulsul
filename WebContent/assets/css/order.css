@@ -127,31 +127,53 @@
 	border-top:none;
 }
 .order_detail #get_address{
-	height:130px;
+	height:200px;
 	padding-left:50px;
-	line-height:120%;
 }
 .order_detail #shipping_details{
 	font-size:0.8em;
 	color:#aaa;
 	margin-left:10px;
-	margin-top:-5px;
 }
-.order_detail #get_address input{
-	margin:5px 10px;
+
+/*
+ * 입력 칸의 모양 설정
+ * --------------------- */
+
+.order_detail input{
+    padding: 5px 0;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin:5px 0;
 }
- .order_detail #findPC{
+
+.order_detail #get_address input:focus {
+    border: 2px solid #6a60a9;
+    background-color: #dedcee;
+}
+
+ .order_detail #get_address #findPC{
 	padding:2px 10px;
 	border:none;
     background-color: #fbd14b;
     font-size:0.9em;
     cursor:pointer;
+    margin-left:10px;
+    width:100px;
 }
 #basket_order .order_detail #postcode{
 	width:150px;
 }
 #basket_order .order_detail #address{
 	width:500px;
+}
+#basket_order .order_detail #detailAddress{
+	width:295px;
+}
+#basket_order .order_detail #extraAddress{
+	width:190px;
 }
 
 /** order_result.jsp --> 아이콘 */
