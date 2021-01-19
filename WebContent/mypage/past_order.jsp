@@ -68,4 +68,5 @@
 
 		</tbody>
 	</table>
+	<!--***** 여기에 PAGINATION 들어가야 함 *****-->
 </div>
