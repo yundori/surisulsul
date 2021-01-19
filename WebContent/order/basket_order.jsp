@@ -32,24 +32,61 @@
 			<td colspan="2"><b>143,000원</b></td>
 		</tr>
 	</table>
-	<table id="order_sender">
+	
+	<h2>주문/결제하기</h2>
+	
+	<table class="order_detail">
 		<tr>
-			<td colspan="2" class="order_sm_title">주문자정보</td>
+			<th colspan="2" class="order_sm_title">주문자 정보</th>
 		</tr>
 		<tr>
 			<th>주문자</th>
 			<td><input type="text" placeholder="이름" name="name" id="name"/></td>
+		</tr>
+		<tr>
+			<th>이메일</th>
 			<td><input type="text" placeholder="이메일" name="email" id="email"/></td>
-			<td><input type="text" placeholder="010-1234-5678" name="phone" id="phone"/></td>
+		</tr>
+		<tr>
+			<th>연락처</th>		
+			<td><input type="text" placeholder="01012345678" name="phone" id="phone"/></td>
 		</tr>
 	</table>
 	
-	<table id="order_recipient">
-	
-	</table>
-	
-	<h2>주문/결제하기</h2>
-	
+	<table class="order_detail">
+		<tr>
+			<td colspan="2" class="order_same">
+				<input type="checkbox" name="same" id="same"/>주문자 정보와 동일
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2" class="order_sm_title">배송 정보</th>
+		</tr>
+		<tr>
+			<th>수령인</th>
+			<td><input type="text" placeholder="이름" name="receiver_name" id="receiver_name"/></td>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<td><input type="text" placeholder="이메일" name="receiver_email" id="receiver_email"/></td>
+		</tr>
+		<tr>
+			<th>연락처</th>		
+			<td><input type="text" placeholder="01012345678" name="receiver_phone" id="receiver_phone"/></td>
+		</tr>
+		<tr>
+			<td colspan="2" id="get_address">
+				<input type="text" placeholder="우편번호" name="postcode" id="postcode"/>
+				<input type="button" value="우편번호 찾기" id="findPC" onclick="execDaumPostcode()"/> <br/>
+				<input type="text" placeholder="주소" name="address" id="address"/><br/>
+				<input type="text" placeholder="상세주소" name="detailAddress" id="detailAddress" />
+				<input type="text" placeholder="참고항목" id="extraAddress" />
+				<div id="shipping_details">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</td>
+			</td>
+		</tr>	
+	</table>                     
 </div>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="${contextPath}/assets/js/order.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
