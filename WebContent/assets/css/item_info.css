@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+.item_info {
+	width: 60%;
+	height: auto;
+	margin: 100px auto;
+	padding: auto;
+	margin-top: 200px;
+}
+
+.item_info .title {
+	width: auto;
+	height: 30px;
+	margin: 0;
+	margin-bottom: 30px;
+	padding: 0;
+	text-align: left;
+	line-height: 30px;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.title>span {
+	margin-left: 10px;
+	color: #bbbbbb;
+	font-size: 15px;
+}
+
+.taste {
+	width: 500px;
+	height: auto;
+	margin-top: 40px;
+	margin-bottom: 60px;
+	padding: 0;
+	float: left;
+}
+
+.taste>h4 {
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+.taste h5 {
+	width: 60px;
+	height: auto;
+	margin: 0;
+	padding: 20px 0;
+	font-size: 18px;
+	text-align: center;
+	border-right: 1px solid #bbbbbb;
+}
+
+.sugar h5{
+	color: #8E44AD;
+}
+
+.acidity h5{
+	color: #4A44AD;
+}
+
+.alcohol_degree h5{
+	color: #B1659F;
+}
+
+.jn_result {
+	width: 400px;
+	height: auto;
+	margin-top: 35px;
+	margin-bottom: 60px;
+	padding: 0;
+	text-align: left;
+	float: right;
+}
+
+.jn_result>h4 {
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+.jn_result>img {
+	width: 100px;
+	height: 100px;
+	margin-left: 20px;
+	padding: 0;
+	border-radius: 200px;
+}
+
+.jn_result>ul {
+	float: right;
+}
+
+.jn_result li {
+	font-size: 17px;
+	margin-bottom: 10px;
+}
+
+.item_info_suri {
+	width: 100%;
+	height: auto;
+	margin: 40px 0;
+	padding: 0;
+}
+
+.item_info_suri>h4 {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.item_info_suri>p {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	font-size: 17px;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	word-wrap: normal;
+	line-height: 30px;
+}
+
+.suri_rules {
+	width: 100%;
+	height: auto;
+	margin: 40px 0;
+	padding: 0;
+}
+
+.suri_rules>h4 {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.suri_rules>p {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	font-size: 17px;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	word-wrap: normal;
+	line-height: 30px;
+}
+
+.clear {
+	float: none;
+	clear: both;
+}
