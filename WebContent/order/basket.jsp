@@ -23,14 +23,14 @@
 		</tr>
 		<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
 		<tr>
-			<td><input type="checkbox" name="item1" class="ab"></td>
+			<td><input type="checkbox" name="item1" id="item1" class="ab"></td>
 			<td id="left_align"><img src="${contextPath}/assets/img/items/best1.PNG" class="clearfix"/>블루베리 생 막걸리 * 6병</td>
 			<td>25,000</td>
 			<td>1병</td>
 			<td>25,000원</td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="item1" class="ab"></td>
+			<td><input type="checkbox" name="item2" id="item2" class="ab"></td>
 			<td id="left_align"><img src="${contextPath}/assets/img/items/best2.PNG" class="clearfix"/>아이엠더문 오리지날/화이트 에디션</td>
 			<td>59,000</td>
 			<td>2병</td>

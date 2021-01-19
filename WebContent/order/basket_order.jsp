@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/order.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/join.css?time=${currentTime}" />
 
 <div id="basket_order">
 	<h2>주문 내역</h2>
@@ -32,24 +33,53 @@
 			<td colspan="2"><b>143,000원</b></td>
 		</tr>
 	</table>
-	<table id="order_sender">
-		<tr>
-			<td colspan="2" class="order_sm_title">주문자정보</td>
-		</tr>
-		<tr>
-			<th>주문자</th>
-			<td><input type="text" placeholder="이름" name="name" id="name"/></td>
-			<td><input type="text" placeholder="이메일" name="email" id="email"/></td>
-			<td><input type="text" placeholder="010-1234-5678" name="phone" id="phone"/></td>
-		</tr>
-	</table>
-	
-	<table id="order_recipient">
-	
-	</table>
 	
 	<h2>주문/결제하기</h2>
+	<form action="" method="post" class="basket_order_form" name="order_form" id="order_form">
+		<fieldset>
+			<legend>주문자 정보</legend>
+            <label for="user_name" class="col-md-4">주문자</label>
+            <div class="col-md-6"><input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름을 입력하세요."/></div>
+            <label for="tel" class="col-md-4">이메일</label>
+            <div class="col-md-6"><input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요."/></div>
+            <label for="tel" class="col-md-4">연락처</label>
+            <div class="col-md-6"><input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
+		</fieldset>
+		
+		<div class="make_form_same clearfix">
+			<input type="checkbox" name="same" id="same"/>주문자 정보와 동일
+		</div>
+		
+		<fieldset>
+			<legend>배송 정보</legend>
+			
+			<label for='address' class="col-md-4">주소</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="postcode" placeholder="우편번호" readonly>
+            </div>
+            <input type="button" onclick="execDaumPostcode()" class="chk-email" value="우편번호 찾기">
+            
+            <div class="set_location">
+	            <input type="text" class="form-control" id="address" placeholder="도로명 주소" readonly>
+	            <input type="text" class="form-control" id="detailAddress" placeholder="기타 상세 주소">
+            </div>
+		
+            <label for="user_name" class="col-md-4">수령인</label>
+            <div class="col-md-6"><input type="text" name="receiver_name" id="receiver_name" class="form-control" placeholder="이름을 입력하세요."/></div>
+			<label for="tel" class="col-md-4">이메일</label>
+            <div class="col-md-6"><input type="text" name="receiver_email" id="receiver_email" class="form-control" placeholder="이메일을 입력하세요."/></div>
+            <label for="tel" class="col-md-4">연락처</label>
+            <div class="col-md-6"><input type="tel" name="receiver_tel" id="receiver_tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
+		</fieldset>
+		
+		<fieldset>
+		<legend>결제 정보</legend>
+		</fieldset>
+	
+	</form>
 	
 </div>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
