@@ -116,7 +116,7 @@
 	margin:10px 20px;
 	padding:10px;
 }
-.basket_order_form input{
+.basket_order_form input, .basket_order_form select{
 	margin-bottom:15px;
 }
 .basket_order_form label{
@@ -127,10 +127,19 @@
 	margin:0 0 0 285px;
 	width:460px;
 }
+.basket_order_form .details_info{
+	font-size:0.8em;
+	color:#aaa;
+	margin-top:-10px;
+	margin-bottom:20px;
+}
 /** basket_order.jsp --> 주문자정보와 동일 체크박스 오른쪽 정렬*/
 .make_form_same{
 	float:right;
 	margin-bottom:-23px;
+}
+#pay_details_money{
+	width:100%;
 }
 
 /** order_result.jsp --> 아이콘 */
