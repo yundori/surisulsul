@@ -126,57 +126,93 @@ li {
 }
 
 /** sidebar.css */
-#sidebar {
+.sidebar {
     position: fixed;
-    left: -260px;
-    width: 260px;
+    top: 0;
+    left: -255px;
+    width: 250px;
     height: 100%;
     background: #fff;
+    transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
 }
 
-
-#sidebar img {
+.sidebar h1 img {
     position: absolute;
-    top: 30px;
-    left: 65px;
+    top: 60px;
+    left: 30px;
     width: 120px;
     height: 40px;
 }
 
-#sidebar.active {
-    left: 0px;
+.sidebar ul {
+    margin-top: 120px;
 }
 
-#sidebar .menu_bar {
-    position: absolute;
-    left: 260px;
-    top: -50px;
-}
-
-#sidebar .menu_bar span {
+.sidebar ul a {
     display: block;
-    width: 26px;
-    height: 4px;
-    background: #6a60a9;
-    margin: 5px 0px;
-    cursor: pointer;
-    position: relative;
-    left: 50px;
-}
-
-#sidebar .list {
-    margin-top: 150px;
-}
-
-#sidebar .item {
-    margin-left: 55px;
-    color: #2A2727;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
     font-size: 14px;
+    color: #000;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .4s;
 }
 
-#sidebar div.list div.item {
-    padding: 15px 10px;
-    color: #2A2727;
-    text-transform: uppercase;
-    font-size: 15px;
+ul li:hover a {
+    padding-left: 50px;
+}
+
+.sidebar ul a i {
+    margin-right: 16px;
+}
+
+#check {
+    display: none;
+}
+
+label #cancel {
+    position: absolute;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+label #btn {
+    position: relative;
+    top: -55px;
+    left: 50px;
+    font-size: 30px;
+    color: #6a60a9;
+    padding: 6px 12px;
+    transition: all .5s;
+}
+
+label #cancel {
+    z-index: 1111;
+    left: -195px;
+    top: 17px;
+    font-size: 30px;
+    color: #6a60a9;
+    padding: 4px 9px;
+    transition: all .5s ease;
+}
+
+#check:checked~.sidebar {
+    left: 0;
+}
+
+#check:checked~label #btn {
+    left: 250px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#check:checked~label #cancel {
+    left: 195px;
+}
+
+#check:checked~section {
+    margin-left: 250px;
 }
