@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+#main_banner img {
+    width: 100%;
+    height: 400px;
+}
+
+#main_banner {
+    padding-top: 120px;
+
+}
+
 .slides-container img {
     width: 100%;
     height: 100px;
@@ -15,9 +25,9 @@
 
 .slides-pagination a {
     background: #e1e2e0;
-    border-radius: 10px;
-    width: 5px;
-    height: 5px;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
     zoom: 1;
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=");
     margin: 2px;
@@ -36,10 +46,23 @@
 }
 
 .test_img img {
+    position: absolute;
     width: 100%;
-    height: 400px;
+    height: 480px;
 }
 
 .test_text {
-    font-size: 10px;
+    font-weight: bolder;
+    font-size: 35px;
+    position: relative;
+    top: 150px;
+    left: 100px;
+    line-height: 60px;
+}
+
+#test_button {
+    margin-top: 30px;
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+    background: #fffcf0;
 }

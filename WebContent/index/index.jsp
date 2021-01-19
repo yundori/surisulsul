@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/index.css" />
 <!-- ========== 컨텐츠 영역 시작 ========== -->
 
@@ -23,11 +22,14 @@
         1. 로그인 ok , 테스트 ok -> 주능 결과에 맞게 요약 보여줌
         2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움 -->
 <div class="main_testresult">
-	<ul class="test_img">
-		<li><a href="${contextPath}"><img src="${contextPath}/assets/img/index/main_banner3.png" alt="로고" /></a></li>
-	</ul>
-	<span class="test_text">아직 당신을 위한 술을 추천 받지 못하셨나요?
-				<br/> 지금 바로 주능 테스트를 해보세요 !  </span>			
+	<div class="test_img">
+            <li><a href="${contextPath}"><img src="${contextPath}/assets/img/index/main_banner3.png" alt="주능테스트배너" /></a></li>
+        </div>
+        <p class="test_text">아직 당신을 위한 술을 추천 받지 못하셨나요?
+    <br /> 지금 바로 주능 테스트를 해보세요 !
+    <br />
+    <button id="test_button">주능 테스트하기</button>
+	</p>		
 </div>
 <!-- 3. 인기 많은 술 best !
          상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
@@ -41,6 +43,6 @@
 <!--  스크립트 적용 -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- 플러그인 JS 참조 -->
-<script src="${contextPath}/assets/js/index/plugin/superslides/jquery.easing.1.3.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-<script src="${contextPath}/assets/js/index/plugin/superslides/jquery.superslides.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-<script src="${contextPath}/assets/js/index/index.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/plugins/superslides/jquery.easing.1.3.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/plugins/superslides/jquery.superslides.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/js/index.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
