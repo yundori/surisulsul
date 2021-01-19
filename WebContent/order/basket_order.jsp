@@ -36,11 +36,11 @@
 	
 	<h2>주문/결제하기</h2>
 	<form action="" method="post" class="basket_order_form" name="order_form" id="order_form">
-		<fieldset>
+		<fieldset id="sender_info">
 			<legend>주문자 정보</legend>
             <label for="user_name" class="col-md-4">주문자</label>
             <div class="col-md-6"><input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름을 입력하세요."/></div>
-            <label for="tel" class="col-md-4">이메일</label>
+            <label for="email" class="col-md-4">이메일</label>
             <div class="col-md-6"><input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요."/></div>
             <label for="tel" class="col-md-4">연락처</label>
             <div class="col-md-6"><input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
@@ -50,7 +50,7 @@
 			<input type="checkbox" name="same" id="same"/>주문자 정보와 동일
 		</div>
 		
-		<fieldset>
+		<fieldset id="receiver_info">
 			<legend>배송 정보</legend>
 			
 			<label for='address' class="col-md-4">주소</label>
@@ -62,24 +62,75 @@
             <div class="set_location">
 	            <input type="text" class="form-control" id="address" placeholder="도로명 주소" readonly>
 	            <input type="text" class="form-control" id="detailAddress" placeholder="기타 상세 주소">
+				<div class="details_info">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</div>
             </div>
 		
-            <label for="user_name" class="col-md-4">수령인</label>
+            <label for="receiver_name" class="col-md-4">수령인</label>
             <div class="col-md-6"><input type="text" name="receiver_name" id="receiver_name" class="form-control" placeholder="이름을 입력하세요."/></div>
-			<label for="tel" class="col-md-4">이메일</label>
+			<label for="receiver_email" class="col-md-4">이메일</label>
             <div class="col-md-6"><input type="text" name="receiver_email" id="receiver_email" class="form-control" placeholder="이메일을 입력하세요."/></div>
-            <label for="tel" class="col-md-4">연락처</label>
+            <label for="receiver_tel" class="col-md-4">연락처</label>
             <div class="col-md-6"><input type="tel" name="receiver_tel" id="receiver_tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
 		</fieldset>
 		
-		<fieldset>
-		<legend>결제 정보</legend>
+		<fieldset id="pay_info">
+			<legend>결제 정보</legend>
+			<label for="pay_money" class="col-md-4">결제 방법</label>
+			<div class="col-md-6">
+				<input type="radio" name="payment" value="pay_money" class="payment_info"/> 무통장 입금
+				<input type="radio" name="payment" value="pay_card" class="payment_info"/> 카드결제<br/><br/>
+			</div>
+			
+			<div id="pay_details_money">
+				<label for="payed_name" class="col-md-4">입금자명</label>
+            	<div class="col-md-6"><input type="text" name="payed_name" id="payed_name" class="form-control" placeholder="이름"/></div>
+            	<label for="payed_bank" class="col-md-4">입금은행정보</label>
+            	<div class="col-md-6">
+            		<select name="bank" class="form-control">
+            			<option value="etc">--------입금은행을 선택해주세요-------</option>
+            			<option value="kb">국민은행 123456-01-789012 (수리술술)</option>
+            			<option value="sh">신한은행 123-123-123456 (수리술술)</option>
+            			<option value="nh">농협은행 123-5678-1234-01 (수리술술)</option>
+            			<option value="wr">우리은행 1234-567-890123 (수리술술)</option>
+            		</select>
+            	</div>
+			</div>
+			<div id="pay_details_card">
+				
+			</div>
 		</fieldset>
-	
+		
+		<fieldset id="personal_info">
+			<legend>개인정보 수집/제공</legend>
+			<div class="personal_info_details">
+				<div class="details_info">구매 시 참고사항 : 본 상품은 식품/주류 상품이므로 수령 후 반품/교환이 불가합니다.</div>
+				<div id="personal_info_all">
+					<input type="checkbox" name="all" class="check_all">
+					약관 전체동의 (원활한 주문 처리를 위하여 이용약관에 동의해주시기 바랍니다.)
+				</div>
+				<div>
+					<input type="checkbox" name="item1" id="item1" class="ab">
+					주문하실 상품, 가격, 배송정보 등을 확인하였으며 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
+				</div>
+				<div>
+					<input type="checkbox" name="item2" id="item2" class="ab">
+					<div id="personal_info_item2">
+					1. 접근매체의 양도 및 양수, 대여 및 사용위임, 질권설정 기타 담보 제공 및 이의 알선과 접근 매체를 제 3자에게 누설 및 노출, 방치하는 것은 금지됨. (제 17조, 제 21조, 제 23조)<br/><br/>
+					2. 소비자가 재화를 공급받는 날부터 3영업일이 지나도록 정당한 사유의 제시 없이 그 공급받은 사실을 통보하지 않는 경우 소비자의 동의 없이 판매자에게 결제 대금을 지급할 수 있으며,
+					회사가 결제대금을 지급하기 전 소비자가 그 결제대금을 환급받을 사유가 발생한 경우 이를 소비자에게 환급함. (제 19조) <br/><br/>
+					3. 이용자의 선불전자지급수단 잔액이 구매 취소 사유 발생으로 회사가 이용자로부터 환수해야 하는 환수 대상액보다 작을 경우 회사는 당 이용자의 선불전자지급수단을 마이너스로 처리할 수 있음. (제 27조)
+					</div>
+				</div>
+			</div>
+		</fieldset>
+		<div class="text-center">
+			<button type="submit">결제하기</button>
+		</div>
 	</form>
 	
 </div>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/js/order.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
