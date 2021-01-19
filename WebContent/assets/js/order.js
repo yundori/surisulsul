@@ -1,7 +1,54 @@
 $( document ).ready( function() {
+
+		//체크박스 모두 선택 처리
         $( '.check_all' ).click( function() {
           $( '.ab' ).prop( 'checked', this.checked );
 		  $( '.check_all' ).prop( 'checked', this.checked );
+        } );
+        
+        // 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
+        $( '.ab' ).click( function() {
+        	if($("#item1").is(":checked") && $("#item2").is(":checked")){
+		  		$( '.check_all' ).prop( 'checked', this.checked );
+        	}
+        } );
+        
+		
+		// 주문자/수령인 정보 동일 출력 처리        
+        $( '#same' ).click( function() {
+        	
+        	if($("#same").is(":checked") == true) {
+        		//체크박스 체크되어있을 경우
+	        	var name = $('#user_name').html();
+	        	var phone = $('#tel').html();
+	        	
+	        	// 주소도 가져와서 출력할 수 있으면 좋을 것 같습니다
+	        	$('#receiver_name').val(name);
+	        	$("#receiver_name").attr("readonly",true);
+	        	$('#receiver_tel').val(phone);
+	        	$("#receiver_tel").attr("readonly",true);
+        	}else{
+        		//체크박스 해제했을 경우
+        		$('#receiver_name').val('');
+	        	$("#receiver_name").attr("readonly",false);
+	        	$('#receiver_tel').val('');
+	        	$("#receiver_tel").attr("readonly",false);
+        	}
+        	
+        } );
+        
+        
+        // 결제방법에 따른 HTML 출력결과 분리
+        $( '.payment_info' ).click( function() {
+        	var payment = $(this).val();
+        	
+        	if(payment=="pay_money"){
+        		$('#pay_details_money').removeClass("hidden");
+        		$('#pay_details_card').addClass("hidden");
+        	}else{
+        		$('#pay_details_money').addClass("hidden");
+        		$('#pay_details_card').removeClass("hidden");
+        	}
         } );
 } );
 
