@@ -133,14 +133,41 @@
 	margin-top:-10px;
 	margin-bottom:20px;
 }
+/** basket_order.jsp --> 주문자 정보 width + margin 조정 */
+.col-mdd-4{
+	width:33.3%;
+	display:inline-block;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+.col-mdd-6{
+	width:45%;
+	display:inline-block;
+	margin-bottom:20px;
+}
 /** basket_order.jsp --> 주문자정보와 동일 체크박스 오른쪽 정렬*/
 .make_form_same{
 	float:right;
 	margin-bottom:-23px;
 }
+#pay_info{
+	position:relative;
+}
 #pay_details_money{
 	width:100%;
 }
+/** basket_order.jsp --> 결제정보 > 카드결제에 나타날 pay_details_card <div> 포지션 처리 */
+#pay_details_card{
+	width:100%;
+	position:absolute;
+	top:80px;
+	left:55px;
+}
+/** basket_order.jsp --> 결제정보 라디오 선택 시마다 toggle처리 될 hidden 클래스 */
+.hidden{
+	visibility: hidden;
+}
+
 /** basket_order.jsp --> 개인정보 수집/제공 PART CSS */
 #personal_info .personal_info_details{
 	width:90%;
@@ -181,6 +208,7 @@
 	line-height:150%;
 	vertical-align:middle;
 }
+
 
 /** basket.jsp --> 주문/결제창으로 이동 / order_result.jsp --> 버튼 처리 */
 #order_result a, #basket>#go_order{

@@ -38,13 +38,19 @@
 	<form action="" method="post" class="basket_order_form" name="order_form" id="order_form">
 		<fieldset id="sender_info">
 			<legend>주문자 정보</legend>
-            <label for="user_name" class="col-md-4">주문자</label>
-            <div class="col-md-6"><input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름을 입력하세요."/></div>
-            <label for="email" class="col-md-4">이메일</label>
-            <div class="col-md-6"><input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요."/></div>
-            <label for="tel" class="col-md-4">연락처</label>
-            <div class="col-md-6"><input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
-		</fieldset>
+			<div>
+		        <label for="user_name" class="col-mdd-4">주문자</label>
+		        <span class="col-mdd-6" id="user_name">마수리</span>
+            </div>
+            <div>        
+		        <label for="email" class="col-mdd-4">이메일</label>
+		        <span class="col-mdd-6" id="email">surisul@gmail.com</span>
+            </div>
+            <div>
+		        <label for="tel" class="col-mdd-4">연락처</label>
+		        <span class="col-mdd-6" id="tel">01012345678</span>
+            </div>
+		</fieldset> 
 		
 		<div class="make_form_same clearfix">
 			<input type="checkbox" name="same" id="same"/>주문자 정보와 동일
@@ -67,8 +73,6 @@
 		
             <label for="receiver_name" class="col-md-4">수령인</label>
             <div class="col-md-6"><input type="text" name="receiver_name" id="receiver_name" class="form-control" placeholder="이름을 입력하세요."/></div>
-			<label for="receiver_email" class="col-md-4">이메일</label>
-            <div class="col-md-6"><input type="text" name="receiver_email" id="receiver_email" class="form-control" placeholder="이메일을 입력하세요."/></div>
             <label for="receiver_tel" class="col-md-4">연락처</label>
             <div class="col-md-6"><input type="tel" name="receiver_tel" id="receiver_tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요."/></div>
 		</fieldset>
@@ -77,7 +81,7 @@
 			<legend>결제 정보</legend>
 			<label for="pay_money" class="col-md-4">결제 방법</label>
 			<div class="col-md-6">
-				<input type="radio" name="payment" value="pay_money" class="payment_info"/> 무통장 입금
+				<input type="radio" name="payment" value="pay_money" class="payment_info" checked="checked"/> 무통장 입금
 				<input type="radio" name="payment" value="pay_card" class="payment_info"/> 카드결제<br/><br/>
 			</div>
 			
@@ -95,8 +99,8 @@
             		</select>
             	</div>
 			</div>
-			<div id="pay_details_card">
-				
+			<div id="pay_details_card" class="hidden">
+				카드결제 들어왔습니다.
 			</div>
 		</fieldset>
 		
@@ -124,7 +128,7 @@
 			</div>
 		</fieldset>
 		<div class="text-center">
-			<button type="submit">결제하기</button>
+			<button type="submit" id="go_payment" disabled>결제하기</button>
 		</div>
 	</form>
 	

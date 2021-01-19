@@ -119,6 +119,7 @@ button {
     border: 0px;
     box-shadow: none;
     border-radius: 3px;
+    cursor:pointer;
 }
 
 .chk-email {
@@ -130,6 +131,7 @@ button {
     border: 0px;
     box-shadow: none;
     border-radius: 3px;
+    cursor:pointer;
 }
 
 .button-cancle {
