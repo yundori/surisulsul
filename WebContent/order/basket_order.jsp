@@ -104,7 +104,23 @@
 			<legend>개인정보 수집/제공</legend>
 			<div class="personal_info_details">
 				<div class="details_info">구매 시 참고사항 : 본 상품은 식품/주류 상품이므로 수령 후 반품/교환이 불가합니다.</div>
-				
+				<div id="personal_info_all">
+					<input type="checkbox" name="all" class="check_all">
+					약관 전체동의 (원활한 주문 처리를 위하여 이용약관에 동의해주시기 바랍니다.)
+				</div>
+				<div>
+					<input type="checkbox" name="item1" id="item1" class="ab">
+					주문하실 상품, 가격, 배송정보 등을 확인하였으며 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
+				</div>
+				<div>
+					<input type="checkbox" name="item2" id="item2" class="ab">
+					<div id="personal_info_item2">
+					1. 접근매체의 양도 및 양수, 대여 및 사용위임, 질권설정 기타 담보 제공 및 이의 알선과 접근 매체를 제 3자에게 누설 및 노출, 방치하는 것은 금지됨. (제 17조, 제 21조, 제 23조)<br/><br/>
+					2. 소비자가 재화를 공급받는 날부터 3영업일이 지나도록 정당한 사유의 제시 없이 그 공급받은 사실을 통보하지 않는 경우 소비자의 동의 없이 판매자에게 결제 대금을 지급할 수 있으며,
+					회사가 결제대금을 지급하기 전 소비자가 그 결제대금을 환급받을 사유가 발생한 경우 이를 소비자에게 환급함. (제 19조) <br/><br/>
+					3. 이용자의 선불전자지급수단 잔액이 구매 취소 사유 발생으로 회사가 이용자로부터 환수해야 하는 환수 대상액보다 작을 경우 회사는 당 이용자의 선불전자지급수단을 마이너스로 처리할 수 있음. (제 27조)
+					</div>
+				</div>
 			</div>
 		</fieldset>
 		<div class="text-center">
@@ -115,5 +131,6 @@
 </div>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/js/order.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

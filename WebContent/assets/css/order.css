@@ -141,6 +141,25 @@
 #pay_details_money{
 	width:100%;
 }
+/** basket_order.jsp --> 개인정보 수집/제공 PART CSS */
+#personal_info .personal_info_details{
+	width:90%;
+	margin:auto;
+	line-height:130%;
+}
+#personal_info_all{
+	font-weight:bold;
+	color:#6a60a9;
+}
+#personal_info_item2{
+	display:inline-block;
+	width:96%;
+	margin-left:23px;
+	margin-bottom:20px;
+}
+#item2{
+	position:absolute;
+}
 
 /** order_result.jsp --> 아이콘 */
 #order_result #result_icon{
