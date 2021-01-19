@@ -221,41 +221,97 @@ li .pick_item .swiper-slide .swiper-slide-next {
 /*************************************************
 **************************************************
 **********PAST_ORDER******************************/
+/**구매했어요 타이틀 높이 설정*/
+.psn_past_order .psn_title {
+    height: auto;
+}
+
 /**구매했어요 표 크기 설정*/
 .order_table {
     width: 80%;
+    min-width: 800px;
     font-size: 18px;
     margin: 40px auto 20px;
-    border-collapse: collapse;
-
 }
 
 .order_table table {
     text-align: center;
     vertical-align: middle;
+    margin: auto;
+    border-collapse: collapse;
 }
 
 /**구매했어요 표 border 설정*/
-.order_table th,
-td {
-    border-bottom: 1px solid #DEDCEE;
+.order_table th {
+    border-bottom: 2px solid #000000;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.order_table td {
+    border-bottom: 1px solid #000000;
     padding: 10px;
+    vertical-align: middle;
 }
 
 /**구매했어요 표 넓이 설정
---> 주문상품 넓이 설정*/
-.order_table .psn_order_items {
-    min-width: 600px;
-}
-
-/**구매했어요 표 넓이 설정
---> 결제일 넓이 설정*/
-.order_table .psn_order_date {
-    min-width: 200px;
+--> 상품 정보안내 열 넓이 설정*/
+.order_table td:nth-child(2) {
+    min-width: 300px;
+    position: relative;
+    padding-left: 122px;
+    text-align: left;
 }
 
 /**구매했어요 표 넓이 설정
 --> 나머지 탭 넓이 설정*/
-.order_table th {
+.order_table td {
     min-width: 150px;
+    vertical-align: middle;
+}
+
+/**구매했어요 표 최소 높이 설정*/
+.table_min_height {
+    min-height: 150px;
+}
+
+/**구매했어요 표 속 이미지 크기 설정*/
+.order_table .item_thumb {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -65px;
+}
+
+.order_table img {
+    height: 130px;
+    width: auto;
+    vertical-align: middle;
+    left: 10px;
+}
+
+/**구매했어요 표 속 상품정보 위치 설정*/
+.item {
+    position: absolute;
+    top: 31%;
+}
+
+/**구매했어요 표 속 상품명 설정*/
+.order_table .order_item_name {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+/**구매했어요 표 속 가격 설정*/
+.order_table .order_item_price {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+/**구매했어요 표 속 버튼 설정*/
+.order_table button {
+    margin-top: 10px;
 }

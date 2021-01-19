@@ -3,7 +3,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  
 <div class="psn_wishlist">
 	<div class="psn_title">
 		<h2 class="psn_title_txt">나의 관심 술</h2>

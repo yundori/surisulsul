@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.item_reviews {
+	width: 60%;
+	height: auto;
+	margin: 100px auto;
+	padding: auto;
+	margin-top: 200px;
+}
+
+.item_reviews .title {
+	width: auto;
+	height: 30px;
+	margin: 0;
+	margin-bottom: 30px;
+	padding: 0;
+	text-align: left;
+	line-height: 30px;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.title>span {
+	margin-left: 10px;
+	color: #bbbbbb;
+	font-size: 15px;
+}
+
+.review_img {
+	
+}
+/*
+.reviews_ul {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	border : 1px solid pink;
+}
+
+.reviews_li {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	margin-bottom: 20px;
+	padding: 0;
+	border-top : 1px solid #cccccc;
+}
+*/

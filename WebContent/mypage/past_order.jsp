@@ -12,40 +12,52 @@
 <div class="order_table">
 	<table>
 		<thead>
-			<tr>
-				<th>결제일</th>
-				<th class="psn_order_items">주문상품</th>
-				<th>주문 개수</th>
-				<th>결제 금액</th>
-				<th>주문 상태</th>				
-			</tr>
+ 			<tr>
+				<th class="psn_order_date" rowspan="5">주문날짜 : 2021-01-19</th>			
+			</tr> 
 		</thead>
 		<tbody>
 			<tr>
+
 				<td>
-					<span>2021-00-00<br/></span>
 					<span class="order_number">20210000-00000</span>
 				</td>
 				<td>
-					<img src="${contextPath}/assets/img/items/best1.PNG"/>
-					<span class="order_item_name">상품명</span>
-					<span class="order_item_price">00,000원</span>
+					<div class="table_min_height">
+					<a href="#" class="item_thumb">
+						<img src="${contextPath}/assets/img/items/best1.PNG"/>
+					</a>
+					<div class="order_item_info">
+						<a href="#" class="item">
+							<p class="order_item_name">상품명</p>
+							<p class="order_item_price">00,000원</p>
+						</a>
+					</div>
+					</div>
 				</td>
 				<td>1
 				</td>
 				<td>00,000원</td>
 				<td>상품준비중<br/>
 				<button class="cancel_order">주문취소</button></td>
+				
 			</tr>
 			<tr>
 				<td>
-					<span>2021-00-00<br/></span>
 					<span class="order_number">20210000-00000</span>
 				</td>
 				<td>
-					<img src="${contextPath}/assets/img/items/best1.PNG"/>
-					<span class="order_item_name">상품명</span>
-					<span class="order_item_price">00,000원</span>
+				<div class="table_min_height">
+					<a href="#" class="item_thumb">
+						<img src="${contextPath}/assets/img/items/best2.PNG"/>
+					</a>
+					<div class="order_item_info">
+						<a href="#" class="item">
+							<p class="order_item_name">상품명</p>
+							<p class="order_item_price">00,000원</p>
+						</a>
+					</div>
+					</div>
 				</td>
 				<td>1
 				</td>
