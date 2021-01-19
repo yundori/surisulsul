@@ -21,13 +21,13 @@
 </div>
 <!-- 2. 주능 테스트 결과
         1. 로그인 ok , 테스트 ok -> 주능 결과에 맞게 요약 보여줌
-        2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움
-        3. 로그인  x , 테스트 x -> 로그인 후 주능 테스트를 해보세요 ! (로그인 페이지로 이동) -->
+        2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움 -->
 <div class="main_testresult">
 	<ul class="test_img">
 		<li><a href="${contextPath}"><img src="${contextPath}/assets/img/index/main_banner3.png" alt="로고" /></a></li>
 	</ul>
-	<span class="test_text">지금 바로 주능 테스트에 응시해보세요 ! </span>
+	<span class="test_text">아직 당신을 위한 술을 추천 받지 못하셨나요?
+				<br/> 지금 바로 주능 테스트를 해보세요 !  </span>			
 </div>
 <!-- 3. 인기 많은 술 best !
          상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
