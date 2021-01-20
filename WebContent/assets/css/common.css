@@ -161,7 +161,7 @@ li {
     transition: .4s;
 }
 
-ul li:hover a {
+.sidebar ul li:hover a {
     padding-left: 50px;
 }
 

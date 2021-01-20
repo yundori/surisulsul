@@ -7,7 +7,6 @@
 
 #main_banner {
     padding-top: 120px;
-
 }
 
 .slides-container img {
@@ -52,6 +51,7 @@
 }
 
 .test_text {
+	width: 150px;
     font-weight: bolder;
     font-size: 35px;
     position: relative;
@@ -63,6 +63,4 @@
 #test_button {
     margin-top: 30px;
     font-size: 20px;
-    padding: 10px 10px 10px 10px;
-    background: #fffcf0;
 }

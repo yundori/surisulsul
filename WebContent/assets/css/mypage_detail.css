@@ -271,9 +271,9 @@ li .pick_item .swiper-slide .swiper-slide-next {
     vertical-align: middle;
 }
 
-/**구매했어요 표 최소 높이 설정*/
+/**구매했어요 표 행 높이 설정*/
 .table_min_height {
-    min-height: 150px;
+    height: 150px;
 }
 
 /**구매했어요 표 속 이미지 크기 설정*/
@@ -314,4 +314,122 @@ li .pick_item .swiper-slide .swiper-slide-next {
 /**구매했어요 표 속 버튼 설정*/
 .order_table button {
     margin-top: 10px;
+}
+
+/*************************************************
+**************************************************
+**********MY_OPINION******************************/
+/******* 나의 후기 영역 **********************/
+.psn_recommend_list {
+    width: 80%;
+    margin: auto;
+}
+
+/**나의 후기 타이틀 높이 설정*/
+.psn_recommend_list .psn_title {
+    height: auto;
+}
+
+.psn_review_table,
+.psn_qna_table {
+    width: 80%;
+    min-width: 800px;
+    font-size: 18px;
+    margin: 40px auto 20px;
+}
+
+
+.psn_review_table table,
+.psn_qna_table table {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+/**나의 후기 표 속 이미지 크기 설정*/
+.psn_review_table .review_item_thumb {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -65px;
+}
+
+.psn_review_table img {
+    height: 130px;
+    width: auto;
+    vertical-align: middle;
+    left: 10px;
+}
+
+/**나의 후기 표 border 설정*/
+.psn_review_table th,
+.psn_qna_table th {
+    border-bottom: 2px solid #000000;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.psn_review_table td,
+.psn_qna_table td {
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    vertical-align: middle;
+    min-width: 150px;
+}
+
+/**나의 후기 표 넓이 설정
+--> 상품후기내용 열 넓이 설정*/
+.psn_review_table td:nth-child(3) {
+    width: 600px;
+    position: relative;
+    padding-left: 160px;
+    text-align: left;
+}
+
+/**나의 후기 후기 글 넘침 설정*/
+.review_item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+/*************************************************
+**************************************************
+**********MY_OPINION******************************/
+/******* 나의 질문 영역 **********************/
+
+/**나의 질문 표 넓이 설정
+--> 문의내용 열 넓이 설정*/
+.psn_qna_table td:nth-child(3) {
+    width: 600px;
+    position: relative;
+    text-align: left;
+}
+
+/**나의 질문 글 넘침 설정*/
+.qna_item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    margin-top: 10px;
+}
+
+/**나의 질문 분야 세부설정*/
+.qna_area {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/**나의 질문 내용 표 수직가운데로 위치*/
+.qna_item_info {
+    position: absolute;
+    top: 33%;
 }
