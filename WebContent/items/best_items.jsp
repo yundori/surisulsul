@@ -27,7 +27,7 @@
 				<li class="item_info">
 					<a href="#">
 						<img class="best_ranking rank2" src="../assets/img/items/second.png" />
-						<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
+					 	<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
                     	<span class="item_title">상품명</span>
 						<span class="item_price">00,000 원</span> <br/>
 						<div class="clean"></div>
@@ -42,7 +42,7 @@
 				<li class="item_info">
 					<a href="#">
 						<img class="best_ranking rank3" src="../assets/img/items/third.png" />
-						<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
+					 	<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
 						<span class="item_title">상품명</span>
 						<span class="item_price">000,000 원</span> <br/>
 						<div class="clean"></div>
