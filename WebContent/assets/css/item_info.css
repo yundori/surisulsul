@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
 .item_info {
-	width: 100%;
+	width: 90%;
 	height: auto;
 	margin: auto;
 	padding: auto;
-	margin-top: 200px;
+	margin-top: 20px;
+	position: relative;
 }
 
 .item_info .title {
@@ -174,10 +175,9 @@
 	margin-bottom: 60px;
 	padding: 0;
 	text-align: center;
-	/*vertical-align: top;*/
+	float: left;
 	position: relative;
-	left: 350px;
-	bottom: 200px;
+	top: 120px;
 }
 
 .keyword_lists_ul {
@@ -199,7 +199,22 @@
 	text-align: center;
 	color: white;
 	border-radius: 10px;
+}
+
+.type_li {
 	background-color: #6D59A1;
+}
+
+.area_li {
+	background-color: #3C378C;
+}
+
+.incense1_li {
+	background-color: #73378C;
+}
+
+.incense2_li {
+	background-color: #8D46AA;
 }
 
 .item_info_suri {

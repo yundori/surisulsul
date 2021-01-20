@@ -38,6 +38,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="item_keyword_lists">
+			<ul class="keyword_lists_ul">
+				<li class="keyword_lists_li type_li">#종류</li>
+				<li class="keyword_lists_li area_li">#지역</li>
+				<li class="keyword_lists_li incense1_li">#향1</li>
+				<li class="keyword_lists_li incense2_li">#향2</li>
+			</ul>
+		</div>
 
 		<div class="jn_result">
 			<h4>주로 찾는 사람들</h4>
@@ -50,18 +59,6 @@
 			</ul>
 		</div>
 		<div class="clear"></div>
-
-		<!-- jstl로 색 지정 다다르게 해줘야함 -->
-		<div class="item_keyword_lists">
-			<ul class="keyword_lists_ul">
-				<li class="keyword_lists_li">#종류1</li>
-				<li class="keyword_lists_li">#종류2</li>
-				<li class="keyword_lists_li">#지역1</li>
-				<li class="keyword_lists_li">#지역2</li>
-				<li class="keyword_lists_li">#향1</li>
-				<li class="keyword_lists_li">#향2</li>
-			</ul>
-		</div>
 
 		<div class="item_info_suri">
 			<h4>고도리 복숭아와인은...?</h4>

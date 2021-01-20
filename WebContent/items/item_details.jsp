@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_details.css?time=${currentTime}" />
 
 <div class="item_details">
+	<%-- <c:choose> --%>
+		<%-- <c:when PK값 맞으면> --%>
+		
 	<span class="title">상품 상세</span>
 	<div class="item_detail">
 		<div class="item_detail_infos">
@@ -51,8 +54,12 @@
 		<button class="quest_menu tab_menu">상품 문의</button>
 		<div class="content">
 		<%@ include file="item_info.jsp"%>
+		<%@ include file="item_reviews.jsp"%>
 		</div>
 	</div>
+	
+	<%-- </c:when> --%>
+	<%-- </c:choose> --%>
 </div>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

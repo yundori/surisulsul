@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_reviews.css?time=${currentTime}" />
 
 <div class="item_reviews">
 	<div>
 		<h3 class="title">이 술을 선택한 사람들의 이야기 <span>내가 찾은 술에 대한 후기는 어떨까?</span></h3>
+		<c:choose>
+		<c:when test="true">
 		<table>
+		<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 			<tr>
 				<td class="img_area">
 					<img class="review_img" src="../assets/img/items/best1.PNG" />
@@ -48,8 +50,16 @@
 					<h4 class="review_rating">★★★★★</h4>
 				</td>
 			</tr>
-		</table>		
+		</table>
+		<%-- </c:forEach> --%>
+		</c:when>
+		<c:otherwise>
+			<hr />
+			<div class="review_none">
+				<img src="../assets/img/order/order_fail.png" />
+				<h1>상품 후기가 없습니다.</h1>
+			</div>
+		</c:otherwise>
+		</c:choose>		
 	</div>
 </div>
-
-<%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
