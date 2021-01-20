@@ -447,12 +447,12 @@ li .pick_item .swiper-slide .swiper-slide-next {
     width: 80%;
     margin: auto;
     position: relative;
-    height: 35px;
+    height: 50px;
     margin-bottom: 50px;
 }
 
 .delete_this {
     right: 42px;
     position: absolute;
-    line-height: 2em;
+    line-height: 1.5em;
 }
