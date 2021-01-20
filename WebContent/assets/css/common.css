@@ -64,7 +64,6 @@ li {
     height: 420px;
     background: #2A2727;
     position : absolute;
-    z-index : 30000;
 }
 
 .footer h1 {
