@@ -52,54 +52,78 @@ $( document ).ready( function() {
         		$('#pay_details_card').removeClass("hidden");
         	}
         } );
+        
+        //submit 버튼 선택 시 JS단에서 먼저 유효성 검사
+        /** 플러그인의 기본 설정 옵션 추가 */
+	    jQuery.validator.setDefaults({
+	        onkeyup: false, // 키보드입력시 검사 안함
+	        onclick: false, // <input>태그 클릭시 검사 안함
+	        onfocusout: false, // 포커스가 빠져나올 때 검사 안함
+	        showErrors: function(errorMap, errorList) { // 에러 발생시 호출되는 함수 재정의
+	            // 에러가 있을 때만..
+	            if (this.numberOfInvalids()) {
+	                // 0번째 에러 메시지에 대한 javascript 기본 alert 함수 사용
+	                //alert(errorList[0].message);
+	                // 0번째 에러 발생 항목에 포커스 지정
+	                //$(errorList[0].element).focus();
+	
+	                swal({
+	                    title: "에러",
+	                    text: errorList[0].message,
+	                    type: "error"
+	                }).then(function(result) {
+	                    // 창이 닫히는 애니메이션의 시간이 있으므로,
+	                    // 0.1초의 딜레이 적용 후 포커스 이동
+	                    setTimeout(function() {
+	                        $(errorList[0].element).val('');
+	                        $(errorList[0].element).focus();
+	                    }, 100);
+	                });
+	            }
+	        }
+	    });
+	
+	    /** 유효성 검사 추가 함수 */
+	    $.validator.addMethod("kor", function(value, element) {
+	        return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
+	    });
+	
+	    $.validator.addMethod("phone", function(value, element) {
+	        return this.optional(element) ||
+	            /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value) ||
+	            /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
+	    });
+	
+	    /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
+	    $("#order_form").validate({
+	        /** 입력검사 규칙 */
+	        rules: {
+	            // [수령자 - 이름] 필수
+	            receiver_name: { required: true, kor: true },
+	            // [수령자 - 연락처] 필수
+	            receiver_tel: { required: true, phone: true },
+	            // [수령자 - 주소] 필수
+	            postcode: { required: true },   
+	            // [개인정보 수집/제공 동의] 필수, 최소 무조건 3개 다 동의
+               	items: { required: true, minlength: 3 }     
+	        },
+	        /** 규칙이 맞지 않을 경우의 메시지 */
+	        messages: {
+	            receiver_name: {
+	                required: "수령인 이름을 입력하세요.",
+	                kor: "이름은 한글만 입력 가능합니다."
+	            },
+	            receiver_tel: {
+	                required: "수령인 연락처를 입력하세요.",
+	                phone: "연락처 형식이 잘못되었습니다."
+	            },
+	            postcode: {
+	                required: "우편번호와 주소를 입력하세요."
+	            },
+	            items: {
+                    required: "개인정보 수집/제공 약관에 동의해주세요.",
+                    minlength: "개인정보 수집/제공 약관에 모두 동의해주세요."
+                }
+	        }
+	    }); // end validate()
 } );
-
-
-function execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
-
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
-
-            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            if(data.userSelectedType === 'R'){
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("extraAddress").value = extraAddr;
-            
-            } else {
-                document.getElementById("extraAddress").value = '';
-            }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('postcode').value = data.zonecode;
-            document.getElementById("address").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("detailAddress").focus();
-        }
-    }).open();
-}
-

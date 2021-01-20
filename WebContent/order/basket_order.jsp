@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/order.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/join.css?time=${currentTime}" />
+ <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 
 <div id="basket_order">
 	<h2>주문 내역</h2>
@@ -61,12 +62,12 @@
 			
 			<label for='address' class="col-md-4">주소</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="postcode" placeholder="우편번호" readonly>
+                <input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" readonly>
             </div>
             <input type="button" onclick="execDaumPostcode()" class="chk-email" value="우편번호 찾기">
             
             <div class="set_location">
-	            <input type="text" class="form-control" id="address" placeholder="도로명 주소" readonly>
+	            <input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" readonly>
 	            <input type="text" class="form-control" id="detailAddress" placeholder="기타 상세 주소">
 				<div class="details_info">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</div>
             </div>
@@ -109,15 +110,15 @@
 			<div class="personal_info_details">
 				<div class="details_info">구매 시 참고사항 : 본 상품은 식품/주류 상품이므로 수령 후 반품/교환이 불가합니다.</div>
 				<div id="personal_info_all">
-					<input type="checkbox" name="all" class="check_all">
+					<input type="checkbox" name="items" id="all" class="check_all">
 					약관 전체동의 (원활한 주문 처리를 위하여 이용약관에 동의해주시기 바랍니다.)
 				</div>
 				<div>
-					<input type="checkbox" name="item1" id="item1" class="ab">
+					<input type="checkbox" name="items" id="item1" class="ab">
 					주문하실 상품, 가격, 배송정보 등을 확인하였으며 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
 				</div>
 				<div>
-					<input type="checkbox" name="item2" id="item2" class="ab">
+					<input type="checkbox" name="items" id="item2" class="ab">
 					<div id="personal_info_item2">
 					1. 접근매체의 양도 및 양수, 대여 및 사용위임, 질권설정 기타 담보 제공 및 이의 알선과 접근 매체를 제 3자에게 누설 및 노출, 방치하는 것은 금지됨. (제 17조, 제 21조, 제 23조)<br/><br/>
 					2. 소비자가 재화를 공급받는 날부터 3영업일이 지나도록 정당한 사유의 제시 없이 그 공급받은 사실을 통보하지 않는 경우 소비자의 동의 없이 판매자에게 결제 대금을 지급할 수 있으며,
@@ -128,12 +129,17 @@
 			</div>
 		</fieldset>
 		<div class="text-center">
-			<button type="submit" id="go_payment" disabled>결제하기</button>
+			<button type="submit" id="go_payment">결제하기</button>
 		</div>
 	</form>
 	
 </div>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/plugins/validate/jquery.validate.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/plugins/validate/additional-methods.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    
 <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <script src="${contextPath}/assets/js/order.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
