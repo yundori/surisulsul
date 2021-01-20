@@ -246,3 +246,37 @@
     text-indent: -20000px;
     display: block;
 }
+
+/**버튼 상세 설정*/
+.btn_gray {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    border: 2px solid #DEDCEE;
+    border-radius: 10px;
+    background-color: #DEDCEE;
+    padding: 5px 9px;
+}
+
+.btn_yellow {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #000;
+    border: 2px solid #FBD14B;
+    border-radius: 10px;
+    background-color: #FBD14B;
+    padding: 5px 9px;
+}
+
+.btn_nor {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #000;
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    background-color: #DDDDDD;
+    padding: 5px 9px;
+}

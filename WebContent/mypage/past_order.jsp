@@ -39,7 +39,7 @@
 				</td>
 				<td>00,000원</td>
 				<td>상품준비중<br/>
-				<button class="cancel_order">주문취소</button></td>
+				<a href="#" class="cancel_order btn_nor">주문취소</a></td>
 				
 			</tr>
 			<tr>
@@ -63,7 +63,7 @@
 				</td>
 				<td>00,000원</td>
 				<td>배송완료<br/>
-				<button class="write_review">후기쓰기</button></td>
+				<a href="#" class="write_review btn_yellow">후기쓰기</a></td>
 			</tr>
 
 		</tbody>
