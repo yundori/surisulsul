@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 .item_reviews {
-	width: 60%;
+	width: 90%;
 	height: auto;
 	margin: 100px auto;
 	padding: auto;
-	margin-top: 200px;
+	margin-top: 20px;
 }
 
 .item_reviews .title {
@@ -93,7 +93,7 @@
 	margin-bottom: 10px;
 }
 
-/* item_question css */
+/* item_question 페이지 css */
 
 .item_question {
 	width: 60%;
@@ -101,6 +101,10 @@
 	margin: 100px auto;
 	padding: auto;
 	margin-top: 200px;
+}
+
+.item_question a {
+	cursor: pointer;
 }
 
 .item_question .title {
@@ -121,56 +125,104 @@
 	font-size: 15px;
 }
 
-.item_question table {
+.question_lists  {
 	width: 100%;
 	height: auto;
 	margin: 0;
 	padding: 0;
+	/*border: 1px solid #62459C;*/
 }
 
-.item_question th {
-	/*width: auto;*/
+.question_list_head {
+	width: 100%;
 	height: 40px;
 	margin: 0;
 	padding: 3px auto;
 	background-color: #62459C;
 	color: white;
+	font-size: 16px;
 	font-weight: 500;
 	text-align: center;
 	vertical-align: middle;
 }
 
-.item_question tr {
+.question_list {
 	width: 100%;
 	height: 40px;
-	border : 1px solid #cccccc;
-	text-align: center;
-}
-
-.th_que_number, .que_number {
-	width: 10%;
+	margin: 0;
+	padding: 3px auto;
+	font-size: 16px;
 	font-weight: 500;
-}
-
-.th_que_type, .que_type {
-	width: 15%;
-}
-
-.th_que_content, .que_content {
-	width: 50%;
-}
-
-.th_que_answer, .que_answer {
-	width: 10%;
-}
-
-.th_que_date, .que_date {
-	width: 15%;
-	border-right: none;
-}
-
-.item_question td {
+	text-align: center;
 	vertical-align: middle;
-	border-right: 1px solid #cccccc;
+}
+
+.que_number {
+	display: inline-block;
+	width: 10%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.que_type {
+	display: inline-block;
+	width: 12%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.que_content {
+	display: inline-block;
+	width: 50%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.que_answer {
+	display: inline-block;
+	width: 12%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.que_date {
+	display: inline-block;
+	width: 10%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+.question_detail {
+	width: auto;
+	height: 40px;
+	padding: 0 40px;
+	text-align: left;
+	line-height: 40px;
+	background-color: #dedcee;
+	display: none;
+}
+
+/* 상품 리뷰가 없는 경우 */
+
+.review_none {
+	width: 100%;
+	height: auto;
+	margin: 50px auto;
+	padding: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.review_none>h1 {
+	width: auto;
+	height: auto;
+	margin: 30px auto;
+	padding: auto;
+	font-size: 30px;
+	color: #7C59B6;
 	
 }

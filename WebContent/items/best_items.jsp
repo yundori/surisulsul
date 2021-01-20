@@ -9,6 +9,7 @@
 		<div class="item_contents">
 			<span class="title">인기 많은 술 <span class="comment">회원분들이 자주 찾는 인기 상품입니다.</span></span>
 			<ul class="item_list">
+			<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
 					<a href="#">
 						<img class="best_ranking" src="../assets/img/items/first.png" />
@@ -236,6 +237,7 @@
 						</ul>
 					</a>
 				</li>
+				<%-- </c:forEach> --%>
 			</ul>
 			<div class="clean"></div>
 		</div>

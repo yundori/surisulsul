@@ -12,32 +12,32 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
 					<div class="checkbox_input">
-						<input name="types" id="types1" type="checkbox" />
+						<input name="types" id="types1" type="checkbox" value="전체 종류" checked />
 						<label for="types1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types2" type="checkbox" />
+						<input name="types" id="types2" type="checkbox" value="탁주" />
 						<label for="types2">탁주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types3" type="checkbox" />
+						<input name="types" id="types3" type="checkbox" value="청주/약주" />
 						<label for="types3">청주/약주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types4" type="checkbox" />
+						<input name="types" id="types4" type="checkbox" value="과실주" />
 						<label for="types4">과실주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types5" type="checkbox" />
+						<input name="types" id="types5" type="checkbox" value="증류주" />
 						<label for="types5">증류주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types6" type="checkbox" />
+						<input name="types" id="types6" type="checkbox" value="기타 주류" />
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
@@ -48,42 +48,42 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
-						<input name="area" id="area1" type="checkbox" />
+						<input name="area" id="area1" type="checkbox" value="전체 지역" checked />
 						<label for="area1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area2" type="checkbox" />
+						<input name="area" id="area2" type="checkbox" value="서울" />
 						<label for="area2">서울</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area3" type="checkbox" />
+						<input name="area" id="area3" type="checkbox" value="경기도" />
 						<label for="area3">경기도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area4" type="checkbox" />
+						<input name="area" id="area4" type="checkbox" value="강원도" />
 						<label for="area4">강원도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area5" type="checkbox" />
+						<input name="area" id="area5" type="checkbox" value="충청도" />
 						<label for="area5">충청도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area6" type="checkbox" />
+						<input name="area" id="area6" type="checkbox" value="전라도" />
 						<label for="area6">전라도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area7" type="checkbox" />
+						<input name="area" id="area7" type="checkbox" value="경상도" />
 						<label for="area7">경상도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area8" type="checkbox" />
+						<input name="area" id="area8" type="checkbox" value="제주도" />
 						<label for="area8">제주도</label>
 					</div>
 				</div>
@@ -94,38 +94,38 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
-						<input name="incense" id="incense1" type="checkbox" />
+						<input name="incense" id="incense1" type="checkbox" value="전체 향" checked />
 						<label for="incense1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense2" type="checkbox" />
+						<input name="incense" id="incense2" type="checkbox" value="곡물향" />
 						<label for="incense2">곡물향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense3" type="checkbox" />
+						<input name="incense" id="incense3" type="checkbox" value="과일향" />
 						<label for="incense3">과일향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense4" type="checkbox" />
+						<input name="incense" id="incense4" type="checkbox" value="꽃향" />
 						<label for="incense4">꽃향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense5" type="checkbox" />
+						<input name="incense" id="incense5" type="checkbox" value="꿀향" />
 						<label for="incense5">꿀향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense6" type="checkbox" />
+						<input name="incense" id="incense6" type="checkbox" value="누룩향" />
 						<label for="incense6">누룩향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense7" type="checkbox" />
-						<label for="incense7">알코향</label>
+						<input name="incense" id="incense7" type="checkbox" value="알콜향" />
+						<label for="incense7">알콜향</label>
 					</div>
 				</div>
 				<div class="sliders check_boxes">
@@ -133,6 +133,7 @@
 					<div class="slider_info">전체 낮음 중간 높음</div>
 					<div class="slider">
 						<span class="slider_title">당도</span>
+						<%-- 기본값 설정 : value속성 사용 --%>
 						<input type="range" max="6" min="0" step="2" value="0" />
 					</div>
 					<div class="slider">
@@ -149,7 +150,7 @@
 		
 		<div class="search">
 			<div class="keyword_area">
-				<h4>찾는 조건</h4>
+				<h4>검색 조건</h4>
 				<ul class="result_list">
 					<li class="search_result">#전체종류</li>
 					<li class="search_result">#서울</li>
@@ -171,6 +172,10 @@
 		<div class="item_contents">
 			<span class="title">내가 찾는 술</span>
 			<ul class="item_list">
+			 <c:choose>
+			 <%-- <c:when 선택된 값이 있을 경우 > --%>
+			 <c:when test="true">
+			 <%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
 					<a href="#">
 						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
@@ -395,9 +400,23 @@
 						</ul>
 					</a>
 				</li>
+				<%-- </c:forEach> --%>
+				<%-- </c:when> --%>
+				</c:when>
+				
+				<%--c:otherwise 조건에 부합하는 DB가 없는 경우 --%>
+				<c:otherwise>
+					<div class="select_none">
+						<img src="../assets/img/order/order_fail.png" />
+						<h1>검색 결과를 찾을 수 없습니다.</h1>
+					</div>
+				</c:otherwise>
+				</c:choose>
 			</ul>
+			
 			<div class="clean"></div>
 		</div>
+		<!-- 페이지네이션 구현 부분 -->
 	</div>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

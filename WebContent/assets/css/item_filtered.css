@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+/* item_filtered 공통 설정 */
+
+/*
+ * 전체 영역 크기 설정
+ * -------------------------- */
 .item_filtered {
 	width: 70%;
 	height: auto;
@@ -8,10 +13,18 @@
 	margin-top: 200px;
 }
 
+/*
+ * 버튼 마우스 오버시 커서 변화
+ * -------------------------- */
 .item_filtered button {
 	cursor: pointer;
 }
 
+/* 키워드 검색 : 체크박스 */
+
+/*
+ * 키워드 검색 전체 영역
+ * -------------------------- */
 .keyword_checkbox {
 	width: 100%;
 	height: auto;
@@ -24,6 +37,9 @@
 	padding: 0;
 }
 
+/*
+ * 키워드 검색 영역별 -> 종류별, 지역별, 향별, 맛과 깊이
+ * -------------------------- */
 .check_boxes {
 	display: inline-block;
 	width: 20%;
@@ -34,11 +50,9 @@
 	vertical-align: top;
 }
 
-.sliders {
-	width: 30%;
-	height: 100%;
-}
-
+/*
+ * 키워드 검색 영역별 각 타이틀
+ * -------------------------- */
 .checkbox_title {
 	width: 100%;
 	height: 20px;
@@ -53,6 +67,9 @@
 	border-radius: 5px;
 }
 
+/*
+ * 각 체크박스 영역
+ * -------------------------- */
 .checkbox_input {
 	width: auto;
 	height: auto;
@@ -62,14 +79,26 @@
 	font-size: 16px;
 }
 
-.slider {
-	width: 90%;
-	height: 40px;
-	margin: 0 auto 32px auto;
-	padding: auto;
-	vertical-align: middle;
-	/*border: 1px solid green;*/
+/*
+ * 체크박스 label 글자크기
+ * -------------------------- */
+.checkbox_input>label {
+	font-size: 18px;
 }
+
+/* 키워드 검색 : 슬라이더 영역 */
+
+/*
+ * 슬라이더 전체 영역
+ * -------------------------- */
+.sliders {
+	width: 30%;
+	height: 100%;
+}
+
+/*
+ * 슬라이더 구간 텍스트 -> 전체 낮음 중간 높음
+ * -------------------------- */
 .slider_info {
 	width: 80%;
 	height: 40px;
@@ -85,6 +114,21 @@
 	left: 18px;
 	bottom: 10px;
 }
+
+/*
+ * 각 슬라이더 영역
+ * -------------------------- */
+.slider {
+	width: 90%;
+	height: 40px;
+	margin: 0 auto 32px auto;
+	padding: auto;
+	vertical-align: middle;
+}
+
+/*
+ * 슬라이더 항목 -> 당도, 산미, 도수
+ * -------------------------- */
 .slider_title {
 	width: 40px;
 	height: 40px;
@@ -97,6 +141,9 @@
 	vertical-align: middle;
 }
 
+/*
+ * 슬라이더
+ * -------------------------- */
 .slider>input {
 	width: 300px;
 	height: auto;
@@ -105,15 +152,93 @@
 	text-align: center;
 	vertical-align: middle;
 	cursor: pointer;
+	color: purple;
+	background-color: purple;
 }
+
 /*
+ * 기본값 초기화
+ * -------------------------- 
 input[type=range] {
 	-webkit-appearance: none;
-	height: 5px;
+	width: 100%;
+	background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}*/
+
+/*
+ * 슬라이더 thumb
+ * -------------------------- 
+input[type=range]::-webkit-slider-thumb {
+	-webkit-apperance: none;
+	height: 15px;
+	width: 15px;
+	border-radius: 200px;
+	background-color: #7C59B6;
+	cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+	-webkit-apperance: none;
+	height: 15px;
+	width: 15px;
+	border-radius: 200px;
+	background-color: #7C59B6;
+	cursor: pointer;
+}
+
+input[type=range]::-ms-thumb {
+	-webkit-apperance: none;
+	height: 15px;
+	width: 15px;
+	border-radius: 200px;
+	background-color: #7C59B6;
+	cursor: pointer;
+}*/
+
+/*
+ * 슬라이더 track
+ * -------------------------- 
+input[type=range]::-webkit-slider-runnable-track {
+	width: 200px;
+	height: 10px;
 	background-color: white;
-	border : 1px solid #7C59B6;
+	border-radius: 3px;
+	border: 1px solid #7C59B6;
+	cursor: pointer;
+}
+
+input[type=range]::-moz-range-track {
+	width: 200px;
+	height: 10px;
+	background-color: white;
+	border-radius: 3px;
+	border: 1px solid #7C59B6;
+	cursor: pointer;
 }
 */
+
+
+/* 검색 조건 */
+
+/*
+ * 검색 조건 전체 영역
+ * -------------------------- */
 .keyword_area {
 	width: 100%;
 	height: 18px;
@@ -124,6 +249,9 @@ input[type=range] {
 	vertical-align: middle;
 }
 
+/*
+ * '검색 조건' 텍스트
+ * -------------------------- */
 .keyword_area>h4 {
 	width: 200px;
 	height: 18px;
@@ -139,6 +267,9 @@ input[type=range] {
 	bottom: 8px;
 }
 
+/*
+ * 키워드 태그 나열 영역
+ * -------------------------- */
 .search .result_list {
 	max-width: 700px;
 	height: 32px;
@@ -150,8 +281,11 @@ input[type=range] {
     position: relative;
     left: 230px;
     bottom: 43px;
-	/*border: 1px solid red;*/
 }
+
+/*
+ * 선택된 키워드 태그
+ * -------------------------- */
 .search_result {
 	display: inline-block;
 	width: auto;
@@ -166,22 +300,32 @@ input[type=range] {
 	border-radius: 5px;
 }
 
+/*
+ * 검색창 영역
+ * -------------------------- */
 #title_search {
 	background: transparent;
 	width: 300px;
+	height: 21px;
 	padding: 5px;
 	margin-right: 60px;
 	border: none;
 	float: right;
 	position: relative;
-	bottom: 61px;
+	bottom: 62px;
 }
 
+/*
+ * 검색창 placeholder
+ * -------------------------- */
 #title_search::placeholder {
 	text-align: center;
 	color: #9e9aa0;
 }
 
+/*
+ * 검색 버튼
+ * -------------------------- */
 .search_btn {
 	width: 70px;
 	height: 34px;
@@ -198,4 +342,25 @@ input[type=range] {
 	line-height: 34px;
 	color: white;
 	background-color: #7C59B6;
+}
+
+/* 검색조건에 맞는 데이터가 없는 경우 */
+
+.select_none {
+	width: 100%;
+	height: auto;
+	margin: 30px auto;
+	padding: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.select_none>h1 {
+	width: auto;
+	height: auto;
+	margin: 30px auto;
+	padding: auto;
+	font-size: 30px;
+	color: #7C59B6;
+	
 }
