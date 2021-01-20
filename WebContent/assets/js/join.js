@@ -9,6 +9,21 @@ function inputEmail() {
 
 */
 
+/** 약관 전체 동의 */
+$('.all-terms').click(function() {
+    $('.term').prop('checked', this.checked);
+    $('.all-terms').prop('checked', this.checked);
+});
+
+/* 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록 */
+$('.term').click(function() {
+    if ($("#info-term").is(":checked") && $("#site-term").is(":checked")) {
+        $('#terms').attr("checked", true);
+    } else {
+        $('#terms').attr("checked", false);
+    }
+});
+
 
 $(function() {
     /** 플러그인의 기본 설정 옵션 추가 */
