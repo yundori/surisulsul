@@ -36,7 +36,7 @@
         </label>
         <div class="sidebar">
             <h1>
-                <img src="${contextPath}"><img src="${contextPath}/assets/img/logo1.PNG" alt="사이드바 로고" />
+                <img src="${contextPath}/assets/img/logo1.PNG" alt="사이드바 로고" />
             </h1>
             <ul>
                 <li><a href="#">인기 많은 술</li>
