@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 .item_info {
-	width: 60%;
+	width: 100%;
 	height: auto;
-	margin: 100px auto;
+	margin: auto;
 	padding: auto;
 	margin-top: 200px;
 }
@@ -174,10 +174,10 @@
 	margin-bottom: 60px;
 	padding: 0;
 	text-align: center;
-	vertical-align: center;
-	position: absolute;
-	left: 650px;
-	bottom: 300px;
+	/*vertical-align: top;*/
+	position: relative;
+	left: 350px;
+	bottom: 200px;
 }
 
 .keyword_lists_ul {

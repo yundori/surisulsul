@@ -264,6 +264,12 @@ li .pick_item .swiper-slide .swiper-slide-next {
     text-align: left;
 }
 
+/**구매했어요 표 줄 간격 설정
+--> 상품주문상태와 버튼 사이 간격 설정*/
+.order_table td:nth-child(5) {
+    line-height: 2em;
+}
+
 /**구매했어요 표 넓이 설정
 --> 나머지 탭 넓이 설정*/
 .order_table td {
@@ -432,4 +438,21 @@ li .pick_item .swiper-slide .swiper-slide-next {
 .qna_item_info {
     position: absolute;
     top: 33%;
+    margin-top: -41px;
+    line-height: 1em;
+}
+
+/**선택삭제 버튼 우측정렬*/
+.delete_area {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.delete_this {
+    right: 42px;
+    position: absolute;
+    line-height: 1.5em;
 }

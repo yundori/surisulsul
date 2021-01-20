@@ -43,7 +43,7 @@
 	width: 100%;
 	height: 20px;
 	margin: 0;
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 	padding: 8px 0;
 	font-size: 20px;
 	text-align: center;
@@ -65,19 +65,55 @@
 .slider {
 	width: 90%;
 	height: 40px;
-	margin: 32px auto 0 auto;
+	margin: 0 auto 32px auto;
 	padding: auto;
-	border: 1px solid green;
+	vertical-align: middle;
+	/*border: 1px solid green;*/
 }
-
+.slider_info {
+	width: 80%;
+	height: 40px;
+	margin: 0 auto;
+	padding: 0;
+	font-size: 16px;
+	color: #7d7891;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	word-spacing: 60px;
+	position: relative;
+	left: 18px;
+	bottom: 10px;
+}
 .slider_title {
 	width: 40px;
 	height: 40px;
+	margin: 0;
+	margin-right: 15px;
+	padding: 0;
 	font-size: 16px;
 	line-height: 40px;
 	text-align: center;
+	vertical-align: middle;
 }
 
+.slider>input {
+	width: 300px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+/*
+input[type=range] {
+	-webkit-appearance: none;
+	height: 5px;
+	background-color: white;
+	border : 1px solid #7C59B6;
+}
+*/
 .keyword_area {
 	width: 100%;
 	height: 18px;
@@ -147,17 +183,19 @@
 }
 
 .search_btn {
-	width: 34px;
+	width: 70px;
 	height: 34px;
 	margin: 0;
-	padding: 5px;
+	padding: 0;
 	border: none;
 	outline: none;
 	float: right;
 	position: relative;
-	left: 360px;
+	left: 370px;
 	bottom: 63px;
-	background: url("../img/best_items/item_search.png") no-repeat;
-	background-position: center;
-	text-indent: -10000px;
+	font-size: 17px;
+	text-align: center;
+	line-height: 34px;
+	color: white;
+	background-color: #7C59B6;
 }

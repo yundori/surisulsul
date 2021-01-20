@@ -4,6 +4,8 @@
 
     <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/cscenter.css?time=${currentTime}" />
     <div class="collapse">
+        <%--c:when test 조건 -> 관리자 페이지에서 작성한 게시글 목록이 있을 경우 불러오기 --%>
+        <!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
         <div class='collapse-item'>
             <div class="collapse-title clearfix">
                 <span class="article-number">4</span>
@@ -36,6 +38,8 @@
             </div>
             <div id="content4" class="content">제목1에 해당하는 내용입니다.</div>
         </div>
+        <!--</c:forEach>-->
+        <!-- 게시글이 많다면 페이지네이션 -->
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
 <div class="psn_recommend_list">
@@ -44,9 +48,7 @@
 
 					</td>
 					<td>2021-01-19</td>
-					<td>
-						<button class="edit_recommend">수정하기</button>
-					</td>
+					<td><a href="#" class="edit_recommend btn_gray">수정하기</a></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="item2" id="item2" class="ab">
@@ -69,15 +71,17 @@
 
 					</td>
 					<td>2021-01-19</td>
-					<td>
-						<button class="edit_recommend">수정하기</button>
-					</td>
+					<td><a href="#" class="edit_recommend btn_gray">수정하기</a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<!--***** 여기에 PAGINATION 들어가야 함 *****-->
-
+	<div class="delete_area">
+		<a href="#" class="delete_this btn_nor">선택 삭제</a>
+	</div>
+	
+	
 	<!-- ************나의 질문 ************ -->
 	<div class="psn_title">
 		<h2 class="psn_title_txt">나의 질문</h2>
@@ -103,8 +107,7 @@
 					<td>
 						<div class="table_min_height">
 							<div class="qna_item_info">
-								<a href="#"> <span class="qna_area">[분류 :
-										대량구매]</span>
+								<a href="#"> <span class="qna_area">[분류 : 대량구매]</span>
 									<p class="qna_item_name">상품문의 남깁니다. 혹시 대량구매 가능할까요?</p>
 								</a>
 							</div>
@@ -121,8 +124,7 @@
 					<td>
 						<div class="table_min_height">
 							<div class="qna_item_info">
-								<a href="#"> <span class="qna_area">[분류 :
-										상품문의]</span>
+								<a href="#"> <span class="qna_area">[분류 : 상품문의]</span>
 									<p class="qna_item_name">이거 유통기한이 어떻게 되나요? 제가 2주간 출장을 가게
 										되는데 미리 받아놓고 2주 정도 뒤에 마셔도 맛이 괜찮을까요? 혹시 예약일에 맞춰서 주문도 가능할까요?</p>
 								</a>
@@ -137,6 +139,9 @@
 		</table>
 	</div>
 	<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+	<div class="delete_area">
+		<a href="#" class="delete_this btn_nor">선택 삭제</a>
+	</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -147,11 +152,27 @@
 			$('.check_all').prop('checked', this.checked);
 		});
 	});
-	
+
 	$(document).ready(function() {
 		$('.check_all2').click(function() {
 			$('.cd').prop('checked', this.checked);
 			$('.check_all2').prop('checked', this.checked);
 		});
+	});
+
+	// 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
+	$('.ab').click(function() {
+		if ($("#item1").is(":checked") && $("#item2").is(":checked")) {
+			$('.check_all').attr("checked", true);
+		} else {
+			$('.check_all').attr("checked", false);
+		}
+	});
+	$('.cd').click(function() {
+		if ($("#item1").is(":checked") && $("#item2").is(":checked")) {
+			$('.check_all').attr("checked", true);
+		} else {
+			$('.check_all').attr("checked", false);
+		}
 	});
 </script>

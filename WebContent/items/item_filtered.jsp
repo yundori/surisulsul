@@ -130,14 +130,18 @@
 				</div>
 				<div class="sliders check_boxes">
 					<h2 class="checkbox_title">맛과 깊이</h2>
+					<div class="slider_info">전체 낮음 중간 높음</div>
 					<div class="slider">
-						<div class="slider_title">당도</div>
+						<span class="slider_title">당도</span>
+						<input type="range" max="6" min="0" step="2" value="0" />
 					</div>
 					<div class="slider">
-						<div class="slider_title">산미</div>
+						<span class="slider_title">산미</span>
+						<input type="range" max="6" min="0" step="2" value="0" />
 					</div>
 					<div class="slider">
-						<div class="slider_title">도수</div>
+						<span class="slider_title">도수</span>
+						<input type="range" max="6" min="0" step="2" value="0" />
 					</div>
 				</div>
 			</div>
