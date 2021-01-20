@@ -1,3 +1,30 @@
+/** 메일 중복 검사를 위한 함수
+function emailChk() {
+
+}
+
+function inputEmail() {
+    document.join_form.emailChk.value = "";
+}
+
+*/
+
+/** 약관 전체 동의 */
+$('.all-terms').click(function() {
+    $('.term').prop('checked', this.checked);
+    $('.all-terms').prop('checked', this.checked);
+});
+
+/* 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록 */
+$('.term').click(function() {
+    if ($("#info-term").is(":checked") && $("#site-term").is(":checked")) {
+        $('#terms').attr("checked", true);
+    } else {
+        $('#terms').attr("checked", false);
+    }
+});
+
+
 $(function() {
     /** 플러그인의 기본 설정 옵션 추가 */
     jQuery.validator.setDefaults({
@@ -39,12 +66,21 @@ $(function() {
             /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
     });
 
+    /** 유효성 검사 추가 함수 (이메일 중복확인)
+    $.validator.addMethod("emailDupl", function(value, element) {
+        return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
+    });
+    */
+
+
     /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
     $("#join_form").validate({
         /** 입력검사 규칙 */
         rules: {
             // [이메일] 필수 + 이메일 형식 일치 필요
             email: { required: true, email: true },
+            // [이메일 중복확인] 필수 + email-chk 값 필요 (emailDupl:false가 필요)
+            emailChk: { required: true },
             // [비밀번호] 필수 + 글자수 길이 제한
             user_pw: { required: true, minlength: 4, maxlength: 20 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
@@ -55,6 +91,12 @@ $(function() {
             tel: { required: true, phone: true },
             // [생년월일] 필수 + 날짜 형식 일치 필요
             birthdate: { required: true, date: true },
+            // [우편번호 및 주소] 필수
+            postcode: { required: true },
+            // [기타 주소] 필수
+            detailAddress: { required: true },
+            // [이용약관] 전부 동의 필수
+            terms: { required: true, minlength: 3 }
         },
         /** 규칙이 맞지 않을 경우의 메시지 */
         messages: {
@@ -82,6 +124,16 @@ $(function() {
             birthdate: {
                 required: "생년월일을 입력하세요.",
                 date: "생년월일의 형식이 잘못되었습니다."
+            },
+            postcode: {
+                required: "우편번호 찾기를 통해 주소를 입력하세요."
+            },
+            detailAddress: {
+                required: "배송을 위한 상세 주소를 입력하세요."
+            },
+            terms: {
+                required: "이용 약관에 모두 동의해 주세요.",
+                minlength: "이용 약관에 모두 동의해 주세요."
             }
         }
     }); // end validate()

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
-<%@ include file="/WEB-INF/views/_inc/header.jsp"%>
+<%-- 
+<%@ include file="/WEB-INF/views/_inc/header.jsp"%>--%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_info.css?time=${currentTime}" />
 
@@ -51,6 +51,7 @@
 		</div>
 		<div class="clear"></div>
 
+		<!-- jstl로 색 지정 다다르게 해줘야함 -->
 		<div class="item_keyword_lists">
 			<ul class="keyword_lists_ul">
 				<li class="keyword_lists_li">#종류1</li>
@@ -77,5 +78,5 @@
 
 	</div>
 </div>
-
-<%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
+<%-- 
+<%@ include file="/WEB-INF/views/_inc/footer.jsp"%> --%>

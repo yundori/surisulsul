@@ -37,8 +37,8 @@
 			<label class="total_price_label">총 주문 가격 : </label>
 			<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
 			<div class="order_btn">
-				<button class="btn_cart">장바구니 담기</button>
-				<button class="btn_order">바로 주문하기</button>
+				<a class="btn_cart">장바구니 담기</a>
+				<a class="btn_order">바로 주문하기</a>
 			</div>
 		</form>
 		</div>
@@ -49,7 +49,9 @@
 		<button class="info_menu tab_menu">상품 정보</button>
 		<button class="review_menu tab_menu">상품 후기</button>
 		<button class="quest_menu tab_menu">상품 문의</button>
-		<div class="content">컨텐트...</div>
+		<div class="content">
+		<%@ include file="item_info.jsp"%>
+		</div>
 	</div>
 </div>
 
