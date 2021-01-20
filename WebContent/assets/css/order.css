@@ -10,6 +10,11 @@
 	font-weight:bold;
 	margin:20px 0;
 }
+#basket h2{
+	font-size:1.2em;
+	font-weight:bold;
+	margin-top:25px;
+}
 #basket_order h2{
 	font-size:1.5em;
 	font-weight:bold;
@@ -64,7 +69,7 @@
 
 
 /** basket.jsp --> 선택상품 삭제 버튼 css */
-#basket #delete_this{
+#basket #delete_this, #delete_this2{
 	padding:1px 5px;
 	border:none;
     background-color: #fbd14b;	
@@ -96,7 +101,16 @@
     line-height:145%;
     margin:3px 10px 0 0;
 }
-
+/** basket.jsp --> 상품 담으러 가기 버튼 */
+#basket #go_shopping{
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+}
 
 /** basket_order.jsp --> 입력 페이지 컨텐츠 영역 설정 */
 .basket_order_form {
@@ -221,7 +235,7 @@
     border-radius: 3px;
     margin:30px 10px 0 0;
 }
-#order_result a:hover, #basket>#go_order:hover{
+#order_result a:hover, #basket>#go_order:hover, #basket #go_shopping:hover{
     background-color: #eee;
     color: #6a60a9;
     border: 2px solid #6a60a9;
