@@ -5,6 +5,8 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>--%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_info.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
 
 <div class="item_info">
 	<div>
@@ -85,5 +87,6 @@
 
 	</div>
 </div>
+
 <%-- 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%> --%>

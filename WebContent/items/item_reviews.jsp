@@ -12,7 +12,13 @@
 		<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 			<tr>
 				<td class="img_area">
+					<%-- <c:choose> --%>
+					<%-- <c:when 사진 db있으면 해당 사진 노출> --%>
 					<img class="review_img" src="../assets/img/items/best1.PNG" />
+					<%-- </c:if> --%>
+					<%-- <c:otherwise 없으면 디폴트 이미지 사용> --%>
+					<%-- </c:otherwise> --%>
+					<%-- </c:choose> --%>
 				</td>
 				<td class="content_area">
 					<h3 class="content_title">너무 맛있어요!!!</h3>
@@ -60,6 +66,7 @@
 				<h1>상품 후기가 없습니다.</h1>
 			</div>
 		</c:otherwise>
-		</c:choose>		
+		</c:choose>
+		<%-- 페이지네이션 영역 --%>
 	</div>
 </div>

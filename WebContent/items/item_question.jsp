@@ -7,10 +7,14 @@
 
 <div class="item_question">
 	<div>
-		<h3 class="title">
+		<div class="header">
+			<h3 class="title">
 			이 술에 대해 궁금하다면 <span>상품에 대한 문의를 남길 수 있습니다.</span>
-		</h3>
-
+			</h3>
+		
+			<a href="#" class="write_question_btn">문의 작성</a>
+		</div>
+		
 		<div class="question_lists">
 			<div class="question_list_head">
 				<span class="que_number">번호</span>
@@ -19,8 +23,9 @@
 				<span class="que_answer">답변 상태</span>
 				<span class="que_date">작성 일시</span>
 			</div>
+			
 			<c:choose>
-			<c:when test="false">
+			<c:when test="true">
 			<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 			
 			<div class="question_list">
@@ -84,11 +89,12 @@
 			</c:otherwise>
 			</c:choose>
 		</div>
+		<%-- 페이지네이션 영역 --%>
 	</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
     $(function() {
         $(".question_default").click(function(e) {
             e.preventDefault();
@@ -97,4 +103,6 @@
             $(target).slideToggle(200);
         });
     });
+</script>
+    
 </script>
