@@ -5,6 +5,8 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>--%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_info.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
 
 <div class="item_info">
 	<div>
@@ -70,10 +72,21 @@
 
 		<div class="suri_rules">
 			<h4>판매 정책 안내 (모든 상품 공통, 교환/반품)</h4>
-			<p>어쩌구 저쩌구....</p>
+			<p>
+				<b>수리술술에서 판매하는 주류 제품의 경우</b><br/>
+				발송과 동시에 재발송하기 어려운 상품으로 단순 변심, 오주문, 주소불명, 수취인 부재 등 고객 사유로 인한 교환 및 반품이 불가합니다.<br/>
+				구매하시기 전 확인 후 구매하시기 바랍니다.<br/><br/>
+				
+				※ 아래의 법률에 따라 구매 후 출고처리 전 주문 취소가 가능합니다.<br/><br/>
+				
+				<b>신용카드 가맹점 법률 제8조 (계약의 철회 및 항변)</b><br/>
+				가맹점은 할부거래에 관한 법률, 방문판매 등에 관한 법률, 전자상거래 등에서의 소비자 보호에 관한 법률 등에 따라<br/>
+				계약에 관한 회원의 철회가 인정되는 거래에 대해서는 관계 법령에서 정한 반에 따라 회원이 철회를 요청하는 경우 이를 수용하여야 한다.
+			</p>
 		</div>
 
 	</div>
 </div>
+
 <%-- 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%> --%>

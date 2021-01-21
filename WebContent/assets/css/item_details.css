@@ -188,6 +188,18 @@
 	margin-top: -3px;
 }
 
+/* top 버튼
+ * display: none -> 처음 페이지 열릴 때 보이지 않게 설정
+ */
+.btn_top {
+    position: fixed;
+    right: 3em;
+    bottom: 4em;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+}
+
 .clear {
 	float: none;
 	clear: both;
