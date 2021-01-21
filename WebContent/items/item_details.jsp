@@ -59,8 +59,33 @@
 		</div>
 	</div>
 	
+	<div class="item_details_footer">
+		<img src="../assets/img/items/btn_top.png" class="btn_top" />
+	</div>
+	
 	<%-- </c:when> --%>
 	<%-- </c:choose> --%>
 </div>
+
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	/** top버튼 구현 **/
+	$(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 200) {
+	            $('.btn_top').fadeIn();
+	        } else {
+	            $('.btn_top').fadeOut();
+	        }
+	    });
+	    /* 클릭 시 최상단으로 올라가도록 구현 */
+	    $('.btn_top').click(function() {
+	        $('html, body').animate({
+	            scrollTop: 0
+	        }, 400);
+	        return false;
+	    });
+	});
+</script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
