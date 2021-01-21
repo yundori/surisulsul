@@ -55,6 +55,7 @@
 		<div class="content">
 		<%@ include file="item_info.jsp"%>
 		<%@ include file="item_reviews.jsp"%>
+		<%@ include file="item_question.jsp"%>
 		</div>
 	</div>
 	
