@@ -1,11 +1,9 @@
 @charset "UTF-8";
 
 .slides-container {
-	
 	width: 100%;
-	height: 400px !important;	
+	height: 400px !important;
 }
-
 
 #main_banner {
 	padding-top: 120px;
@@ -42,26 +40,34 @@
 	background: #fffcf0;
 }
 
-.main_testresult {
+
+
+/** 주능 테스트 css */
+
+.test_img1 img {
+	position: relative;
+	width: 100%;
+	height: 400px;
 	padding-top: 120px;
+	padding-bottom: 120px;
 }
 
-.test_img img {
+.test_img2 img {
 	position: absolute;
 	width: 100%;
 	height: 400px;
+	margin-top: 120px;
+	margin-bottom: 120px;
 }
 
-/** 주능 테스트 css */
 .test_text {
 	width: 800px;
 	font-weight: bolder;
 	font-size: 35px;
 	position: relative;
-	top: 150px;
+	top: 230px;
 	left: 100px;
 	line-height: 60px;
-	margin-bottom: 300px;
 }
 
 #test_button {
@@ -72,13 +78,119 @@
 	background: #fffcf0;
 }
 
-/** 인기 많은 술 .css */
 
+/**나를 위한 추천 상품
+->아이템 좌측 정렬*/
+
+.psn_result {
+	position: relative;
+	top: 100px;
+}
+.pick_item {
+	float: left;
+	margin: 0 12px;
+	width: 270px;
+	height: 360px;
+}
+
+/**나를 위한 추천 상품 a 범위 설정*/
+.pick_item a {
+	width: 270px;
+	height: 360px;
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+/**나를 위한 추천 상품 > 링크 > 배경 박스*/
+.pick_item .psn_pick_bg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.3s;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스(오버레이)*/
+.pick_item .psn_pick_text {
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트*/
+.psn_pick_title, .psn_pick_price {
+	vertical-align: middle;
+	color: white;
+	text-align: center;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(상품명)*/
+.psn_pick_title {
+	margin-top: 70%;
+	font-size: 35px;
+	font-weight: 400;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(가격)*/
+.psn_pick_price {
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	font-style: italic;
+}
+
+/**나를 위한  추천 상품 > 링크 마우스hover*/
+.pick_link:hover .psn_pick_bg {
+	transform: scale(1.1, 1.1);
+}
+
+.pick_link:hover .psn_pick_text {
+	opacity: 1;
+}
+
+/**나를 위한 추천 상품 설정*/
+.psn_pick1 {
+	background: url(../img/mypage/rec_01.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+}
+
+.psn_pick2 {
+	background: url(../img/mypage/rec_02.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+}
+
+.psn_pick3 {
+	background: url(../img/mypage/rec_03.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+}
+
+.psn_pick4 {
+	background: url(../img/mypage/rec_04.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+}
+
+/** 인기 많은 술.css */
 .main_best {
 	width: 1100px;
 	height: 500px;
-	margin: auto;
+	margin:  auto;
+	padding-top: 450px;
 }
+
 .main_best h1 {
 	border-bottom: 1px solid #dedede;
 	height: 50px;
@@ -86,13 +198,17 @@
 	color: #6a60a9;
 	margin-bottom: 30px;
 	text-align: center;
+	
 }
 
 .main_best_img {
-	float: left;
+	transform: translate(-50%, -50%);
+	position: relative;
+	left: 12%;
+	top: 29%;
 	margin: auto;
 	text-align: center;
-	position: relative;
+	float: left;
 }
 
 .main_best_img img {
@@ -102,7 +218,51 @@
 }
 
 #best_img1 {
-	margin-left: 25px;
+	margin-left: 30px;
+}
+
+.main_best_over {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 17px;
+	width: 150px;
+}
+
+.over {
+	position: absolute;
+	top: 0;
+	left: 25px;
+	bottom: 0;
+	right: 0;
+	width: 230px;
+	height: 300px;
+	opacity: 0;
+	transition: .5s ease;
+	background: rgba(75, 75, 75, 0.7);
+}
+
+#best_img1:hover .over {
+	opacity: 1;
+}
+
+#best_img2:hover .over {
+	opacity: 1;
+}
+
+#best_img3:hover .over {
+	opacity: 1;
+}
+
+#best_img4:hover .over {
+	opacity: 1;
+}
+
+.main_best_over .over_des {
+	padding-top: 10px;
+	font-size: 15px;
 }
 
 /** 우리 술 종류.css */
@@ -111,6 +271,7 @@
 	height: 800px;
 	position: relative;
 	margin: auto;
+	padding-bottom: 110px;
 }
 
 .main_drink h1 {
@@ -139,6 +300,7 @@
 	width: 780px;
 	margin: auto;
 }
+
 #box1 {
 	margin-left: 60px;
 }
@@ -152,7 +314,7 @@
 }
 
 .box:hover {
-    transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
 }
 
 .main_drink ul li img {
