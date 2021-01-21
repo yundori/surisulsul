@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 상품 후기 페이지 css */
 .item_reviews {
 	width: 90%;
 	height: auto;
@@ -96,11 +97,11 @@
 /* item_question 페이지 css */
 
 .item_question {
-	width: 60%;
+	width: 90%;
 	height: auto;
 	margin: 100px auto;
 	padding: auto;
-	margin-top: 200px;
+	margin-top: 20px;
 }
 
 .item_question a {
@@ -148,13 +149,21 @@
 
 .question_list {
 	width: 100%;
-	height: 40px;
+	height: auto;
 	margin: 0;
 	padding: 3px auto;
 	font-size: 16px;
 	font-weight: 500;
 	text-align: center;
 	vertical-align: middle;
+}
+
+.question_default {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 3px auto;
+	cursor: pointer;
 }
 
 .que_number {
@@ -198,7 +207,7 @@
 }
 .question_detail {
 	width: auto;
-	height: 40px;
+	height: auto;
 	padding: 0 40px;
 	text-align: left;
 	line-height: 40px;
@@ -206,9 +215,9 @@
 	display: none;
 }
 
-/* 상품 리뷰가 없는 경우 */
+/* 상품 리뷰, 문의가 없는 경우 */
 
-.review_none {
+.review_none, .question_none {
 	width: 100%;
 	height: auto;
 	margin: 50px auto;
@@ -217,7 +226,7 @@
 	vertical-align: middle;
 }
 
-.review_none>h1 {
+.review_none>h1, .question_none>h1{
 	width: auto;
 	height: auto;
 	margin: 30px auto;
