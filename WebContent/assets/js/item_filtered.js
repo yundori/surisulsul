@@ -3,26 +3,9 @@ $(document).ready(function() {
 	//html 변수 = 각 키워드 출력을 위한 html li태그 내용이 들어갈 문자열 변수
 	var html = '';
 
-	//기본 모두 선택 처리 (화면 구현 직후)
-	if ($("#types1").is(":checked")) {
-		$('.types').attr("checked", true);
-		html = '<li class="search_result types_result">#전체종류</li>';
-		$('.result_list_type').append(html);
-	}
-	if ($("#area1").is(":checked")) {
-		$('.area').attr("checked", true);
-		html = '<li class="search_result area_result">#전체지역</li>';
-		$('.result_list_area').append(html);
-	}
-	if ($("#incense1").is(":checked")) {
-		$('.incense').attr("checked", true);
-		html = '<li class="search_result incense_result">#전체향</li>';
-		$('.result_list_incense').append(html);
-	}
-
-	var typesArr = ['전체종류', '탁주', '청주/약주', '과실주', '증류주', '기타주류'];
-	var areaArr = ['전체지역', '서울', '경기도', '강원도', '충청도', '전라도', '경상도', '제주도'];
-	var incenseArr = ['전체향', '곡물향', '과일향', '꽃향', '꿀향', '누룩향', '알콜향'];
+	var typesArr = ['탁주', '청주/약주', '과실주', '증류주', '기타주류'];
+	var areaArr = ['서울', '경기도', '강원도', '충청도', '전라도', '경상도', '제주도'];
+	var incenseArr = ['곡물향', '과일향', '꽃향', '꿀향', '누룩향', '알콜향'];
 
 	//체크박스 모두 선택 눌렀을 때 처리 - 종류별
 	$('.types').click(function() {
@@ -32,7 +15,7 @@ $(document).ready(function() {
 		} else {
 			getChecked('types', 6);
 		}
-		printKeyword('.result_list_type','types_result', 6, 'types');
+		printKeyword('.result_list_type','types_result', 5, 'types');
 		
 	});
 	
@@ -44,7 +27,7 @@ $(document).ready(function() {
 		} else {
 			getChecked('area', 8);
 		}
-		printKeyword('.result_list_area','area_result', 8, 'area');
+		printKeyword('.result_list_area','area_result', 7, 'area');
 	});
 
 	//체크박스 모두 선택 눌렀을 때 처리 - 향 종류
@@ -55,7 +38,7 @@ $(document).ready(function() {
 		} else {
 			getChecked('incense', 7);
 		}
-		printKeyword('.result_list_incense','incense_result', 7, 'incense');
+		printKeyword('.result_list_incense','incense_result', 6, 'incense');
 	});
 
 	//체크박스 전체선택+해제 관련 처리 메서드
@@ -94,7 +77,7 @@ $(document).ready(function() {
 	*
 	*  params : resultListClass = li 태그가 들어갈 ul의 클래스명
 	*           resultLiClass = li태그에 적용될 클래스명 (background-color CSS 적용을 위해 쓰임)
-	*           max = type, area, incense에 따라 다른 체크박스의 수 (for문에 쓰임)
+	*           max = type, area, incense에 따라 다른 체크박스의 수 (for문에 쓰임) ※전체는 제외
 	*           selectedId = 지금 눌린 체크박스의 클래스를 받아옴 
 	*/
 	function printKeyword(resultUlClass, resultLiClass, max, selectedClass){
@@ -115,22 +98,27 @@ $(document).ready(function() {
 		}
 		
 		for(var i=0; i<max; i++){
-			var getId = '#'+selectedClass+(i+1);
-			//i랑 getId 콘솔 출력하기
-			console.log('i : '+i+', getId : '+getId);
+			var getId = '#'+selectedClass+(i+2);
 			
 			if($(getId).is(":checked") == true){
-				if(i==0){
-					html= '<li class="search_result '+resultLiClass+'">#'+targetArr[i]+'</li>';
-				}else{
-					html+= '<li class="search_result '+resultLiClass+'">#'+targetArr[i]+'</li>';	
-				}
+				html+= '<li class="search_result '+resultLiClass+'">#'+targetArr[i]+'</li>';
 			}
 		}
 		$(resultUlClass).append(html);
 	}
 	
-
-
+	//기본 모두 선택 처리 (화면 구현 직후)
+	if ($("#types1").is(":checked")) {
+		$('.types').attr("checked", true);
+		printKeyword('.result_list_type','types_result', 5, 'types');
+	}
+	if ($("#area1").is(":checked")) {
+		$('.area').attr("checked", true);
+		printKeyword('.result_list_area','area_result', 7, 'area');
+	}
+	if ($("#incense1").is(":checked")) {
+		$('.incense').attr("checked", true);
+		printKeyword('.result_list_incense','incense_result', 6, 'incense');
+	}
 
 });
