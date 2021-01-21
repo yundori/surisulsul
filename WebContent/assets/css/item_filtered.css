@@ -270,7 +270,7 @@ input[type=range]::-moz-range-track {
 /*
  * 키워드 태그 나열 영역
  * -------------------------- */
-.search .result_list {
+.search .result_list_type, .search .result_list_area, .search .result_list_incense {
 	max-width: 700px;
 	height: 32px;
 	text-align: left;
@@ -290,14 +290,22 @@ input[type=range]::-moz-range-track {
 	display: inline-block;
 	width: auto;
 	height: 16px;
-	margin: 0;
+	margin: 0 2px;
 	padding: 5px 5px;
 	font-size: 13px;
 	text-align: center;
 	line-height: 16px;
 	color: white;
-	background-color: #9B59B6;
 	border-radius: 5px;
+}
+.types_result{
+    background-color: #9B59B6;
+}
+.area_result{
+    background-color: #5B44AD;
+}
+.incense_result{
+    background-color: #6D2B88;
 }
 
 /*

@@ -151,17 +151,11 @@
 		<div class="search">
 			<div class="keyword_area">
 				<h4>검색 조건</h4>
-				<ul class="result_list">
-					<li class="search_result">#전체종류</li>
-					<li class="search_result">#서울</li>
-					<li class="search_result">#경기도</li>
-					<li class="search_result">#충청도</li>
-					<li class="search_result">#제주도</li>
-					<li class="search_result">#과일향</li>
-					<li class="search_result">#알콜향</li>
-					<li class="search_result">#꽃향</li>
-					<li class="search_result">#꿀향</li>
-					<li class="search_result">#누룩향</li>
+				<ul class="result_list_type">
+				</ul>
+				<ul class="result_list_area">
+				</ul>
+				<ul class="result_list_incense">
 				</ul>
 			</div>
 			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요."/>
