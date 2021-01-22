@@ -65,4 +65,17 @@
             </form>
         </div>
     </div>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+    $('.write-content').keyup(function(e) {
+        var content = $(this).val();
+        $('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
+
+        if (content.length > 1000) {
+            alert("최대 1,000자까지 입력 가능합니다.");
+            $(this).val(content.substring(0, 1000));
+            $('.input-limit').html("1,000/1,000");
+        }
+    });
+    </script>
   </body>
