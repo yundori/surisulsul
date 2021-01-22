@@ -236,35 +236,43 @@ input[type=range]::-moz-range-track {
 
 /* 검색 조건 */
 
+.search {
+	width: auto;
+	height: auto;
+	margin: 40px 0;
+	border: 1px solid white;
+}
 /*
  * 검색 조건 전체 영역
  * -------------------------- */
 .keyword_area {
 	width: 100%;
-	height: 18px;
+	/*height: 18px;*/
+	height: 100px;
 	margin: 0;
 	margin-bottom: 30px;
-	padding: 8px 0;
+	padding: 9px 0;
 	background-color: #F9F1FB;
 	vertical-align: middle;
+	line-height: 100px;
 }
 
 /*
  * '검색 조건' 텍스트
  * -------------------------- */
 .keyword_area>h4 {
-	width: 200px;
-	height: 18px;
+	width: 180px;
+	height: 118px;
 	margin: 0;
-	padding: 8px 0;
-	font-size: 17px;
-	font-weight: 400;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 500;
 	text-align: center;
-	line-height: 18px;
+	line-height: 118px;
 	color: white;
 	background-color: #7C59B6;
 	position: relative;
-	bottom: 8px;
+	bottom: 9px;
 }
 
 /*
@@ -279,8 +287,8 @@ input[type=range]::-moz-range-track {
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
-    left: 230px;
-    bottom: 43px;
+    left: 210px;
+    bottom: 117px;
 }
 
 /*
@@ -320,7 +328,8 @@ input[type=range]::-moz-range-track {
 	border: none;
 	float: right;
 	position: relative;
-	bottom: 62px;
+	right: 12px;
+	bottom: 102px;
 }
 
 /*
@@ -336,7 +345,7 @@ input[type=range]::-moz-range-track {
  * -------------------------- */
 .search_btn {
 	width: 70px;
-	height: 34px;
+	height: 119px;
 	margin: 0;
 	padding: 0;
 	border: none;
@@ -344,10 +353,10 @@ input[type=range]::-moz-range-track {
 	float: right;
 	position: relative;
 	left: 370px;
-	bottom: 63px;
+	bottom: 148px;
 	font-size: 17px;
 	text-align: center;
-	line-height: 34px;
+	line-height: 100px;
 	color: white;
 	background-color: #7C59B6;
 }
