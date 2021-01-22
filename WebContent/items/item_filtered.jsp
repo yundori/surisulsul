@@ -414,4 +414,6 @@
 	</div>
 
 <script src="${contextPath}/assets/js/item_filtered.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+
+
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
