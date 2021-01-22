@@ -22,9 +22,9 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
 </head>
 <body>
- <div class="pop-up">
+<div class="pop-up">
         <div class="pop-up-title">
-            후기 작성하기
+            문의 작성하기
         </div>
         <div class="pop-up-content">
             <div class="selected-item">
@@ -40,29 +40,26 @@
             </div>
             <form>
                 <div class="form-group">
-                    <label class="label text-center">상품은 만족하셨나요?</label><br />
-                    <select id="example">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                    <label class="label text-center">문의 분류 선택</label><br />
+                    <select id="category" class="category">
+                        <option value="0">--------</option>
+                        <option value="1">상품 문의</option>
+                        <option value="2">배송 문의</option>
+                        <option value="3">대량 구매</option>
+                        <option value="4">기타 문의</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="label text-center">어떤 점이 좋았나요?</label><br />
+                    <label class="label text-center">문의 내용 작성하기</label><br />
                     <textarea class="write-content" placeholder="내용을 입력해 주세요."></textarea>
                     <span class="input-limit">0/1,000</span>
                 </div>
                 <div class="form-group">
-                    <label class="label text-center file-attach-button" for="photo">사진 첨부하기</label><br />
-                    <input type="file" name="photo" id="photo" class="file-attach" /><br />
-                    <span class="notice">상품과 무관한 사진 첨부 시 통보 없이 삭제될 수 있습니다.</span>
+                    <label><input type="checkbox" name="lock" class="lock" id="lock" />&nbsp;나의 문의를 비밀글로 작성합니다.</label>
                 </div>
-                <div>
-                    <button type="submit">작성하기</button>
+                <div><button type="submit">작성하기</button>
                 </div>
             </form>
         </div>
     </div>
-  </body>
+    </body>

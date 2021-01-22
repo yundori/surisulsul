@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+/*
+ * 팝업 페이지 영역 설정
+ * --------------------- */
+.pop-up {
+    width: 700px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+/*
+ * 팝업 페이지명 (후기작성, 문의작성 등)
+ * --------------------- */
+.pop-up-title {
+    background-color: #6a60a9;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+/*
+ * 선택한 상품 정보
+ * --------------------- */
+.selected-item {
+    width: 70%;
+    margin: auto;
+    height: 320px;
+    position: relative;
+}
+
+/*
+ * 선택한 상품 썸네일 설정
+ * --------------------- */
+.wrapper {
+    width: 40%;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    float: left;
+}
+
+.thumbnail {
+    position: relative;
+    padding-top: 160%;
+    /* 10:16 ratio */
+    overflow: hidden;
+}
+
+.thumbnail-centered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: translate(50%, 50%);
+    -ms-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+}
+
+.thumbnail-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*
+ * 상품명 및 가격 설정
+ * --------------------- */
+.item-name {
+    font-size: 20px;
+    line-height: 3;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+
+}
+
+.item-price {
+    color: #bbb;
+    font-size: 14px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+}
+
+/*
+ * float clearfix
+ * --------------------- */
+.selected-item:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+.form-group:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+/*
+ * 입력 항목별 영역
+ * --------------------- */
+.form-group {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+/*
+ * 입력 항목별 제목
+ * --------------------- */
+.label {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.text-center {
+    text-align: center;
+    line-height: 1.5;
+}
+
+/*
+ * 별점
+ * --------------------- */
+
+/*
+ * 후기, 문의 입력 칸
+ * --------------------- */
+.write-content {
+    display: block;
+
+    padding: 14px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow: scroll;
+    white-space: normal;
+    width: 94%;
+    margin: 15px 0;
+}
+
+/*
+ * 입력 글자수 제한
+ * --------------------- */
+.input-limit {
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+    float: right;
+}
+
+/*
+ * 사진 첨부 라벨 디자인
+ * --------------------- */
+.file-attach {
+    display: none;
+}
+
+.file-attach-button {
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+/*
+ * 사진 첨부 경고 메시지
+ * --------------------- */
+.notice {
+    color: #dd5656;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/*
+ * 문의 분류
+ * --------------------- */
+.category {
+    margin: 15px auto;
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/*
+ * 버튼 디자인
+ * --------------------- */
+button {
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
