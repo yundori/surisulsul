@@ -188,7 +188,7 @@
 **************************************************
 **********WISH LIST******************************/
 /******* 슬라이드 내용영역  *******/
-.swiper-container {
+/*.swiper-container {
     width: 80%;
     background-color: #F6F5F3;
     margin: auto;
@@ -206,17 +206,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
     margin-top: 30px;
     margin-bottom: 0;
     display: flex;
-}
-
-/**아래 pagination위치 조절
-*******************************/
-.swiper-pagination {
-    display: block;
-}
-
-.swiper-wrapper {
-    margin-bottom: 20px;
-}
+}*/
 
 /*************************************************
 **************************************************

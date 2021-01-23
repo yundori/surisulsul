@@ -1,5 +1,5 @@
-$(function(){
-			$('.swiper-wrapper').slick({
+$(document).ready(function(){
+			$('.slider-div').slick({
 				slide: 'li',		//슬라이드 되어야 할 태그 ex) div, li 
 				infinite : true, 	//무한 반복 옵션	 
 				slidesToShow : 4,		// 한 화면에 보여질 컨텐츠 개수
@@ -14,24 +14,5 @@ $(function(){
 				prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
 				nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
 				dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
-				draggable : true, 	//드래그 가능 여부 
-				
-				responsive: [ // 반응형 웹 구현 옵션
-					{  
-						breakpoint: 960, //화면 사이즈 960px
-						settings: {
-							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-							slidesToShow:3 
-						} 
-					},
-					{ 
-						breakpoint: 768, //화면 사이즈 768px
-						settings: {	
-							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-							slidesToShow:2 
-						} 
-					}
-				]
-
 			});
   		});

@@ -1,4 +1,4 @@
-    $(function() {
+   $(document).ready(function() {
         $(".tab-button-item-link").click(function(e) {
             e.preventDefault();
             $(".tab-button-item-link").not(this).removeClass("selected");
