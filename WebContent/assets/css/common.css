@@ -47,14 +47,14 @@ li {
 
 .login_menu {
 	position: absolute;
-	right: 40px;
+	right: 10px;
 	top: 45px;
-    width: 220px;
+    width: 280px;
 }
 
 .login_menu li {
     float: left;
-    margin-right: 20px;
+    margin-right: 30px;
     font-size: 14px;
 }
 

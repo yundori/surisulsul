@@ -28,47 +28,110 @@
 	<!-- 2. 주능 테스트 결과
         1. 로그인 ok , 테스트 ok -> 주능 결과에 맞게 요약 보여줌
         2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움 -->
-	<div class="main_testresult">
-		<div class="test_img">
-			<a href="${contextPath}"><img
-				src="${contextPath}/assets/img/index/main_banner3.png"
-				alt="주능 테스트배너" /></a>
+	<c:choose>
+		<%-- 여기서 test에 들어가있는 첫번째 true의 의미 = 로그인 여부 (로그인 되어있으면 true)
+			test에 들어가있는 두번째 boolean값의 의미 = 로그인 된 사용자의 주능 테스트 이력 여부 (테스트한적 있으면 true) 
+		 --%>
+		<c:when test="true">
+			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능본적있음)일 때 index에 출력할 내용 --%>
+			<div class="main_best">
+		<h1>취향에 맞는 술을 추천해드려요 ! </h1>
+		<div class="main_best_img" id="best_img1">
+			<img src="${contextPath}/assets/img/mypage/rec_01.jpg" alt="추천하는술1" />
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">상품명 입력</span>
+					<p class="over_des">00,000원</p>
+				</div>
+			</div>
 		</div>
-		<p class="test_text">
-			아직 당신을 위한 술을 추천 받지 못하셨나요? <br /> 지금 바로 주능 테스트를 해보세요 ! <br />
-			<button id="test_button">주능 테스트하기</button>
-		</p>
+		<div class="main_best_img" id="best_img2">
+			<img src="${contextPath}/assets/img/mypage/rec_02.jpg" alt="추천하는술2" />
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">상품명 입력</span>
+					<p class="over_des">00,000원</p>
+				</div>
+			</div>
+		</div>
+		<div class="main_best_img" id="best_img3">
+			<img src="${contextPath}/assets/img/mypage/rec_03.jpg" alt="추천하는술3" />
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">상품명 입력</span>
+					<p class="over_des">00,000원</p>
+				</div>
+			</div>
+		</div>
+		<div class="main_best_img" id="best_img4">
+			<img src="${contextPath}/assets/img/mypage/rec_04.jpg" alt="추천하는술4" />
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">상품명 입력</span>
+					<p class="over_des">00,000원</p>
+				</div>
+		</div>
+		
 	</div>
+	<button type="button" class="login_ok_button1">결과 자세히 보기</button>
+		<button type="button" class="login_ok_button2">주능 다시하기</button>
+	</div>
+		</c:when>
+		<c:otherwise>
+			<%-- 로그인 여부가 false이던지, 로그인이 true여도 주능결과가 없을 경우 index에 출력되는 내용 
+				주능을 보시겠습니까? + 주능보러가기 버튼 --%>
+			<div class="juneung_empty">
+				<div class="test_img">
+					<a href="${contextPath}"><img
+						src="${contextPath}/assets/img/index/main_banner3.png"
+						alt="주능 테스트배너" /></a>
+					<p class="test_text">
+						아직 당신을 위한 술을 추천 받지 못하셨나요? <br /> 
+						지금 바로 주능 테스트를 해보세요 ! <br />
+						<button type="button" class="login_no_button" onclick="location.href='${contextPath}/extra/juneung.jsp'">주능 테스트하기</button>
+					</span>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	<!-- 3. 인기 많은 술best !
          상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
 	<div class="main_best">
 		<h1>인기 많은 술</h1>
 		<div class="main_best_img" id="best_img1">
 			<img src="${contextPath}/assets/img/items/best1.PNG" alt="인기많은술1" />
-			<div class="main_best_over">
-				<span class="over_title">고도리 복숭아 와인</span>
-				<p class="over_des">35,000원</p>
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">고도리 복숭아 와인</span>
+					<p class="over_des">35,000원</p>
+				</div>
 			</div>
 		</div>
-		<div class="main_best_img" >
+		<div class="main_best_img" id="best_img2">
 			<img src="${contextPath}/assets/img/items/best2.PNG" alt="인기많은술2" />
-			<div class="main_best_over">
-				<span class="over_title">혼디주</span>
-				<p class="over_des">8,000원</p>
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">혼디주</span>
+					<p class="over_des">8,000원</p>
+				</div>
 			</div>
 		</div>
-		<div class="main_best_img" >
+		<div class="main_best_img" id="best_img3">
 			<img src="${contextPath}/assets/img/items/best3.PNG" alt="인기많은술3" />
-			<div class="main_best_over">
-				<span class="over_title">술샘 16</span>
-				<p class="over_des">10,000원</p>
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">술샘 16</span>
+					<p class="over_des">10,000원</p>
+				</div>
 			</div>
 		</div>
-		<div class="main_best_img" >
+		<div class="main_best_img" id="best_img4">
 			<img src="${contextPath}/assets/img/items/best4.PNG" alt="인기많은술4" />
-			<div class="main_best_over">
-				<span class="over_title">땅콩막걸리(6병)</span>
-				<p class="over_des">25,000원</p>
+			<div class="over">
+				<div class="main_best_over">
+					<span class="over_title">땅콩막걸리(6병)</span>
+					<p class="over_des">25,000원</p>
+				</div>
 			</div>
 		</div>
 	</div>

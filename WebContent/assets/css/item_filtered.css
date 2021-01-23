@@ -236,41 +236,49 @@ input[type=range]::-moz-range-track {
 
 /* 검색 조건 */
 
+.search {
+	width: auto;
+	height: 135px;
+	margin: 50px 0;
+	border: 1px solid white;
+}
 /*
  * 검색 조건 전체 영역
  * -------------------------- */
 .keyword_area {
 	width: 100%;
-	height: 18px;
+	/*height: 18px;*/
+	height: 100px;
 	margin: 0;
 	margin-bottom: 30px;
-	padding: 8px 0;
+	padding: 9px 0;
 	background-color: #F9F1FB;
 	vertical-align: middle;
+	line-height: 100px;
 }
 
 /*
  * '검색 조건' 텍스트
  * -------------------------- */
 .keyword_area>h4 {
-	width: 200px;
-	height: 18px;
+	width: 180px;
+	height: 118px;
 	margin: 0;
-	padding: 8px 0;
-	font-size: 17px;
-	font-weight: 400;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 500;
 	text-align: center;
-	line-height: 18px;
+	line-height: 118px;
 	color: white;
 	background-color: #7C59B6;
 	position: relative;
-	bottom: 8px;
+	bottom: 9px;
 }
 
 /*
  * 키워드 태그 나열 영역
  * -------------------------- */
-.search .result_list {
+.search .result_list_type, .search .result_list_area, .search .result_list_incense {
 	max-width: 700px;
 	height: 32px;
 	text-align: left;
@@ -279,8 +287,8 @@ input[type=range]::-moz-range-track {
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
-    left: 230px;
-    bottom: 43px;
+    left: 210px;
+    bottom: 117px;
 }
 
 /*
@@ -290,14 +298,22 @@ input[type=range]::-moz-range-track {
 	display: inline-block;
 	width: auto;
 	height: 16px;
-	margin: 0;
+	margin: 0 2px;
 	padding: 5px 5px;
 	font-size: 13px;
 	text-align: center;
 	line-height: 16px;
 	color: white;
-	background-color: #9B59B6;
 	border-radius: 5px;
+}
+.types_result{
+    background-color: #9B59B6;
+}
+.area_result{
+    background-color: #5B44AD;
+}
+.incense_result{
+    background-color: #6D2B88;
 }
 
 /*
@@ -306,13 +322,19 @@ input[type=range]::-moz-range-track {
 #title_search {
 	background: transparent;
 	width: 300px;
-	height: 21px;
+	height: 30px;
 	padding: 5px;
 	margin-right: 60px;
 	border: none;
+	border-radius: 5px;
 	float: right;
 	position: relative;
-	bottom: 62px;
+	right: 12px;
+	bottom: 107px;
+}
+
+#title_search:focus {
+	outline: 2px solid #cccccc;
 }
 
 /*
@@ -328,7 +350,7 @@ input[type=range]::-moz-range-track {
  * -------------------------- */
 .search_btn {
 	width: 70px;
-	height: 34px;
+	height: 119px;
 	margin: 0;
 	padding: 0;
 	border: none;
@@ -336,10 +358,10 @@ input[type=range]::-moz-range-track {
 	float: right;
 	position: relative;
 	left: 370px;
-	bottom: 63px;
+	bottom: 148px;
 	font-size: 17px;
 	text-align: center;
-	line-height: 34px;
+	line-height: 100px;
 	color: white;
 	background-color: #7C59B6;
 }

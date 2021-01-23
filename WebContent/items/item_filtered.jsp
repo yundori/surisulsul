@@ -12,32 +12,32 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
 					<div class="checkbox_input">
-						<input name="types" id="types1" type="checkbox" value="전체 종류" checked />
+						<input name="types" class="types" id="types1" type="checkbox" value="전체 종류" checked />
 						<label for="types1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types2" type="checkbox" value="탁주" />
+						<input name="types" class="types" id="types2" type="checkbox" value="탁주" />
 						<label for="types2">탁주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types3" type="checkbox" value="청주/약주" />
+						<input name="types" class="types" id="types3" type="checkbox" value="청주/약주" />
 						<label for="types3">청주/약주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types4" type="checkbox" value="과실주" />
+						<input name="types" class="types" id="types4" type="checkbox" value="과실주" />
 						<label for="types4">과실주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types5" type="checkbox" value="증류주" />
+						<input name="types" class="types" id="types5" type="checkbox" value="증류주" />
 						<label for="types5">증류주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" id="types6" type="checkbox" value="기타 주류" />
+						<input name="types" class="types" id="types6" type="checkbox" value="기타 주류" />
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
@@ -48,42 +48,42 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
-						<input name="area" id="area1" type="checkbox" value="전체 지역" checked />
+						<input name="area" class="area" id="area1" type="checkbox" value="전체 지역" checked />
 						<label for="area1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area2" type="checkbox" value="서울" />
+						<input name="area" class="area" id="area2" type="checkbox" value="서울" />
 						<label for="area2">서울</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area3" type="checkbox" value="경기도" />
+						<input name="area" class="area" id="area3" type="checkbox" value="경기도" />
 						<label for="area3">경기도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area4" type="checkbox" value="강원도" />
+						<input name="area" class="area" id="area4" type="checkbox" value="강원도" />
 						<label for="area4">강원도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area5" type="checkbox" value="충청도" />
+						<input name="area" class="area" id="area5" type="checkbox" value="충청도" />
 						<label for="area5">충청도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area6" type="checkbox" value="전라도" />
+						<input name="area" class="area" id="area6" type="checkbox" value="전라도" />
 						<label for="area6">전라도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area7" type="checkbox" value="경상도" />
+						<input name="area" class="area" id="area7" type="checkbox" value="경상도" />
 						<label for="area7">경상도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" id="area8" type="checkbox" value="제주도" />
+						<input name="area" class="area" id="area8" type="checkbox" value="제주도" />
 						<label for="area8">제주도</label>
 					</div>
 				</div>
@@ -94,37 +94,37 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
-						<input name="incense" id="incense1" type="checkbox" value="전체 향" checked />
+						<input name="incense" class="incense" id="incense1" type="checkbox" value="전체 향" checked />
 						<label for="incense1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense2" type="checkbox" value="곡물향" />
+						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물향" />
 						<label for="incense2">곡물향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense3" type="checkbox" value="과일향" />
+						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일향" />
 						<label for="incense3">과일향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense4" type="checkbox" value="꽃향" />
+						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃향" />
 						<label for="incense4">꽃향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense5" type="checkbox" value="꿀향" />
+						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀향" />
 						<label for="incense5">꿀향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense6" type="checkbox" value="누룩향" />
+						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩향" />
 						<label for="incense6">누룩향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" id="incense7" type="checkbox" value="알콜향" />
+						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜향" />
 						<label for="incense7">알콜향</label>
 					</div>
 				</div>
@@ -151,17 +151,11 @@
 		<div class="search">
 			<div class="keyword_area">
 				<h4>검색 조건</h4>
-				<ul class="result_list">
-					<li class="search_result">#전체종류</li>
-					<li class="search_result">#서울</li>
-					<li class="search_result">#경기도</li>
-					<li class="search_result">#충청도</li>
-					<li class="search_result">#제주도</li>
-					<li class="search_result">#과일향</li>
-					<li class="search_result">#알콜향</li>
-					<li class="search_result">#꽃향</li>
-					<li class="search_result">#꿀향</li>
-					<li class="search_result">#누룩향</li>
+				<ul class="result_list_type">
+				</ul>
+				<ul class="result_list_area">
+				</ul>
+				<ul class="result_list_incense">
 				</ul>
 			</div>
 			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요."/>
@@ -418,5 +412,8 @@
 		</div>
 		<!-- 페이지네이션 구현 부분 -->
 	</div>
+
+<script src="${contextPath}/assets/js/item_filtered.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
