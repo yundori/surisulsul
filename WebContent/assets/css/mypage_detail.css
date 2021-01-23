@@ -45,6 +45,7 @@
     text-align: center;
 }
 
+/************************************************* ************************************************** **********My_Recommend****************************/
 /**나를 위한 추천 키워드*/
 .psn_keyword {
     width: 100%;
@@ -67,14 +68,15 @@
 
 /**나를 위한 추천 상품*/
 .psn_result {
+    width: 80%;
+    min-width: 1200px;
     margin: auto;
-    height: 600px;
-    /**height 수정하기*/
+    height: 450px;
 }
 
 .psn_result_inner {
     height: inherit;
-    width: 1200px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -184,29 +186,101 @@
 
 }
 
-/*************************************************
-**************************************************
-**********WISH LIST******************************/
+/**나를 위한 추천 상품 결과 없음 높이 설정*/
+.psn_no_result {
+    height: 370px;
+}
+
+/**나를 위한 추천 상품 결과 없음 text 설정*/
+.psn_no_result img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.psn_no_result .psn_title_dsc {
+    margin-top: 20px;
+    line-height: 1.5em;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.psn_no_result .psn_gotest {
+    font-size: 20px;
+    color: #6A60A9;
+    font-weight: 500;
+}
+
+/**나를 위한 추천 상품 결과 없음 버튼 설정*/
+.psn_no_result .btn_yellow {
+    margin: 0 auto;
+    display: block;
+    width: 263px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3em;
+    border-radius: 24px;
+}
+
+/************************************************* ************************************************** **********WISH LIST******************************/
 /******* 슬라이드 내용영역  *******/
-/*.swiper-container {
-    width: 80%;
-    background-color: #F6F5F3;
+.swiper-container {
+
     margin: auto;
     height: 450px;
     margin-bottom: 50px;
 }
 
-.swiper-container .swiper-wrapper .swiper-slide,
+.swiper-wrapper {}
+
+/*.swiper-container .swiper-wrapper .swiper-slide,
 li .pick_item .swiper-slide .swiper-slide-active,
 li .pick_item .swiper-slide .swiper-slideduplicate,
 li .pick_item .swiper-slide .swiper-slide-next {
-    width: 20%;
     height: auto;
     margin-right: 0;
     margin-top: 30px;
     margin-bottom: 0;
     display: flex;
 }*/
+
+/**button 세부설정*/
+.swiper-container .swiper-button-prev,
+.swiper-container .swiper-container-rtl {
+    left: 0;
+    height: 450px;
+    top: 0;
+    width: 95px;
+    right: auto;
+    background-color: white;
+}
+
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-container-rtl {
+    right: 0;
+    height: 450px;
+    top: 0;
+    width: 95px;
+    left: auto;
+    background-color: white;
+}
+
+/**나의 관심 술 결과 없음 버튼 설정*/
+.psn_no_result .btn_blue {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px 9px;
+    margin: 0 auto;
+    display: block;
+    width: 263px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3em;
+    border-radius: 24px;
+    border: 2px solid #6A60A9;
+    background-color: #6A60A9;
+    color: #fff;
+}
 
 /*************************************************
 **************************************************
@@ -372,7 +446,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
     border-bottom: 1px solid #000000;
     padding: 10px;
     vertical-align: middle;
-    min-width: 150px;
+    min-width: 110px;
 }
 
 /**나의 후기 표 넓이 설정
@@ -402,7 +476,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
 /**나의 질문 표 넓이 설정
 --> 문의내용 열 넓이 설정*/
 .psn_qna_table td:nth-child(3) {
-    width: 600px;
+    width: 663px;
     position: relative;
     text-align: left;
 }
