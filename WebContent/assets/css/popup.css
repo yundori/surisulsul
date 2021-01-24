@@ -142,6 +142,57 @@
 /*
  * 별점
  * --------------------- */
+.stars .label {
+    display: block;
+    margin-bottom: -1px;
+}
+
+.br-theme-fontawesome-stars .br-widget {
+    height: 28px;
+    white-space: nowrap;
+}
+
+.br-theme-fontawesome-stars .br-widget a {
+    font: normal normal normal 30px/1.2 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    margin-right: 2px;
+}
+
+.br-theme-fontawesome-stars .br-widget a:after {
+    content: '\f005';
+    color: #d5d5d5;
+}
+
+.br-theme-fontawesome-stars .br-widget a.br-active:after {
+    color: #fbd14b;
+}
+
+.br-theme-fontawesome-stars .br-widget a.br-selected:after {
+    color: #fbd14b;
+}
+
+.br-theme-fontawesome-stars .br-widget .br-current-rating {
+    display: none;
+}
+
+.br-theme-fontawesome-stars .br-readonly a {
+    cursor: default;
+}
+
+@media print {
+    .br-theme-fontawesome-stars .br-widget a:after {
+        content: '\f006';
+        color: black;
+    }
+
+    .br-theme-fontawesome-stars .br-widget a.br-active:after,
+    .br-theme-fontawesome-stars .br-widget a.br-selected:after {
+        content: '\f005';
+        color: black;
+    }
+}
 
 /*
  * 후기, 문의 입력 칸
@@ -217,4 +268,39 @@ button {
     box-shadow: none;
     border-radius: 3px;
     margin-bottom: 50px;
+}
+
+/*
+ * 비밀번호 확인 박스 영역
+ * --------------------- */
+.chk-pw-box {
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.box-title {
+    background-color: #6a60a9;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.box-alert {
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #666;
+    line-height: 20px;
+}
+
+.input-pw-box {
+    padding: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.input-pw-box label {
+    padding: 0 10px;
 }

@@ -72,6 +72,44 @@ $(function() {
     });
     */
 
+    /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
+    $("#update_form").validate({
+        /** 입력검사 규칙 */
+        rules: {
+            // [비밀번호] 필수 + 글자수 길이 제한
+            user_pw: { required: true, minlength: 4, maxlength: 20 },
+            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
+            user_pw_re: { required: true, equalTo: "#user_pw" },
+            // [연락처] 필수
+            tel: { required: true, phone: true },
+            // [우편번호 및 주소] 필수
+            postcode: { required: true },
+            // [기타 주소] 필수
+            detailAddress: { required: true }
+        },
+        /** 규칙이 맞지 않을 경우의 메시지 */
+        messages: {
+            user_pw: {
+                required: "비밀번호를 입력하세요.",
+                minlength: "비밀번호는 4글자 이상 입력하셔야 합니다.",
+                maxlength: "비밀번호는 최대 20자까지 가능합니다."
+            },
+            user_pw_re: {
+                required: "비밀번호 확인값을 입력하세요.",
+                equalTo: "비밀번호 확인이 잘못되었습니다."
+            },
+            tel: {
+                required: "연락처를 입력하세요.",
+                phone: "연락처 형식이 잘못되었습니다."
+            },
+            postcode: {
+                required: "우편번호 찾기를 통해 주소를 입력하세요."
+            },
+            detailAddress: {
+                required: "배송을 위한 상세 주소를 입력하세요."
+            }
+        }
+    }); // end validate()
 
     /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
     $("#join_form").validate({
@@ -137,4 +175,6 @@ $(function() {
             }
         }
     }); // end validate()
+
+
 });

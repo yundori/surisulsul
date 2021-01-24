@@ -31,7 +31,7 @@
 	width: 300px;
 	height: 230px;
 	margin-top: 40px;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 	padding: 0;
 	float: left;
 }
@@ -41,6 +41,13 @@
 	margin-bottom: 30px;
 }
 
+.taste_chart {
+	width: 300px; 
+	height: 150px;
+	margin: 0;
+	padding: auto;
+}
+/* 
 .taste h5 {
 	width: 60px;
 	height: auto;
@@ -133,13 +140,13 @@
 	line-height: 20px;
 	background-color: #B1659F;
 	text-indent: -10000px;
-}
+}*/
 
 .jn_result {
 	width: 400px;
 	height: auto;
 	margin-top: 35px;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 	padding: 0;
 	text-align: left;
 	float: right;
@@ -177,7 +184,7 @@
 	text-align: center;
 	float: left;
 	position: relative;
-	top: 120px;
+	top: 100px;
 }
 
 .keyword_lists_ul {
@@ -220,8 +227,8 @@
 .item_info_suri {
 	width: 100%;
 	height: auto;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 20px;
+	margin-bottom: 80px;
 	padding: 0;
 }
 

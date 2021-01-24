@@ -48,7 +48,7 @@
 
 					</td>
 					<td>2021-01-19</td>
-					<td><a href="#" class="edit_recommend btn_gray">수정하기</a></td>
+					<td><a href="#" class="edit_recommend btn_gray" onClick="openPop()" return false;>수정하기</a></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="item2" id="item2" class="ab">
@@ -71,7 +71,7 @@
 
 					</td>
 					<td>2021-01-19</td>
-					<td><a href="#" class="edit_recommend btn_gray">수정하기</a></td>
+					<td><a href="#" class="edit_recommend btn_gray" onClick="openPop()" return false;>수정하기</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -145,34 +145,4 @@
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.check_all').click(function() {
-			$('.ab').prop('checked', this.checked);
-			$('.check_all').prop('checked', this.checked);
-		});
-	});
-
-	$(document).ready(function() {
-		$('.check_all2').click(function() {
-			$('.cd').prop('checked', this.checked);
-			$('.check_all2').prop('checked', this.checked);
-		});
-	});
-
-	// 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
-	$('.ab').click(function() {
-		if ($("#item1").is(":checked") && $("#item2").is(":checked")) {
-			$('.check_all').attr("checked", true);
-		} else {
-			$('.check_all').attr("checked", false);
-		}
-	});
-	$('.cd').click(function() {
-		if ($("#item1").is(":checked") && $("#item2").is(":checked")) {
-			$('.check_all').attr("checked", true);
-		} else {
-			$('.check_all').attr("checked", false);
-		}
-	});
-</script>
+<script src="${contextPath}/assets/js/my_opinion.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>

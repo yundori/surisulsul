@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage.css?time=${currentTime}" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 
 	<!-- 개인정보 확인 -->
 	<div class="psn_info clean">
@@ -33,8 +33,8 @@
 		</table>
 		<!-- 개인정보 버튼 세트 -->
 		<div class="psn_btn">
-				<a class="psn_edit" href=#>수정하기</a>
-				<a class="psn_deactivate" href=#>탈퇴하기</a>
+				<a class="psn_edit" href=# onClick="openPw()" return false;>수정하기</a>
+				<a href="#" class="psn_deactivate" type="button" return false;>탈퇴하기</a>
 		</div>
 	</div>
 	<hr />
@@ -70,6 +70,9 @@
             </div>
         </div>
 
-
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    
 <script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
