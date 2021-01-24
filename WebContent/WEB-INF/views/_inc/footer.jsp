@@ -10,16 +10,16 @@
 	<br />
 	<div class="sitemap">
 		<ul>
-			<li class="title"><a href="#">알립니다</a></li>
+			<li class="title"><a href="${contextPath}/cscenter/cscenter_notice.jsp">알립니다</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="#">자주 묻는 질문</a></li>
+			<li class="title"><a href="${contextPath}/cscenter/cscenter_faq.jsp">자주 묻는 질문</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="#">내가 찾는 술</a></li>
+			<li class="title"><a href="${contextPath}/items/item_filtered.jsp">내가 찾는 술</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="#">인기 많은 술</a></li>
+			<li class="title"><a href="${contextPath}/items/best_items.jsp">인기 많은 술</a></li>
 		</ul>
 		<ul class="sitemap_drink">
 			<li class="title"><a href="#">우리 술 종류</a></li>
