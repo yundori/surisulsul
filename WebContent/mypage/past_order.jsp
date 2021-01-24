@@ -8,7 +8,10 @@
 		<h2 class="psn_title_txt">구매했어요</h2>
 	</div>
 </div>
-
+<c:choose>
+		<%--c:when test 조건 -> 최근 주문 내역이 있는 경우 -> 주문 내역 DB 내용 존재 --%>
+		<c:when test="false">
+		
 <div class="order_table">
 	<table>
 		<thead>
@@ -17,6 +20,8 @@
 			</tr> 
 		</thead>
 		<tbody>
+		<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
+						
 			<tr>
 
 				<td>
@@ -65,11 +70,24 @@
 				<td>배송완료<br/>
 				<a href="#" class="write_review btn_yellow" onClick="openPop()" return false;>후기쓰기</a></td>
 			</tr>
-
+		<!--</c:forEach>-->
 		</tbody>
 	</table>
 	<!--***** 여기에 PAGINATION 들어가야 함 *****-->
 </div>
+
+</c:when>
+		<%--c:otherwise --> 주능 테스트 이력이 없는 경우 -> 주능 결과 DB에 데이터 X --%>
+		<c:otherwise>
+
+	<div class="psn_no_result">
+		<img src="${contextPath}/assets/img/mypage/mark_alert.png"/>
+		<h3 class="psn_title_dsc">
+		최근 주문 내역이 없습니다.
+		</h3>
+	</div>
+		</c:otherwise>
+</c:choose>
 
 <script>
 //팝업열기
