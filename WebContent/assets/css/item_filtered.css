@@ -97,32 +97,13 @@
 }
 
 /*
- * 슬라이더 구간 텍스트 -> 전체 낮음 중간 높음
- * -------------------------- */
-.slider_info {
-	width: 80%;
-	height: 40px;
-	margin: 0 auto;
-	padding: 0;
-	font-size: 16px;
-	color: #7d7891;
-	line-height: 40px;
-	text-align: center;
-	vertical-align: middle;
-	word-spacing: 60px;
-	position: relative;
-	left: 18px;
-	bottom: 10px;
-}
-
-/*
  * 각 슬라이더 영역
  * -------------------------- */
 .slider {
-	width: 90%;
+	width: 95%;
 	height: 40px;
-	margin: 0 auto 32px auto;
-	padding: auto;
+	margin: 40px 0 0 10px;
+	padding: 0;
 	vertical-align: middle;
 }
 
@@ -133,12 +114,24 @@
 	width: 40px;
 	height: 40px;
 	margin: 0;
-	margin-right: 15px;
+	margin-left: 3px;
 	padding: 0;
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 40px;
 	text-align: center;
 	vertical-align: middle;
+}
+.bar_slider {
+	width: auto;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 25px;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	left: 30px;
+	bottom: 58px;
 }
 
 /*
@@ -155,84 +148,6 @@
 	color: purple;
 	background-color: purple;
 }
-
-/*
- * 기본값 초기화
- * -------------------------- 
-input[type=range] {
-	-webkit-appearance: none;
-	width: 100%;
-	background: transparent;
-}
-
-input[type=range]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-}
-
-input[type=range]:focus {
-	outline: none;
-}
-
-input[type=range]::-ms-track {
-	width: 100%;
-	cursor: pointer;
-	background: transparent;
-	border-color: transparent;
-	color: transparent;
-}*/
-
-/*
- * 슬라이더 thumb
- * -------------------------- 
-input[type=range]::-webkit-slider-thumb {
-	-webkit-apperance: none;
-	height: 15px;
-	width: 15px;
-	border-radius: 200px;
-	background-color: #7C59B6;
-	cursor: pointer;
-}
-
-input[type=range]::-moz-range-thumb {
-	-webkit-apperance: none;
-	height: 15px;
-	width: 15px;
-	border-radius: 200px;
-	background-color: #7C59B6;
-	cursor: pointer;
-}
-
-input[type=range]::-ms-thumb {
-	-webkit-apperance: none;
-	height: 15px;
-	width: 15px;
-	border-radius: 200px;
-	background-color: #7C59B6;
-	cursor: pointer;
-}*/
-
-/*
- * 슬라이더 track
- * -------------------------- 
-input[type=range]::-webkit-slider-runnable-track {
-	width: 200px;
-	height: 10px;
-	background-color: white;
-	border-radius: 3px;
-	border: 1px solid #7C59B6;
-	cursor: pointer;
-}
-
-input[type=range]::-moz-range-track {
-	width: 200px;
-	height: 10px;
-	background-color: white;
-	border-radius: 3px;
-	border: 1px solid #7C59B6;
-	cursor: pointer;
-}
-*/
-
 
 /* 검색 조건 */
 
