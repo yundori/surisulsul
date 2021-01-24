@@ -31,7 +31,7 @@
 			<li class="drink"><a href="${contextPath}/extra/liquerurs.jsp">기타주류</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="../extra/juneung.jsp">주(酒)능 </a></li>
+			<li class="title"><a href="${contextPath}/extra/juneung.jsp">주(酒)능 </a></li>
 		</ul>
 	</div>
 	<div class="award">
