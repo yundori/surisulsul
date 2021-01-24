@@ -20,6 +20,7 @@
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
 <body>
  <div class="pop-up">
@@ -39,9 +40,9 @@
                 <div class="item-price">28,000원</div>
             </div>
             <form>
-                <div class="form-group">
+                <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
-                    <select id="example">
+                    <select id="example-fontawesome" name="rating" autocomplete="off">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -66,6 +67,7 @@
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $('.write-content').keyup(function(e) {
         var content = $(this).val();
@@ -76,6 +78,15 @@
             $(this).val(content.substring(0, 1000));
             $('.input-limit').html("1,000/1,000");
         }
+    });
+    $(function() {
+        function ratingEnable() {
+            $('#example-fontawesome').barrating({
+                theme: 'fontawesome-stars',
+                showSelectedRating: false
+            });
+        }
+        ratingEnable();
     });
     </script>
   </body>

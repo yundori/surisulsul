@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_filtered.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/best_items.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/bar_slider.css?time=${currentTime}">
 
 	<div class="item_filtered">
 		<form>
@@ -130,19 +131,41 @@
 				</div>
 				<div class="sliders check_boxes">
 					<h2 class="checkbox_title">맛과 깊이</h2>
-					<div class="slider_info">전체 낮음 중간 높음</div>
+					<%-- <div class="slider_info">전체 낮음 중간 높음</div> --%>
 					<div class="slider">
 						<span class="slider_title">당도</span>
-						<%-- 기본값 설정 : value속성 사용 --%>
-						<input type="range" max="6" min="0" step="2" value="0" />
+						<div class="bar_slider">
+							<select id="bar_slider_sugar" name="bar_slider" autocomplete="off">
+                        		<option value="1">낮음</option>
+                        		<option value="2">중간</option>
+                        		<option value="3">높음</option>
+                        		<option value="4" selected>전체</option>
+                    		</select>
+						</div>
 					</div>
+					
 					<div class="slider">
 						<span class="slider_title">산미</span>
-						<input type="range" max="6" min="0" step="2" value="0" />
+						<div class="bar_slider">
+							<select id="bar_slider_acidity" name="bar_slider" autocomplete="off">
+                        		<option value="1">낮음</option>
+                        		<option value="2">중간</option>
+                        		<option value="3">높음</option>
+                        		<option value="4" selected>전체</option>
+                    		</select>
+						</div>
 					</div>
+					
 					<div class="slider">
 						<span class="slider_title">도수</span>
-						<input type="range" max="6" min="0" step="2" value="0" />
+						<div class="bar_slider">
+							<select id="bar_slider_alcohol" name="bar_slider" autocomplete="off">
+                        		<option value="1">낮음</option>
+                        		<option value="2">중간</option>
+                        		<option value="3">높음</option>
+                        		<option value="4" selected>전체</option>
+                    		</select>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -415,5 +438,44 @@
 
 <script src="${contextPath}/assets/js/item_filtered.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+        function ratingEnable() {
+            $('#bar_slider_sugar').barrating({
+                theme: 'bars-pill',
+                showValues: true,
+                showSelectedRating: false,
+                hoverState: true
+            });
+        }
+        ratingEnable();
+    });
+    
+    $(function() {
+        function ratingEnable() {
+            $('#bar_slider_acidity').barrating({
+                theme: 'bars-pill',
+                showValues: true,
+                showSelectedRating: false,
+                hoverState: true
+            });
+        }
+        ratingEnable();
+    });
+    
+    $(function() {
+        function ratingEnable() {
+            $('#bar_slider_alcohol').barrating({
+                theme: 'bars-pill',
+                showValues: true,
+                showSelectedRating: false,
+                hoverState: true
+            });
+        }
+        ratingEnable();
+    });
+</script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
