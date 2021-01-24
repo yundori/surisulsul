@@ -52,7 +52,7 @@
 		<h2 class="psn_title_txt">나의 주(酒)능 결과</h2>
 	</div>
 	<div class="psn_no_result">
-		<img src="${contextPath}/assets/img/mypage/cry_alert.png"/>
+		<img src="${contextPath}/assets/img/mypage/mark_alert.png"/>
 		<h3 class="psn_title_dsc">
 		아직 주(酒)능 응시 기록이 없습니다<br/>
 		<span class="psn_gotest">나만을 위한 술을 추천받기 위해 술학능력시험:주(酒)능을 응시하러 가볼까요? </span>
