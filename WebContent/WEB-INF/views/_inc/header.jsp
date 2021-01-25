@@ -45,9 +45,16 @@
             <img src="${contextPath}/assets/img/logo1.PNG" alt="사이드바 로고" />
          </h1>
          <ul>
-            <li><a href="${contextPath}/items/best_items.jsp">인기 많은 술</li>
+            <li><a href="${contextPath}/items/best_items.jsp">인기 많은 술</a></li>
             <li><a href="${contextPath}/items/item_filtered.jsp">내가 찾는 술</a></li>
-            <li><a href="${contextPath}/index/index.jsp#main_drink">우리 술 종류</a></li>
+            <li class="drink_type"><a href="${contextPath}">우리 술 종류</a></li>
+            	<div class="drink_inner">
+		            <li><a href="${contextPath}/extra/takju.jsp">탁주</a></li>
+					<li><a href="${contextPath}/extra/fruit_drink.jsp">과실주</a></li>
+					<li><a href="${contextPath}/extra/cheongju.jsp">약주/청주</a></li>
+					<li><a href="${contextPath}/extra/spirits.jsp">증류주</a></li>
+					<li><a href="${contextPath}/extra/liquerurs.jsp">기타주류</a></li>
+            	</div>
             <li><a href="${contextPath}/extra/juneung.jsp">주(酒)능</a></li>
             <br />
             <br />
