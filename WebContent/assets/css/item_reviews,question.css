@@ -243,11 +243,16 @@
 .question_detail {
 	width: auto;
 	height: auto;
-	padding: 0 40px;
+	padding: 20px 40px;
 	text-align: left;
 	line-height: 40px;
 	background-color: #dedcee;
 	display: none;
+}
+
+.question_detail > span {
+	color: #848484;
+	margin-bottom: 10px;
 }
 
 /* 상품 리뷰, 문의가 없는 경우 */

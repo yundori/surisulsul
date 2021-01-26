@@ -21,31 +21,6 @@
 			<div class="taste_chart">
 				<canvas id="item_chart"></canvas>
 			</div>
-			<%-- 
-			<div class="sugar">
-				<h5>당도</h5>
-				<div class="sugar_counts">
-					<c:forEach var="i" begin="1" end="4" varStatus="status">
-						<div class="sugar_count">sugar</div>
-					</c:forEach>
-				</div>
-			</div>
-			<div class="acidity">
-				<h5>산미</h5>
-				<div class="acidity_counts">
-					<c:forEach var="i" begin="1" end="2" varStatus="status">
-						<div class="acidity_count">acidity</div>
-					</c:forEach>
-				</div>
-			</div>
-			<div class="alcohol_degree">
-				<h5>도수</h5>
-				<div class="alcohol_degree_counts">
-					<c:forEach var="i" begin="1" end="6" varStatus="status">
-						<div class="alcohol_degree_count">alcohol_degree</div>
-					</c:forEach>
-				</div>
-			</div>--%>
 			
 		</div>
 
@@ -89,11 +64,7 @@
 				철회가 인정되는 거래에 대해서는 관계 법령에서 정한 반에 따라 회원이 철회를 요청하는 경우 이를 수용하여야 한다.
 			</p>
 		</div>
-		<%-- 
-		<div class="item_chart">
-			<canvas id="item_chart"></canvas>
-		</div>
-		--%>
+		
 	</div>
 </div>
 

@@ -32,10 +32,13 @@
 				<div class="question_default">
 					<span class="que_number">4</span>
 					<span class="que_type">배송</span>
-					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</div>
+					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다!!!!!!!!!!!!</div>
 					<span class="que_answer">대기</span>
 					<span class="que_date">2021-01-19</span>
-					<div class="question_detail">배송은 2~3일 정도 소요됩니다.</div>
+					<div class="question_detail">
+						<span>배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</span><br />
+						배송은 2~3일 정도 소요됩니다.
+					</div>
 				</div>
 			</div>
 			
@@ -47,6 +50,7 @@
 					<span class="que_answer">완료</span>
 					<span class="que_date">2021-01-19</span>
 					<div class="question_detail">
+						<span>아직 배송전인데 환불 안되나요?</span><br />
 						수리술술에서는 주문과 동시에 술제조가 들어가기 때문에 환불이 어렵습니다. 죄송합니다.
 					</div>
 				</div>
@@ -60,6 +64,7 @@
 					<span class="que_answer">대기</span>
 					<span class="que_date">2021-01-18</span>
 					<div class="question_detail">
+						<span>상품하자가 있어 교환가능한가요?</span><br />
 						확인 후 바로 조치해드리겠습니다. 불편을 드려 죄송합니다.
 					</div>
 				</div>
@@ -73,6 +78,7 @@
 					<span class="que_answer">완료</span>
 					<span class="que_date">2021-01-17</span>
 					<div class="question_detail">
+						<span>배송지 변경 가능할까요?</span><br />
 						확인 후 바로 연락드리겠습니다. 감사합니다.
 					</div>
 				</div>
