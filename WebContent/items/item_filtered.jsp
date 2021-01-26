@@ -191,7 +191,7 @@
 			<ul class="item_list">
 			 <c:choose>
 			 <%-- <c:when 선택된 값이 있을 경우 > --%>
-			 <c:when test="true">
+			 <c:when test="false">
 			 <%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
 					<a href="#">
@@ -424,7 +424,7 @@
 				<%--c:otherwise 조건에 부합하는 DB가 없는 경우 --%>
 				<c:otherwise>
 					<div class="select_none">
-						<img src="../assets/img/order/order_fail.png" />
+						<img src="../assets/img/mypage/mark_alert.png" />
 						<h1>검색 결과를 찾을 수 없습니다.</h1>
 					</div>
 				</c:otherwise>

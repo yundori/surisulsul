@@ -60,7 +60,7 @@
 	</div>
 	
 	<div class="item_details_footer">
-		<img src="../assets/img/items/btn_top.png" class="btn_top" />
+		<img src="../assets/img/items/cart_top_btn.PNG" class="btn_top" />
 	</div>
 	
 	<%-- </c:when> --%>

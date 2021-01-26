@@ -44,7 +44,7 @@
 	width: 20%;
 	height: 200px;
 	padding: 15px 10px;
-	margin: 0; 
+	margin: 0;
 	vertical-align: middle;
 	text-align: center;
 }
@@ -53,7 +53,7 @@
 	width: 170px;
 	height: 200px;
 	object-fit: cover;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .item_reviews .content_area {
@@ -95,7 +95,6 @@
 }
 
 /* item_question 페이지 css */
-
 .item_question {
 	width: 90%;
 	height: auto;
@@ -157,8 +156,7 @@
 	background-color: white;
 }
 
-
-.question_lists  {
+.question_lists {
 	width: 100%;
 	height: auto;
 	margin: 0;
@@ -219,7 +217,11 @@
 	width: 50%;
 	height: 40px;
 	text-align: center;
+	vertical-align: middle;
 	line-height: 40px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .que_answer {
@@ -237,6 +239,7 @@
 	text-align: center;
 	line-height: 40px;
 }
+
 .question_detail {
 	width: auto;
 	height: auto;
@@ -248,7 +251,6 @@
 }
 
 /* 상품 리뷰, 문의가 없는 경우 */
-
 .review_none, .question_none {
 	width: 100%;
 	height: auto;
@@ -258,12 +260,11 @@
 	vertical-align: middle;
 }
 
-.review_none>h1, .question_none>h1{
+.review_none h1, .question_none>h1 {
 	width: auto;
 	height: auto;
 	margin: 30px auto;
 	padding: auto;
-	font-size: 30px;
-	color: #7C59B6;
-	
+	font-size: 20px;
+	color: #bbbbbb;
 }

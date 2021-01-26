@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td class="img_area">
-					<img class="review_img" src="../assets/img/items/best1.PNG" />
+					<img class="review_img" src="../assets/img/no-image.jpg" />
 				</td>
 				<td class="content_area">
 					<h3 class="content_title">복숭아 향이 좋아요!</h3>
@@ -62,8 +62,11 @@
 		<c:otherwise>
 			<hr />
 			<div class="review_none">
-				<img src="../assets/img/order/order_fail.png" />
-				<h1>상품 후기가 없습니다.</h1>
+				<table>
+					<tr>
+						<td><h1>상품 후기가 없습니다.</h1></td>
+					</tr>
+				</table>
 			</div>
 		</c:otherwise>
 		</c:choose>

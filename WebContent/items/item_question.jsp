@@ -32,7 +32,7 @@
 				<div class="question_default">
 					<span class="que_number">4</span>
 					<span class="que_type">배송</span>
-					<div class="que_content">배송은 얼마나 걸리나요?</div>
+					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</div>
 					<span class="que_answer">대기</span>
 					<span class="que_date">2021-01-19</span>
 					<div class="question_detail">배송은 2~3일 정도 소요됩니다.</div>
@@ -83,7 +83,6 @@
 			<c:otherwise>
 				<hr />
 				<div class="question_none">
-				<img src="../assets/img/order/order_fail.png" />
 				<h1>상품 문의가 없습니다.</h1>
 			</div>
 			</c:otherwise>

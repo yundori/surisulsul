@@ -197,6 +197,7 @@
     bottom: 4em;
     cursor: pointer;
     z-index: 100;
+    border-radius: 200px;
     display: none;
 }
 
