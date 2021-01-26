@@ -12,15 +12,15 @@
 			<ul class="slides-container">
 				<!-- 슬라이드 1 -->
 				<li><a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/ex.jpg" alt="로고" /></a>
+						src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" /></a>
 				</li>
 				<!-- 슬라이드 2 -->
 				<li><a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/main_banner2.png" alt="로고" /></a>
+						src="${contextPath}/assets/img/index/banner2.png" alt="메인배너" /></a>
 				</li>
 				<!-- 슬라이드 3 -->
 				<li><a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/main_banner3.png" alt="로고" /></a>
+						src="${contextPath}/assets/img/index/banner3.jpg" alt="메인배너" /></a>
 				</li>
 			</ul>
 		</div>
