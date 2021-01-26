@@ -11,8 +11,8 @@
 		<div id="slides">
 			<ul class="slides-container">
 				<!-- 슬라이드 1 -->
-				<li><a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" /></a>
+				<li><a href="${contextPath}">
+				<img src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" /></a>
 				</li>
 				<!-- 슬라이드 2 -->
 				<li><a href="${contextPath}"><img
@@ -94,13 +94,8 @@
 			<div class="juneung_empty">
 				<div class="test_img">
 					<a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/main_banner3.png"
+						src="${contextPath}/assets/img/index/jutest_banner.png"
 						alt="주능 테스트배너" /></a>
-					<p class="test_text">
-						아직 당신을 위한 술을 추천 받지 못하셨나요? <br /> 
-						지금 바로 주능 테스트를 해보세요 ! <br />
-						<button type="button" class="login_no_button" onclick="location.href='${contextPath}/extra/juneung.jsp'">주능 테스트하기</button>
-					</p>
 				</div>
 			</div>
 		</c:otherwise>
