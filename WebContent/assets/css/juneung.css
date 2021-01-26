@@ -37,12 +37,12 @@
 
 /* IMAGE STYLES */
 [type=radio]+img {
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	cursor: pointer;
 	margin: 40px;
-	border: 2px solid #6a60a9;
-	border-radius: 50px;
+	border: none;
+	border-radius: 70px;
     
     /** 작아질 때 효과 */
     transition: all .35s;
@@ -52,7 +52,7 @@
 }
 
 [type=radio]+img:hover{
-    opacity:0.7;
+    filter: brightness(50%); 
     /*  default */
     transform: scale(1.1);
     /*  크롬 */
@@ -71,7 +71,7 @@
 
 /* CHECKED STYLES */
 [type=radio]:checked+img {
-	border: 2px solid #fbd14b;
+	filter: brightness(50%);
     /*  default */
     transform: scale(1.1);
     /*  크롬 */
@@ -84,11 +84,12 @@
 .icon_description{
 	width: 100%;
 	position: absolute;
-	top:-80px;
+	top:-100px;
 	left: 0;
 	z-index: 1000;
+	color:#bbb;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .text_visible {
