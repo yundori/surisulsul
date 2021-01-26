@@ -74,6 +74,10 @@
 .juneung_empty {
    position: relative;
 }
+.juneung_empty img{
+	width:100%;
+	height:400px;
+}
 
 /* 주능 테스트 배너 안 버튼 (임시)
 ----------------------------*/

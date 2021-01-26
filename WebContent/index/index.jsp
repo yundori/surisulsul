@@ -20,7 +20,7 @@
 				</li>
 				<!-- 슬라이드 3 -->
 				<li><a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/banner3.jpg" alt="메인배너" /></a>
+						src="${contextPath}/assets/img/index/banner3.png" alt="메인배너" /></a>
 				</li>
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 		<%-- 여기서 test에 들어가있는 첫번째 true의 의미 = 로그인 여부 (로그인 되어있으면 true)
 			test에 들어가있는 두번째 boolean값의 의미 = 로그인 된 사용자의 주능 테스트 이력 여부 (테스트한적 있으면 true) 
 		 --%>
-		<c:when test="true">
+		<c:when test="false">
 			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능 본적 있음)일 때 index에 출력할 내용 --%>
 			<div class="main_best">
 		<h1>취향에 맞는 술을 추천해드려요 ! </h1>
@@ -94,7 +94,7 @@
 			<div class="juneung_empty">
 				<div class="test_img">
 					<a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/jutest_banner.png"
+						src="${contextPath}/assets/img/index/juneung.jpg"
 						alt="주능 테스트배너" /></a>
 				</div>
 			</div>
