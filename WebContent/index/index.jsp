@@ -94,7 +94,7 @@
 			<div class="juneung_empty">
 				<div class="test_img">
 					<a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/juneung.jpg"
+						src="${contextPath}/assets/img/index/juneung.png"
 						alt="주능 테스트배너" /></a>
 				</div>
 			</div>
