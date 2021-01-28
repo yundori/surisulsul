@@ -10,7 +10,7 @@
 </div>
 <c:choose>
 		<%--c:when test 조건 -> 최근 주문 내역이 있는 경우 -> 주문 내역 DB 내용 존재 --%>
-		<c:when test="false">
+		<c:when test="true">
 		
 <div class="order_table">
 	<table>

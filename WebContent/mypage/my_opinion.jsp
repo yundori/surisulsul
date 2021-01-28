@@ -29,7 +29,7 @@
 			<tbody>
 				<c:choose>
 					<%--c:when test 조건 -> 최근 구매 내역이 있는 경우 -> 후기를 작성했는지 여부 -> 주문 내역 DB 내용 존재 --%>
-					<c:when test="false">
+					<c:when test="true">
 						<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
 						<tr>
 							<td><input type="checkbox" name="item1" id="item1"

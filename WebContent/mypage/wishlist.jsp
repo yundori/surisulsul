@@ -8,7 +8,7 @@
 
 	<c:choose>
 		<%--c:when test 조건 -> 관심있어요 누른 상품이 있는 경우 -> DB 내용 존재 --%>
-		<c:when test="false">
+		<c:when test="true">
 
 			<div class="psn_title">
 				<h2 class="psn_title_txt">나의 관심 술</h2>
