@@ -45,7 +45,31 @@
     text-align: center;
 }
 
+
 /************************************************* ************************************************** **********My_Recommend****************************/
+/**주능 결과 꽃 부분 강조*/
+.psn_title_txt .flower_type {
+    font-style: italic;
+    color: #6A60A9;
+}
+
+/**주능 결과 텍스트*/
+.psn_title p {
+    line-height: 2em;
+    padding: 10px 20px;
+    width: fit-content;
+    border: 1px solid #DEDEDE;
+    border-radius: 15px;
+}
+
+/**주능 결과 꽃 이미지*/
+.psn_jn_result img {
+    width: 250px;
+    margin: auto;
+    display: block;
+    margin-top: 80px;
+}
+
 /**나를 위한 추천 키워드*/
 .psn_keyword {
     width: 100%;
