@@ -16,7 +16,8 @@
 				<h3 class="item_name">고도리 복숭아와인</h3>
 			 	<h5 class="item_plain_info">제품 간략 설명(1줄 내외)</h5>
 			 	<h5 class="item_ingre">원재료 : 무엇무엇(주재료, %)</h5>
-			 	<h5 class="item_period">예상 배송 기간 : n일</h5>
+			 	<h5 class="item_plain_info">용량 : 350 ml</h5>
+			 	<h5 class="item_period">예상 배송 기간 : 2일</h5>
 			 	<h5 class="item_price_text">판매가격</h5>
 			 	<h4 class="item_price">00,000원</h4>
 			 	<h5 class="item_rating_text">소비자 평점</h5>
