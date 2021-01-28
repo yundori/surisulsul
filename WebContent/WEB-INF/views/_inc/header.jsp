@@ -19,6 +19,9 @@
 <link rel="stylesheet" type="text/css"
    href="${contextPath}/assets/css/reset.css" />
 <!-- 크로스 브라우징 호환성 끝 -->
+<!-- 모바일 아이콘 지원 -->
+    <link rel="shortcut icon" href="${contextPath}/assets/img/favicon.png" />
+    <link rel="icon" href="${contextPath}/assets/img/favicon.png" />
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css"
    href="${contextPath}/assets/css/common.css?time=${currentTime}" />
@@ -33,7 +36,7 @@
    <div class="header">
       <h1>
          <a href="${contextPath}"><img
-            src="${contextPath}/assets/img/logo1.PNG" alt="로고" /></a>
+            src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
       </h1>
       <input type="checkbox" id="check"> 
       <label for="check">
@@ -42,7 +45,7 @@
       </label>
       <div class="sidebar">
          <h1>
-            <img src="${contextPath}/assets/img/logo1.PNG" alt="사이드바 로고" />
+            <img src="${contextPath}/assets/img/logo.png" alt="사이드바 로고" />
          </h1>
          <ul>
             <li><a href="${contextPath}/items/best_items.jsp">인기 많은 술</a></li>

@@ -12,22 +12,22 @@ a {
 }
 
 hr {
-	display: none;
+    display: none;
 }
 
 li {
-	list-style: none;
+    list-style: none;
 }
 
 /** header.css */
 
-/* header 전체 
+/* header 전체
 ----------------------------*/
 .header {
-	width: 100%;
+    width: 100%;
     height: 100px;
     background: #fff;
-    position:fixed;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 20000;
@@ -36,22 +36,22 @@ li {
 /* main 로고
 ----------------------------*/
 .header h1 {
-	width:200px;
+    width: 200px;
     padding-top: 15px;
-    position:relative;
-	margin: auto;
+    position: relative;
+    margin: auto;
 }
 
 /* 로그인/로그아웃 메뉴 전체
 ----------------------------*/
 .login_menu {
-	position: absolute;
-	right: 10px;
-	top: 45px;
+    position: absolute;
+    right: 10px;
+    top: 45px;
     width: 280px;
 }
 
-/* 로그인/로그아웃 메뉴 
+/* 로그인/로그아웃 메뉴
 ----------------------------*/
 .login_menu li {
     float: left;
@@ -61,24 +61,34 @@ li {
 
 /** footer.css */
 
-/* footer 전체 
+/* footer 전체
 ----------------------------*/
 .footer {
     width: 100%;
     height: 420px;
     background: #2A2727;
-    position : absolute;
+    position: absolute;
 }
 
-/* footer 로고 
+/* footer 로고
 ----------------------------*/
 .footer h1 {
-    width: 130px;
     padding-left: 100px;
-    padding-top: 30px;
+    padding-top: 50px;
 }
 
-/* sitemap 
+.footer h1 a {
+    display: inline-block;
+    /**a가 img 전체를 감싸도록*/
+}
+
+/* footer 로고 이미지 상세조정
+----------------------------*/
+.footer h1 img {
+    width: 150px;
+}
+
+/* sitemap
 ----------------------------*/
 .sitemap {
     text-align: center;
@@ -147,7 +157,7 @@ li {
     height: 100%;
     background: #fff;
     transition: all .5s ease;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* 사이드바 로고
@@ -186,13 +196,13 @@ li {
     margin-right: 16px;
 }
 
-/* 사이드바 x, 햄버거 
+/* 사이드바 x, 햄버거
 ----------------------------*/
 #check {
     display: none;
 }
 
-/* 사이드바 '햄버거 메뉴' 
+/* 사이드바 '햄버거 메뉴'
 ----------------------------*/
 label #btn {
     position: relative;
@@ -204,10 +214,10 @@ label #btn {
     transition: all .5s;
 }
 
-/* 사이드바 'x' 아이콘 
+/* 사이드바 'x' 아이콘
 ----------------------------*/
 label #cancel {
-	position: absolute;
+    position: absolute;
     border-radius: 3px;
     cursor: pointer;
     z-index: 1111;
@@ -228,16 +238,16 @@ label #cancel {
 }
 
 .drink_inner {
-	display: none;
-	margin-top: 20px;
-	padding-left: 20px;
-	margin-bottom: 20px;
+    display: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
 }
 
 .drink_inner li a {
-	display: block;
-	padding-top: 10px;
-	margin-top: -35px;
-	font-size: 14px;
-	font-weight: bold;
+    display: block;
+    padding-top: 10px;
+    margin-top: -35px;
+    font-size: 14px;
+    font-weight: bold;
 }

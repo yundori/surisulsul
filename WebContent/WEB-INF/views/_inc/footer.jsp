@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <div class="footer">
 	<h1>
-		<a href="#"> <img src="${contextPath}/assets/img/footer_logo.PNG"
+		<a href="#"> <img src="${contextPath}/assets/img/logo.png"
 			alt="footer_logo" />
 		</a>
 	</h1>
