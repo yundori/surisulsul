@@ -424,7 +424,7 @@
 				<%--c:otherwise 조건에 부합하는 DB가 없는 경우 --%>
 				<c:otherwise>
 					<div class="select_none">
-						<img src="../assets/img/mypage/mark_alert.png" />
+						<img src="../assets/img/mark_alert.png" />
 						<h1>검색 결과를 찾을 수 없습니다.</h1>
 					</div>
 				</c:otherwise>

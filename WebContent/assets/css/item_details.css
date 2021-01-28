@@ -38,6 +38,35 @@
 	padding: 0;
 	text-align: left;
 	vertical-align: top;
+	position: relative;
+}
+
+.wishlist_btn {
+	z-index: 100;
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	background: url('../img/items/wishlist.png');
+	background-size: cover;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	position: absolute;
+	left: 350px;
+	top: 500px;
+}
+
+.wishlist_ok_btn {
+	z-index: 100;
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	background: url('../img/items/wishlist_ok.png');
+	background-size: cover;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	position: absolute;
 }
 
 .item_img {
