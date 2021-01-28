@@ -99,7 +99,7 @@
 	</div>
 	</div>
 	<div class="psn_no_result">
-		<img src="${contextPath}/assets/img/mypage/mark_alert.png" />
+		<img src="${contextPath}/assets/img/mark_alert.png" />
 		<h3 class="psn_title_dsc">아직 관심있어요를 누른 상품이 없습니다.
 		<br/>
 		<span class="psn_gotest">관심있는 상품을 찜해두면 편하게 확인할 수 있습니다.</span></h3>

@@ -81,7 +81,7 @@
 		<c:otherwise>
 
 	<div class="psn_no_result">
-		<img src="${contextPath}/assets/img/mypage/mark_alert.png"/>
+		<img src="${contextPath}/assets/img/mark_alert.png"/>
 		<h3 class="psn_title_dsc">
 		최근 주문 내역이 없습니다.
 		</h3>
