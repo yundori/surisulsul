@@ -1,5 +1,7 @@
 package study.spring.surisulsul.service.impl;
 
-public class ProductServiceImpl {
+import study.spring.surisulsul.service.ProductService;
+
+public class ProductServiceImpl implements ProductService{
 
 }
