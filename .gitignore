@@ -8,6 +8,8 @@
 
 # 로그파일 제외
 *.log
+log4j.xml
+root-context.xml
 
 # 운영체제에서 만드는 시스템 파일들 제외
 .DS_Store
