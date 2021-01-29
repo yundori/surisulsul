@@ -1,0 +1,253 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 전체 공통 내용
+----------------------------*/
+* {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    display: none;
+}
+
+li {
+    list-style: none;
+}
+
+/** header.css */
+
+/* header 전체
+----------------------------*/
+.header {
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20000;
+}
+
+/* main 로고
+----------------------------*/
+.header h1 {
+    width: 200px;
+    padding-top: 15px;
+    position: relative;
+    margin: auto;
+}
+
+/* 로그인/로그아웃 메뉴 전체
+----------------------------*/
+.login_menu {
+    position: absolute;
+    right: 10px;
+    top: 45px;
+    width: 280px;
+}
+
+/* 로그인/로그아웃 메뉴
+----------------------------*/
+.login_menu li {
+    float: left;
+    margin-right: 30px;
+    font-size: 14px;
+}
+
+/** footer.css */
+
+/* footer 전체
+----------------------------*/
+.footer {
+    width: 100%;
+    height: 420px;
+    background: #2A2727;
+    position: absolute;
+}
+
+/* footer 로고
+----------------------------*/
+.footer h1 {
+    padding-left: 100px;
+    padding-top: 50px;
+}
+
+.footer h1 a {
+    display: inline-block;
+    /**a가 img 전체를 감싸도록*/
+}
+
+/* footer 로고 이미지 상세조정
+----------------------------*/
+.footer h1 img {
+    width: 150px;
+}
+
+/* sitemap
+----------------------------*/
+.sitemap {
+    text-align: center;
+    width: 1100px;
+    padding-top: 10px;
+    height: 200px;
+    margin: auto;
+}
+
+.sitemap ul {
+    float: left;
+}
+
+.sitemap ul li a {
+    color: #fff;
+}
+
+/* 사이트 맵 (큰 글씨)
+----------------------------*/
+.title {
+    width: 180px;
+    margin: auto;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 우리 술 종류 상세
+----------------------------*/
+.drink {
+    width: 180px;
+    margin: auto;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.award {
+    width: 500px;
+    margin: auto;
+}
+
+.award li {
+    float: left;
+}
+
+.award img {
+    margin-left: 50px;
+}
+
+.info {
+    text-align: center;
+    margin: auto;
+    width: 1000px;
+    padding-top: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+/** sidebar.css */
+/* 사이드바 전체
+----------------------------*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -255px;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 사이드바 로고
+----------------------------*/
+.sidebar h1 img {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    width: 120px;
+    height: 35px;
+}
+
+/* 사이드 바 목록 간격
+----------------------------*/
+.sidebar ul {
+    margin-top: 170px;
+}
+
+.sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 17px;
+    color: #000;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .4s;
+}
+
+.sidebar ul li:hover a {
+    padding-left: 50px;
+}
+
+.sidebar ul a i {
+    margin-right: 16px;
+}
+
+/* 사이드바 x, 햄버거
+----------------------------*/
+#check {
+    display: none;
+}
+
+/* 사이드바 '햄버거 메뉴'
+----------------------------*/
+label #btn {
+    position: relative;
+    top: -55px;
+    left: 50px;
+    font-size: 30px;
+    color: #6a60a9;
+    padding: 6px 12px;
+    transition: all .5s;
+}
+
+/* 사이드바 'x' 아이콘
+----------------------------*/
+label #cancel {
+    position: absolute;
+    border-radius: 3px;
+    cursor: pointer;
+    z-index: 1111;
+    left: -195px;
+    top: 17px;
+    font-size: 30px;
+    color: #6a60a9;
+    padding: 4px 9px;
+    transition: all .5s ease;
+}
+
+#check:checked~.sidebar {
+    left: 0;
+}
+
+#check:checked~label #cancel {
+    left: 195px;
+}
+
+.drink_inner {
+    display: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.drink_inner li a {
+    display: block;
+    padding-top: 10px;
+    margin-top: -35px;
+    font-size: 14px;
+    font-weight: bold;
+}

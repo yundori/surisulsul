@@ -1,0 +1,547 @@
+@charset "UTF-8";
+
+/**페이지 크기*/
+.psn_recommend {
+    width: 80%;
+    margin: auto;
+}
+
+.psn_wishlist {
+    width: 80%;
+    margin: auto;
+}
+
+.psn_past_order {
+    width: 80%;
+    margin: auto;
+}
+
+/**페이지 타이틀 크기 설정*/
+.psn_title {
+    display: block;
+    width: 100%;
+    height: 140px;
+}
+
+/**페이지 메인 타이틀 */
+.psn_title_txt {
+    font-weight: 700;
+    font-size: 25px;
+    display: block;
+    width: 100%;
+    padding: 0 0 15px 0;
+    color: #5E5E5E;
+    margin-left: 20px;
+}
+
+/**페이지 서브 타이틀*/
+.psn_title_dsc {
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    padding: 0 0 15px 0;
+    color: #B0AFAF;
+    text-align: center;
+}
+
+
+/************************************************* ************************************************** **********My_Recommend****************************/
+/**주능 결과 꽃 부분 강조*/
+.psn_title_txt .flower_type {
+    font-style: italic;
+    color: #6A60A9;
+}
+
+/**주능 결과 텍스트*/
+.psn_title p {
+    line-height: 2em;
+    padding: 10px 20px;
+    width: fit-content;
+    border: 1px solid #DEDEDE;
+    border-radius: 15px;
+}
+
+/**주능 결과 꽃 이미지*/
+.psn_jn_result img {
+    width: 250px;
+    margin: auto;
+    display: block;
+    margin-top: 80px;
+}
+
+/**나를 위한 추천 키워드*/
+.psn_keyword {
+    width: 100%;
+    text-align: center;
+    float: left;
+    line-height: 43px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.psn_keyword a {
+    background-color: #FBD14B;
+    border: 0px;
+    margin-right: 3px;
+    width: auto;
+    padding: 3px 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/**나를 위한 추천 상품*/
+.psn_result {
+    width: 80%;
+    min-width: 1200px;
+    margin: auto;
+    height: 450px;
+}
+
+.psn_result_inner {
+    height: inherit;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**나를 위한 추천 상품
+->아이템 좌측 정렬*/
+.pick_item {
+    float: left;
+    margin: 0 12px;
+    width: 270px;
+    height: 360px;
+}
+
+/**나를 위한 추천 상품 a 범위 설정*/
+.pick_item a {
+    width: 270px;
+    height: 360px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+
+}
+
+/**나를 위한 추천 상품 > 링크 > 배경 박스*/
+.pick_item .psn_pick_bg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스(오버레이)*/
+.pick_item .psn_pick_text {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트*/
+.psn_pick_title,
+.psn_pick_price {
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(상품명)*/
+.psn_pick_title {
+    margin-top: 70%;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+/**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(가격)*/
+.psn_pick_price {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/**나를 위한  추천 상품 > 링크 마우스hover*/
+.pick_link:hover .psn_pick_bg {
+    transform: scale(1.1, 1.1);
+}
+
+.pick_link:hover .psn_pick_text {
+    opacity: 1;
+}
+
+/**나를 위한 추천 상품 설정*/
+.psn_pick1 {
+    background: url(../img/mypage/rec_01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+}
+
+.psn_pick2 {
+    background: url(../img/mypage/rec_02.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+}
+
+.psn_pick3 {
+    background: url(../img/mypage/rec_03.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+}
+
+.psn_pick4 {
+    background: url(../img/mypage/rec_04.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+}
+
+/**나를 위한 추천 상품 결과 없음 높이 설정*/
+.psn_no_result {
+    height: 370px;
+}
+
+/**나를 위한 추천 상품 결과 없음 text 설정*/
+.psn_no_result img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.psn_no_result .psn_title_dsc {
+    margin-top: 20px;
+    line-height: 1.5em;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.psn_no_result .psn_gotest {
+    font-size: 20px;
+    color: #6A60A9;
+    font-weight: 500;
+}
+
+/**나를 위한 추천 상품 결과 없음 버튼 설정*/
+.psn_no_result .btn_yellow {
+    margin: 0 auto;
+    display: block;
+    width: 263px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3em;
+    border-radius: 24px;
+}
+
+/************************************************* ************************************************** **********WISH LIST******************************/
+/******* 슬라이드 내용영역  *******/
+.swiper-container {
+
+    margin: auto;
+    height: 450px;
+    margin-bottom: 50px;
+}
+
+.swiper-wrapper {}
+
+/*.swiper-container .swiper-wrapper .swiper-slide,
+li .pick_item .swiper-slide .swiper-slide-active,
+li .pick_item .swiper-slide .swiper-slideduplicate,
+li .pick_item .swiper-slide .swiper-slide-next {
+    height: auto;
+    margin-right: 0;
+    margin-top: 30px;
+    margin-bottom: 0;
+    display: flex;
+}*/
+
+/**button 세부설정*/
+.swiper-container .swiper-button-prev,
+.swiper-container .swiper-container-rtl {
+    left: 0;
+    height: 450px;
+    top: 0;
+    width: 95px;
+    right: auto;
+    background-color: white;
+}
+
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-container-rtl {
+    right: 0;
+    height: 450px;
+    top: 0;
+    width: 95px;
+    left: auto;
+    background-color: white;
+}
+
+/**나의 관심 술 결과 없음 버튼 설정*/
+.psn_no_result .btn_blue {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px 9px;
+    margin: 0 auto;
+    display: block;
+    width: 263px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3em;
+    border-radius: 24px;
+    border: 2px solid #6A60A9;
+    background-color: #6A60A9;
+    color: #fff;
+}
+
+/*************************************************
+**************************************************
+**********PAST_ORDER******************************/
+/**구매했어요 타이틀 높이 설정*/
+.psn_past_order .psn_title {
+    height: auto;
+}
+
+/**구매했어요 표 크기 설정*/
+.order_table {
+    width: 80%;
+    min-width: 800px;
+    font-size: 18px;
+    margin: 40px auto 20px;
+}
+
+.order_table table {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    border-collapse: collapse;
+
+}
+
+/**구매했어요 표 border 설정*/
+.order_table th {
+    border-bottom: 2px solid #000000;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.order_table td {
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/**구매했어요 표 넓이 설정
+--> 상품 정보안내 열 넓이 설정*/
+.order_table td:nth-child(2) {
+    min-width: 300px;
+    position: relative;
+    padding-left: 122px;
+    text-align: left;
+}
+
+/**구매했어요 표 줄 간격 설정
+--> 상품주문상태와 버튼 사이 간격 설정*/
+.order_table td:nth-child(5) {
+    line-height: 2em;
+}
+
+/**구매했어요 표 넓이 설정
+--> 나머지 탭 넓이 설정*/
+.order_table td {
+    min-width: 150px;
+    vertical-align: middle;
+}
+
+/**구매했어요 표 행 높이 설정*/
+.table_min_height {
+    height: 150px;
+}
+
+/**구매했어요 표 속 이미지 크기 설정*/
+.order_table .item_thumb {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -65px;
+}
+
+.order_table img {
+    height: 130px;
+    width: auto;
+    vertical-align: middle;
+    left: 10px;
+}
+
+/**구매했어요 표 속 상품정보 위치 설정*/
+.item {
+    position: absolute;
+    top: 31%;
+}
+
+/**구매했어요 표 속 상품명 설정*/
+.order_table .order_item_name {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+/**구매했어요 표 속 가격 설정*/
+.order_table .order_item_price {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+/**구매했어요 표 속 버튼 설정*/
+.order_table button {
+    margin-top: 10px;
+}
+
+/*************************************************
+**************************************************
+**********MY_OPINION******************************/
+/******* 나의 후기 영역 **********************/
+.psn_recommend_list {
+    width: 80%;
+    margin: auto;
+}
+
+/**나의 후기 타이틀 높이 설정*/
+.psn_recommend_list .psn_title {
+    height: auto;
+}
+
+.psn_review_table,
+.psn_qna_table {
+    font-size: 18px;
+    margin: 40px auto 20px;
+    position: relative;
+}
+
+
+.psn_review_table table,
+.psn_qna_table table {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 1200px;
+}
+
+/**나의 후기 표 속 이미지 크기 설정*/
+.psn_review_table .review_item_thumb {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -65px;
+}
+
+.psn_review_table img {
+    height: 130px;
+    width: auto;
+    vertical-align: middle;
+    left: 10px;
+}
+
+/**나의 후기 표 border 설정*/
+.psn_review_table th,
+.psn_qna_table th {
+    border-bottom: 2px solid #000000;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.psn_review_table td,
+.psn_qna_table td {
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    vertical-align: middle;
+    min-width: 110px;
+}
+
+/**나의 후기 표 넓이 설정
+--> 상품후기내용 열 넓이 설정*/
+.psn_review_table td:nth-child(3) {
+    width: 600px;
+    position: relative;
+    padding-left: 160px;
+    text-align: left;
+}
+
+/**나의 후기 후기 글 넘침 설정*/
+.review_item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+/*************************************************
+**************************************************
+**********MY_OPINION******************************/
+/******* 나의 질문 영역 **********************/
+
+/**나의 질문 표 넓이 설정
+--> 문의내용 열 넓이 설정*/
+.psn_qna_table td:nth-child(3) {
+    width: 663px;
+    position: relative;
+    text-align: left;
+}
+
+/**나의 질문 글 넘침 설정*/
+.qna_item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    margin-top: 10px;
+}
+
+/**나의 질문 분야 세부설정*/
+.qna_area {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/**나의 질문 내용 표 수직가운데로 위치*/
+.qna_item_info {
+    position: absolute;
+    top: 33%;
+    line-height: 1em;
+}
+
+/**선택삭제 버튼 우측정렬*/
+.delete_area {
+    width: 1200px;
+    margin: 10px auto;
+    position: relative;
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.delete_this {
+    right: 0;
+    position: absolute;
+    line-height: 1.5em;
+}

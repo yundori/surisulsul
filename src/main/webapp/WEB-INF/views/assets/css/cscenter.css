@@ -1,0 +1,167 @@
+@charset "utf-8";
+
+/* 탭 박스 설정들 */
+
+/*
+ * 탭 박스 중앙 정렬
+ * -------------------------- */
+
+.fix-center {
+    display: inline-block;
+}
+
+.fix-center:first-child {
+    position: relative;
+    left: 2px;
+}
+
+.fix-center:last-child {
+    position: relative;
+    right: 2px;
+}
+
+/*
+ * 탭 클릭 시 선택하지 않은 탭 내용 가리기
+ * -------------------------- */
+
+.hide {
+    display: none;
+}
+
+/*
+ * 탭 전체 영역 설정
+ * -------------------------- */
+
+.tab {
+    width: 80%;
+    margin: 20px auto;
+    padding-top: 200px;
+}
+
+/*
+ * 탭 버튼 영역 설정
+ * -------------------------- */
+
+.tab-button-item {
+    width: 200px;
+    height: 40px;
+}
+
+/*
+ * 선택된 탭 버튼 디자인
+ * -------------------------- */
+
+.tab-button-item-link.selected {
+    background-color: #fbd14b;
+    color: #fff;
+}
+
+/*
+ * 선택 해제된 탭 버튼 디자인
+ * -------------------------- */
+
+.tab-button-item-link {
+    background-color: #fff;
+    border: 1px solid #fbd14b;
+    display: block;
+    color: #222;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+}
+
+/*
+ * 탭 버튼이 탭 패널 위로 오게 z-index 부여
+ * -------------------------- */
+
+.tab-button {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+/*
+ * 탭으로 선택하는 페이지 영역
+ * -------------------------- */
+
+.tab-panel {
+    border-top: 1px solid #ddd;
+    position: relative;
+    top: 1px;
+    padding: 20px 10px;
+}
+
+/* 탭에 보이는 패널 페이지 설정들  */
+
+/*
+ * 게시글 목록 영역
+ * -------------------------- */
+
+.collapse {
+    width: 80%;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/*
+ * 게시글 제목 영역 디자인
+ * -------------------------- */
+
+.collapse-title {
+    background: #eee;
+    border: 1px solid #d5d5d5;
+    text-align: center;
+}
+
+/*
+ * 게시글 제목 정렬
+ * -------------------------- */
+.article-number,
+.collapse-title>a,
+.reg-date {
+    display: inline-block;
+    float: left;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #222;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+.article-number {
+    width: 10%;
+}
+
+.reg-date {
+    width: 15%;
+}
+
+.collapse-title a {
+    width: 75%;
+    text-decoration: none
+}
+
+
+/*
+ * 게시글 내용 설정
+ * -------------------------- */
+.content {
+    padding: 20px 50px;
+    font-size: 14px;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    color: #444;
+    display: none;
+}
+
+.content:last-child {
+    border-bottom: 1px solid #d5d5d5;
+}

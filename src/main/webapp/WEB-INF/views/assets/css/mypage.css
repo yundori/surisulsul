@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+/**전체 페이지 크기*/
+.psn_info {
+    width: 80%;
+    padding-top: 100px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+/**나의 수리술술 텍스트*/
+.psn_info_h2 {
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    padding: 25px 0;
+    color: #DEDCEE;
+}
+
+/**나에 대하여 텍스트*/
+.psn_info_h3 {
+    font-weight: 500;
+    font-size: 25px;
+    display: block;
+    width: 100%;
+    padding: 0 0 15px 0;
+    border-bottom: solid 1px #DEDCEE;
+    color: #6A60A9;
+}
+
+/**개인정보 표 설정*/
+.psn_table {
+    width: 1000px;
+    text-align: left;
+    font-size: 18px;
+    vertical-align: middle;
+    margin: 40px auto 20px;
+    /*overflow-x: auto;*/
+    /*overflow-x 적용하려면 div로 감싸야 함 -> 어떻게 할 지 고민중*/
+}
+
+/**개인정보 표 설정 - 카테고리*/
+.psn_table .psn_td_tab {
+    font-weight: 700;
+    padding: 15px;
+    white-space: nowrap;
+    width: 180px;
+}
+
+/**개인정보 표 설정
+    ->이메일 길어질 경우 대비하여 넓이 설정*/
+.psn_table .psn_td_normal {
+    width: 220px;
+}
+
+/**개인정보 표 설정 - 자동줄바꿈
+    ->이메일, 주소 한정*/
+.psn_table .psn_td_special {
+    white-space: normal;
+    word-break: break-all;
+}
+
+/**개인정보 수정 버튼*/
+.psn_btn {
+    float: right;
+    display: block;
+    height: 36px;
+}
+
+/**개인정보 수정 버튼 - 수정*/
+.psn_edit {
+    background-color: #FBD14B;
+    border: 0px;
+    margin-right: 10px;
+    width: 80px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+/**개인정보 수정 버튼 - 탈퇴*/
+.psn_deactivate {
+    background-color: #DEDCEE;
+    border: 0px;
+    color: white;
+    width: 80px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    float: left;
+}
+
+/**float 마감처리*/
+.clean:after {
+    content: '';
+    display: block;
+    clear: both;
+    float: none;
+}
+
+/**탭 메뉴*/
+.psn_tab {
+    margin: 60px auto;
+    width: 80%;
+    height: 93.75px;
+    border-bottom: solid 1px #DEDCEE;
+}
+
+.psn_tab_inner {
+    height: 93.75px;
+    margin: 0 auto;
+}
+
+.tab_item {
+    float: left;
+}
+
+/**선택하지 않은 탭 내용 가리기*/
+.hide {
+    display: none;
+}
+
+/**탭 백그라운드 설정*/
+.tab_forme a {
+    background: url(../img/mypage/recommend_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_wishlist a {
+    background: url(../img/mypage/heart_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_buy a {
+    background: url(../img/mypage/buy_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment a {
+    background: url(../img/mypage/comment_nor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+/**탭 마우스 오버 & 클릭 후 변화*/
+
+.tab_forme a:hover {
+    background: url(../img/mypage/recommend_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_forme .selected {
+    background: url(../img/mypage/recommend_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_wishlist a:hover {
+    background: url(../img/mypage/heart_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_wishlist .selected {
+    background: url(../img/mypage/heart_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_buy a:hover {
+    background: url(../img/mypage/buy_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_buy .selected {
+    background: url(../img/mypage/buy_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment a:hover {
+    background: url(../img/mypage/comment_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+.tab_comment .selected {
+    background: url(../img/mypage/comment_foc.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 93.75px;
+    text-indent: -20000px;
+    display: block;
+}
+
+/**버튼 상세 설정*/
+.btn_gray {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    border: 2px solid #DEDCEE;
+    border-radius: 10px;
+    background-color: #DEDCEE;
+    padding: 5px 9px;
+}
+
+.btn_yellow {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #000;
+    border: 2px solid #FBD14B;
+    border-radius: 10px;
+    background-color: #FBD14B;
+    padding: 5px 9px;
+}
+
+.btn_nor {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #000;
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    background-color: #DDDDDD;
+    padding: 5px 9px;
+}

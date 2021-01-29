@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+/** order 폴더 내 모든 content ==> div 기본 스타일 설정, 타이틀 사이즈 설정 */
+#order_result, #basket, #basket_order{
+	padding:150px 0;
+	text-align:center;
+}
+#order_result h1, #basket h1, #basket_order h1{
+	font-size:2em;
+	font-weight:bold;
+	margin:20px 0;
+}
+#basket h2{
+	font-size:1.2em;
+	font-weight:bold;
+	margin-top:25px;
+}
+#basket_order h2{
+	font-size:1.5em;
+	font-weight:bold;
+	margin:10px 0;	
+}
+#order_result h2{
+	font-size:1.2em;
+	font-weight:bold;
+	margin:20px 0;
+}
+
+/** order 폴더 내에 있는 모든 table에 들어갈 제품 img 크기 설정 */
+#order_result_table td img, #basket_table td img{
+	width:100px;
+	height:130px;
+	vertical-align:middle;
+	margin-right:15px;
+}
+
+/** 공통 float 마감제 */
+.clearfix:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+/** basket.jsp --> table 가로 세로 vertical-align 맞춤 */
+#basket_table, #basket_summary{
+	vertical-align:middle;
+	margin:30px auto;
+	width:800px;
+}
+#basket_table tr, #basket_summary tr{
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;	
+}
+#basket_order .final_cost{
+	font-size:1.1em;
+}
+#basket_table td{
+	vertical-align:middle;
+	line-height:200%;
+}
+#basket_summary td{
+	line-height:250%;
+}
+#basket_table #left_align{
+	float:left;
+	margin:10px 0 10px 50px;
+}
+
+
+/** basket.jsp --> 선택상품 삭제 버튼 css */
+#basket #delete_this, #delete_this2{
+	padding:1px 5px;
+	border:none;
+    background-color: #fbd14b;	
+    float:right;
+	color:#403117;
+    line-height:145%;
+    margin:3px 10px 0 0;
+}
+#basket #delete_this:hover{
+	border:2px solid #fbd14b;
+	background-color:#fff;
+	color:#80632e;
+}
+/** 전체선택 checkbox+label float 처리 */
+#basket .check_all{
+	margin-top:10px;
+	margin-right:10px;
+	float:left;
+}
+#basket #basket_table label{
+	float:left;
+}
+/** basket.jsp --> 선택상품 삭제 버튼 css */
+#basket #delete_this{
+	padding:1px 5px;
+	border:none;
+    background-color: #fbd14b;	
+    float:right;
+    line-height:145%;
+    margin:3px 10px 0 0;
+}
+/** basket.jsp --> 상품 담으러 가기 버튼 */
+#basket #go_shopping{
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+/** basket_order.jsp --> 입력 페이지 컨텐츠 영역 설정 */
+.basket_order_form {
+    width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-align:left;
+}
+/** basket_order.jsp --> 입력 페이지 컨텐츠 영역 -> 테두리 및 margin 설정 */
+.basket_order_form fieldset{
+	border:2px solid #ccc;
+	margin-bottom:30px;
+}
+.basket_order_form legend{
+	font-size:1.1em;
+	font-weight:bold;
+	margin:10px 20px;
+	padding:10px;
+}
+.basket_order_form input, .basket_order_form select{
+	margin-bottom:15px;
+}
+.basket_order_form label{
+ 	margin:0 -30px 15px 50px;
+}
+/** basket_order.jsp --> 배송정보>주소에서 도로명주소/기타상세주소 사이즈 및 margin조정 */
+.basket_order_form .set_location{
+	margin:0 0 0 285px;
+	width:460px;
+}
+.basket_order_form .details_info{
+	font-size:0.8em;
+	color:#aaa;
+	margin-top:-10px;
+	margin-bottom:20px;
+}
+/** basket_order.jsp --> 주문자 정보 width + margin 조정 */
+.col-mdd-4{
+	width:33.3%;
+	display:inline-block;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+.col-mdd-6{
+	width:45%;
+	display:inline-block;
+	margin-bottom:20px;
+}
+/** basket_order.jsp --> 주문자정보와 동일 체크박스 오른쪽 정렬*/
+.make_form_same{
+	float:right;
+	margin-bottom:-23px;
+}
+#pay_info{
+	position:relative;
+}
+#pay_details_money{
+	width:100%;
+}
+/** basket_order.jsp --> 결제정보 > 카드결제에 나타날 pay_details_card <div> 포지션 처리 */
+#pay_details_card{
+	width:100%;
+	position:absolute;
+	top:80px;
+	left:55px;
+}
+/** basket_order.jsp --> 결제정보 라디오 선택 시마다 toggle처리 될 hidden 클래스 */
+.hidden{
+	visibility: hidden;
+}
+
+/** basket_order.jsp --> 개인정보 수집/제공 PART CSS */
+#personal_info .personal_info_details{
+	width:90%;
+	margin:auto;
+	line-height:130%;
+}
+#personal_info_all{
+	font-weight:bold;
+	color:#6a60a9;
+}
+#personal_info_item2{
+	display:inline-block;
+	width:96%;
+	margin-left:23px;
+	margin-bottom:20px;
+}
+#item2{
+	position:absolute;
+}
+
+/** order_result.jsp --> 아이콘 */
+#order_result #result_icon{
+	width:50px;
+	height:50px;
+}
+
+/** order_result.jsp --> 주문 상세 정보 */
+#order_result>#order_result_table{
+	margin:50px auto;
+	text-align:left;
+}
+#order_result_table tr{
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+#order_result_table td{
+	padding:20px;
+	line-height:150%;
+	vertical-align:middle;
+}
+
+
+/** basket.jsp --> 주문/결제창으로 이동 / order_result.jsp --> 버튼 처리 */
+#order_result a, #basket>#go_order{
+    background-color: #6a60a9;
+    font-size: 16px;
+    color: #eee;
+    padding: 10px 20px;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 3px;
+    margin:30px 10px 0 0;
+}
+#order_result a:hover, #basket>#go_order:hover, #basket #go_shopping:hover{
+    background-color: #eee;
+    color: #6a60a9;
+    border: 2px solid #6a60a9;
+}
+#blank{
+	width:auto;
+	height:20px;
+}
