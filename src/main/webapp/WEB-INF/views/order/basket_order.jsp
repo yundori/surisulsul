@@ -36,7 +36,7 @@
 	</table>
 	
 	<h2>주문/결제하기</h2>
-	<form action="" method="post" class="basket_order_form" name="order_form" id="order_form">
+	<form action="${pageContext.request.contextPath }/order/order_ok.do" method="post" class="basket_order_form" name="order_form" id="order_form">
 		<fieldset id="sender_info">
 			<legend>주문자 정보</legend>
 			<div>

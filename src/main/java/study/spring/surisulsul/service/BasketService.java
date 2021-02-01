@@ -15,6 +15,13 @@ public interface BasketService {
 	public List<Basket> getBasketList(Basket input) throws Exception;
 	
 	/**
+	 * 장바구니 데이터가 저장되어 있는 갯수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
+	public int getBasketCount(Basket input) throws Exception;
+	
+	/**
 	 * 장바구니 데이터 등록하기
 	 * @param Basket 저장할 정보를 담고 있는 Beans
 	 * @return int
