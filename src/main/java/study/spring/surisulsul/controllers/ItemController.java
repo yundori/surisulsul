@@ -50,20 +50,6 @@ public class ItemController {
 		return "items/item_details";
 	}
 	
-	/* 장바구니페이지로 이동 */
-	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
-	public String item_basket(Model model) {
-		
-		return "order/basket";
-	}
-	
-	/* 주문페이지로 이동 */
-	@RequestMapping(value = "/order.do", method = RequestMethod.GET)
-	public String item_order(Model model) {
-		
-		return "order/basket_order";
-	}
-	
 	/* 상품정보 탭페이지로 이동 
 	@RequestMapping(value = "/item_info.do", method = RequestMethod.GET)
 	public String item_info(Model model) {
