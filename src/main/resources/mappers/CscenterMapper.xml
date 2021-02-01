@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CscenterMapper">
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
+	<resultMap id="cscenterMap"
+		type="study.spring.surisulsul.model.Cscenter">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="reg_date" column="reg_date" />
+		<result property="edit_date" column="edit_date" />
+	</resultMap>
+
+	<!-- 공지사항 조회를 위한 기능 정의 -->
+	<select id="selectListNotice"
+		parameterType="study.spring.surisulsul.model.Cscenter"
+		resultMap="cscenterMap">
+		SELECT * FROM cscenter WHERE type='A' ORDER BY reg_date DESC
+		<if test="listCount>0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+	
+	<!-- FAQ 조회를 위한 기능 정의 -->
+	<select id="selectListFaq"
+		parameterType="study.spring.surisulsul.model.Cscenter"
+		resultMap="cscenterMap">
+		SELECT * FROM cscenter WHERE type='A' ORDER BY reg_date DESC
+		<if test="listCount>0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+
+	<!-- 게시글 작성(데이터 저장, 관리자 전용)을 위한 기능 정의 -->
+	<insert id="addCscenter"
+		parameterType="study.spring.surisulsul.model.Cscenter"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO cscenter (
+		type, title, content, reg_date, edit_date
+		) VALUES (
+		#{type}, #{title}, #{content}, now(), now()
+		);
+	</insert>
+
+	<!-- 게시글 수정(데이터 갱신, 관리자 전용)을 위한 기능 정의 -->
+	<update id="updateCscenter"
+		parameterType="study.spring.surisulsul.model.Cscenter">
+		UPDATE cscenter SET
+		type=#{type}, title=#{title},
+		content=#{content}, reg_date=#{reg_date}, edit_date=now()
+		WHERE id=#{id};
+	</update>
+
+	<!-- 게시글 삭제(관리자 전용)를 위한 기능 정의 -->
+	<delete id="deleteCscenter"
+		parameterType="study.spring.surisulsul.model.Cscenter">
+		DELETE FROM cscenter WHERE id=#{id}
+	</delete>
+
+</mapper>
