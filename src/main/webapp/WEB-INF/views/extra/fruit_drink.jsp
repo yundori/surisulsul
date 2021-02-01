@@ -12,7 +12,7 @@
 				포도와 머루, 자두, 다래, 사과, 복분자 등으로 제조되는 와인
 				<br />한국의 다양한 과실로 전국의 양조장에서 빚어내는 과실주 제품
 			</h3> 
-			<input type="button" value="과실주 종류별 보기 > " id="go_fruit_drink" class="go_drink_button" />
+			<input type="button" value="과실주 종류별 보기 > " id="go_fruit_drink" class="go_drink_button" action="${pageContext.request.contextPath}/items/item_filtered.do" />
 		</span>
 	</div>
 	<div id="drinks_content">

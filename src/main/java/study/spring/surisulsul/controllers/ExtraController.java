@@ -1,7 +1,5 @@
 package study.spring.surisulsul.controllers;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,13 +14,13 @@ import study.spring.surisulsul.helper.WebHelper;
 @Controller
 @Slf4j
 public class ExtraController {
-	/** WebHelper 주입 */
+	/** WebHelper 주입 
 	@Autowired
-	WebHelper webHelper;
+	WebHelper webHelper;*/
 
-	/** RegexHelper 주입 */
+	/** RegexHelper 주입 
 	@Autowired
-	RegexHelper regexHelper;
+	RegexHelper regexHelper;*/
 
 	/** Service 패턴 구현체 주입 */
 	
@@ -32,36 +30,43 @@ public class ExtraController {
 	
 	/* 탁주 페이지로 연결 */
 	@RequestMapping(value = "/takju.do", method = RequestMethod.GET)
-	public String takju(Locale locale, Model model) {
+	public String takju(Model model) {
 		
 		return "extra/takju";
 	}
 	
 	/* 청주 페이지로 연결 */
 	@RequestMapping(value = "/cheongju.do", method = RequestMethod.GET)
-	public String cheongju(Locale locale, Model model) {
+	public String cheongju(Model model) {
 		
 		return "extra/cheongju";
 	}
 	
 	/* 과실주 페이지로 연결 */
 	@RequestMapping(value = "/fruit_drink.do", method = RequestMethod.GET)
-	public String fruit_drink(Locale locale, Model model) {
+	public String fruit_drink(Model model) {
 		
 		return "extra/fruit_drink";
 	}
 	
 	/* 증류주 페이지로 연결 */
 	@RequestMapping(value = "/spirits.do", method = RequestMethod.GET)
-	public String spirits(Locale locale, Model model) {
+	public String spirits(Model model) {
 		
 		return "extra/spirits";
 	}
 	
 	/* 기타주류 페이지로 연결 */
 	@RequestMapping(value = "/liquerurs.do", method = RequestMethod.GET)
-	public String liquerurs(Locale locale, Model model) {
+	public String liquerurs(Model model) {
 		
 		return "extra/liquerurs";
+	}
+	
+	/* 주능 페이지로 연결 */
+	@RequestMapping(value = "/juneung.do", method = RequestMethod.GET)
+	public String juneung(Model model) {
+		
+		return "extra/juneung";
 	}
 }

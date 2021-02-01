@@ -194,7 +194,7 @@
 			 <c:when test="false">
 			 <%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/item_details.do">
 						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
 						<span class="item_title">상품명abcdefghijklmnop</span>
 						<span class="item_price">00,000 원</span> <br/>

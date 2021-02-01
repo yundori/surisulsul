@@ -1,6 +1,5 @@
 package study.spring.surisulsul.controllers;
 
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +15,13 @@ import study.spring.surisulsul.helper.WebHelper;
 @Controller
 @Slf4j
 public class ItemController {
-	/** WebHelper 주입 */
+	/** WebHelper 주입 
 	@Autowired
-	WebHelper webHelper;
+	WebHelper webHelper;*/
 
-	/** RegexHelper 주입 */
+	/** RegexHelper 주입 
 	@Autowired
-	RegexHelper regexHelper;
+	RegexHelper regexHelper;*/
 
 	/** Service 패턴 구현체 주입 */
 	
@@ -31,24 +30,45 @@ public class ItemController {
 	String contextPath;
 	
 	/* 인기있는술 페이지로 이동 */
-	@RequestMapping(value = "/items/best_item.do", method = RequestMethod.GET)
-	public String best_item(Locale locale, Model model) {
+	@RequestMapping(value = "/best_item.do", method = RequestMethod.GET)
+	public String best_item(Model model) {
 		
 		return "items/best_item";
 	}
 	
 	/* 내가찾는술 페이지로 이동 */
-	@RequestMapping(value = "/items/item_filtered.do", method = RequestMethod.POST)
-	public String item_filtered(Locale locale, Model model) {
+	@RequestMapping(value = "/item_filtered.do", method = RequestMethod.POST)
+	public String item_filtered(Model model) {
 		
 		return "items/item_filtered";
 	}
 	
 	/* 상품상세페이지로 이동 */
-	@RequestMapping(value = "/items/item_details.do", method = RequestMethod.POST)
-	public String item_details(Locale locale, Model model) {
+	@RequestMapping(value = "/item_details.do", method = RequestMethod.GET)
+	public String item_details(Model model) {
 		
 		return "items/item_details";
 	}
+	
+	/* 장바구니페이지로 이동 */
+	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
+	public String item_basket(Model model) {
+		
+		return "order/basket";
+	}
+	
+	/* 주문페이지로 이동 */
+	@RequestMapping(value = "/order.do", method = RequestMethod.GET)
+	public String item_order(Model model) {
+		
+		return "order/basket_order";
+	}
+	
+	/* 상품정보 탭페이지로 이동 
+	@RequestMapping(value = "/item_info.do", method = RequestMethod.GET)
+	public String item_info(Model model) {
+		
+		return "items/item_info";
+	}*/
 
 }

@@ -13,7 +13,7 @@
 				<br /> 청주는 탁주의 상대적인 말로, 본래 맑은 술을
 				뜻한다.
 			</h3> 
-			<input type="button" value="약주/청주 종류별 보기 > " id="go_cheongju" class="go_drink_button" />
+			<input type="button" value="약주/청주 종류별 보기 > " id="go_cheongju" class="go_drink_button" action="${pageContext.request.contextPath}/items/item_filtered.do" />
 		</span>
 	</div>
 	<div id="drinks_content">
