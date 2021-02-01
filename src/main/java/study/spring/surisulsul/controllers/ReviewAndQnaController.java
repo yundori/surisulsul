@@ -12,11 +12,11 @@ import study.spring.surisulsul.helper.WebHelper;
 
 @Controller
 public class ReviewAndQnaController {
-	/** WebHelper 주입 */
+	/** WebHelper 주입
 	@Autowired
 	WebHelper webHelper;
 
-	/** RegexHelper 주입 */
+	/** RegexHelper 주입 
 	@Autowired
 	RegexHelper regexHelper;
 
@@ -39,13 +39,13 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 리뷰 수정 페이지로 이동 */
-	@RequestMapping(value="/mypage/write_review.do", method=RequestMethod.GET)
+	@RequestMapping(value="/mypage/edit_review.do", method=RequestMethod.GET)
 	public String edit_review(Model model) {
 		return "mypage/write_review";
 	}
 	
 	/** 리뷰 수정에 대한 action 페이지 */
-	@RequestMapping(value="/mypage/write_review_ok.do", method=RequestMethod.GET)
+	@RequestMapping(value="/mypage/edit_review_ok.do", method=RequestMethod.GET)
 	public String edit_review_ok(Model model) {
 		return "mypage/write_review";
 	}
@@ -63,13 +63,13 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 문의 수정 페이지로 이동 */
-	@RequestMapping(value="/items/write_question.do", method=RequestMethod.GET)
+	@RequestMapping(value="/items/edit_question.do", method=RequestMethod.GET)
 	public String edit_question(Model model) {
 		return "items/write_question";
 	}
 	
 	/** 문의 수정 페이지로 이동 */
-	@RequestMapping(value="/items/write_question_ok.do", method=RequestMethod.GET)
+	@RequestMapping(value="/items/edit_question_ok.do", method=RequestMethod.GET)
 	public String edit_question_ok(Model model) {
 		return "items/write_question";
 	}
