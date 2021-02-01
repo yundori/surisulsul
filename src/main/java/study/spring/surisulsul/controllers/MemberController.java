@@ -68,9 +68,20 @@ public class MemberController {
 		return "account/find_pw";
 	}
 	
-	/** 비밀번호 찾기 페이지로 이동 */
+	/** 비밀번호 찾기에 대한 action 페이지 */
 	@RequestMapping(value="/account/find_pw_ok.do", method=RequestMethod.GET)
 	public String find_pw_ok(Model model) {
 		return "account/find_pw";
+	}
+	
+	/** 비밀번호 확인 페이지로 이동 */
+	@RequestMapping(value="/mypage/chk_pw.do", method=RequestMethod.GET)
+	public String chk_pw(Model model) {
+		return "mypage/chk_pw";
+	}
+	/** 회원정보 수정 페이지로 이동 */
+	@RequestMapping(value="/mypage/update_info.do", method=RequestMethod.GET)
+	public String update_info(Model model) {
+		return "mypage/update_info";
 	}
 }
