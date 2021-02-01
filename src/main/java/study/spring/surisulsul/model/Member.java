@@ -10,7 +10,7 @@ public class Member {
 	private String name;
 	private String pw;
 	private String phone;
-	private int postcode;
+	private String postcode;
 	private String address1;
 	private String address2;
 	private String birthdate;
