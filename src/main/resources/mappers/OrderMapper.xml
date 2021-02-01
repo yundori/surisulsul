@@ -43,4 +43,18 @@
 		<result property="p_price" column="p_price" />
 	</resultMap>
 	
+	<!-- 장바구니 - 다중행 조회를 위한 기능 정의 -->
+	<select id="selectBasketList" parameterType="study.spring.surisulsul.model.Basket" resultMap="basketMap">
+		SELECT id, p_id, p_name, p_price, qty, edit_date
+		FROM basket
+		WHERE m_id=세션에있는 Member객체.getId() 
+		ORDER BY edit_date DESC;
+	</select>
+	
+	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
+	<insert id="insertBasketItem" parameterType="study.spring.surisulsul.model.Basket" 
+	 useGeneratedKeys="true" keyProperty="id">
+		
+	</insert>
+	
 </mapper>
