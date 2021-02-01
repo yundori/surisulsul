@@ -33,4 +33,8 @@
 	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
 		
 	</insert>
+	
+	<insert id="insertOrderSubItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
+		
+	</insert>
 </mapper>

@@ -1,1 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewAndQnaMapper">
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
+	<resultMap id="reviewMap"
+		type="study.spring.surisulsul.model.Review">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="name" column="name" />
+		<result property="pw" column="pw" />
+		<result property="phone" column="phone" />
+		<result property="postcode" column="postcode" />
+		<result property="address1" column="address1" />
+		<result property="address2" column="address2" />
+		<result property="birthdate" column="birthdate" />
+		<result property="jn_result" column="jn_result" />
+		<result property="is_out" column="is_out" />
+		<result property="reg_date" column="reg_date" />
+		<result property="edit_date" column="edit_date" />
+		<result property="out_date" column="out_date" />
+	</resultMap>
+
+
+	<!-- 회원정보 조회(단일행 조회)를 위한 기능 정의 -->
+	<select id="selectReview"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT * FROM reviews WHERE id=#{id};
+	</select>
+
+	<!-- 이메일 찾기를 위한 기능 정의 -->
+	<select id="findEmail"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT email FROM reviews WHERE name=#{name} AND
+		phone=#{phone} AND is_out='N';
+	</select>
+	
+	<!-- 로그인을 위한 기능 정의 -->
+	<select id="loginReview"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT * FROM reviews WHERE email=#{email} AND pw=#{pw} AND is_out='N';
+	</select>
+	
+	<!-- 정보 수정 시 비밀번호 확인을 위한 기능 정의 -->
+	<select id="chkPw"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT pw FROM reviews WHERE id=#{id};
+	</select>
+
+	<!-- (관리자용)다중행 조회를 위한 기능 정의 -->
+	<select id="selectList"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		select * from reviews
+		<where>
+			<if test="name!=null and name!=''">
+				name like concat('%',#{name},'%')
+			</if>
+		</where>
+		order by id desc
+		<if test="listCount>0">
+			limit #{offset}, #{listCount}
+		</if>
+	</select>
+
+	<!-- 회원가입(데이터 저장)을 위한 기능 정의 -->
+	<insert id="addReview"
+		parameterType="study.spring.surisulsul.model.Review"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO reviews (
+		email, name,
+		pw, phone,
+		postcode, address1, address2,
+		birthdate, jn_result, is_out,
+		reg_date, edit_date, out_date
+		) VALUES (
+		#{email}, #{name}, #{pw},
+		#{phone},
+		#{postcode}, #{address1}, #{address2},
+		#{birthdate}, null,
+		'N', now(), now(), null);
+	</insert>
+
+	<!-- 회원정보 수정 및 비밀번호 재발급(데이터 갱신)을 위한 기능 정의 -->
+	<update id="updateReview"
+		parameterType="study.spring.surisulsul.model.Review">
+		UPDATE reviews SET
+		email=#{email}, name=#{name},
+		pw=#{pw}, phone=#{phone},
+		postcode=#{postcode}, address1=#{address1},
+		address2=#{address2},
+		birthdate=#{birthdate}, jn_result=#{jn_result},
+		is_out='N',
+		reg_date=#{reg_date}, edit_date=now(), out_date=null
+		WHERE
+		id=#{id};
+	</update>
+
+	<!-- 탈퇴한 회원의 데이터 삭제를 위한 기능 정의 -->
+	<delete id="deleteReview"
+		parameterType="study.spring.surisulsul.model.Review">
+		DELETE FROM reviews WHERE id=#{id}
+	</delete>
+
+	<!-- 데이터 수 조회하기 -->
+	<!-- 조건에 맞는 데이터 수를 집계해 int 타입으로 반환한다. count, max, min, sum, avg 함수를 사용한 
+		경우 Mapper에서는 resultMap이 아닌 resultType으로 반환한다. -->
+
+	<!-- 회원가입 시 중복되는 이메일인지 조회하기 -->
+	<select id="chkEmailJoin"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT count(*) FROM reviews WHERE email=#{email};
+	</select>
+
+	<!-- 비밀번호 찾기 시 이름과 전화번호, 이메일로 해당하는 회원이 있는지 조회하기 -->
+	<select id="findPwCount"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT count(*) FROM reviews WHERE name=#{name} AND phone=#{phone} AND
+		email=#{email} AND is_out='N';
+	</select>
+
+	<!-- 로그인 시 존재하는 이메일 여부 체크 -->
+	<select id="chkEmailLogin"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT count(*) FROM reviews WHERE email=#{email} AND is_out='N';
+	</select>
+
+</mapper>
