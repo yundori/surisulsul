@@ -30,11 +30,30 @@ public class MypageController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	/* 상품상세페이지로 이동 */
-	@RequestMapping(value = "/items/item_details.do", method = RequestMethod.POST)
-	public String item_details(Locale locale, Model model) {
-		
-		return "items/item_details";
+	/**회원 정보 확인*/
+	@RequestMapping(value = "/mypage/mypage.do", method=RequestMethod.GET)
+	public String mypage(Model model) {
+		return "mypage/mypage";
+	}
+	/**주능 결과 확인*/
+	@RequestMapping(value = "/mypage/my_recommend.do", method=RequestMethod.GET)
+	public String my_recommend(Model model) {
+		return "mypage/my_recommend";
+	}
+	/**위시리스트 확인*/
+	@RequestMapping(value = "/mypage/wishlist.do", method=RequestMethod.GET)
+	public String wishlist(Model model) {
+		return "mypage/wishlist";
+	}
+	/**주문내역 확인*/
+	@RequestMapping(value = "/mypage/past_order.do", method=RequestMethod.GET)
+	public String past_order(Model model) {
+		return "mypage/past_order";
+	}
+	/**내가 작성한 리뷰/문의 확인*/
+	@RequestMapping(value = "/mypage/my_opinion.do", method=RequestMethod.GET)
+	public String my_opinion(Model model) {
+		return "mypage/my_opinion";
 	}
 	
 }
