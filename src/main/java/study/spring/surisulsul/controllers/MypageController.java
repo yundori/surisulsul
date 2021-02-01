@@ -17,9 +17,10 @@ import study.spring.surisulsul.helper.WebHelper;
 @Slf4j
 public class MypageController {
 	/** WebHelper 주입 */
-	@Autowired
+	/**@Autowired
 	WebHelper webHelper;
-
+	*/
+	
 	/** RegexHelper 주입 */
 	@Autowired
 	RegexHelper regexHelper;
