@@ -25,6 +25,12 @@
 		ORDER BY edit_date DESC;
 	</select>
 	
+	<!-- 장바구니 - 데이터 수 조회하기 -->
+	<select id="selectCount" parameterType="study.spring.surisulsul.model.Basket" resultType="int">
+		SELECT COUNT(*) FROM basket
+		WHERE m_id=#{m_id};
+	</select>
+	
 	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="study.spring.surisulsul.model.Basket" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO basket (m_id, p_id, p_name, p_price, qty, reg_date, edit_date)
