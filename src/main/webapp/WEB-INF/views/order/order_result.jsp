@@ -33,7 +33,7 @@
     			</tr>    			
     		</table>
     		<a href="" id="go_mypage">구매내역</a>
-    		<a href="${contextPath}/index/index.jsp" id="go_home">쇼핑 계속하기</a>
+    		<a href="/" id="go_home">쇼핑 계속하기</a>
     	</c:when>
     	
     	<%-- 주문결과(result)가 false일 경우 (주문 처리 실패 / 오류 발생 시) --%>

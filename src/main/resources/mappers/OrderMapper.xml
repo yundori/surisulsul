@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OrderMapper">
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
+	<resultMap id="basketMap" type="study.spring.surisulsul.model.Basket">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="id" column="id" />
+		<result property="m_id" column="m_id" />
+		<result property="p_id" column="p_id" />
+		<result property="p_name" column="p_name" />
+		<result property="p_price" column="p_price" />
+		<result property="qty" column="qty" />
+		<result property="reg_date" column="reg_date" />
+		<result property="edit_date" column="edit_date" />
+	</resultMap>
+	
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
+	<resultMap id="OrderMap" type="study.spring.surisulsul.model.Order">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="id" column="o_id" />
+		<result property="price" column="price" />
+		<result property="b_id" column="b_id" />
+		<result property="b_name" column="b_name" />
+		<result property="b_phone" column="b_phone" />
+		<result property="r_name" column="r_name" />
+		<result property="r_phone" column="r_phone" />
+		<result property="r_postcode" column="r_postcode" />
+		<result property="r_address1" column="r_address1" />
+		<result property="r_address2" column="r_address2" />
+		<result property="payment" column="payment" />
+		<result property="pay_result" column="pay_result" />
+		<result property="pay_cash" column="pay_cash" />
+		<result property="pay_card" column="pay_card" />
+		<result property="send_result" column="send_result" />
+		<result property="reg_date" column="reg_date" />
+		<result property="edit_date" column="edit_date" />
+		
+		<result property="sub_id" column="sub_id" />
+		<result property="p_id" column="p_id" />
+		<result property="p_name" column="p_name" />
+		<result property="p_price" column="p_price" />
+	</resultMap>
+	
+</mapper>
