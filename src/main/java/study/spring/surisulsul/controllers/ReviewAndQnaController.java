@@ -33,9 +33,9 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 리뷰 작성에 대한 action 페이지 */
-	@RequestMapping(value="/mypage/write_review_ok.do", method=RequestMethod.GET)
-	public String write_review_ok(Model model) {
-		return "mypage/write_review";
+	@RequestMapping(value="/mypage/write_review_ok.do", method=RequestMethod.POST)
+	public void write_review_ok(Model model) {
+		
 	}
 	
 	/** 리뷰 수정 페이지로 이동 */
@@ -45,9 +45,9 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 리뷰 수정에 대한 action 페이지 */
-	@RequestMapping(value="/mypage/edit_review_ok.do", method=RequestMethod.GET)
-	public String edit_review_ok(Model model) {
-		return "mypage/write_review";
+	@RequestMapping(value="/mypage/edit_review_ok.do", method=RequestMethod.POST)
+	public void edit_review_ok(Model model) {
+		
 	}
 	
 	/** 문의 작성 페이지로 이동 */
@@ -57,9 +57,9 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 문의 작성 페이지로 이동 */
-	@RequestMapping(value="/items/write_question_ok.do", method=RequestMethod.GET)
-	public String write_question_ok(Model model) {
-		return "items/write_question";
+	@RequestMapping(value="/items/write_question_ok.do", method=RequestMethod.POST)
+	public void write_question_ok(Model model) {
+		
 	}
 	
 	/** 문의 수정 페이지로 이동 */
@@ -69,9 +69,9 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 문의 수정 페이지로 이동 */
-	@RequestMapping(value="/items/edit_question_ok.do", method=RequestMethod.GET)
-	public String edit_question_ok(Model model) {
-		return "items/write_question";
+	@RequestMapping(value="/items/edit_question_ok.do", method=RequestMethod.POST)
+	public void edit_question_ok(Model model) {
+		
 	}
 	
 	/** 상품 상세 - 리뷰 페이지로 이동 */
