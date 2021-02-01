@@ -33,9 +33,9 @@ public class MemberController {
 	}
 	
 	/** 로그인에 대한 action 페이지 */
-	@RequestMapping(value="/account/login_ok.do", method=RequestMethod.GET)
-	public String login_ok(Model model) {
-		return "account/login";
+	@RequestMapping(value="/account/login_ok.do", method=RequestMethod.POST)
+	public void login_ok(Model model) {
+		
 	}
 	
 	/** 회원가입 페이지로 이동 */
@@ -45,9 +45,9 @@ public class MemberController {
 	}
 	
 	/** 회원가입에 대한 action 페이지 */
-	@RequestMapping(value="/account/join_ok.do", method=RequestMethod.GET)
-	public String join_ok(Model model) {
-		return "account/join";
+	@RequestMapping(value="/account/join_ok.do", method=RequestMethod.POST)
+	public void join_ok(Model model) {
+		
 	}
 	
 	/** 이메일 찾기 페이지로 이동 */
@@ -57,9 +57,9 @@ public class MemberController {
 	}
 	
 	/** 이메일 찾기에 대한 action 페이지 */
-	@RequestMapping(value="/account/find_email_ok.do", method=RequestMethod.GET)
-	public String find_email_ok(Model model) {
-		return "account/find_email";
+	@RequestMapping(value="/account/find_email_ok.do", method=RequestMethod.POST)
+	public void find_email_ok(Model model) {
+		
 	}
 	
 	/** 비밀번호 찾기 페이지로 이동 */
@@ -69,9 +69,9 @@ public class MemberController {
 	}
 	
 	/** 비밀번호 찾기에 대한 action 페이지 */
-	@RequestMapping(value="/account/find_pw_ok.do", method=RequestMethod.GET)
-	public String find_pw_ok(Model model) {
-		return "account/find_pw";
+	@RequestMapping(value="/account/find_pw_ok.do", method=RequestMethod.POST)
+	public void find_pw_ok(Model model) {
+		
 	}
 	
 	/** 비밀번호 확인 페이지로 이동 */
