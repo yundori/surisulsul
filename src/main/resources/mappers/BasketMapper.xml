@@ -18,7 +18,7 @@
 	
 	
 	<!-- 장바구니 - 다중행 조회를 위한 기능 정의 -->
-	<select id="selectBasketList" parameterType="study.spring.surisulsul.model.Basket" resultMap="basketMap">
+	<select id="selectList" parameterType="study.spring.surisulsul.model.Basket" resultMap="basketMap">
 		SELECT id, p_id, p_name, p_price, qty, edit_date
 		FROM basket
 		WHERE m_id=#{m_id}
@@ -26,7 +26,7 @@
 	</select>
 	
 	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
-	<insert id="insertBasketItem" parameterType="study.spring.surisulsul.model.Basket" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertItem" parameterType="study.spring.surisulsul.model.Basket" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO basket (m_id, p_id, p_name, p_price, qty, reg_date, edit_date)
 		VALUES (#{m_id}, #{p_id}, #{p_name}, #{p_price}, #{qty}, #{reg_date}, #{edit_date});
 	</insert>
@@ -35,4 +35,5 @@
 	<delete id="deleteItem" parameterType="study.spring.surisulsul.model.Basket">
 		DELETE FROM basket WHERE m_id=#{m_id} AND p_id=#{p_id};
 	</delete>
+	
 </mapper>

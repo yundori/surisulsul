@@ -4,19 +4,6 @@
 
 <mapper namespace="OrderMapper">
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
-	<resultMap id="basketMap" type="study.spring.surisulsul.model.Basket">
-		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
-		<result property="id" column="id" />
-		<result property="m_id" column="m_id" />
-		<result property="p_id" column="p_id" />
-		<result property="p_name" column="p_name" />
-		<result property="p_price" column="p_price" />
-		<result property="qty" column="qty" />
-		<result property="reg_date" column="reg_date" />
-		<result property="edit_date" column="edit_date" />
-	</resultMap>
-	
-	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
 	<resultMap id="OrderMap" type="study.spring.surisulsul.model.Order">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
 		<result property="id" column="o_id" />
@@ -43,18 +30,7 @@
 		<result property="p_price" column="p_price" />
 	</resultMap>
 	
-	<!-- 장바구니 - 다중행 조회를 위한 기능 정의 -->
-	<select id="selectBasketList" parameterType="study.spring.surisulsul.model.Basket" resultMap="basketMap">
-		SELECT id, p_id, p_name, p_price, qty, edit_date
-		FROM basket
-		WHERE m_id=세션에있는 Member객체.getId() 
-		ORDER BY edit_date DESC;
-	</select>
-	
-	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
-	<insert id="insertBasketItem" parameterType="study.spring.surisulsul.model.Basket" 
-	 useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
 		
 	</insert>
-	
 </mapper>
