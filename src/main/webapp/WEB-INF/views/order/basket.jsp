@@ -14,7 +14,7 @@
 					<td colspan="5" class="clearfix">
 						<input type="checkbox" name="all" class="check_all"> 
 						<label>전체선택</label>
-						<a href="" id="delete_this">선택상품 삭제</a><!-- 컨트롤러로 연결 -> 장바구니 내 해당 아이템 지우고, 페이지 재출력 -->
+						<a href="${pageContext.request.contextPath }/basket/delete_ok.do" id="delete_this">선택상품 삭제</a><!-- 컨트롤러로 연결 -> 장바구니 내 해당 아이템 지우고, 페이지 재출력 -->
 					</td>
 				</tr>
 				<tr>
@@ -44,7 +44,7 @@
 					<td colspan="5" class="clearfix">
 						<input type="checkbox" name="all" class="check_all"> 
 						<label>전체선택</label>
-						<a href="" id="delete_this">선택상품 삭제</a>
+						<a href="${pageContext.request.contextPath }/basket/delete_ok.do" id="delete_this">선택상품 삭제</a>
 					</td>
 				</tr>
 			</table>
@@ -64,7 +64,7 @@
 				</tr>
 			</table>
 			
-			<a href="" id="go_order">주문/결제 하기</a>
+			<a href="${pageContext.request.contextPath }/order.do" id="go_order">주문/결제 하기</a>
 		</c:when>
 		<%--c:otherwise --> 장바구니에 아무 상품도 없는 경우 -> 장바구니 DB에 데이터 X --%>
 		<c:otherwise>
@@ -89,7 +89,7 @@
 					</td>
 				</tr>
 			</table>
-			<a href="" id="go_shopping">상품 담으러 가기</a><!-- index나 키워드선택 페이지로 이동 -->			
+			<a href="${pageContext.request.contextPath }/" id="go_shopping">상품 담으러 가기</a><!-- index나 키워드선택 페이지로 이동 -->			
 		</c:otherwise>
 	</c:choose>
 	
