@@ -22,6 +22,12 @@ public class OrderController {
 		return "order/basket";
 	}
 	
+	/** 장바구니 선택 삭제 처리 */
+	@RequestMapping(value = "/basket/delete_ok.do", method = RequestMethod.GET)
+	public void basket_delete_ok() {
+		
+	}
+	
 	/** 주문 페이지로 연결 */
 	@RequestMapping(value = "/order.do", method = RequestMethod.GET)
 	public ModelAndView go_order(Model model) {
@@ -29,8 +35,8 @@ public class OrderController {
 		return new ModelAndView("order/basket_order");
 	}
 	
-	/** 주문 결과 페이지로 연결 */
-	@RequestMapping(value = "/order_result.do", method = RequestMethod.GET)
+	/** 주문 내용 INSERT 처리 + 주문 결과 페이지로 연결 */
+	@RequestMapping(value = "/order/order_ok.do", method = RequestMethod.GET)
 	public ModelAndView go_order_result(Model model) {
 		boolean order_result = true;
 		

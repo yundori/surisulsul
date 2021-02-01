@@ -32,8 +32,8 @@
     				<!--</c:forEach>-->
     			</tr>    			
     		</table>
-    		<a href="" id="go_mypage">구매내역</a>
-    		<a href="/" id="go_home">쇼핑 계속하기</a>
+    		<a href="${pageContext.request.contextPath }/" id="go_mypage">구매내역</a>
+    		<a href="${pageContext.request.contextPath }/" id="go_home">쇼핑 계속하기</a>
     	</c:when>
     	
     	<%-- 주문결과(result)가 false일 경우 (주문 처리 실패 / 오류 발생 시) --%>
@@ -42,7 +42,7 @@
     		<h1>죄송합니다</h1>
     		<h2>주문 처리 중 문제가 발생하였습니다.</h2>
     		<div id="blank"></div>
-    		<a href="" id="go_basket">장바구니로 이동</a>
+    		<a href="${pageContext.request.contextPath }/basket.do" id="go_basket">장바구니로 이동</a>
     	</c:otherwise>
     	
     </c:choose>
