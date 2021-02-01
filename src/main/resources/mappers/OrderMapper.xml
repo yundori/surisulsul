@@ -4,7 +4,7 @@
 
 <mapper namespace="OrderMapper">
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
-	<resultMap id="OrderMap" type="study.spring.surisulsul.model.Order">
+	<resultMap id="orderMap" type="study.spring.surisulsul.model.Order">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
 		<result property="id" column="o_id" />
 		<result property="price" column="price" />
@@ -30,6 +30,16 @@
 		<result property="p_price" column="p_price" />
 	</resultMap>
 	
+	<!-- Orders 테이블 - 주문내역 불러오기 -->
+	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		
+	</select>
+	
+	<!-- orders_sub 테이블 - 해당 주문번호의 상세 주문품목 불러오기 -->
+	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		
+	</select>
+	
 	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
 		
 	</insert>
@@ -37,4 +47,5 @@
 	<insert id="insertOrderSubItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
 		
 	</insert>
+	
 </mapper>
