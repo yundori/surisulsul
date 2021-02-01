@@ -22,9 +22,10 @@ public class MypageController {
 	*/
 	
 	/** RegexHelper 주입 */
-	@Autowired
+	/**@Autowired
 	RegexHelper regexHelper;
-
+	*/
+	
 	/** Service 패턴 구현체 주입 */
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
