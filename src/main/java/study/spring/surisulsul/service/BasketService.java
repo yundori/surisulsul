@@ -8,22 +8,24 @@ import study.spring.surisulsul.model.Basket;
 public interface BasketService {
 	
 	/**
-	 * @param input
-	 * @return
+	 * 장바구니 데이터 목록 조회
+	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
 	public List<Basket> getBasketList(Basket input) throws Exception;
 	
 	/**
-	 * @param input
-	 * @return
+	 * 장바구니 데이터 등록하기
+	 * @param Basket 저장할 정보를 담고 있는 Beans
+	 * @return int
 	 * @throws Exception
 	 */
 	public int addBasket(Basket input) throws Exception;
 	
 	/**
-	 * @param input
-	 * @return
+	 * 장바구니 데이터 삭제하기
+	 * @param Basket 삭제할 정보를 담고 있는 Beans
+	 * @return int
 	 * @throws Exception
 	 */
 	public int deleteBasket(Basket input) throws Exception;
