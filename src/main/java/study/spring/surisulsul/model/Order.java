@@ -12,7 +12,7 @@ public class Order {
 	private String b_phone;
 	private String r_name;
 	private String r_phone;
-	private int r_postcode;
+	private String r_postcode;
 	private String r_address1;
 	private String r_address2;
 	private String payment;
