@@ -11,8 +11,9 @@ import study.spring.surisulsul.helper.WebHelper;
 
 @Controller
 public class OrderController {
+	/*
 	@Autowired
-	WebHelper webHelper;
+	WebHelper webHelper;*/
 	
 	/** 장바구니 페이지로 연결 */
 	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
