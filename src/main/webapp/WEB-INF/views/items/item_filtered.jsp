@@ -191,7 +191,7 @@
 			<ul class="item_list">
 			 <c:choose>
 			 <%-- <c:when 선택된 값이 있을 경우 > --%>
-			 <c:when test="false">
+			 <c:when test="true">
 			 <%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
 					<a href="${pageContext.request.contextPath}/item_details.do">

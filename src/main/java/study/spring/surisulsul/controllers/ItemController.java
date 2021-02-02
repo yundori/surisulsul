@@ -30,14 +30,14 @@ public class ItemController {
 	String contextPath;
 	
 	/* 인기있는술 페이지로 이동 */
-	@RequestMapping(value = "/best_item.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/best_items.do", method = RequestMethod.GET)
 	public String best_item(Model model) {
 		
-		return "items/best_item";
+		return "items/best_items";
 	}
 	
 	/* 내가찾는술 페이지로 이동 */
-	@RequestMapping(value = "/item_filtered.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/item_filtered.do", method = RequestMethod.GET)
 	public String item_filtered(Model model) {
 		
 		return "items/item_filtered";

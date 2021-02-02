@@ -105,7 +105,7 @@
 	<div class="main_best">
 		<h1>인기 많은 술</h1>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${pageContext.request.contextPath}/best_item.do">
+		<a href="${pageContext.request.contextPath}/best_items.do">
 		<div class="main_best_img" id="best_img1">
 			<img src="${contextPath}/assets/img/items/best1.PNG" alt="인기많은술1" />
 			<div class="over">
@@ -117,7 +117,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${pageContext.request.contextPath}/best_item.do">
+		<a href="${pageContext.request.contextPath}/best_items.do">
 		<div class="main_best_img" id="best_img2">
 			<img src="${contextPath}/assets/img/items/best2.PNG" alt="인기많은술2" />
 			<div class="over">
@@ -129,7 +129,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${pageContext.request.contextPath}/best_item.do">
+		<a href="${pageContext.request.contextPath}/best_items.do">
 		<div class="main_best_img" id="best_img3">
 			<img src="${contextPath}/assets/img/items/best3.PNG" alt="인기많은술3" />
 			<div class="over">
@@ -141,7 +141,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${pageContext.request.contextPath}/best_item.do">
+		<a href="${pageContext.request.contextPath}/best_items.do">
 		<div class="main_best_img" id="best_img4">
 			<img src="${contextPath}/assets/img/items/best4.PNG" alt="인기많은술4" />
 			<div class="over">
