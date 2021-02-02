@@ -36,5 +36,7 @@
 	<context:component-scan base-package="study.spring.surisulsul.controllers" />
 	
 	
+	<context:component-scan base-package="study.spring.surisulsul.service.impl" />
+	
 	
 </beans:beans>

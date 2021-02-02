@@ -6,7 +6,7 @@
 
     <!-- 형식 검사 필수 -->
     <!-- 파라미터 전송 시 RegexHelper로 다시 한 번 형식검사 필수, method=post, action="이동할 페이지"-->
-    <form class="form-horizontal" name="join_form" id="join_form">
+    <form class="form-horizontal" name="join_form" id="join_form" method="post" action="${pageContext.request.contextPath}/account/join_ok.do">
         <div class="form-group">
             <h3 class="account-menu text-center">회원가입</h3>
         </div>

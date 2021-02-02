@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/join.css?time=${currentTime}" />
     <!-- 이메일을 찾는 데필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
     <!-- 형식 검사 할 것인지? -->
-    <form class="form-horizontal" name="join_form" id="join_form">
+    <form class="form-horizontal" name="join_form" id="join_form" method="post" action="${pageContext.request.contextPath}/account/find_email_ok.do">
         <div class="form-group">
             <h3 class="account-menu text-center">이메일 찾기</h3>
             <span class="account-menu-detail text-center">
@@ -33,11 +33,11 @@
         <div class="form-group">
             <div class="print-alert text-center">
                 <!-- 데이터 조회에 성공했을 때 해당 텍스트를 출력하기 -->
-                <!-- <c:if test="${조회건수}>0"> <p>회원님이 수리술술에 가입한 이메일은 ${단일행조회결과.email} 입니다.</p></c:if> -->
+                <%-- <c:if test="${조회건수}>0"> <p>회원님이 수리술술에 가입한 이메일은 ${단일행조회결과.email} 입니다.</p></c:if> --%>
             <p>회원님이 수리술술에 가입한 이메일은 user***@****.com 입니다.</p>
             <!-- 조회하기 전일 시 해당 블록에 아무런 텍스트도 뜨지 않게 할 것 -->
             <!-- 해당하는 정보가 없어 조회에 실패할 경우 사이트에 등록된 이메일이 없습니다. 라는 문구로 변경해서 나오게 할 것 -->
-            <!-- <c:if test="${조회건수}==0"><p>해당 정보로 사이트에 등록된 이메일이 없습니다.</p></c:if> -->
+            <%-- <c:if test="${조회건수}==0"><p>해당 정보로 사이트에 등록된 이메일이 없습니다.</p></c:if> --%>
             </div>
         </div>
     </form>

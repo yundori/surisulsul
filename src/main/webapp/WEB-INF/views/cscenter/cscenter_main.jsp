@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
-    <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/cscenter.css?time=${currentTime}" />
+    <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/cscenter.css" />
 
     <!-- 버튼 클릭 시 페이지가 이동하는 게 아니라 include 하고 있는 두 페이지 중 hide 되는 것과 show 되는 것이바뀜 -->
     <div class="tab">
@@ -16,10 +16,10 @@
         </ul>
         <div class="tab-panel">
             <div id="tab-page-1">
-                <%@ include file="../cscenter/cscenter_notice.jsp"%>
+                <%@ include file="/WEB-INF/views/cscenter/cscenter_notice.jsp"%>
             </div>
             <div id="tab-page-2" class="hide">
-                <%@ include file="../cscenter/cscenter_faq.jsp"%>
+                <%@ include file="/WEB-INF/views/cscenter/cscenter_faq.jsp"%>
             </div>
         </div>
     </div>

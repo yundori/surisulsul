@@ -38,7 +38,7 @@
                 <div class="item-name">경성과하주</div>
                 <div class="item-price">28,000원</div>
             </div>
-            <form>
+            <form  method="post" action="${pageContext.request.contextPath}/account/login_ok.do">
                 <div class="form-group">
                     <label class="label text-center">문의 분류 선택</label><br />
                     <select id="category" class="category">

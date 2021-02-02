@@ -40,7 +40,7 @@
                 <div class="item-price">28,000원</div>
             </div>
             <form>
-                <div class="form-group stars stars-example-fontawesome">
+                <div class="form-group stars stars-example-fontawesome" method="post" action="${pageContext.request.contextPath}/account/write_review_ok.do">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
                     <select id="example-fontawesome" name="rating" autocomplete="off">
                         <option value="1">1</option>
