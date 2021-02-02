@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductMapper">
+    <resultMap id="productMap" type="study.spring.surisulsul.model.Product">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="price" column="price" />
+        <result property="type" column="type" />
+        <result property="loc" column="loc" />
+        <result property="key1" column="key1" />
+        <result property="key2" column="key2" />
+        <result property="sweet" column="sweet" />
+        <result property="sour" column="sour" />
+        <result property="degree" column="degree" />
+        <result property="igd" column="igd" />
+        <result property="size" column="size" />
+        <result property="des1" column="des1" />
+        <result property="des2" column="des2" />
+        <result property="food" column="food" />
+        <result property="img" column="img" />
+        <result property="star" column="star" />
+        <result property="reg_date" column="reg_date" />
+        <result property="edit_date" column="edit_date" />
+        <result property="jn_result" column="jn_result" />
+    </resultMap>
+</mapper> 
