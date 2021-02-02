@@ -46,7 +46,7 @@ public class MemberController {
 	public ModelAndView login_ok(Model model,
 			HttpServletRequest request,
 			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "pw", required = false) String pw) {
+			@RequestParam(value = "user_pw", required = false) String pw) {
 
 		/** 1) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다. (로그인 시 이메일과 비밀번호 입력, 유효성 검사는 별도로 하지 않음)
@@ -87,7 +87,7 @@ public class MemberController {
 			session.setAttribute("loginInfo", output);
 		}
 		// C. 홈페이지로 이동
-		String redirectUrl = contextPath + "/home";
+		String redirectUrl = contextPath + "/home.do";
 		return webHelper.redirect(redirectUrl,"로그인 되었습니다.");
 	}
 
