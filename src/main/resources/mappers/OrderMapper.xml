@@ -30,4 +30,37 @@
 		<result property="p_price" column="p_price" />
 	</resultMap>
 	
+	
+	<!-- 주문내역 - 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		<!-- orders테이블과 orders_sub 테이블의 JOIN -->
+	</select>
+	
+	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->
+	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO orders 
+		(price, b_id, b_name, b_phone,
+		r_name, r_phone, r_postcode, r_address1, r_address2, 
+		payment, pay_cash, pay_card, pay_result, send_result, reg_date, edit_date) 
+		VALUES 
+		(#{price}, #{b_id}, #{b_name}, #{b_phone},
+		#{r_name}, #{r_phone}, #{r_postcode}, #{r_address1}, #{r_address2}.
+		#{payment}, #{pay_cash}, #{pay_card}, #{pay_result}, #{send_result}, now(), now());
+	</insert>
+	
+	<!-- 주문하기 - orders_sub 테이블에 주문 상세 상품 목록 입력(INSERT) 기능 정의 -->
+	<insert id="insertSubItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="sub_id">
+		INSERT INTO orders_sub (o_id, p_id, p_name, p_price, qty, o_date)
+		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{qty}, #{o_date});
+	</insert>
+	
+	<!-- 주문취소 - orders 테이블에서 주문 관련 데이터 취소(=삭제=DELETE) 기능 정의 -->
+	<delete id="deleteOrderItem" parameterType="study.spring.surisulsul.model.Order">
+		DELETE FROM orders WHERE id=#{o_id};
+	</delete>
+	
+	<!-- 주문취소 - deleteOrderItem이 수행될때 먼저 orders_sub 테이블에서도 해당 o_id(MUL)에 해당하는 상품 목록을 지워야 한다. -->
+	<delete id="deleteOrderItem" parameterType="study.spring.surisulsul.model.Order">
+		DELETE FROM orders_sub WHERE o_id=#{o_id};
+	</delete>
 </mapper>
