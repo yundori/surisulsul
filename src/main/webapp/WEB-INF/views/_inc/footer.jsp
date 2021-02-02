@@ -3,35 +3,33 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <div class="footer">
 	<h1>
-		<a href="#"> <img src="${contextPath}/assets/img/logo.png"
-			alt="footer_logo" />
-		</a>
+		<img src="${contextPath}/assets/img/logo.png" alt="footer_logo" />
 	</h1>
 	<br />
 	<div class="sitemap">
 		<ul>
-			<li class="title"><a href="${contextPath}/cscenter/cscenter_notice.jsp">알립니다</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_notice.do">알립니다</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="${contextPath}/cscenter/cscenter_faq.jsp">자주 묻는 질문</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_faq.do">자주 묻는 질문</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="${contextPath}/items/item_filtered.jsp">내가 찾는 술</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/item_filtered.do">내가 찾는 술</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="${contextPath}/items/best_items.jsp">인기 많은 술</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/best_items.do">인기 많은 술</a></li>
 		</ul>
 		<ul class="sitemap_drink">
 			<li class="title"><a href="#">우리 술 종류</a></li>
 			<br />
-			<li class="drink"><a href="${contextPath}/extra/takju.jsp">탁주</a></li>
-			<li class="drink"><a href="${contextPath}/extra/fruit_drink.jsp">과실주</a></li>
-			<li class="drink"><a href="${contextPath}/extra/cheongju.jsp">약주/청주</a></li>
-			<li class="drink"><a href="${contextPath}/extra/spirits.jsp">증류주</a></li>
-			<li class="drink"><a href="${contextPath}/extra/liquerurs.jsp">기타주류</a></li>
+			<li class="drink"><a href="${pageContext.request.contextPath}/takju.do">탁주</a></li>
+			<li class="drink"><a href="${pageContext.request.contextPath}/fruit_drink.do">과실주</a></li>
+			<li class="drink"><a href="${pageContext.request.contextPath}/cheongju.do">약주/청주</a></li>
+			<li class="drink"><a href="${pageContext.request.contextPath}/spirits.do">증류주</a></li>
+			<li class="drink"><a href="${pageContext.request.contextPath}/liquerurs.do">기타주류</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="${contextPath}/extra/juneung.jsp">주(酒)능 </a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/juneung.do">주(酒)능 </a></li>
 		</ul>
 	</div>
 	<div class="award">

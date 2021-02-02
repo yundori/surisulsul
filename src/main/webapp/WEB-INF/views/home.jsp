@@ -10,16 +10,16 @@
 	<div id="main_banner">
 		<div id="slides">
 			<ul class="slides-container">
-				<!-- 슬라이드 1 -->
-				<li><a href="${contextPath}">
+				<!-- 슬라이드 1 (무료배송, 이동 페이지 없음.)-->
+				<li><a href="#">
 				<img src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" /></a>
 				</li>
-				<!-- 슬라이드 2 -->
-				<li><a href="${contextPath}"><img
+				<!-- 슬라이드 2 (내가 찾는 술) -->
+				<li><a href="${pageContext.request.contextPath}/item_filtered.do"><img
 						src="${contextPath}/assets/img/index/banner2.png" alt="메인배너" /></a>
 				</li>
-				<!-- 슬라이드 3 -->
-				<li><a href="${contextPath}"><img
+				<!-- 슬라이드 3 (우리 술 종류) -->
+				<li><a href="${pageContext.request.contextPath}/takju.do"><img
 						src="${contextPath}/assets/img/index/banner3.png" alt="메인배너" /></a>
 				</li>
 			</ul>
@@ -37,7 +37,7 @@
 			<div class="main_best">
 		<h1>취향에 맞는 술을 추천해드려요 ! </h1>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
 		<div class="main_best_img" id="best_img1">
 			<img src="${contextPath}/assets/img/mypage/rec_01.jpg" alt="추천하는술1" />
 			<div class="over">
@@ -49,7 +49,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
 		<div class="main_best_img" id="best_img2">
 			<img src="${contextPath}/assets/img/mypage/rec_02.jpg" alt="추천하는술2" />
 			<div class="over">
@@ -61,7 +61,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
 		<div class="main_best_img" id="best_img3">
 			<img src="${contextPath}/assets/img/mypage/rec_03.jpg" alt="추천하는술3" />
 			<div class="over">
@@ -73,7 +73,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
 		<div class="main_best_img" id="best_img4">
 			<img src="${contextPath}/assets/img/mypage/rec_04.jpg" alt="추천하는술4" />
 			<div class="over">
@@ -84,8 +84,8 @@
 		</div>
 	</div>
 	</a>
-	<button type="button" class="login_ok_button1" onclick="location.href='${contextPath}/mypage/mypage.jsp'">결과 자세히 보기</button>
-		<button type="button" class="login_ok_button2" onclick="location.href='${contextPath}/extra/juneung.jsp'">주능 다시하기</button>
+	<button type="button" class="login_ok_button1" onclick="location.href='${pageContext.request.contextPath}/mypage/my_recommend.do'">결과 자세히 보기</button>
+		<button type="button" class="login_ok_button2" onclick="location.href='${pageContext.request.contextPath}/juneung.do'">주능 다시하기</button>
 	</div>
 		</c:when>
 		<c:otherwise>
@@ -93,8 +93,8 @@
 				주능을 보시겠습니까? + 주능보러가기 버튼 --%>
 			<div class="juneung_empty">
 				<div class="test_img">
-					<a href="${contextPath}"><img
-						src="${contextPath}/assets/img/index/juneung.png"
+					<a href="${pageContext.request.contextPath}/juneung.do">
+					<img src="${contextPath}/assets/img/index/juneung.png"
 						alt="주능 테스트배너" /></a>
 				</div>
 			</div>
@@ -105,7 +105,7 @@
 	<div class="main_best">
 		<h1>인기 많은 술</h1>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/best_item.do">
 		<div class="main_best_img" id="best_img1">
 			<img src="${contextPath}/assets/img/items/best1.PNG" alt="인기많은술1" />
 			<div class="over">
@@ -117,7 +117,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/best_item.do">
 		<div class="main_best_img" id="best_img2">
 			<img src="${contextPath}/assets/img/items/best2.PNG" alt="인기많은술2" />
 			<div class="over">
@@ -129,7 +129,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/best_item.do">
 		<div class="main_best_img" id="best_img3">
 			<img src="${contextPath}/assets/img/items/best3.PNG" alt="인기많은술3" />
 			<div class="over">
@@ -141,7 +141,7 @@
 		</div>
 		</a>
 		<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
-		<a href="${contextPath}/extra/juneung.jsp">
+		<a href="${pageContext.request.contextPath}/best_item.do">
 		<div class="main_best_img" id="best_img4">
 			<img src="${contextPath}/assets/img/items/best4.PNG" alt="인기많은술4" />
 			<div class="over">
@@ -160,28 +160,28 @@
 	<div class="main_drink">
 		<h1>우리 술 종류</h1>
 		<ul class="box" id="box1">
-			<li><a href="${contextPath}"><img
+			<li><a href="${pageContext.request.contextPath}/takju.do"><img
 					src="${contextPath}/assets/img/drinks/takju.jpg" alt="탁주" /></a> <br />
 				<span class="main_drink_text">탁주</span></li>
 		</ul>
 		<ul class="box">
-			<li><a href="${contextPath}"><img
+			<li><a href="${pageContext.request.contextPath}/fruit_drink.do"><img
 					src="${contextPath}/assets/img/drinks/fruit_drink.jpg" alt="과실주" /></a>
 				<br /> <span class="main_drink_text">과실주</span></li>
 		</ul>
 		<ul class="box">
-			<li><a href="${contextPath}"><img
+			<li><a href="${pageContext.request.contextPath}/cheongju.do"><img
 					src="${contextPath}/assets/img/drinks/cheongju.png" alt="약주/청주" /></a>
 				<br /> <span class="main_drink_text">약주/청주</span></li>
 		</ul>
 		<div class="main_drink_2">
 			<ul class="box" id="box2">
-				<li><a href="${contextPath}"><img
+				<li><a href="${pageContext.request.contextPath}/spirits.do"><img
 						src="${contextPath}/assets/img/drinks/soju.jpg" alt="증류주" /></a> <br />
 					<span class="main_drink_text">증류주</span></li>
 			</ul>
 			<ul class="box">
-				<li><a href="${contextPath}"><img
+				<li><a href="${pageContext.request.contextPath}/liquerurs.do"><img
 						src="${contextPath}/assets/img/drinks/extra_drink.jpg" alt="기타주류" /></a>
 					<br /> <span class="main_drink_text">기타주류</span></li>
 			</ul>

@@ -35,7 +35,7 @@
 <body link="none" vlink="none" alink="none">
    <div class="header">
       <h1>
-         <a href="${contextPath}"><img
+         <a href="${pageContext.request.contextPath}/home.do"><img
             src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
       </h1>
       <input type="checkbox" id="check"> 
@@ -48,22 +48,22 @@
             <img src="${contextPath}/assets/img/logo.png" alt="사이드바 로고" />
          </h1>
          <ul>
-            <li><a href="${contextPath}/items/best_items.jsp">인기 많은 술</a></li>
-            <li><a href="${contextPath}/items/item_filtered.jsp">내가 찾는 술</a></li>
-            <li class="drink_type"><a href="${contextPath}">우리 술 종류</a></li>
+            <li><a href="${pageContext.request.contextPath}/best_items.do">인기 많은 술</a></li>
+            <li><a href="${pageContext.request.contextPath}/item_filtered.do">내가 찾는 술</a></li>
+            <li class="drink_type"><a href="${pageContext.request.contextPath}/takju.do">우리 술 종류</a></li>
             	<div class="drink_inner">
-		            <li><a href="${contextPath}/extra/takju.jsp">탁주</a></li>
-					<li><a href="${contextPath}/extra/fruit_drink.jsp">과실주</a></li>
-					<li><a href="${contextPath}/extra/cheongju.jsp">약주/청주</a></li>
-					<li><a href="${contextPath}/extra/spirits.jsp">증류주</a></li>
-					<li><a href="${contextPath}/extra/liquerurs.jsp">기타주류</a></li>
+		            <li><a href="${pageContext.request.contextPath}/takju.do">탁주</a></li>
+					<li><a href="${pageContext.request.contextPath}/fruit_drink.do">과실주</a></li>
+					<li><a href="${pageContext.request.contextPath}/cheongju.do">약주/청주</a></li>
+					<li><a href="${pageContext.request.contextPath}/spirits.do">증류주</a></li>
+					<li><a href="${pageContext.request.contextPath}/liquerurs.do">기타주류</a></li>
             	</div>
-            <li><a href="${contextPath}/extra/juneung.jsp">주(酒)능</a></li>
+            <li><a href="${pageContext.request.contextPath}/juneung.do">주(酒)능</a></li>
             <br />
             <br />
             <br />
-            <li><a href="${contextPath}/cscenter/cscenter_notice.jsp">알립니다</a></li>
-            <li><a href="${contextPath}/cscenter/cscenter_faq.jsp">자주 묻는 질문</a></li>
+            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_notice.do">알립니다</a></li>
+            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_faq.do">자주 묻는 질문</a></li>
          </ul>
       </div>
       <section></section>
@@ -72,18 +72,18 @@
             <%-- 로그인이 됐을 경우의 메뉴 --%>
             <div class="login_ok_menu">
                <ul class="login_menu">
-                  <a href="${contextPath}/account/login.jsp"><li>로그인</li></a>
-                  <a href="${contextPath}/account/join.jsp"><li>회원가입</li></a>
-                  <a href="${contextPath}/order/basket.jsp"><li>장바구니</li></a>
+                  <a href="${pageContext.request.contextPath}/account/login.do"><li>로그인</li></a>
+                  <a href="${pageContext.request.contextPath}/account/join.do"><li>회원가입</li></a>
+                  <a href="${pageContext.request.contextPath}/basket.do"><li>장바구니</li></a>
                </ul>
             </div>
          </c:when>
          <c:otherwise>
             <div class="login_no_menu">
                <ul class="login_menu">
-                  <a href="${contextPath}"><li>로그아웃</li></a>
-                  <a href="${contextPath}/mypage/mypage.jsp"><li>나의 수리술술</li></a>
-                  <a href="${contextPath}/order/basket.jsp"><li>장바구니</li></a>
+                  <a href="${pageContext.request.contextPath}"><li>로그아웃</li></a>
+                  <a href="${pageContext.request.contextPath}/mypage/mypage.do"><li>나의 수리술술</li></a>
+                  <a href="${pageContext.request.contextPath}/basket.do"><li>장바구니</li></a>
                </ul>
             </div>
          </c:otherwise>
