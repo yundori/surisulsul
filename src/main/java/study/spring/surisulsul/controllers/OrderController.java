@@ -15,6 +15,12 @@ public class OrderController {
 	@Autowired
 	WebHelper webHelper;*/
 	
+	/** 장바구니에 추가 (페이지 연결 X) */
+	@RequestMapping(value = "/basket/add_ok.do", method = RequestMethod.POST)
+	public void basket_add_ok(){
+		
+	}
+	
 	/** 장바구니 페이지로 연결 */
 	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
 	public String go_basket() {
