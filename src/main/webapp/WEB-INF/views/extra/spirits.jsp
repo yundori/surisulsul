@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
 	<div id="drinks_img">
-		<img src="../assets/img/drinks/soju.jpg" class="drinks_img_detail"/> 
+		<img src="${contextPath}/assets/img/drinks/soju.jpg" class="drinks_img_detail"/> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 증류주들</h1>
 			<h3>전통 방식으로 증류한 증류식 소주를 소개합니다.</h3> 

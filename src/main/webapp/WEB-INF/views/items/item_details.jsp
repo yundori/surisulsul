@@ -12,7 +12,7 @@
 	<div class="item_detail">
 		<div class="item_detail_infos">
 			<button type="button" id="wishlist_btn" class="wishlist_btn"></button>
-			<img class="item_img" src="../assets/img/items/best1.PNG" />
+			<img class="item_img" src="${contextPath}/assets/img/items/best1.PNG" />
 			<div class="item_detail_info">
 				<h3 class="item_name">고도리 복숭아와인</h3>
 			 	<h5 class="item_plain_info">제품 간략 설명(1줄 내외)</h5>
@@ -62,7 +62,7 @@
 	</div>
 	
 	<div class="item_details_footer">
-		<img src="../assets/img/items/cart_top_btn.PNG" class="btn_top" />
+		<img src="${contextPath}/assets/img/items/cart_top_btn.PNG" class="btn_top" />
 	</div>
 	
 	<%-- </c:when> --%>

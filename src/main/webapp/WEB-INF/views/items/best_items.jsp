@@ -12,8 +12,8 @@
 			<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
 				<li class="item_info">
 					<a href="${pageContext.request.contextPath}/item_details.do">
-						<img class="best_ranking" src="../assets/img/items/first.png" />
-						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
+						<img class="best_ranking" src="${contextPath}/assets/img/items/first.png" />
+						<img class="item_img" src="${contextPath}/assets/img/items/best1.PNG" /> <br/>
 						<span class="item_title">상품명abcdefghijklmnop</span>
 						<span class="item_price">00,000 원</span> <br/>
                     	<div class="clean"></div>
@@ -27,8 +27,8 @@
 				</li>
 				<li class="item_info">
 					<a href="${pageContext.request.contextPath}/item_details.do">
-						<img class="best_ranking rank2" src="../assets/img/items/second.png" />
-					 	<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
+						<img class="best_ranking rank2" src="${contextPath}/assets/img/items/second.png" />
+					 	<img class="item_img" src="${contextPath}/assets/img/items/best2.PNG"/> <br/>
                     	<span class="item_title">상품명</span>
 						<span class="item_price">00,000 원</span> <br/>
 						<div class="clean"></div>
@@ -42,8 +42,8 @@
 				</li>
 				<li class="item_info">
 					<a href="${pageContext.request.contextPath}/item_details.do">
-						<img class="best_ranking rank3" src="../assets/img/items/third.png" />
-					 	<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
+						<img class="best_ranking rank3" src="${contextPath}/assets/img/items/third.png" />
+					 	<img class="item_img" src="${contextPath}/assets/img/items/best3.PNG" /> <br/>
 						<span class="item_title">상품명</span>
 						<span class="item_price">000,000 원</span> <br/>
 						<div class="clean"></div>
@@ -57,7 +57,7 @@
 				</li>
 				<li class="item_info">
 					<a href="#">
-						<img class="item_img" src="../assets/img/items/best4.PNG" /> <br/>
+						<img class="item_img" src="${contextPath}/assets/img/items/best4.PNG" /> <br/>
 						<span class="item_title">상품명</span>
 						<span class="item_price">00,000 원</span> <br/>
 						<div class="clean"></div>

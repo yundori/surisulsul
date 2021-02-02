@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
 	<div id="drinks_img">
-	    <img src="../assets/img/drinks/takju.jpg" class="drinks_img_detail"/>
+	    <img src="${contextPath}/assets/img/drinks/takju.jpg" class="drinks_img_detail"/>
 	    <span id="drinks_name">
 		    <h1>한국의 다양한 막걸리들</h1>
 		    <h3>쌀이나 각종 곡류와 누룩으로 빚어 말 그대로<br/>막 걸러내었다 하여 붙여진 이름이 막걸리다.</h3>
