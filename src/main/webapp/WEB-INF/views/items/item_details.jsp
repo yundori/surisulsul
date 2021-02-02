@@ -42,8 +42,8 @@
 			<label class="total_price_label">총 주문 가격 : </label>
 			<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
 			<div class="order_btn">
-				<a class="btn_cart">장바구니 담기</a>
-				<a class="btn_order">바로 주문하기</a>
+				<a class="btn_cart" href="${pageContext.request.contextPath}/basket.do">장바구니 담기</a>
+				<a class="btn_order" href="${pageContext.request.contextPath}/order.do">바로 주문하기</a>
 			</div>
 		</form>
 		</div>
