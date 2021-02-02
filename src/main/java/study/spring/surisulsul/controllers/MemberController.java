@@ -12,11 +12,11 @@ import study.spring.surisulsul.helper.WebHelper;
 
 @Controller
 public class MemberController {
-	/** WebHelper 주입
+	/** WebHelper 주입 */
 	@Autowired
 	WebHelper webHelper;
 
-	/** RegexHelper 주입
+	/** RegexHelper 주입 */
 	@Autowired
 	RegexHelper regexHelper;
 
