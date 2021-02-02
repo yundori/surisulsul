@@ -23,5 +23,55 @@
         <result property="reg_date" column="reg_date" />
         <result property="edit_date" column="edit_date" />
         <result property="jn_result" column="jn_result" />
+        
+        <result property="search" column="search" />
+        
+        <result property="total_qty" column="total_qty" />
     </resultMap>
+    
+    <!-- 상품 베스트 12개 목록 조회 -->
+    <select id="bestItemList" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, price, star, type, loc, key1
+		FROM product p
+		INNER JOIN sales s ON p.id=s.p_id
+		ORDER BY s.total_qty ASC
+		LIMIT 0, 12
+    </select>
+    
+    <!-- 조건에 맞는 상품 목록 조회 -->
+    <select id="filteredItemList" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, price, star, type, loc, key1
+		FROM product 
+		WHERE type IN (#{types}) AND 
+              loc IN (#{areas}) AND
+              (key1 IN (#{keys}) AND (key2 IN (#{keys})) AND
+              sweet = #{sweet} AND sour = #{sour} AND degree = #{degree} AND
+              search = #{search}
+    </select>
+    
+    <!-- 상품 상세 정보 조회 -->
+    <select id="detailsItem" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, des1, igd, price, star 
+        FROM products 
+        WHERE id=#{id};
+    </select>
+    
+    <!-- 상품 정보 조회 -->
+    <select id="detailsItem" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT sweet, sour, degree, jn_result, des2, food
+        FROM products
+        WHERE id=#{id};
+    </select>
+    
+    <!-- 종류별 상품 목록 조회 -->
+    <select id="typesItemList" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, price, star, type, loc, key1
+		FROM product
+		WHERE type = #{type}
+    </select>
 </mapper> 

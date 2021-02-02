@@ -25,30 +25,33 @@ public class Product {
 	private String reg_date; // 상품 등록 날짜
 	private String edit_date; // 상품 수정 날짜
 	private String jn_result; // 해당 술이 들어갈 주능 결과
+	
+	private String search;	//검색창을 통한 검색어
 
 	// 2) Join 절에 따른 추가 컬럼
-	
+	private int total_qty;	// 총 매출 수량
+
 	// 3) 페이지 구현을 위한 static 변수
-			/** LIMIT 절에서 사용할 조회 시작 위치 */
-			private static int offset;
-			
-			/** LIMIT 절에서 사용할 조회할 데이터 수 */
-			private static int listCount;
-			
-			public static int getOffset() {
-				return offset;
-			}
-			
-			public static void setOffset(int offset) {
-				Product.offset = offset;
-			}
-			
-			public static int getListCount() {
-				return listCount;
-			}
-			
-			public static void setListCount(int listCount) {
-				Product.listCount = listCount;
-			}
-	
+	/** LIMIT 절에서 사용할 조회 시작 위치 */
+	private static int offset;
+
+	/** LIMIT 절에서 사용할 조회할 데이터 수 */
+	private static int listCount;
+
+	public static int getOffset() {
+		return offset;
+	}
+
+	public static void setOffset(int offset) {
+		Product.offset = offset;
+	}
+
+	public static int getListCount() {
+		return listCount;
+	}
+
+	public static void setListCount(int listCount) {
+		Product.listCount = listCount;
+	}
+
 }
