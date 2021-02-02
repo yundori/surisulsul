@@ -6,7 +6,7 @@
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
 	<resultMap id="orderMap" type="study.spring.surisulsul.model.Order">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
-		<result property="id" column="o_id" />
+		<result property="o_id" column="o_id" />
 		<result property="price" column="price" />
 		<result property="b_id" column="b_id" />
 		<result property="b_name" column="b_name" />
@@ -34,10 +34,16 @@
 	<!-- 주문내역 - 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		<!-- orders테이블과 orders_sub 테이블의 JOIN -->
+		SELECT o.id AS o_id, o.reg_date, os.p_name, os.p_price, os.qty, o.pay_result, o.send_result
+		FROM orders o
+		INNER JOIN orders_sub os
+		ON o.id=os.o_id
+		WHERE o.b_id=#{id};	
+		<!-- 세션에 있는 값을 어떻게 #으로 가져오는지 id로 써도 되는지 Model은 안건드려도 되는지 -->	
 	</select>
 	
 	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->
-	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="o_id">
 		INSERT INTO orders 
 		(price, b_id, b_name, b_phone,
 		r_name, r_phone, r_postcode, r_address1, r_address2, 
