@@ -60,7 +60,7 @@
     </select>
     
     <!-- 상품 정보 조회 -->
-    <select id="detailsItem" parameterType="study.spring.surisulsul.model.Product"
+    <select id="infoItem" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT sweet, sour, degree, jn_result, des2, food
         FROM products
