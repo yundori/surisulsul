@@ -90,7 +90,7 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> result = null;
 
 		try {
-			result = sqlSession.selectList("MemberMapper.selectList", input);
+			result = sqlSession.selectList("MemberMapper.memberReviewList", input);
 
 			if (result == null) {
 				throw new NullPointerException("result=null");
@@ -106,6 +106,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 회원가입 */
 	@Override
 	public int addMember(Member input) throws Exception {
 		int result = 0;
@@ -125,6 +126,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 회원정보 수정 및 비밀번호 재발급 */
 	@Override
 	public int editMember(Member input) throws Exception {
 		int result = 0;
@@ -145,6 +147,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 탈퇴한 회원의 데이터 삭제 */
 	@Override
 	public int deleteMember(Member input) throws Exception {
 		int result = 0;
@@ -167,6 +170,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 중복 이메일 조회 */
 	@Override
 	public int getJoinEmailCount(Member input) throws Exception {
 		int result = 0;
@@ -181,6 +185,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 비밀번호 찾기용 조회 */
 	@Override
 	public int getPasswordCount(Member input) throws Exception {
 		int result = 0;
@@ -195,6 +200,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/** 로그인 시 이메일 체크용 조회 */
 	@Override
 	public int getLoginEmailCount(Member input) throws Exception {
 		int result = 0;

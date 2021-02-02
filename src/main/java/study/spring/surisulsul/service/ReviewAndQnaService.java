@@ -28,7 +28,7 @@ public interface ReviewAndQnaService {
 	// 상품별 문의 목록 조회
 	public List<Qna> getProductQnaList(Qna input) throws Exception;
 
-	// 회원별별 문의 목록 조회
+	// 회원별 문의 목록 조회
 	public List<Qna> getMemberQnaList(Qna input) throws Exception;
 
 	// 상품별 문의 수 조회
