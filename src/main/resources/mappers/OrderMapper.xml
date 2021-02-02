@@ -66,7 +66,7 @@
 	</delete>
 	
 	<!-- 주문취소 - deleteOrderItem이 수행될때 먼저 orders_sub 테이블에서도 해당 o_id(MUL)에 해당하는 상품 목록을 지워야 한다. -->
-	<delete id="deleteOrderItem" parameterType="study.spring.surisulsul.model.Order">
+	<delete id="deleteSubItem" parameterType="study.spring.surisulsul.model.Order">
 		DELETE FROM orders_sub WHERE o_id=#{o_id};
 	</delete>
 </mapper>
