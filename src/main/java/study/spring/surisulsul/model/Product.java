@@ -1,5 +1,8 @@
 package study.spring.surisulsul.model;
 
+import lombok.Data;
+
+@Data
 public class Product {
 	// 1) Product table의 기본 컬럼
 	private int id; // 상품번호
