@@ -37,7 +37,7 @@
 	<select id="productReviewList"
 		parameterType="study.spring.surisulsul.model.Review"
 		resultMap="reviewMap">
-		SELECT * FROM reviews
+		SELECT * FROM review
 		WHERE p_id=#{p_id}
 		ORDER BY reg_date DESC
 		<if test="listCount>0">
@@ -49,12 +49,18 @@
 	<select id="memberReviewList"
 		parameterType="study.spring.surisulsul.model.Review"
 		resultMap="reviewMap">
-		SELECT * FROM reviews
+		SELECT * FROM review
 		WHERE m_id=#{m_id}
 		ORDER BY reg_date DESC
 		<if test="listCount>0">
 			LIMIT #{offset}, #{listCount}
 		</if>
+	</select>
+	
+	<!-- 상품별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="selectCountProductReview"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT count(*) FROM review WHERE p_id=#{p_id};
 	</select>
 
 	<!-- 리뷰 작성을 위한 기능 정의 -->
@@ -79,7 +85,7 @@
 	<!-- 리뷰 삭제를 위한 기능 정의 -->
 	<delete id="deleteReview"
 		parameterType="study.spring.surisulsul.model.Review">
-		DELETE FROM reviews WHERE id=#{id}
+		DELETE FROM review WHERE id=#{id}
 	</delete>
 
 	<!-- 상품별 문의 목록 조회(다중행 조회)를 위한 기능 정의 -->
@@ -102,6 +108,12 @@
 		<if test="listCount>0">
 			LIMIT #{offset}, #{listCount}
 		</if>
+	</select>
+	
+	<!-- 상품별 문의 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="selectCountProductQna"
+		parameterType="study.spring.surisulsul.model.Qna" resultType="int">
+		SELECT count(*) FROM qna WHERE p_id=#{p_id};
 	</select>
 
 	<!-- 문의 작성을 위한 기능 정의 -->
