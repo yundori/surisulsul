@@ -23,6 +23,14 @@ public interface OrderService {
 	public int addOrder(Order input) throws Exception;
 	
 	/**
+	 * 주문 기능2 : 주문상품 상세 데이터 등록하기
+	 * @param Order 저장할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int addOrderProducts(Order input) throws Exception;
+	
+	/**
 	 * 주문 취소 : 주문 데이터 삭제하기
 	 * @param Order 삭제할 정보를 담고 있는 Beans
 	 * @return int

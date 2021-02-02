@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Order {
 	//orders 테이블 컬럼 연결
-	private int id;
+	private int o_id;
 	private int price;
 	private int b_id;
 	private String b_name;
