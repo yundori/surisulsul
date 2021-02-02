@@ -19,76 +19,246 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 	@Autowired
 	SqlSession sqlSession;
 	
+	/** 상품별 리뷰 목록 조회 */
 	@Override
 	public List<Review> getProductReviewList(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Review> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.productReviewList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 회원별 리뷰 목록 조회 */
 	@Override
 	public List<Review> getMemberReviewList(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Review> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.memberReviewList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 상품별 리뷰 수 조회 */
 	@Override
 	public int getReviewCount(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountProductReview", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 리뷰 작성 */
 	@Override
 	public int addReview(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("ReviewAndQnaMapper.addReview", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
 	}
 
+	/** 리뷰 수정 */
 	@Override
 	public int editReview(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.update("ReviewAndQnaMapper.updateReview", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 리뷰 삭제 */
 	@Override
 	public int deleteReview(Review input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.delete("ReviewAndQnaMapper.deleteReview", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 상품별 문의 목록 조회 */
 	@Override
 	public List<Qna> getProductQnaList(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Qna> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.productQnaList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 회원별 문의 목록 조회 */
 	@Override
 	public List<Qna> getMemberQnaList(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Qna> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.memberQnaList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 상품별 문의 수 조회 */
 	@Override
 	public int getQnaCount(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountProductQna", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 문의 작성 */
 	@Override
 	public int addQna(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("ReviewAndQnaMapper.addQna", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
 	}
 
+	/** 문의 수정 */
 	@Override
 	public int editQna(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.update("ReviewAndQnaMapper.updateQna", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
 	}
 
+	/** 문의 삭제 */
 	@Override
 	public int deleteQna(Qna input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.delete("ReviewAndQnaMapper.deleteQna", input);
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+
+		return result;
 	}
 
 }
