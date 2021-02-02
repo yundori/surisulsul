@@ -51,13 +51,15 @@
 	</div>
 	
 	<div class="item_menu">
-		<button class="info_menu tab_menu">상품 정보</button>
-		<button class="review_menu tab_menu">상품 후기</button>
-		<button class="quest_menu tab_menu">상품 문의</button>
-		<div class="content">
+		<button data-tab="item_info" class="info_menu tab_menu" id="default">상품 정보</button>
+		<button data-tab="item_reviews" class="review_menu tab_menu">상품 후기</button>
+		<button data-tab="item_question" class="quest_menu tab_menu">상품 문의</button>
+		<div class="tab_content">
+		<%-- 
 		<%@ include file="item_info.jsp"%>
 		<%@ include file="item_reviews.jsp"%>
 		<%@ include file="item_question.jsp"%>
+		--%>
 		</div>
 	</div>
 	
@@ -96,6 +98,27 @@
             
             $(this).toggleClass("wishlist_ok_btn");
         });
+	});
+	
+	/** 탭메뉴 구현 **/
+	$(function() {
+		$('.tab_menu')click(function() {{
+			var activeTab = $(this).attr('data-tab');
+			$('.tab_menu').css('background-color', 'white');
+			$(this).css('background-color', '#FBD14B');
+			$.ajax({
+				type : 'GET',
+				url : activeTab + ".jsp",
+				dataType : "jsp",
+				error : function() {
+					alert('실패');
+				},
+				success : function(data) {
+					$('.tab_content').jsp(data);
+				}
+			});
+		}});
+		$('#default').click();
 	});
 </script>
 

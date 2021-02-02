@@ -203,13 +203,15 @@
 	border-radius: 5px;
 	font-weight: 500;
 	font-size: 16px;
+	outline: none;
+	cursor: pointer;
 }
-
+/*
 .info_menu {
 	background-color: #FBD14B;
-}
+}*/
 
-.content {
+.tab_content {
 	width: 100%;
 	height: auto;
 	border-top: 3px solid #cccccc;

@@ -14,7 +14,7 @@
 				<td class="img_area">
 					<%-- <c:choose> --%>
 					<%-- <c:when 사진 db있으면 해당 사진 노출> --%>
-					<img class="review_img" src="../assets/img/items/best1.PNG" />
+					<img class="review_img" src="${contextPath}/assets/img/items/best1.PNG" />
 					<%-- </c:if> --%>
 					<%-- <c:otherwise 없으면 디폴트 이미지 사용> --%>
 					<%-- </c:otherwise> --%>
@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td class="img_area">
-					<img class="review_img" src="../assets/img/no-image.jpg" />
+					<img class="review_img" src="${contextPath}/assets/img/no-image.jpg" />
 				</td>
 				<td class="content_area">
 					<h3 class="content_title">복숭아 향이 좋아요!</h3>
