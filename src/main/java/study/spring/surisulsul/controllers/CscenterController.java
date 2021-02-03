@@ -27,6 +27,12 @@ public class CscenterController {
 	String contextPath;
 	
 	
+	/** 고객센터 페이지로 이동 */
+	@RequestMapping(value="/cscenter/cscenter_main.do", method=RequestMethod.GET)
+	public String cscenter_main(Model model) {
+		return "cscenter/cscenter_main";
+	}
+	
 	/** 공지사항 페이지로 이동 */
 	@RequestMapping(value="/cscenter/cscenter_notice.do", method=RequestMethod.GET)
 	public String notice(Model model) {
