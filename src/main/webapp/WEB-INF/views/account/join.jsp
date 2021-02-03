@@ -21,7 +21,7 @@
             <!-- onclick = "emailChk()" -->
             <input type="button" value="중복확인" class="chk-email" />
             <!-- 여기의 값이 email-chk가 되면 중복확인 통과, email-unchk면 중복확인이 이루어지지 않음, email-unuse면 이미 사용중인 이메일이 있음 표시, submit 방지-->
-            <input type="hidden" name="emailChk" value="email-chk" />
+            <input type="hidden" name="emailChk" id="emailChk" value="email-chk" />
         </div>
         <div class="form-group">
             <label for="user_pw" class="col-md-4">비밀번호<span class="identify">*</span></label>

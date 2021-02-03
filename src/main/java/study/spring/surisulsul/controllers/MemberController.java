@@ -1,5 +1,7 @@
 package study.spring.surisulsul.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -109,14 +111,80 @@ public class MemberController {
 
 	/** 회원가입 페이지로 이동 */
 	@RequestMapping(value = "/account/join.do", method = RequestMethod.GET)
-	public String join(Model model) {
-		return "account/join";
+	public ModelAndView join(Model model) {
+		return new ModelAndView("account/join");
 	}
 
 	/** 회원가입에 대한 action 페이지 */
 	@RequestMapping(value = "/account/join_ok.do", method = RequestMethod.POST)
-	public void join_ok(Model model) {
+	public ModelAndView join_ok(Model model,
+			@RequestParam(value="email", required=false) String email,
+			@RequestParam(value="emailChk", required=false) String emailChk,
+			@RequestParam(value="user_pw", required=false) String pw,
+			@RequestParam(value="user_pw_re", required=false) String pw_re,
+			@RequestParam(value="user_name", required=false) String name,
+			@RequestParam(value="tel", required=false) String phone,
+			@RequestParam(value="birthdate", required=false) String birthdate,
+			@RequestParam(value="postcode", required=false) String postcode,
+			@RequestParam(value="address", required=false) String address1,
+			@RequestParam(value="detailAddress", required=false) String address2,
+			@RequestParam(value="terms", required=false) List<String> terms) {
 
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 이메일 유효성 검사
+		if(email.equals("")) {return webHelper.redirect(null, "이메일을 입력하세요.");}
+		if(!regexHelper.isEmail(email)) {return webHelper.redirect(null, "입력하신 이메일의 형식이 바르지 않습니다."); }
+		if(emailChk.equals("email-unchk")) {return webHelper.redirect(null, "이메일 중복확인이 필요합니다.");}
+		if(emailChk.equals("email-unuse")) {return webHelper.redirect(null, "입력하신 이메일이 사용중입니다.");}
+		
+		// 비밀번호+비밀번호 확인 유효성 검사
+		if(pw.equals("")) {return webHelper.redirect(null, "비밀번호를 입력하세요.");}
+		if(pw_re.equals("")) {return webHelper.redirect(null, "비밀번호 확인란에 비밀번호를 입력하세요.");}
+		
+		// 이름 유효성 검사
+		if(name.equals("")) {return webHelper.redirect(null, "이름을 입력하세요.");}
+		if(!regexHelper.isKor(name)) {return webHelper.redirect(null, "이름은 한글만 가능합니다.");}
+		
+		// 핸드폰 번호 유효성 검사
+		if(phone.equals("")) {return webHelper.redirect(null, "핸드폰 번호를 입력하세요.");}
+		if(!regexHelper.isCellPhone(phone)) {return webHelper.redirect(null, "핸드폰 번호를 - 없이 올바른 양식으로 입력해 주세요.");}
+		
+		// 생년월일 유효성 검사
+		if(birthdate.equals("")) {return webHelper.redirect(null, "생년월일을 입력하세요.");}
+		
+		// 주소 유효성 검사
+		if(postcode.equals("")) {return webHelper.redirect(null, "우편번호를 입력하세요.");}
+		if(address1.equals("")) {return webHelper.redirect(null, "주소를 입력하세요.");}
+		if(address2.equals("")) {return webHelper.redirect(null, "상세주소를 입력하세요.");}
+		
+		// 이용약관 동의 유효성 검사
+		if(terms.size()<3) {return webHelper.redirect(null, "이용약관에 모두 동의해주세요.");}
+				
+		
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Member input = new Member();
+		input.setEmail(email);
+		input.setPw(pw);
+		input.setName(name);
+		input.setPhone(phone);
+		input.setBirthdate(birthdate);
+		input.setPostcode(postcode);
+		input.setAddress1(address1);
+		input.setAddress2(address2);
+		
+		try {
+			// 데이터 저장
+			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
+			memberService.addMember(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장 시 생성된 PK 값을 상세 페이지로 전달해야 한다.
+		String redirectUrl = contextPath + "/login.do";
+		return webHelper.redirect(redirectUrl, "회원가입이 완료되었습니다.\n로그인 후 수리술술을 이용하실 수 있습니다.");
 	}
 
 	/** 이메일 찾기 페이지로 이동 */
