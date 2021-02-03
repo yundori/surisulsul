@@ -14,7 +14,7 @@
 	<div class="form-group">
 		<label for="email" class="col-md-4">이메일</label>
 		<div class="col-md-8">
-			<input type="email" name="email" id="email" class="form-control"
+			<input type="email" name="email" id="email" class="form-control" value="${email}"
 				placeholder="이메일을 입력하세요." />
 		</div>
 	</div>
@@ -34,12 +34,12 @@
 		<div class="print-alert text-center">
 			<c:choose>
 				<%-- 입력한 이메일만으로 데이터 조회 실패 시 문구가 뜨도록 할 것 --%>
-				<c:when test="${chkEmailCount}==0">
-					<p>가입한 이메일이 없거나, 입력한 이메일이 올바르지 않습니다.</p>
+				<c:when test="${chkEmailCount==0}">
+					<p><font color="#ff0000">가입한 이메일이 없거나, 입력한 이메일이 올바르지 않습니다.</font></p>
 				</c:when>
 				<%-- 입력한 이메일만으로는 조회 데이터가 있으나 이메일&비밀번호 조건으로 데이터 조회 실패 시 문구가 뜨도록 할 것 --%>
-				<c:when test="${chkEmailCount}>0 && ${chkLogin}==0">
-					<p>입력한 비밀번호가 올바르지 않습니다.</p>
+				<c:when test="${chkEmailCount>0 && chkLogin==0}">
+					<p><font color="#ff0000">입력한 비밀번호가 올바르지 않습니다.</font></p>
 				</c:when>
 			</c:choose>
 

@@ -37,7 +37,18 @@ public class MemberController {
 
 	/** 로그인 페이지로 이동 */
 	@RequestMapping(value = "/account/login.do", method = RequestMethod.GET)
-	public ModelAndView login(Model model) {
+	public ModelAndView login(Model model,
+			// 로그인 시 입력된 이메일 존재 여부 체크
+			@RequestParam(value="chkEmailCount", defaultValue="-1") int chkEmailCount,
+			// 로그인 여부 체크
+			@RequestParam(value="chkLogin", defaultValue="0") int chkLogin,
+			// 입력한 이메일 체크
+			@RequestParam(value="email", required=false, defaultValue="") String email) {
+		model.addAttribute("chkEmailCount", chkEmailCount);
+		model.addAttribute("chkLogin", chkLogin);
+		if(!email.equals("")) {
+			model.addAttribute("email", email);
+		}
 		return new ModelAndView("account/login");
 	}
 
@@ -68,14 +79,19 @@ public class MemberController {
 				output = memberService.getMemberLogin(input);
 				chkLogin = 1;
 			} else {
-				return webHelper.redirect(null, "로그인 실패");
+				model.addAttribute("chkEmailCount", chkEmailCount);
+				model.addAttribute("chkLogin", chkLogin);
+				return new ModelAndView("account/login");
+				// return webHelper.redirect(null, "로그인 실패");
 			}
 		} catch (Exception e) {
 			// 이메일 조회 건수는 있으나 이메일과 비밀번호로 단일행 조회에 실패 : 비밀번호 오류
-			// chkEmailCount와 output 값을 넣어서 리다이렉트한다.
+			// chkEmailCount와 chkLogin 값, 기존에 입력했던 이메일을 넣어서 리다이렉트한다.
+			chkEmailCount = 1;
 			model.addAttribute("chkEmailCount", chkEmailCount);
 			model.addAttribute("chkLogin", chkLogin);
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			model.addAttribute("email", email);
+			return new ModelAndView("account/login");
 		}
 		
 		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
@@ -88,7 +104,7 @@ public class MemberController {
 		}
 		// C. 홈페이지로 이동
 		String redirectUrl = contextPath + "/home.do";
-		return webHelper.redirect(redirectUrl,"로그인 되었습니다.");
+		return webHelper.redirect(redirectUrl, null);
 	}
 
 	/** 회원가입 페이지로 이동 */
