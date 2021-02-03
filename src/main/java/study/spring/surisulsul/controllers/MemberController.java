@@ -189,14 +189,51 @@ public class MemberController {
 
 	/** 이메일 찾기 페이지로 이동 */
 	@RequestMapping(value = "/account/find_email.do", method = RequestMethod.GET)
-	public String find_email(Model model) {
-		return "account/find_email";
+	public ModelAndView find_email(Model model,
+			@RequestParam(value="findEmailCount", defaultValue="-1") int findEmailCount,
+			@RequestParam(value="findEmail", required=false) Member findEmail) {
+		model.addAttribute("findEmailCount", findEmailCount);
+		if(findEmail!=null) {
+			model.addAttribute("findEmail", findEmail);
+		} else {
+			model.addAttribute("findEmail", null);
+		}
+		return new ModelAndView("account/find_email");
 	}
 
 	/** 이메일 찾기에 대한 action 페이지 */
 	@RequestMapping(value = "/account/find_email_ok.do", method = RequestMethod.POST)
-	public void find_email_ok(Model model) {
+	public ModelAndView find_email_ok(Model model,
+			@RequestParam(value="user_name", required=false) String name,
+			@RequestParam(value="tel", required=false) String phone) {
+		
+		/** 1) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다. (로그인 시 이메일과 비밀번호 입력, 유효성 검사는 별도로 하지 않음)
+		Member input = new Member();
+		input.setName(name);
+		input.setPhone(phone);
 
+		Member findEmail = null;		 // 사용자가 입력한 정보로 DB를 조회한 결과를 받을 객체 준비
+		int findEmailCount = 0;		 // 사용자가 입력한 정보로 조회가 성공하는지 여부를 받을 변수 준비 
+		
+		try {
+			// 사용자가 입력한 이메일과 일치하는 정보 조회
+			findEmail = memberService.getMemberEmail(input);
+		} catch (Exception e) {
+			// 일치하는 정보가 없을 경우
+			// chkEmailCount와 chkLogin 값, 기존에 입력했던 이메일을 넣어서 리다이렉트한다.
+			findEmailCount = 0;
+			model.addAttribute("findEmailCount", findEmailCount);
+			model.addAttribute("findEmail", null);
+			return new ModelAndView("account/find_email");
+		}
+		
+		/** 3) 입력한 정보가 일치할 경우 조회 성공 여부와 조회 결과를 받아 이메일 찾기 페이지로 리다이렉트 */
+		findEmailCount = 1;
+		
+		model.addAttribute("findEmailCount", findEmailCount);
+		model.addAttribute("findEmail", findEmail);
+		return new ModelAndView("account/find_email");
 	}
 
 	/** 비밀번호 찾기 페이지로 이동 */
