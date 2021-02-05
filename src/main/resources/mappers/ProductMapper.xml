@@ -46,7 +46,7 @@
 		FROM product 
 		WHERE type IN (#{types}) AND 
               loc IN (#{areas}) AND
-              (key1 IN (#{keys}) AND (key2 IN (#{keys})) AND
+              ((key1 IN (#{keys}) OR (key2 IN (#{keys})) AND
               sweet = #{sweet} AND sour = #{sour} AND degree = #{degree} AND
               search = #{search}
     </select>

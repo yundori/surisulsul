@@ -50,11 +50,25 @@ public class ItemController {
 		return "items/item_details";
 	}
 	
-	/* 상품정보 탭페이지로 이동 
+	/* 상품정보 탭페이지로 이동 */
 	@RequestMapping(value = "/item_info.do", method = RequestMethod.GET)
 	public String item_info(Model model) {
 		
 		return "items/item_info";
-	}*/
+	}
+	
+	/* 상품리뷰 탭페이지로 이동 */
+	@RequestMapping(value = "/item_reviews.do", method = RequestMethod.GET)
+	public String item_reviews(Model model) {
+		
+		return "items/item_reviews";
+	}
+	
+	/* 상품문의 탭페이지로 이동 */
+	@RequestMapping(value = "/item_question.do", method = RequestMethod.GET)
+	public String item_question(Model model) {
+		
+		return "items/item_question";
+	}
 
 }
