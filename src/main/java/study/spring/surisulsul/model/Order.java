@@ -31,4 +31,7 @@ public class Order {
 	private int p_id;
 	private String p_name;
 	private int p_price;
+	
+	//sales 테이블에 INSERT하기 위해 GROUP BY로 받아올 변수
+	private int total_qty;
 }

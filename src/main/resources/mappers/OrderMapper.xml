@@ -30,6 +30,8 @@
 		<result property="p_id" column="p_id" />
 		<result property="p_name" column="p_name" />
 		<result property="p_price" column="p_price" />
+		
+		<result property="total_qty" column="total_qty" />
 	</resultMap>
 	
 	
@@ -41,7 +43,6 @@
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
 		WHERE o.b_id=#{loginId};	
-		<!-- 세션에 있는 값을 어떻게 #으로 가져오는지 id로 써도 되는지 Model은 안건드려도 되는지 -->	
 	</select>
 	
 	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->
@@ -71,4 +72,10 @@
 	<delete id="deleteSubItem" parameterType="study.spring.surisulsul.model.Order">
 		DELETE FROM orders_sub WHERE o_id=#{o_id};
 	</delete>
+	
+	<!-- sales 테이블에 INSERT할 SELECT-GROUP BY 내용 -->
+	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		<!-- HAVING 절 써야하는지? 그냥 LIST로 받아오면 되는지? -->
+		SELECT p_id, p_name, p_price, count(p_id) AS total_qty FROM order_sub GROUP BY p_id;
+	</select>
 </mapper>

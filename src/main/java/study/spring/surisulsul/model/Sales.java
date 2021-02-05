@@ -13,5 +13,5 @@ public class Sales {
 	private int p_price;		//상품가격
 	private int total_qty;		//총 매출수량(한달)
 	private int total_price;	//총 매출금액(한달)
-	private String o_date;		//구매 날짜
+	private String edit_date;		//매출 업데이트 날짜
 }
