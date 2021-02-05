@@ -83,6 +83,7 @@ public class MemberController {
 			} else {
 				model.addAttribute("chkEmailCount", chkEmailCount);
 				model.addAttribute("chkLogin", chkLogin);
+				//return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
 				return new ModelAndView("account/login");
 				// return webHelper.redirect(null, "로그인 실패");
 			}
@@ -94,6 +95,7 @@ public class MemberController {
 			model.addAttribute("chkLogin", chkLogin);
 			model.addAttribute("email", email);
 			return new ModelAndView("account/login");
+			//return webHelper.redirect(contextPath+"/account/login.do", null);
 		}
 		
 		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
@@ -105,7 +107,8 @@ public class MemberController {
 			session.setAttribute("loginInfo", output);
 		}
 		// C. 홈페이지로 이동
-		String redirectUrl = contextPath + "/home.do";
+		String redirectUrl = contextPath + "/";
+		System.out.println(output.toString());
 		return webHelper.redirect(redirectUrl, null);
 	}
 
