@@ -124,6 +124,13 @@
     display: none;
 }
 
+.tab_forme,
+.tab_wishlist,
+.tab_buy,
+.tab_comment {
+    float: left;
+}
+
 /**탭 백그라운드 설정*/
 .tab_forme a {
     background: url(../img/mypage/recommend_nor.png);
