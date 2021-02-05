@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/css/item_reviews,question.css?time=${currentTime}" />
+<%-- <link rel="stylesheet" type="text/css"
+	href="${contextPath}/assets/css/item_reviews,question.css?time=${currentTime}" /> --%>
 
 <div class="item_question">
 	<div>
@@ -89,8 +92,8 @@
 			<c:otherwise>
 				<hr />
 				<div class="question_none">
-				<h1>상품 문의가 없습니다.</h1>
-			</div>
+					<h1>상품 문의가 없습니다.</h1>
+				</div>
 			</c:otherwise>
 			</c:choose>
 		</div>

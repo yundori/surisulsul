@@ -3,6 +3,9 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_details.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_info.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_reviews,question.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
 
 <div class="item_details">
 	<%-- <c:choose> --%>
@@ -73,6 +76,28 @@
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+	/** tab메뉴 구현 **/
+	$(function() {
+		$('.tab_menu').click(function() {
+			//var activeTab = $(this).attr('data-tab');
+			var activeTab = $(this).data('tab');
+			$('.tab_menu').css('background-color', 'white');
+			$(this).css('background-color', '#FBD14B');
+			$.ajax({
+				type : 'GET',
+				url : activeTab + ".do",
+				dataType : "html",
+				error : function() {
+					alert('실패');
+				},
+				success : function(data) {
+					$('.tab_content').html(data);
+				}
+			});
+		});
+		$('#default').click();
+	});
+	
 	/** top버튼 구현 **/
 	$(function() {
 	    $(window).scroll(function() {
@@ -100,26 +125,6 @@
         });
 	});
 	
-	/** 탭메뉴 구현 **/
-	$(function() {
-		$('.tab_menu')click(function() {{
-			var activeTab = $(this).attr('data-tab');
-			$('.tab_menu').css('background-color', 'white');
-			$(this).css('background-color', '#FBD14B');
-			$.ajax({
-				type : 'GET',
-				url : activeTab + ".jsp",
-				dataType : "jsp",
-				error : function() {
-					alert('실패');
-				},
-				success : function(data) {
-					$('.tab_content').jsp(data);
-				}
-			});
-		}});
-		$('#default').click();
-	});
 </script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%-- 
-<%@ include file="/WEB-INF/views/_inc/header.jsp"%>--%>
 
+<%--
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/css/item_info.css?time=${currentTime}" />
+	href="${contextPath}/assets/css/item_info.css?time=${currentTime}" /> 
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
-
+--%>
 <div class="item_info">
 	<div>
 		<h3 class="title">
@@ -73,8 +72,7 @@
 	</div>
 </div>
 
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 	var ctx = document.getElementById('item_chart').getContext('2d');
 	var itemChart = new Chart(ctx, {
@@ -155,6 +153,3 @@
 			}
 		});
 </script>
-
-<%-- 
-<%@ include file="/WEB-INF/views/_inc/footer.jsp"%> --%>
