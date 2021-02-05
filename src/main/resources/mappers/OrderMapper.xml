@@ -41,7 +41,6 @@
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
 		WHERE o.b_id=#{loginId};	
-		<!-- 세션에 있는 값을 어떻게 #으로 가져오는지 id로 써도 되는지 Model은 안건드려도 되는지 -->	
 	</select>
 	
 	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->

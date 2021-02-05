@@ -1,5 +1,8 @@
 package study.spring.surisulsul.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Basket;
+import study.spring.surisulsul.model.Member;
 
 @Controller
 public class OrderController {
@@ -23,7 +28,14 @@ public class OrderController {
 	
 	/** 장바구니 페이지로 연결 */
 	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
-	public String go_basket() {
+	public String go_basket(Model model, HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		Basket input = null;
+		input.setLoginId(loginSession.getId());
+		
 		//View 처리
 		return "order/basket";
 	}
