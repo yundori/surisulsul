@@ -1,14 +1,29 @@
 //탭 이동
 $(document).ready(function() {
 	$(".tab-button-item-link").click(function(e) {
+		//링크의 페이지 이동을 방지
 		e.preventDefault();
-		$(".tab-button-item-link").not(this).removeClass("selected");
-		$(this).addClass("selected");
-		var target = $(this).attr('href');
-		$(target).removeClass('hide');
-		$(".tab-panel>div").not($(target)).addClass('hide');
+		
+		var activeTab = $(this).attr('data-tab');
+		$.ajax({
+			type : 'GET',
+			url : activeTab + ".do",
+			dataType : "html",
+			error : function(){
+				alert('통신실패');
+				console.log(">>에러" + error.status);
+			},
+			success : function(data){
+				console.log(">>성공>>");
+				$('.tab-panel').html(data);
+				}
+			});
 	});
+	$('#default').click();
 });
+
+//Ajax로 탭 이동
+
 
 //팝업열기
 function openPw() {

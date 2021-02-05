@@ -41,33 +41,33 @@
 	<!-- Tab Set -->
 	<nav class="psn_tab">
 		<ul class="psn_tab_inner">
-			<li class="tab_item tab_forme">
-				<a class="tab-button-item-link selected" href="#tab-page-1">나를 위한 추천술</a>
+			<li class="tab_forme">
+				<a data-tab="my_recommend" class="tab-button-item-link" href="#"  id="default">나를 위한 추천술</a>
 			</li>
-			<li class="tab_item tab_wishlist">
-				<a class="tab-button-item-link" href="#tab-page-2">관심있어요</a>
+			<li class="tab_wishlist">
+				<a data-tab="wishlist" class="tab-button-item-link" href="#">관심있어요</a>
 			</li>
-			<li class="tab_item tab_buy">
-				<a class="tab-button-item-link" href="#tab-page-3">구매했어요</a>
+			<li class="tab_buy">
+				<a data-tab="past_order" class="tab-button-item-link" href="#">구매했어요</a>
 			</li>
-			<li class="tab_item tab_comment">
-				<a class="tab-button-item-link" href="#tab-page-4">나의 의견</a>
+			<li class="tab_comment">
+				<a data-tab="my_opinion" class="tab-button-item-link" href="#">나의 의견</a>
 			</li>
 		</ul>
 	</nav>
 	<div class="tab-panel">
-            <div id="tab-page-1">
+<%--             <div id="tab-page-my_recommend">
                 <%@ include file="../mypage/my_recommend.jsp"%>
             </div>
-            <div id="tab-page-2" class="hide">
+            <div id="tab-page-wishlist" class="hide">
                 <%@ include file="../mypage/wishlist.jsp"%>
             </div>
-            <div id="tab-page-3" class="hide">
+            <div id="tab-page-past_order" class="hide">
                 <%@ include file="../mypage/past_order.jsp"%>
             </div>
-            <div id="tab-page-4" class="hide">
+            <div id="tab-page-my_opinion" class="hide">
                 <%@ include file="../mypage/my_opinion.jsp"%>
-            </div>
+            </div> --%>
         </div>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
