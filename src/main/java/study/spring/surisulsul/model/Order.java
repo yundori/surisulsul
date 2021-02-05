@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class Order {
+	//로그인된 userId를 담을 변수
+	private int loginId;
+	
 	//orders 테이블 컬럼 연결
 	private int o_id;
 	private int price;
