@@ -105,7 +105,6 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	@Override
 	public int deleteOrder(Order input) throws Exception {
-		//result1, result2 어떤 것을 어떻게 리턴할 것인가?
 		int result1 = 0;
 		int result2 = 0;
 
@@ -124,7 +123,6 @@ public class OrderServiceImpl implements OrderService {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
-
 		return result2;
 	}
 

@@ -6,6 +6,8 @@
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
 	<resultMap id="orderMap" type="study.spring.surisulsul.model.Order">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="loginId" column="loginId" />
+		
 		<result property="o_id" column="o_id" />
 		<result property="price" column="price" />
 		<result property="b_id" column="b_id" />
@@ -38,7 +40,7 @@
 		FROM orders o
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
-		WHERE o.b_id=#{id};	
+		WHERE o.b_id=#{loginId};	
 		<!-- 세션에 있는 값을 어떻게 #으로 가져오는지 id로 써도 되는지 Model은 안건드려도 되는지 -->	
 	</select>
 	

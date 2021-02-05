@@ -6,6 +6,8 @@
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
 	<resultMap id="basketMap" type="study.spring.surisulsul.model.Basket">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
+		<result property="loginId" column="loginId" />
+		
 		<result property="id" column="id" />
 		<result property="m_id" column="m_id" />
 		<result property="p_id" column="p_id" />
@@ -28,8 +30,7 @@
 	<!-- 장바구니 - 데이터 수 조회하기 -->
 	<select id="selectCount" parameterType="study.spring.surisulsul.model.Basket" resultType="int">
 		SELECT COUNT(*) FROM basket
-		WHERE m_id=#{m_id};
-		<!-- 세션에서 가져온 ID 넣을 방법? -->
+		WHERE m_id=#{loginId};
 	</select>
 	
 	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
