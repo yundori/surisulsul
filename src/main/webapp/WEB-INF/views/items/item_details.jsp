@@ -57,13 +57,7 @@
 		<button data-tab="item_info" class="info_menu tab_menu" id="default">상품 정보</button>
 		<button data-tab="item_reviews" class="review_menu tab_menu">상품 후기</button>
 		<button data-tab="item_question" class="quest_menu tab_menu">상품 문의</button>
-		<div class="tab_content">
-		<%-- 
-		<%@ include file="item_info.jsp"%>
-		<%@ include file="item_reviews.jsp"%>
-		<%@ include file="item_question.jsp"%>
-		--%>
-		</div>
+		<div class="tab_content"></div>
 	</div>
 	
 	<div class="item_details_footer">
@@ -73,8 +67,8 @@
 	<%-- </c:when> --%>
 	<%-- </c:choose> --%>
 </div>
-
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- 
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>  -->
 <script type="text/javascript">
 	/** tab메뉴 구현 **/
 	$(function() {

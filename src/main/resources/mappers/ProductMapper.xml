@@ -29,7 +29,7 @@
         <result property="total_qty" column="total_qty" />
     </resultMap>
     
-    <!-- 상품 베스트 12개 목록 조회 -->
+    <!-- 상품 베스트 12개 목록 조회 : best_items-->
     <select id="bestItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
@@ -39,19 +39,50 @@
 		LIMIT 0, 12
     </select>
     
-    <!-- 조건에 맞는 상품 목록 조회 -->
+    <!-- 상품 베스트 4개 목록 조회 : main -->
+    <select id="mainbestItemList" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, price, star, type, loc, key1
+		FROM products p
+		INNER JOIN sales s ON p.id=s.p_id
+		ORDER BY s.total_qty ASC
+		LIMIT 0, 4
+    </select>
+    
+    <!-- 조건에 맞는 상품 목록 조회 : item_filtered -->
     <select id="filteredItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
-		FROM product 
-		WHERE type IN (#{types}) AND 
-              loc IN (#{areas}) AND
-              ((key1 IN (#{keys}) OR (key2 IN (#{keys})) AND
-              sweet = #{sweet} AND sour = #{sour} AND degree = #{degree} AND
-              search = #{search}
+		FROM products 
+		WHERE 
+			<if test="type != null and type != ''">
+				type IN (#{types}) AND 
+			</if>
+			<if test="loc != null and loc != ''">
+            	loc IN (#{locs}) AND
+            </if>
+            <if test="(key1 != null and key1 != '') and (key2 != null and key2 != '')">
+            	((key1 IN #{keys}) OR (key2 IN #{keys})) AND
+            </if>
+            <if test="sweet != null and sweet != ''">
+            	sweet = #{sweet} AND
+            </if>
+            <if test="sour != null and sour != ''">
+            	sour = #{sour} AND
+            </if>
+            <if test="degree != null and degree != ''">
+            	degree = #{degree} AND
+            </if>
+            <if test="search != null and searcg != ''">
+            	search = #{search}
+            </if>
+            
+            <if test = "listCount > 0">
+        		LIMIT #{offset}, #{listCount}
+        	</if>
     </select>
     
-    <!-- 상품 상세 정보 조회 -->
+    <!-- 상품 상세 정보 조회 :item_details -->
     <select id="detailsItem" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, des1, igd, price, star 
@@ -59,7 +90,7 @@
         WHERE id=#{id};
     </select>
     
-    <!-- 상품 정보 조회 -->
+    <!-- 상품 정보 조회 : item_info -->
     <select id="infoItem" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT sweet, sour, degree, jn_result, des2, food
@@ -67,11 +98,53 @@
         WHERE id=#{id};
     </select>
     
-    <!-- 종류별 상품 목록 조회 -->
+    <!-- 종류별 상품 목록 조회 : extra -->
     <select id="typesItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
-		FROM product
+		FROM products
 		WHERE type = #{type}
+		
+		<if test = "listCount > 0">
+        	LIMIT #{offset}, #{listCount}
+        </if>
     </select>
+    
+    <!-- 상품 데이터 수 조회하기 -->
+    <select id="selectCountAll" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+    	SELECT COUNT(*) FROM products
+    </select>
+    
+    <!-- 상품 데이터 저장 -->
+    <insert id="insertItem"
+        parameterType="study.spring.surisulsul.model.Product"
+        useGeneratedKeys="true"
+        keyProperty="id">
+        INSERT INTO products
+        (name, price, type, loc, key1, key2, sweet, sour, degree, igd,
+        size, des1, des2, food, img, star, reg_date, edit_date, jn_result) 
+        VALUES (#{name}, #{price}, #{type}, #{loc}, #{key1}, #{key2},
+        #{sweet}, #{sour}, #{degree}, #{igd}, #{size}, #{des1}, #{des2},
+        #{food}, #{img}, 0, now(), now(), null)
+    </insert>
+    
+    <!-- 상품 데이터 수정 -->
+    <update id="updateItem"
+        parameterType="study.spring.surisulsul.model.Product">
+        UPDATE products SET 
+        id=#{id}, name=#{name}, price=#{price}, type=#{type},
+        loc=#{loc}, key1=#{key1}, key2=#{key2},
+		sweet=#{sweet}, sour=#{sour}, degree=#{degree}, igd=#{igd},
+		size=#{size}, des1=#{des1}, des2=#{des2}, food=#{food},
+		img=#{img}, star=#{star}, edit_date=now(), jn_result=#{jn_result}        
+        WHERE id=#{id};
+    </update>
+    
+    <!-- 상품 데이터 삭제 -->
+    <delete id="deleteItem"
+        parameterType="study.spring.surisulsul.model.Product">
+        DELETE FROM products WHERE id=#{id};
+    </delete>
+    
 </mapper> 
