@@ -35,7 +35,7 @@
 <body link="none" vlink="none" alink="none">
    <div class="header">
       <h1>
-         <a href="${pageContext.request.contextPath}/home.do"><img
+         <a href="${pageContext.request.contextPath}/"><img
             src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
       </h1>
       <input type="checkbox" id="check"> 
@@ -49,7 +49,7 @@
          </h1>
          <ul>
             <li><a href="${pageContext.request.contextPath}/best_items.do">인기 많은 술</a></li>
-            <li><a href="${pageContext.request.contextPath}/item_filtered.do">내가 찾는 술</a></li>
+            <li><a href="${pageContext.request.contextPath}/item_filtered .do">내가 찾는 술</a></li>
             <li class="drink_type"><a href="${pageContext.request.contextPath}/takju.do">우리 술 종류</a></li>
             	<div class="drink_inner">
 		            <li><a href="${pageContext.request.contextPath}/takju.do">탁주</a></li>
@@ -67,27 +67,30 @@
          </ul>
       </div>
       <section></section>
-      <c:choose>
-         <c:when test="true">
-            <%-- 로그인이 됐을 경우의 메뉴 --%>
+      
+         <c:if test="${loginInfo == null}">
+            <%-- 로그인이 안됐을 경우의 메뉴 --%>
             <div class="login_ok_menu">
                <ul class="login_menu">
                   <a href="${pageContext.request.contextPath}/account/login.do"><li>로그인</li></a>
                   <a href="${pageContext.request.contextPath}/account/join.do"><li>회원가입</li></a>
-                  <a href="${pageContext.request.contextPath}/basket.do"><li>장바구니</li></a>
+                  <a href="${pageContext.request.contextPath}/account/login.do"><li>장바구니</li></a>
                </ul>
             </div>
-         </c:when>
-         <c:otherwise>
-            <div class="login_no_menu">
+         </c:if>
+         
+         <c:if test="${loginInfo != null}">
+            <%-- 로그인이 안됐을 경우의 메뉴 --%>
+            <div class="login_ok_menu">
                <ul class="login_menu">
-                  <a href="${pageContext.request.contextPath}"><li>로그아웃</li></a>
+                  <a href="${pageContext.request.contextPath}/logout.do"><li>로그아웃</li></a>
                   <a href="${pageContext.request.contextPath}/mypage/mypage.do"><li>나의 수리술술</li></a>
-                  <a href="${pageContext.request.contextPath}/basket.do"><li>장바구니</li></a>
+                  <a href="${pageContext.request.contextPath}/order/basket.do"><li>장바구니</li></a>
                </ul>
             </div>
-         </c:otherwise>
-      </c:choose>
+         </c:if>
+         
+         
 
    </div>
 
