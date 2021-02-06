@@ -34,7 +34,7 @@
 
 		<div class="jn_result">
 			<h4>주로 찾는 사람들</h4>
-			<img src="${contextPath}/assets/img/mypage/flower01.png" />
+			<img src="../assets/img/mypage/flower01.png" />
 			<ul>
 				<li>이런 타입의 사람들이 많이 찾습니다!</li>
 				<li>주능 테스트 타입 요약 항목1</li>

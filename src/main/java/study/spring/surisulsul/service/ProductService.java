@@ -17,6 +17,15 @@ public interface ProductService {
 	public List<Product> best_ProductList(Product input) throws Exception;
 	
 	/**
+	 * 상품 베스트 4개 목록 조회 (main ->best_items)
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> main_best_ProductList(Product input) throws Exception;
+	
+	/**
 	 * 조건에 맞는 상품 목록 조회 (item_filtered)
 	 * 
 	 * @param Product Beans
@@ -53,7 +62,7 @@ public interface ProductService {
 	public List<Product> types_ProductList(Product input) throws Exception;
 
 	/**
-	 * 상품 데이터가 저장되어 있는 개수 조회
+	 * 상품 데이터 수 조회하기
 	 * 
 	 * @return int
 	 * @throws Exception
@@ -62,7 +71,7 @@ public interface ProductService {
 
 	/** <<관리자 페이지에 필요한 서비스>> */
 	/**
-	 * 상품 데이터 등록하기
+	 * 상품 데이터 저장
 	 * 
 	 * @param Product 저장할 정보를 담고 있는 Beans
 	 * @return int
@@ -71,7 +80,7 @@ public interface ProductService {
 	public int addProduct(Product input) throws Exception;
 
 	/**
-	 * 상품 데이터 수정하기
+	 * 상품 데이터 수정
 	 * 
 	 * @param Product 수정할 정보를 담고 있는 Beans
 	 * @return int
@@ -80,7 +89,7 @@ public interface ProductService {
 	public int editProduct(Product input) throws Exception;
 
 	/**
-	 * 상품 데이터 삭제하기
+	 * 상품 데이터 삭제
 	 * 
 	 * @param Product 삭제할 학과의 일련번호를 담고 있는 Beans
 	 * @return int
