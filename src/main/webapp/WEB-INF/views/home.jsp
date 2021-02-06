@@ -84,8 +84,7 @@
 		</div>
 	</div>
 	</a>
-	<button type="button" class="login_ok_button1" onclick="location.href='${pageContext.request.contextPath}/mypage/my_recommend.do'">결과 자세히 보기</button>
-		<button type="button" class="login_ok_button2" onclick="location.href='${pageContext.request.contextPath}/juneung.do'">주능 다시하기</button>
+	
 	</div>
 		</c:when>
 		<c:otherwise>

@@ -71,7 +71,7 @@ public class ExtraController {
 	}
 	
 	/* 주능 페이지에서 가져온 값 처리 */
-	@RequestMapping(value = "/juneung_ok.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/juneung_ok.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String juneung_ok(Model model) {
 		
 		return "redirect:/mypage/my_recommend.do";

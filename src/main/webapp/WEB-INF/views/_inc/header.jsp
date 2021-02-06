@@ -85,7 +85,7 @@
                <ul class="login_menu">
                   <a href="${pageContext.request.contextPath}/logout.do"><li>로그아웃</li></a>
                   <a href="${pageContext.request.contextPath}/mypage/mypage.do"><li>나의 수리술술</li></a>
-                  <a href="${pageContext.request.contextPath}/order/basket.do"><li>장바구니</li></a>
+                  <a href="${pageContext.request.contextPath}/basket.do"><li>장바구니</li></a>
                </ul>
             </div>
          </c:if>
