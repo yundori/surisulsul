@@ -31,6 +31,6 @@ $('.cd').click(function() {
 //팝업열기
 function openPop() {
 	var popup = window.open(
-	'../mypage/write_review.jsp','후기수정',
+	'${pageContext.request.contextPath}/mypage/write_review.do','후기수정',
 	'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 	}
