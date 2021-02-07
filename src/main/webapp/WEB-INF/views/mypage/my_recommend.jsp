@@ -55,10 +55,10 @@
 		
 		<h3 class="psn_title_dsc">무궁화 같은 당신을 위해 추천하는 술</h3>
 		<div class="psn_keyword">
-			<a class="psn_keyword1" href=#>#국내파</a>
-			<a class="psn_keyword2" href=#>#육류와_잘어울리는</a>
-			<a class="psn_keyword3" href=#>#깔끔한</a>
-			<a class="psn_keyword4" href=#>#높은도수</a>
+			<a class="psn_keyword1" href=# onclick="return false;">#국내파</a>
+			<a class="psn_keyword2" href=# onclick="return false;">#육류와_잘어울리는</a>
+			<a class="psn_keyword3" href=# onclick="return false;">#깔끔한</a>
+			<a class="psn_keyword4" href=# onclick="return false;">#높은도수</a>
 		</div>
 				</c:when>
 				
@@ -77,10 +77,10 @@
 		
 		<h3 class="psn_title_dsc">해바라기 같은 당신을 위해 추천하는 술</h3>
 		<div class="psn_keyword">
-			<a class="psn_keyword1" href=#>#해외파</a>
-			<a class="psn_keyword2" href=#>#육류와_잘어울리는</a>
-			<a class="psn_keyword3" href=#>#달콤한</a>
-			<a class="psn_keyword4" href=#>#낮은도수</a>
+			<a class="psn_keyword1" href=# onclick="return false;">#해외파</a>
+			<a class="psn_keyword2" href=# onclick="return false;">#육류와_잘어울리는</a>
+			<a class="psn_keyword3" href=# onclick="return false;">#달콤한</a>
+			<a class="psn_keyword4" href=# onclick="return false;">#낮은도수</a>
 		</div>
 				</c:when>
 				
@@ -99,10 +99,10 @@
 		
 		<h3 class="psn_title_dsc">진달래 같은 당신을 위해 추천하는 술</h3>
 		<div class="psn_keyword">
-			<a class="psn_keyword1" href=#>#국내파</a>
-			<a class="psn_keyword2" href=#>#가벼운</a>
-			<a class="psn_keyword3" href=#>#깔끔한</a>
-			<a class="psn_keyword4" href=#>#중간도수</a>
+			<a class="psn_keyword1" href=# onclick="return false;">#국내파</a>
+			<a class="psn_keyword2" href=# onclick="return false;">#가벼운</a>
+			<a class="psn_keyword3" href=# onclick="return false;">#깔끔한</a>
+			<a class="psn_keyword4" href=# onclick="return false;">#중간도수</a>
 		</div>
 				</c:when>
 				
@@ -121,10 +121,10 @@
 		
 		<h3 class="psn_title_dsc">수국 같은 당신을 위해 추천하는 술</h3>
 		<div class="psn_keyword">
-			<a class="psn_keyword1" href=#>#해외파</a>
-			<a class="psn_keyword2" href=#>#가벼운</a>
-			<a class="psn_keyword3" href=#>#상큼한</a>
-			<a class="psn_keyword4" href=#>#낮은도수</a>
+			<a class="psn_keyword1" href=# onclick="return false;">#해외파</a>
+			<a class="psn_keyword2" href=# onclick="return false;">#가벼운</a>
+			<a class="psn_keyword3" href=# onclick="return false;">#상큼한</a>
+			<a class="psn_keyword4" href=# onclick="return false;">#낮은도수</a>
 		</div>
 				</c:when>
 			</c:choose>
@@ -168,7 +168,7 @@
 		아직 주(酒)능 응시 기록이 없습니다<br/>
 		<span class="psn_gotest">나만을 위한 술을 추천받기 위해 술학능력시험:주(酒)능을 응시하러 가볼까요? </span>
 		</h3>
-		<a href="${contextPath}/extra/juneung.jsp" class="btn_yellow">👉1분 만에 보는 주(酒)능</a>
+		<a href="${pageContext.request.contextPath}/juneung.do" class="btn_yellow">👉1분 만에 보는 주(酒)능</a>
 		<%--나중에 윗 줄 <a> 주소 수정 --%>
 	</div>
 		</c:otherwise>
