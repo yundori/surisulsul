@@ -70,12 +70,7 @@ public class HomeController {
 	로그인 O, 주능 테스트 결과 X / 로그인 X -> 주능 테스트 배너 노출
 	로그인 O, 주능 테스트 결과 O -> 주능 테스트 결과 노출 */
 	
-	/** 인기 많은 술 best 4 */
-	@RequestMapping(value = "/best_items.do", method = RequestMethod.GET)
-	public String best_item(Model model) {
-		
-		return "items/best_items";
-	}
+	
 	
 	
 	
