@@ -106,7 +106,7 @@
 							</td>
 							<td>2021-01-19</td>
 							<td><a href="#" class="edit_recommend btn_gray"
-								onClick="openPop()"returnfalse;>수정하기</a></td>
+								onClick="openPop()" return false;>수정하기</a></td>
 						</tr>
 						<!--</c:forEach>-->
 					</c:when>

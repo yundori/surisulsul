@@ -115,7 +115,7 @@
 					<p class="psn_pick_price">00,000원</p>
 			</span>
 		</a></li>
-	!--</c:forEach>-->
+	<!--</c:forEach>-->
 	</ul>
 	<!-- Add Pagination -->
 	<div class="swiper-pagination"></div>
