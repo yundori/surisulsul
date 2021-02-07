@@ -63,19 +63,7 @@ public class ExtraController {
 		return "extra/liquerurs";
 	}
 	
-	/* 주능 페이지로 연결 */
-	@RequestMapping(value = "/juneung.do", method = RequestMethod.GET)
-	public String juneung(Model model) {
-		
-		return "extra/juneung";
-	}
 	
-	/* 주능 페이지에서 가져온 값 처리 */
-	@RequestMapping(value = "/juneung_ok.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String juneung_ok(Model model) {
-		
-		return "redirect:/mypage/my_recommend.do";
-	}
 	
 	
 }
