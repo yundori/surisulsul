@@ -121,7 +121,7 @@ public class WebHelper {
 	 * @param msg - 화면에 표시할 메시지, null일 경우 표시 안함
 	 * @return ModelAndView
 	 */
-	public ModelAndView sweetalertRedirect(String url, String msg, String title, String icon) {
+	public ModelAndView sweetalertRedirect(String url, String title, String msg, String icon) {
 		//획득한 정보를 로그로 표시
 		log.debug(String.format("--> [redirect] %s >> %s", url, msg));
 		
@@ -130,10 +130,14 @@ public class WebHelper {
 		html+="<html>";
 		html+="<head>";
 		html+="<meta charset='"+this.encType+"'>";
+		html+="<script src=\"http://code.jquery.com/jquery-3.2.1.min.js\"></script>";
+		html+="<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>";
 		
 		//메시지 표시
 		if(msg!=null) {
+			
 			html+="<script type='text/javascript'>swal('"+title+","+msg+","+icon+"');</script>";
+			html+="<script type='text/javascript'>alert('"+msg+"');</script>";
 		}
 		
 		//페이지 이동

@@ -58,17 +58,9 @@
 			찾기</a>
 	</div>
 </form>
+ <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
  <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	function sweetAlert(title, text, icon){
-		swal({
-			title: title,
-			text: text,
-			icon: icon,
-			buttons: "확인"
-			});
-	}
-</script>
+
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
