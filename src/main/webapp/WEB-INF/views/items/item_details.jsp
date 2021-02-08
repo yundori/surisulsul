@@ -30,6 +30,7 @@
 		</div>
 		<div class="order_info">
 			<form method="post" action="${pageContext.request.contextPath}/basket/add_ok.do" name="basket_form" id="basket_form">
+				<input type="hidden" name="p_id" value="2"/>
 				<input type="hidden" name="p_name" value="고도리 복숭아와인"/>
 				<input type="hidden" name="p_price" value="20000"/>
 				
@@ -124,7 +125,7 @@
 	});
 	
 	/** 차트 구현 **/
-	$(document).ready(function() {
+	$(function() {
 		var ctx = document.getElementById('item_chart').getContext('2d');
 		var itemChart = new Chart(ctx, {
 			type : 'horizontalBar', //가로막대그래프
@@ -203,7 +204,6 @@
 					}
 				}
 			});
-		
 	});
 	
 </script>
