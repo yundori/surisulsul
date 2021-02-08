@@ -125,7 +125,6 @@
 	});
 	
 	/** 차트 구현 **/
-	$(function() {
 		var ctx = document.getElementById('item_chart').getContext('2d');
 		var itemChart = new Chart(ctx, {
 			type : 'horizontalBar', //가로막대그래프
@@ -204,7 +203,6 @@
 					}
 				}
 			});
-	});
 	
 </script>
 
