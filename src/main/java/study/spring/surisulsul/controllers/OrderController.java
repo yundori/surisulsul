@@ -1,5 +1,7 @@
 package study.spring.surisulsul.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,30 +15,49 @@ import org.springframework.web.servlet.ModelAndView;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Basket;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.service.BasketService;
+import study.spring.surisulsul.service.OrderService;
 
 @Controller
 public class OrderController {
-	/*
+	
 	@Autowired
-	WebHelper webHelper;*/
+	WebHelper webHelper;
+	
+	//Service 패턴 객체 주입
+	@Autowired
+	BasketService basketService;
+	@Autowired
+	OrderService orderService;
 	
 	/** 장바구니에 추가 (페이지 연결 X) */
+	/** 장바구니 table에 INSERT 처리 해야됨 */
 	@RequestMapping(value = "/basket/add_ok.do", method = RequestMethod.POST)
 	public void basket_add_ok(){
 		
 	}
 	
 	/** 장바구니 페이지로 연결 */
+	/** 장바구니로 가면서 selectList 처리해야됨 */
 	@RequestMapping(value = "/basket.do", method = RequestMethod.GET)
 	public String go_basket(Model model, HttpServletRequest request) {
 		//세션값 받아오기
 		HttpSession session = request.getSession();
 		Member loginSession = (Member) session.getAttribute("loginInfo");
-		
+
+		//조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Basket input = new Basket();
 		input.setLoginId(loginSession.getId());
+				
+		List<Basket> output = null; //조회 결과가 저장될 객체
+				
+		try {
+			//데이터 조회하기
+			output = basketService.getBasketList(input);
+		} catch (Exception e) {	e.printStackTrace(); }
 		
-		//View 처리
+		//view처리
+		model.addAttribute("output", output);
 		return "order/basket";
 	}
 	
