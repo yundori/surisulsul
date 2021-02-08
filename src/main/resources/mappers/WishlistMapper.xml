@@ -4,14 +4,43 @@
 
 <mapper namespace="WishlistMapper">
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type) 명시 -->
-	<resultMap id="wishlistMap" type="study.spring.surisulsul.model.Wishlist">
+	<resultMap id="wishlistMap"
+		type="study.spring.surisulsul.model.Wishlist">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
 		<result property="id" column="id" />
 		<result property="p_id" column="p_id" />
 		<result property="m_id" column="m_id" />
 		<result property="reg_date" column="reg_date" />
 	</resultMap>
-	
+	<!-- wishlist 상품 조회 -->
+	<select id="selectList"
+		parameterType="study.spring.surisulsul.model.Wishlist"
+		resultMap="wishlistMap">
+		SELECT id, m_id, p_id, reg_date
+		FROM wishlist
+		WHERE
+		m_id=#{loginId}
+		ORDER BY reg_date DESC;
+	</select>
+	<!-- wishlist 개수 조회 -->
+	<select id="selectCount"
+		parameterType="study.spring.surisulsul.model.Wishlist"
+		resultType="int">
+		SELECT COUNT(*) FROM wishlist
+		WHERE m_id=#{loginId};
+	</select>
+
 	<!-- wishlist 상품 추가 -->
-	
+	<insert id="insertWishlistItem"
+		parameterType="study.spring.surisulsul.model.Wishlist"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO wishlist (m_id, p_id, reg_date)
+		VALUES (#{m_id}, #{p_id}, #{reg_date});
+	</insert>
+
+	<!-- wishlist 상품 삭제 -->
+		<delete id="deleteWishlistItem" parameterType="study.spring.surisulsul.model.Wishlist">
+		DELETE FROM wishlist WHERE m_id=#{loginId};
+	</delete>
+
 </mapper>
