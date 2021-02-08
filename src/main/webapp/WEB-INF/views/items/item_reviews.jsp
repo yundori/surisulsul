@@ -4,8 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%-- <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_reviews,question.css?time=${currentTime}" /> --%>
-
 <div class="item_reviews">
 	<div>
 		<h3 class="title">이 술을 선택한 사람들의 이야기 <span>내가 찾은 술에 대한 후기는 어떨까?</span></h3>
@@ -17,7 +15,7 @@
 				<td class="img_area">
 					<%-- <c:choose> --%>
 					<%-- <c:when 사진 db있으면 해당 사진 노출> --%>
-					<img class="review_img" src="${contextPath}/assets/img/items/best1.PNG" />
+					<img class="review_img" src="${contextPath}/surisulsul/assets/img/items/best1.PNG" />
 					<%-- </c:if> --%>
 					<%-- <c:otherwise 없으면 디폴트 이미지 사용> --%>
 					<%-- </c:otherwise> --%>
@@ -41,7 +39,7 @@
 			</tr>
 			<tr>
 				<td class="img_area">
-					<img class="review_img" src="${contextPath}/assets/img/no-image.jpg" />
+					<img class="review_img" src="${contextPath}/surisulsul/assets/img/no-image.jpg" />
 				</td>
 				<td class="content_area">
 					<h3 class="content_title">복숭아 향이 좋아요!</h3>
