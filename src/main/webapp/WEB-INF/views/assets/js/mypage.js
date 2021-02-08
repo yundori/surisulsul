@@ -1,10 +1,14 @@
 //탭 이동
 $(document).ready(function() {
+	//GET 파라미터로 받아와서 ajax 호출
+	
+
 	$(".tab-button-item-link").click(function(e) {
 		//링크의 페이지 이동을 방지
 		e.preventDefault();
 		
 		var activeTab = $(this).attr('data-tab');
+		console.log(activeTab);
 		$.ajax({
 			type : 'GET',
 			url : activeTab + ".do",
