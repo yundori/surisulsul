@@ -33,7 +33,7 @@ public class OrderController {
 		HttpSession session = request.getSession();
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		
-		Basket input = null;
+		Basket input = new Basket();
 		input.setLoginId(loginSession.getId());
 		
 		//View 처리
