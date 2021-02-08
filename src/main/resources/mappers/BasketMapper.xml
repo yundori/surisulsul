@@ -36,7 +36,7 @@
 	<!-- 장바구니 - 장바구니에 상품 담기 (INSERT)를 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="study.spring.surisulsul.model.Basket" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO basket (m_id, p_id, p_name, p_price, qty, reg_date, edit_date)
-		VALUES (#{m_id}, #{p_id}, #{p_name}, #{p_price}, #{qty}, #{reg_date}, #{edit_date});
+		VALUES (#{loginId}, #{p_id}, #{p_name}, #{p_price}, #{qty}, now(), now());
 	</insert>
 	
 	<!-- 장바구니 - 장바구니에서 선택 상품 삭제하기 (DELETE)를 위한 기능 정의 -->
