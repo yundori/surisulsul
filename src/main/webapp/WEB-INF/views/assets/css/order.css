@@ -77,11 +77,7 @@
 	color:#403117;
     line-height:145%;
     margin:3px 10px 0 0;
-}
-#basket #delete_this:hover{
-	border:2px solid #fbd14b;
-	background-color:#fff;
-	color:#80632e;
+    cursor:pointer;
 }
 /** 전체선택 checkbox+label float 처리 */
 #basket .check_all{
@@ -91,15 +87,6 @@
 }
 #basket #basket_table label{
 	float:left;
-}
-/** basket.jsp --> 선택상품 삭제 버튼 css */
-#basket #delete_this{
-	padding:1px 5px;
-	border:none;
-    background-color: #fbd14b;	
-    float:right;
-    line-height:145%;
-    margin:3px 10px 0 0;
 }
 /** basket.jsp --> 상품 담으러 가기 버튼 */
 #basket #go_shopping{
@@ -234,11 +221,6 @@
     box-shadow: none;
     border-radius: 3px;
     margin:30px 10px 0 0;
-}
-#order_result a:hover, #basket>#go_order:hover, #basket #go_shopping:hover{
-    background-color: #eee;
-    color: #6a60a9;
-    border: 2px solid #6a60a9;
 }
 #blank{
 	width:auto;

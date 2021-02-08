@@ -9,7 +9,7 @@
 	 <c:choose>
 	 
  		<%-- 주문결과(result)가 true일 경우 (정상 주문 완료 시) --%>
-    	<c:when test="true"> <!-- test에 들어갈 내용 ==> ${result==true} -->
+    	<c:when test="${result }"> <!-- test에 들어갈 내용 ==> ${result==true} -->
     		<img src="${contextPath}/assets/img/order/order_success.png" id="result_icon"/>
     		<h1>감사합니다</h1>
     		<h2>정상적으로 주문이 완료되었습니다.<br/> 배송은 영업일 기준 2~3일 가량 소요됩니다.</h2>

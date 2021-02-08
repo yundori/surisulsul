@@ -63,9 +63,9 @@ public class OrderController {
 	}
 	
 	/** 장바구니 선택 삭제 처리 */
-	@RequestMapping(value = "/basket/delete_ok.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/basket/delete_ok.do", method = RequestMethod.POST)
 	public void basket_delete_ok() {
-		
+		System.out.println("basket_delete_ok 메서드 들어옴");
 	}
 	
 	/** 주문 페이지로 연결 */
@@ -76,9 +76,9 @@ public class OrderController {
 	}
 	
 	/** 주문 내용 INSERT 처리 + 주문 결과 페이지로 연결 */
-	@RequestMapping(value = "/order/order_ok.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/order/order_ok.do", method = RequestMethod.POST)
 	public ModelAndView go_order_result(Model model) {
-		boolean order_result = true;
+		boolean order_result = false;
 		
 		//View 처리
 		model.addAttribute("result", order_result);
