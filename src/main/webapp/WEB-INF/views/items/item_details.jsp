@@ -29,10 +29,10 @@
 			</div>
 		</div>
 		<div class="order_info">
-			<form>
+			<form method="post" action="${pageContext.request.contextPath}/basket/add_ok.do" name="basket_form" id="basket_form">
 			<h3 class="order_title">주문 안내</h3>
-			<h4 class="order_item_name">제품명 : <span>고도리 복숭아와인</span></h4>
-			<h4 class="order_item_price">개당 판매가 : <span>00,000원</span></h4>
+			<h4 class="order_item_name">제품명 : <span name="p_name">고도리 복숭아와인</span></h4>
+			<h4 class="order_item_price">개당 판매가 : <span name="p_price">00,000원</span></h4>
 			<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
 			<select name="order_quantity" id="order_quantity">
 				<option>수량 선택</option>
@@ -44,10 +44,7 @@
 			</select> <br />
 			<label class="total_price_label">총 주문 가격 : </label>
 			<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
-			<div class="order_btn">
-				<a class="btn_cart" href="${pageContext.request.contextPath}/basket.do">장바구니 담기</a>
-				<a class="btn_order" href="${pageContext.request.contextPath}/order.do">바로 주문하기</a>
-			</div>
+			<button type="submit" class="order_btn" >장바구니 담기</a>
 		</form>
 		</div>
 		<div class="clear"></div>
