@@ -49,7 +49,7 @@
          </h1>
          <ul>
             <li><a href="${pageContext.request.contextPath}/best_items.do">인기 많은 술</a></li>
-            <li><a href="${pageContext.request.contextPath}/item_filtered .do">내가 찾는 술</a></li>
+            <li><a href="${pageContext.request.contextPath}/item_filtered.do">내가 찾는 술</a></li>
             <li class="drink_type"><a href="${pageContext.request.contextPath}/takju.do">우리 술 종류</a></li>
             	<div class="drink_inner">
 		            <li><a href="${pageContext.request.contextPath}/takju.do">탁주</a></li>

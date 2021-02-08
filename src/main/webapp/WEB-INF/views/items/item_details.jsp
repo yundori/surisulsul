@@ -30,25 +30,28 @@
 		</div>
 		<div class="order_info">
 			<form method="post" action="${pageContext.request.contextPath}/basket/add_ok.do" name="basket_form" id="basket_form">
-			<h3 class="order_title">주문 안내</h3>
-			<h4 class="order_item_name">제품명 : <span name="p_name">고도리 복숭아와인</span></h4>
-			<!-- <fmt:formatNumber value="${mynumber }" pattern="#,###"/> -->
-			<h4 class="order_item_price">개당 판매가 : <span name="p_price">00,000</span>원</h4>
-			<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
-			<select name="order_quantity" id="order_quantity">
-				<option>수량 선택</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select> <br />
-			<label class="total_price_label">총 주문 가격 : </label>
-			<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
-			<div class="btn_div">
-				<button type="submit" class="order_btn" >장바구니 담기</a>
-			</div>
-		</form>
+				<input type="hidden" name="p_id" value="2"/>
+				<input type="hidden" name="p_name" value="고도리 복숭아와인"/>
+				<input type="hidden" name="p_price" value="20000"/>
+				
+				<h3 class="order_title">주문 안내</h3>
+				<h4 class="order_item_name">제품명 : <span>고도리 복숭아와인</span></h4>
+				<h4 class="order_item_price">개당 판매가 : <span><fmt:formatNumber value="20000" pattern="#,###"/></span>원</h4>
+				<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
+				<select name="order_quantity" id="order_quantity">
+					<option value="0">수량 선택</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select> <br />
+				<label class="total_price_label">총 주문 가격 : </label>
+				<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
+				<div class="btn_div">
+					<button type="submit" class="order_btn" >장바구니 담기</button>
+				</div>
+			</form>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -122,7 +125,6 @@
 	});
 	
 	/** 차트 구현 **/
-	$(document).ready(function() {
 		var ctx = document.getElementById('item_chart').getContext('2d');
 		var itemChart = new Chart(ctx, {
 			type : 'horizontalBar', //가로막대그래프
@@ -201,8 +203,6 @@
 					}
 				}
 			});
-		
-	});
 	
 </script>
 

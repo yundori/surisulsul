@@ -115,6 +115,47 @@ public class WebHelper {
 	}
 	
 	/**
+	 * 메시지 표시 후, 페이지를 지정된 곳으로 이동(sweetalert 적용)
+	 * 페이지를 강제로 이동시키는 작업을 처리해준다 (크게 중요하지는 X)
+	 * @param url - 이동할 페이지의 URL, null일 경우 이전페이지로 이동
+	 * @param msg - 화면에 표시할 메시지, null일 경우 표시 안함
+	 * @return ModelAndView
+	 */
+	public ModelAndView sweetalertRedirect(String url, String title, String msg, String icon) {
+		//획득한 정보를 로그로 표시
+		log.debug(String.format("--> [redirect] %s >> %s", url, msg));
+		
+		//가상의 View로 만들기 위한 HTML 태그 구성
+		String html="<!doctype html>";
+		html+="<html>";
+		html+="<head>";
+		html+="<meta charset='"+this.encType+"'>";
+		html+="<script src=\"http://code.jquery.com/jquery-3.2.1.min.js\"></script>";
+		html+="<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>";
+		
+		//메시지 표시
+		if(msg!=null) {
+			
+			html+="<script type='text/javascript'>swal('"+title+","+msg+","+icon+"');</script>";
+			html+="<script type='text/javascript'>alert('"+msg+"');</script>";
+		}
+		
+		//페이지 이동
+		if(url!=null) {
+			html+="<meta http-equiv='refresh' content='0; url=" + url + "'/>";
+		}else {
+			html+="<script type='text/javascript'>history.back();</script>";
+		}
+
+		html+="</head>";
+		html+="<body></body>";
+		html+="</html>";
+		
+		return this.virtualView(html);
+		
+	}
+	
+	/**
 	 * 파라미터로 받은 내용을 가상의 View로 생성 후 리턴
 	 * 브라우저에게 전달할 HTML, CSS, JS 조합을 출력하기 위해 상요
 	 * @param body - 브라우저에게 전달할 HTML, CSS, JS 조합 문자열

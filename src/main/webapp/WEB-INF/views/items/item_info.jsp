@@ -65,3 +65,84 @@
 		
 	</div>
 </div>
+<script>
+	/** 차트 구현 **/
+	var ctx = document.getElementById('item_chart').getContext('2d');
+	var itemChart = new Chart(ctx, {
+		type : 'horizontalBar', //가로막대그래프
+		data : {
+			labels : [ "당도", "산미", "도수" ], // 각각의 bar에 표시할 x축 라벨
+			datasets : [ {
+				data : [ 1, 3, 4 ], // 각 bar에 대한 y축 좌표 데이터
+				backgroundColor : [// 각 bar의 배경 색상
+							'rgba(142, 68, 173, 0.6)',
+							'rgba(74, 68, 173, 0.6)',
+							'rgba(177, 101, 159, 0.7)' 
+							],
+				borderColor : [// 각 bar의 테두리 색상
+							'rgba(142, 68, 173, 1)',
+							'rgba(74, 68, 173, 1)',
+							'rgba(177, 101, 159, 1)'
+							],
+				borderWidth : 2	// 각 bar의 테두리 굵기
+			} ]
+		},
+		options : {
+			tooltips: {
+				enabled: false
+			},
+			hover: {
+				animationDuration: 0
+			},
+			animation: {
+				duration: 1,
+				onComplete: function () {
+					var chartInstance = this.chart,
+						ctx = chartInstance.ctx;
+					ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+					ctx.fillStyle = 'black';
+					ctx.textSize = '20';
+					ctx.textAlign = 'center';
+					ctx.textBaseline = 'middle';
+	
+					this.data.datasets.forEach(function (dataset, i) {
+						var meta = chartInstance.controller.getDatasetMeta(i);
+						meta.data.forEach(function (bar, index) {
+							var data = dataset.data[index];							
+							ctx.fillText(data, bar._model.x + 10, bar._model.y);
+						});
+					});
+				}
+			},
+			responsive : false,
+			legend: {
+				display: false
+			},
+			scales : {
+				xAxes : [{
+					ticks :{
+						display: false,
+						//autoSkip : false,
+						beginAtZero: true,
+						//stepSize: 10,
+						min : 0,
+						max : 6
+					},
+					gridLines: {
+		                display:false
+		            }
+				}],
+					yAxes : [{
+						ticks :{
+							autoSkip : false,
+							fontColor : 'rgba(0, 0, 0, 1)',
+							fontSize : 16
+						},
+						gridLines: {
+			                display:false
+			            }
+					}]
+				}
+			}
+		});
+</script>
