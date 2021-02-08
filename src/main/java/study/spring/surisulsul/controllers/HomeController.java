@@ -70,9 +70,6 @@ public class HomeController {
 	로그인 O, 주능 테스트 결과 X / 로그인 X -> 주능 테스트 배너 노출
 	로그인 O, 주능 테스트 결과 O -> 주능 테스트 결과 노출 */
 	
-	/** main_best_items 4 */
-	
-	
 	
 	
 	
