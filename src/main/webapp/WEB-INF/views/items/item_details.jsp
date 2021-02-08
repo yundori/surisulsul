@@ -30,6 +30,7 @@
 		</div>
 		<div class="order_info">
 			<form method="post" action="${pageContext.request.contextPath}/basket/add_ok.do" name="basket_form" id="basket_form">
+				<input type="hidden" name="p_id" value="2"/>
 				<input type="hidden" name="p_name" value="고도리 복숭아와인"/>
 				<input type="hidden" name="p_price" value="20000"/>
 				
@@ -38,7 +39,7 @@
 				<h4 class="order_item_price">개당 판매가 : <span><fmt:formatNumber value="20000" pattern="#,###"/></span>원</h4>
 				<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
 				<select name="order_quantity" id="order_quantity">
-					<option>수량 선택</option>
+					<option value="0">수량 선택</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -124,7 +125,6 @@
 	});
 	
 	/** 차트 구현 **/
-	$(document).ready(function() {
 		var ctx = document.getElementById('item_chart').getContext('2d');
 		var itemChart = new Chart(ctx, {
 			type : 'horizontalBar', //가로막대그래프
@@ -203,8 +203,6 @@
 					}
 				}
 			});
-		
-	});
 	
 </script>
 
