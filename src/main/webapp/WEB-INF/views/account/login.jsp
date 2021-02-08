@@ -4,6 +4,8 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/css/join.css?time=${currentTime}" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
+	
 <!-- 로그인에 필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
 <form class="form-horizontal" name="join_form" id="join_form"
 	method="post"
@@ -56,6 +58,17 @@
 			찾기</a>
 	</div>
 </form>
-
+<script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+ <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function sweetAlert(title, text, icon){
+		swal({
+			title: title,
+			text: text,
+			icon: icon,
+			buttons: "확인"
+			});
+	}
+</script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

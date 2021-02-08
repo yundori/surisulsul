@@ -69,7 +69,7 @@ public class MemberController {
 
 		Member output = null;		 // 사용자가 입력한 정보로 DB를 조회한 결과를 받을 객체 준비
 		int chkEmailCount = 0;		 // 사용자가 입력한 이메일로 조회되는 건수를 받을 변수 준비
-		int chkLogin = 0;			 // 사용자가 입력한 이메일과 비밀번호로 로그인이 성공하는지 여부를 받을 변수 준비 
+		//int chkLogin = 0;			 // 사용자가 입력한 이메일과 비밀번호로 로그인이 성공하는지 여부를 받을 변수 준비 
 		
 		try {
 			// 사용자가 입력한 이메일과 일치하는 정보 건수 조회
@@ -79,23 +79,26 @@ public class MemberController {
 			if(chkEmailCount>0) {
 				// 일치하는 메일이 존재할 시 이메일과 비밀번호로 login 처리 (단일행 조회 결과를 output에 받음, 실패하면 catch 블록으로)
 				output = memberService.getMemberLogin(input);
-				chkLogin = 1;
+				//chkLogin = 1;
 			} else {
-				model.addAttribute("chkEmailCount", chkEmailCount);
-				model.addAttribute("chkLogin", chkLogin);
+				//model.addAttribute("chkEmailCount", chkEmailCount);
+				//model.addAttribute("chkLogin", chkLogin);
 				//return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
-				return new ModelAndView("account/login");
+				//return new ModelAndView("account/login");
 				// return webHelper.redirect(null, "로그인 실패");
+				return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 이메일이 올바르지 않습니다.","warning");
+				
 			}
 		} catch (Exception e) {
 			// 이메일 조회 건수는 있으나 이메일과 비밀번호로 단일행 조회에 실패 : 비밀번호 오류
 			// chkEmailCount와 chkLogin 값, 기존에 입력했던 이메일을 넣어서 리다이렉트한다.
-			chkEmailCount = 1;
-			model.addAttribute("chkEmailCount", chkEmailCount);
-			model.addAttribute("chkLogin", chkLogin);
-			model.addAttribute("email", email);
-			return new ModelAndView("account/login");
+			//chkEmailCount = 1;
+			//model.addAttribute("chkEmailCount", chkEmailCount);
+			//model.addAttribute("chkLogin", chkLogin);
+			//model.addAttribute("email", email);
+			//return new ModelAndView("account/login");
 			//return webHelper.redirect(contextPath+"/account/login.do", null);
+			return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 비밀번호가 올바르지 않습니다.","warning");
 		}
 		
 		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
@@ -109,7 +112,7 @@ public class MemberController {
 		// C. 홈페이지로 이동
 		String redirectUrl = contextPath + "/";
 		System.out.println(output.toString());
-		return webHelper.redirect(redirectUrl, null);
+		return webHelper.sweetalertRedirect(redirectUrl, "로그인 성공","수리술술에 오신 것을 환영합니다.","success");
 	}
 
 	/** 회원가입 페이지로 이동 */
