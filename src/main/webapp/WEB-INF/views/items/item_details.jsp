@@ -38,7 +38,7 @@
 				<h4 class="order_item_price">개당 판매가 : <span><fmt:formatNumber value="20000" pattern="#,###"/></span>원</h4>
 				<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
 				<select name="order_quantity" id="order_quantity">
-					<option>수량 선택</option>
+					<option value="0">수량 선택</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
