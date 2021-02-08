@@ -44,7 +44,9 @@
 			</select> <br />
 			<label class="total_price_label">총 주문 가격 : </label>
 			<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
-			<button type="submit" class="order_btn" >장바구니 담기</a>
+			<div class="btn_div">
+				<button type="submit" class="order_btn" >장바구니 담기</a>
+			</div>
 		</form>
 		</div>
 		<div class="clear"></div>
