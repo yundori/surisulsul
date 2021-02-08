@@ -28,7 +28,7 @@ $(document).ready(function() {
 //팝업열기
 function openPw() {
 	var popup = window.open(
-		'../mypage/chk_pw.jsp', '비밀번호 확인',
+		'chk_pw.do', '비밀번호 확인',
 		'width=500, height=250, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }
 

@@ -33,7 +33,7 @@
 		</table>
 		<!-- 개인정보 버튼 세트 -->
 		<div class="psn_btn">
-				<a class="psn_edit" href="${pageContext.request.contextPath}/mypage/update_info.do" onClick="openPw()" return false;>수정하기</a>
+				<a class="psn_edit" href="#" onClick="openPw()" return false;>수정하기</a>
 				<a href="#" class="psn_deactivate" type="button" return false;>탈퇴하기</a>
 		</div>
 	</div>
