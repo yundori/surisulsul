@@ -34,6 +34,7 @@ public class OrderController {
 	/** 장바구니 table에 INSERT 처리 해야됨 */
 	@RequestMapping(value = "/basket/add_ok.do", method = RequestMethod.POST)
 	public void basket_add_ok(){
+		System.out.println("장바구니 add_ok 메서드로 연결");
 		
 	}
 	
