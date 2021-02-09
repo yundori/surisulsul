@@ -130,7 +130,7 @@ public class OrderController {
 	/** 장바구니 선택 삭제 처리 */
 	@RequestMapping(value = "/basket/delete_ok.do", method = RequestMethod.POST)
 	public ModelAndView delete_ok(Model model, HttpServletRequest request,
-			@RequestParam(value = "basketItem" ) List<String> chkItems) {
+			@RequestParam(value = "basketItem", required=false) List<String> chkItems) {
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
 		Member loginSession = (Member) session.getAttribute("loginInfo");
@@ -138,7 +138,7 @@ public class OrderController {
 		//input 값에 쓰일 basketId 값 선언
 		int basketId = 0;
 		
-		if (chkItems.size()!=0) {
+		if (chkItems!=null) {
 			for(int i=0; i<chkItems.size(); i++) {
 				// 데이터 삭제에 필요한 조건값을 Beans에 저장
 				Basket input = new Basket();
