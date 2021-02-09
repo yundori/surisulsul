@@ -39,18 +39,7 @@ public class MemberController {
 
 	/** 로그인 페이지로 이동 */
 	@RequestMapping(value = "/account/login.do", method = RequestMethod.GET)
-	public ModelAndView login(Model model,
-			// 로그인 시 입력된 이메일 존재 여부 체크
-			@RequestParam(value="chkEmailCount", defaultValue="-1") int chkEmailCount,
-			// 로그인 여부 체크
-			@RequestParam(value="chkLogin", defaultValue="0") int chkLogin,
-			// 입력한 이메일 체크
-			@RequestParam(value="email", required=false, defaultValue="") String email) {
-		model.addAttribute("chkEmailCount", chkEmailCount);
-		model.addAttribute("chkLogin", chkLogin);
-		if(!email.equals("")) {
-			model.addAttribute("email", email);
-		}
+	public ModelAndView login(Model model) {
 		return new ModelAndView("account/login");
 	}
 
@@ -189,7 +178,7 @@ public class MemberController {
 		
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장 시 생성된 PK 값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/login.do";
+		String redirectUrl = contextPath + "/account/login.do";
 		return webHelper.redirect(redirectUrl, "회원가입이 완료되었습니다.\n로그인 후 수리술술을 이용하실 수 있습니다.");
 	}
 
