@@ -8,12 +8,12 @@
 	<h1>장바구니</h1>
 	<c:choose>
 		<%--c:when test 조건 -> 장바구니에 담아온 상품이 있는 경우 -> 장바구니 DB 내용 존재 --%>
-		<c:when test="${output!=null || fn:length(output)!=0 }">
+		<c:when test="${result}">
 			<form method="post" action="${pageContext.request.contextPath }/basket/delete_ok.do">
 				<table id="basket_table">
 					<tr>
 						<td colspan="5" class="clearfix">
-							<input type="checkbox" name="all" class="check_all" checked> 
+							<input type="checkbox" name="all" class="check_all"> 
 							<label>전체선택</label>
 							<button type="submit" id="delete_this">선택상품 삭제</button><!-- 컨트롤러로 연결 -> 장바구니 내 해당 아이템 지우고, 페이지 재출력 -->
 						</td>
@@ -28,26 +28,21 @@
     				<%-- 조회 결과에 따른 반복 처리 --%>
     				<c:forEach var="item" items="${output }" varStatus="status">
 						<tr>
-							<td><input type="checkbox" name="item${item.p_id }" id="item${item.p_id }" class="ab" checked></td>
+							<td>
+								<input type="checkbox" name="basketItem" id="basket${item.id }" class="ab" value="${item.id }">
+							</td>
 							<td id="left_align"><img src="${contextPath}/assets/img/items/item${item.p_id}.jpg" class="clearfix"/>${item.p_name}</td>
 							<td><fmt:formatNumber value="${item.p_price }" pattern="#,###"/></td>
 							<td>${item.qty }병</td>
 							<td>${item.p_price * item.qty }원</td>
 						</tr>
 					</c:forEach>
-					<tr>
-						<td colspan="5" class="clearfix">
-							<input type="checkbox" name="all" class="check_all" checked> 
-							<label>전체선택</label>
-							<button type="submit" id="delete_this" >선택상품 삭제</button>
-						</td>
-					</tr>
 				</table>
 				
 				<table id="basket_summary">
 					<tr>
 						<td><b>총 상품 금액</b></td>
-						<td>143,000원</td>
+						<td>${total_price }원</td>
 					</tr>
 					<tr>
 						<td><b>배송비</b></td>
@@ -55,7 +50,7 @@
 					</tr>
 					<tr>
 						<td><b>총 주문 금액</b></td>
-						<td>143,000원</td>
+						<td>${total_price }원</td>
 					</tr>
 				</table>
 			</form>

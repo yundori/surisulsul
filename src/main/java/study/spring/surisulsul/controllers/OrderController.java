@@ -103,21 +103,58 @@ public class OrderController {
 		
 				
 		List<Basket> output = null; //조회 결과가 저장될 객체
+		boolean select_basket_result = false; //output에 결과가 있으면 true
+		int total_price = 0;
 				
 		try {
 			//데이터 조회하기
 			output = basketService.getBasketList(input);
+			
+			if(output.size()!=0) { //output에 결과가 있는 경우
+				select_basket_result = true;
+				for(int i=0; i<output.size(); i++) {
+					total_price+=(output.get(i).getP_price())*(output.get(i).getQty());
+				}
+				
+			}
+			
 		} catch (Exception e) {	e.printStackTrace(); }
 		
 		//view처리
 		model.addAttribute("output", output);
+		model.addAttribute("total_price", total_price);
+		model.addAttribute("result", select_basket_result);
 		return "order/basket";
 	}
 	
 	/** 장바구니 선택 삭제 처리 */
 	@RequestMapping(value = "/basket/delete_ok.do", method = RequestMethod.POST)
-	public void basket_delete_ok() {
-		System.out.println("basket_delete_ok 메서드 들어옴");
+	public ModelAndView delete_ok(Model model, HttpServletRequest request,
+			@RequestParam(value = "basketItem" ) List<String> chkItems) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//input 값에 쓰일 basketId 값 선언
+		int basketId = 0;
+		
+		if (chkItems.size()!=0) {
+			for(int i=0; i<chkItems.size(); i++) {
+				// 데이터 삭제에 필요한 조건값을 Beans에 저장
+				Basket input = new Basket();
+				input.setLoginId(loginSession.getId());
+				basketId = Integer.parseInt(chkItems.get(i));
+				input.setId(basketId);
+				
+				//데이터 삭제
+				try {
+					basketService.deleteBasket(input);
+				} catch (Exception e) { e.printStackTrace(); }
+			}
+		}else { //체크된 박스 없이 submit됐을 경우
+			return webHelper.redirect(null, "삭제할 상품이 없습니다.");
+		}
+		return webHelper.redirect(contextPath+"/basket.do", null);
 	}
 	
 	/** 주문 페이지로 연결 */
