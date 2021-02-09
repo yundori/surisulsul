@@ -24,8 +24,11 @@ public class Product {
 	private int star; // 해당 술 리뷰 별점
 	private String reg_date; // 상품 등록 날짜
 	private String edit_date; // 상품 수정 날짜
-	private String jn_result; // 해당 술이 들어갈 주능 결과
+	private String jn_result; // 해당 술의 주능 결과
 	
+	private String types;	//체크박스에 선택된 주종리스트
+	private String locs;	//체크박스에 선택된 지역리스트
+	private String keys;	//체크박스에 선택된 향리스트
 	private String search;	//검색창을 통한 검색어
 
 	// 2) Join 절에 따른 추가 컬럼

@@ -24,12 +24,15 @@
         <result property="edit_date" column="edit_date" />
         <result property="jn_result" column="jn_result" />
         
+        <result property="types" column="types" />
+        <result property="locs" column="locs" />
+        <result property="keys" column="keys" />
         <result property="search" column="search" />
         
         <result property="total_qty" column="total_qty" />
     </resultMap>
     
-    <!-- 상품 베스트 12개 목록 조회 : best_items-->
+    <!-- 상품 베스트 12개 목록 조회 : best_items
     <select id="bestItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
@@ -37,9 +40,9 @@
 		INNER JOIN sales s ON p.id=s.p_id
 		ORDER BY s.total_qty ASC
 		LIMIT 0, 12
-    </select>
+    </select>-->
     
-    <!-- 상품 베스트 4개 목록 조회 : main -->
+    <!-- 상품 베스트 4개 목록 조회 : main 
     <select id="mainbestItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
@@ -47,22 +50,22 @@
 		INNER JOIN sales s ON p.id=s.p_id
 		ORDER BY s.total_qty ASC
 		LIMIT 0, 4
-    </select>
+    </select>-->
     
     <!-- 조건에 맞는 상품 목록 조회 : item_filtered -->
     <select id="filteredItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
 		FROM products
-		<!-- 
-		WHERE 
-			<if test="type != null and type != ''">
+		<where>
+		  
+			<if test="types != null and types != ''">
 				type IN (#{types}) AND 
 			</if>
-			<if test="loc != null and loc != ''">
+			<if test="locs != null and locs != ''">
             	loc IN (#{locs}) AND
             </if>
-            <if test="(key1 != null and key1 != '') and (key2 != null and key2 != '')">
+            <if test="keys != null and keys != ''">
             	((key1 IN #{keys}) OR (key2 IN #{keys})) AND
             </if>
             <if test="sweet != null and sweet != ''">
@@ -77,10 +80,12 @@
             <if test="search != null and search != ''">
             	search = #{search}
             </if>
-             
-            <if test = "listCount > 0">
-        		LIMIT #{offset}, #{listCount}
-        	</if>-->
+            
+		</where>
+         
+        <if test = "listCount > 0">
+        	LIMIT #{offset}, #{listCount}
+        </if>
     </select>
     
     <!-- 상품 상세 정보 조회 :item_details -->
@@ -113,7 +118,7 @@
     
     <!-- 상품 데이터 수 조회하기 -->
     <select id="selectCountAll" parameterType="study.spring.surisulsul.model.Product"
-        resultMap="productMap">
+        resultType="int">
     	SELECT COUNT(*) FROM products
     </select>
     
