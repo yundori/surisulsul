@@ -1,18 +1,5 @@
 //탭 이동
 $(document).ready(function() {
-	$.ajax({
-			type: 'GET',
-			url: activeTab + ".do",
-			dataType: "html",
-			error: function() {
-				alert('통신실패');
-				console.log(">>에러" + error.status);
-			},
-			success: function(data) {
-				console.log(">>성공>>");
-				$('.tab-panel').html(data);
-			}
-		});
 		
 	$(".tab-button-item-link").click(function(e) {
 		//링크의 페이지 이동을 방지
