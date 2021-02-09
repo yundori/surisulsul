@@ -66,6 +66,10 @@ public class ExtraController {
 	/** 주능 페이지로 연결 */
 	@RequestMapping(value = "/juneung.do", method = RequestMethod.GET)
 	public String juneung(Model model) {
+		//로그인 여부 확인 ->로그인 페이지로 이동
+		//session에서 logininfo 받아오기
+		//1)주능 결과 있을 경우 - 다시 하시겠습니까? Y(그냥 주능 띄움) N(메인 돌아가기)
+		//2)주능 결과 없을 경우 - 그냥 주능 띄움
 		
 		return "extra/juneung";
 	}
@@ -73,7 +77,7 @@ public class ExtraController {
 	/** 주능 페이지에서 가져온 값 처리 */
 	@RequestMapping(value = "/juneung_ok.do", method = RequestMethod.POST)
 	public String juneung_ok(Model model) {
-		
+
 		return "mypage/mypage";
 	}
 	

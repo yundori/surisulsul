@@ -48,28 +48,29 @@ public class ItemController {
 	
 	/* 내가찾는술 페이지로 이동 */
 	@RequestMapping(value = "/item_filtered.do", method = RequestMethod.GET)
-	public String item_filtered(Model model, HttpServletResponse response) {
-		//@RequestParam(value = "page", defaultValue = "1") int nowPage
-		//int totalCount = 0; // 전체 게시글 수
-		//int listCount = 16; // 한 페이지당 표시할 목록 수
-		//int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+	public String item_filtered(Model model, HttpServletResponse response,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		
-		//Product input = new Product();
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 16; // 한 페이지당 표시할 목록 수
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		
+		Product input = new Product();
 		
 		List<Product> output = null;	//조회결과가 저장될 객체
-		//PageData pageData = null;
+		PageData pageData = null;
 		
 		try {
 			// 전체 게시글 수 조회
-			//totalCount = productService.getProductCount(input);
+			totalCount = productService.getProductCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
-			//pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-			//Product.setOffset(pageData.getOffset());
-			//Product.setListCount(pageData.getListCount());
+			Product.setOffset(pageData.getOffset());
+			Product.setListCount(pageData.getListCount());
 			
 			//데이터 조회하기
-			output = productService.filtered_ProductList(null);
+			output = productService.filtered_ProductList(input);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,6 +82,7 @@ public class ItemController {
 		}
 		*/
 		model.addAttribute("output",output);
+		model.addAttribute("pageData", pageData);
 		
 		return "items/item_filtered";
 	}
