@@ -32,7 +32,17 @@
         <result property="total_qty" column="total_qty" />
     </resultMap>
     
-    <!-- 상품 베스트 12개 목록 조회 : best_items
+    <!-- 주능 결과 4개 상품 조회 -->
+    <select id="jnItemList" parameterType="study.spring.surisulsul.model.Product"
+        resultMap="productMap">
+        SELECT img, name, price, jn_result
+		FROM product p
+		INNER JOIN member m ON m.jn_result=p.jn_result
+		ORDER BY p.name ASC
+		LIMIT 0, 4
+    </select>
+    
+    <!-- 상품 베스트 12개 목록 조회 : best_items-->
     <select id="bestItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
@@ -40,17 +50,17 @@
 		INNER JOIN sales s ON p.id=s.p_id
 		ORDER BY s.total_qty ASC
 		LIMIT 0, 12
-    </select>-->
+    </select>
     
-    <!-- 상품 베스트 4개 목록 조회 : main 
+    <!-- 상품 베스트 4개 목록 조회 : main -->
     <select id="mainbestItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
-        SELECT img, name, price, star, type, loc, key1
+        SELECT img, name, price
 		FROM products p
 		INNER JOIN sales s ON p.id=s.p_id
 		ORDER BY s.total_qty ASC
 		LIMIT 0, 4
-    </select>-->
+    </select>
     
     <!-- 조건에 맞는 상품 목록 조회 : item_filtered -->
     <select id="filteredItemList" parameterType="study.spring.surisulsul.model.Product"

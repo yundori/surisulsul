@@ -5,10 +5,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.helper.WebHelper;
 import uap_clj.java.api.Browser;
 import uap_clj.java.api.Device;
 import uap_clj.java.api.OS;
@@ -16,6 +18,9 @@ import uap_clj.java.api.OS;
 @Slf4j
 public class AppInterceptor implements HandlerInterceptor {
 	long startTime = 0, endTime = 0;
+	
+	@Autowired
+	WebHelper webHelper;
 
 	/**
 	 * Controller 실행 요청 전에 수행되는 메서드 클라이언트의 요청을 컨트롤러에 전달하기 전에 호출된다. return 값으로
@@ -30,6 +35,8 @@ public class AppInterceptor implements HandlerInterceptor {
 		// 컨트롤러 실행 직전에 현재 시각 저장
 		startTime = System.currentTimeMillis();
 
+		webHelper.init(request, response);
+		
 		/** 1) 클라이언트의 요청 정보 확인하기 */
 		// 현재 URL 획득
 		String url = request.getRequestURL().toString();

@@ -6,7 +6,16 @@ import study.spring.surisulsul.model.Product;
 
 /** 상품 데이터 조회 기능을 제공하기 위한 Service 계층 */
 public interface ProductService {
-
+	
+	/**
+	 * 주능 결과 4개 목록 조회
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> jn_ProductList(Product input) throws Exception;
+	
 	/**
 	 * 상품 베스트 12개 목록 조회 (best_items)
 	 * 
