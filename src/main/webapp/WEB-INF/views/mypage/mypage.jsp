@@ -15,19 +15,19 @@
 			<tbody>
 				<tr>
 					<td class="psn_td_tab">이름</td>
-					<td class="psn_td_normal">name</td>
+					<td class="psn_td_normal">${output.name}</td>
 					<td class="psn_td_tab">이메일</td>
-					<td class="psn_td_special">email/sbd1234@sbd.com/
+					<td class="psn_td_special">${output.email}
 				</tr>
 				<tr>
 					<td class="psn_td_tab">핸드폰번호</td>
-					<td class="psn_td_normal">phone_number</td>
+					<td class="psn_td_normal">${output.phone}</td>
 					<td class="psn_td_tab">생년월일</td>
-					<td>birthdate</td>
+					<td>${output.birthdate}</td>
 				</tr>
 				<tr>
 					<td class="psn_td_tab">주소</td>
-					<td class="psn_td_special" colspan="3">address/경기도 용인시 수지구 상현동 형제자이아파트 자매동 구리시/경기도 용인시 수지구 상현동/경기도 용인시 수지구 상현동</td>
+					<td class="psn_td_special" colspan="3">${output.address1}&nbsp;${output.address2}</td>
 				</tr>
 			</tbody>
 		</table>
