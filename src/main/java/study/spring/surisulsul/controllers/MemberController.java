@@ -83,10 +83,10 @@ public class MemberController {
 			} else {
 				//model.addAttribute("chkEmailCount", chkEmailCount);
 				//model.addAttribute("chkLogin", chkLogin);
-				//return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
+				return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
 				//return new ModelAndView("account/login");
 				// return webHelper.redirect(null, "로그인 실패");
-				return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 이메일이 올바르지 않습니다.","warning");
+				//return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 이메일이 올바르지 않습니다.","warning");
 				
 			}
 		} catch (Exception e) {
@@ -97,8 +97,8 @@ public class MemberController {
 			//model.addAttribute("chkLogin", chkLogin);
 			//model.addAttribute("email", email);
 			//return new ModelAndView("account/login");
-			//return webHelper.redirect(contextPath+"/account/login.do", null);
-			return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 비밀번호가 올바르지 않습니다.","warning");
+			return webHelper.redirect(null, "입력한 비밀번호가 올바르지 않습니다.");
+			//return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 비밀번호가 올바르지 않습니다.","warning");
 		}
 		
 		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
@@ -112,7 +112,7 @@ public class MemberController {
 		// C. 홈페이지로 이동
 		String redirectUrl = contextPath + "/";
 		System.out.println(output.toString());
-		return webHelper.sweetalertRedirect(redirectUrl, "로그인 성공","수리술술에 오신 것을 환영합니다.","success");
+		return webHelper.redirect(redirectUrl, "수리술술에 오신 것을 환영합니다.");
 	}
 
 	/** 회원가입 페이지로 이동 */
