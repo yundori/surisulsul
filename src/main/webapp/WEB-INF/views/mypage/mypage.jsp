@@ -27,8 +27,7 @@
 				</tr>
 				<tr>
 					<td class="psn_td_tab">주소</td>
-					<td class="psn_td_special" colspan="3">${output.address1}<br/>
-					${output.address2}</td>
+					<td class="psn_td_special" colspan="3">${output.address1}&nbsp;${output.address2}</td>
 				</tr>
 			</tbody>
 		</table>

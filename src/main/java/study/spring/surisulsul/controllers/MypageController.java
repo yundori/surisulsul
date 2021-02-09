@@ -59,7 +59,7 @@ public class MypageController {
 
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 		if (loginSession == null) {
-			String redirectUrl = "../acount/login.do";
+			String redirectUrl = "../account/login.do";
 			return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
 
 		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
