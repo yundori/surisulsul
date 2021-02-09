@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/bar_slider.css?time=${currentTime}">
 
 	<div class="item_filtered">
-		<form>
+		<form method="post" action="${pageContext.request.contextPath}/item_filtered.do" name="filtered_form" id="filtered_form">
 			<div class="keyword_checkbox">
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
@@ -42,10 +42,7 @@
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
-				<!--  
-			</div>
 			
-			<div class="keyword_checkbox"> -->
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
@@ -88,10 +85,7 @@
 						<label for="area8">제주도</label>
 					</div>
 				</div>
-				<!--  
-			</div>
-			
-			<div class="keyword_checkbox"> -->
+				
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
@@ -169,7 +163,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		<!-- </form> -->
 		
 		<div class="search">
 			<div class="keyword_area">
@@ -185,249 +179,51 @@
 			<div class=clear></div>
 			<button type="submit" class="search_btn">검색</button>
 		</div>
+		</form>
 		
 		<div class="item_contents">
 			<span class="title">내가 찾는 술</span>
 			<ul class="item_list">
-			 <c:choose>
-			 <%-- <c:when 선택된 값이 있을 경우 > --%>
-			 <c:when test="true">
-			 <%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
-				<li class="item_info">
-					<a href="${pageContext.request.contextPath}/item_details.do">
-						<img class="item_img" src="${contextPath}/assets/img/items/best1.PNG" /> <br/>
-						<span class="item_title">상품명abcdefghijklmnop</span>
-						<span class="item_price">00,000 원</span> <br/>
-                    	<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류123456afsaff</li>
-							<li class="item_tag item_area_tag">#지역ssdfaadffsdf</li>
-							<li class="item_tag item_keyword_tag">#키워드thsghssfdfsf</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="${contextPath}/assets/img/items/best2.PNG"/> <br/>
-                    	<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="${contextPath}/assets/img/items/best3.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">000,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="${contextPath}/assets/img/items/best4.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-                    	<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
-                    	<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">000,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best4.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-                    	<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
-                    	<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">000,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best4.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best1.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-                    	<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best2.PNG"/> <br/>
-                    	<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best3.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">000,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<li class="item_info">
-					<a href="#">
-						<img class="item_img" src="../assets/img/items/best4.PNG" /> <br/>
-						<span class="item_title">상품명</span>
-						<span class="item_price">00,000 원</span> <br/>
-						<div class="clean"></div>
-						<span class="item_rating">★★★★☆</span> <br/>
-						<ul class="item_tag_list">
-							<li class="item_tag item_type_tag">#종류</li>
-							<li class="item_tag item_area_tag">#지역</li>
-							<li class="item_tag item_keyword_tag">#키워드</li>
-						</ul>
-					</a>
-				</li>
-				<%-- </c:forEach> --%>
-				<%-- </c:when> --%>
-				</c:when>
-				
-				<%--c:otherwise 조건에 부합하는 DB가 없는 경우 --%>
-				<c:otherwise>
-					<div class="select_none">
-						<img src="${contextPath}/assets/img/mark_alert.png" />
-						<h1>검색 결과를 찾을 수 없습니다.</h1>
-					</div>
-				</c:otherwise>
+				<c:choose>
+				 	<%-- 조건에 부합하는 상품이 없는 경우 --%>
+				 	<c:when test="${output == null || fn:length(output) == 0}">
+				 		<div class="select_none">
+							<img src="${contextPath}/assets/img/mark_alert.png" />
+							<h1>검색 결과를 찾을 수 없습니다.</h1>
+						</div>
+					</c:when>
+					
+					<%-- 조건에 부합하는 상품이 없는 경우 --%>
+					<c:otherwise>
+						<%-- 조회 결과에 따른 반복처리 --%>
+				 		<c:forEach var="item" items="${output}" varStatus="status">
+							<li class="item_info">
+								<a href="${pageContext.request.contextPath}/item_details.do">
+									<img class="item_img" src="${contextPath}/assets/img/items/${item.img}" /> <br/>
+									<span class="item_title">${item.name}</span>
+									<span class="item_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</span> <br/>
+		                    		<div class="clean"></div>
+									<span class="item_rating">
+										<c:set var="stars" value="${item.star}" />
+										<c:choose>
+										<c:when test="${stars != 0}">
+											<c:forEach var="i" begin="1" end="${stars}">★</c:forEach>
+											<c:if test="${stars} < 5">
+												<c:forEach var="j" begin="${stars}" end="5">☆</c:forEach>
+											</c:if>
+										</c:when>
+										<c:otherwise>☆☆☆☆☆</c:otherwise>
+										</c:choose>
+									</span> <br/>
+									<ul class="item_tag_list">
+										<li class="item_tag item_type_tag">${item.type}</li>
+										<li class="item_tag item_area_tag">${item.loc}</li>
+										<li class="item_tag item_keyword_tag">${item.key1}</li>
+									</ul>
+								</a>
+							</li>
+						</c:forEach>
+					</c:otherwise>
 				</c:choose>
 			</ul>
 			

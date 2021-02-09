@@ -81,6 +81,11 @@ public class ProductServiceImpl implements ProductService{
 			log.error(e.getLocalizedMessage());
 			throw new Exception("조건에 맞는 데이터 조회에 실패했습니다.");
 		}
+		/*
+		System.out.println(">>>>>>>>>>>>serviceimpl 출력결과");
+		for(Product res : result) {
+			System.out.println(res);
+		}*/
 		
 		return result;
 	}

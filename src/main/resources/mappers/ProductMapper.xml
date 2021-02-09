@@ -53,7 +53,8 @@
     <select id="filteredItemList" parameterType="study.spring.surisulsul.model.Product"
         resultMap="productMap">
         SELECT img, name, price, star, type, loc, key1
-		FROM products 
+		FROM products
+		<!-- 
 		WHERE 
 			<if test="type != null and type != ''">
 				type IN (#{types}) AND 
@@ -73,13 +74,13 @@
             <if test="degree != null and degree != ''">
             	degree = #{degree} AND
             </if>
-            <if test="search != null and searcg != ''">
+            <if test="search != null and search != ''">
             	search = #{search}
             </if>
-            
+             
             <if test = "listCount > 0">
         		LIMIT #{offset}, #{listCount}
-        	</if>
+        	</if>-->
     </select>
     
     <!-- 상품 상세 정보 조회 :item_details -->
