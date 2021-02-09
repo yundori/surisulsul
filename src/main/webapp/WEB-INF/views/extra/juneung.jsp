@@ -7,7 +7,7 @@
 <div id="juneung_content">
     <h1>술학능력시험 - 주(酒)능</h1>
 
-    <form action="${pageContext.request.contextPath}/juneung_ok.do" method="post" name="imgradio">
+    <form action="${pageContext.request.contextPath}/juneung_ok.do" method="post" name="imgradio" data-tab="my_recommend">
 
         <h2>나의 최애 주종+안주 조합 고르기</h2>
 
