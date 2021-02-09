@@ -47,17 +47,71 @@ public class ItemController {
 	}
 	
 	/* 내가찾는술 페이지로 이동 */
-	@RequestMapping(value = "/item_filtered.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/item_filtered.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String item_filtered(Model model, HttpServletResponse response,
+			@RequestParam(value = "types", required=false) List<String> types,
+			@RequestParam(value = "areas", required=false) List<String> locs,
+			@RequestParam(value = "incense", required=false) List<String> keys,
+			@RequestParam(value = "sweet", defaultValue = "0") int sweet,
+			@RequestParam(value = "sour", defaultValue = "0") int sour,
+			@RequestParam(value = "degree", defaultValue = "0") int degree,
+			@RequestParam(value = "title_search", required=false) String search,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 16; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
-		Product input = new Product();
+		String check_types = ""; //선택된 types(리스트)를 in연산자의 문자열로 변환하고 담을 변수
+		String check_locs = ""; //선택된 locs(리스트)를 in연산자의 문자열로 변환하고 담을 변수
+		String check_keys = ""; //선택된 keys(리스트)를 in연산자의 문자열로 변환하고 담을 변수
 		
-		List<Product> output = null;	//조회결과가 저장될 객체
+		Product input = new Product(); //선택된 값을 넘겨줄 객체
+		
+		/** 
+		 * 리스트를 in연산자에 넣을 문자열로 바꾸기
+		 * 파라미터값이 있고 전체선택("0")이 포함되지 않은 경우에만 실행
+		 */
+		// 종류별
+		if(types != null && types.size() != 0 && !types.get(0).equals("0")) {
+			for(String t : types) {
+				t = "'" + t + "',";
+				check_types += t;
+			}
+			//마지막 , 제거
+			check_types = check_types.substring(0, check_types.length() - 1);
+			input.setTypes(check_types);
+		}
+		// 지역별
+		if(locs != null && locs.size() != 0 && !locs.get(0).equals("0")) {
+			for(String l : locs) {
+				l = "'" + l + "',";
+				check_locs += l;
+			}
+			check_locs = check_locs.substring(0, check_locs.length() - 1);
+			input.setLocs(check_locs);
+		}
+		//향별
+		if(keys != null && keys.size() != 0 && !keys.get(0).equals("0")) {
+			for(String k : keys) {
+				k = "'" + k + "',";
+				check_keys += k;
+			}
+			check_keys = check_keys.substring(0, check_keys.length() - 1);
+			input.setKeys(check_keys);
+		}
+
+		if(sweet != 0) {
+			input.setSweet(sweet);
+		}
+		if(sour != 0) {
+			input.setSour(sour);
+		}
+		if(degree != 0) {
+			input.setDegree(degree);
+		}
+		
+		List<Product> output = null; //조회결과가 저장될 객체
 		PageData pageData = null;
 		
 		try {
@@ -75,14 +129,9 @@ public class ItemController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		/*
-		System.out.println(">>>>>>>>>>>>controller 출력결과");
-		for(Product res : output) {
-			System.out.println(res);
-		}
-		*/
-		model.addAttribute("output",output);
+		
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("output",output);
 		
 		return "items/item_filtered";
 	}
