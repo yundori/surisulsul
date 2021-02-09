@@ -26,8 +26,6 @@ $(document).ready(function() {
 	$('#default').click();
 });
 
-//Ajax로 탭 이동
-
 
 //팝업열기
 function openPw() {
