@@ -49,9 +49,9 @@ public class ItemController {
 	/* 내가찾는술 페이지로 이동 */
 	@RequestMapping(value = "/item_filtered.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String item_filtered(Model model, HttpServletResponse response,
-			@RequestParam(value = "types", required=false) List<String> types,
-			@RequestParam(value = "areas", required=false) List<String> locs,
-			@RequestParam(value = "incense", required=false) List<String> keys,
+			@RequestParam(value = "types", defaultValue = "0") List<String> types,
+			@RequestParam(value = "areas", defaultValue = "0") List<String> locs,
+			@RequestParam(value = "incense", defaultValue = "0") List<String> keys,
 			@RequestParam(value = "sweet", defaultValue = "0") int sweet,
 			@RequestParam(value = "sour", defaultValue = "0") int sour,
 			@RequestParam(value = "degree", defaultValue = "0") int degree,
@@ -109,21 +109,28 @@ public class ItemController {
 		 * input 객체에 넣기
 		 */
 		if(sweet != 0) {
-			sweet *= 2;
-			input.setSweet1(sweet - 1);
-			input.setSweet2(sweet);
+			int sweet_res = sweet * 2;
+			input.setSweet1(sweet_res - 1);
+			input.setSweet2(sweet_res);
 		}
 		if(sour != 0) {
-			sour *= 2;
-			input.setSour1(sour - 1);
-			input.setSour2(sour);
+			int sour_res = sour * 2;
+			input.setSour1(sour_res - 1);
+			input.setSour2(sour_res);
 		}
 		if(degree != 0) {
-			degree *= 10;
-			input.setDegree1(degree - 9);
-			if(degree != 30) { //3 -> 21 ~ 이기 때문
-				input.setDegree2(degree);
+			int degree_res = degree * 10;
+			input.setDegree1(degree_res - 9);
+			if(degree != 3) { //3 -> 21 ~ 이기 때문
+				input.setDegree2(degree_res);
 			}
+		}
+		
+		/**
+		 * 검색창 검색어 input 객체에 담기
+		 */
+		if(search != null) {
+			input.setSearch(search);
 		}
 		
 		List<Product> output = null; //조회결과가 저장될 객체
@@ -146,6 +153,13 @@ public class ItemController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("types", types);	// 선택된 종류별 리스트
+		model.addAttribute("locs", locs);	// 선택된 지역별 리스트
+		model.addAttribute("keys", keys);	// 선택된 향별 리스트
+		model.addAttribute("sweet", sweet);	// 선택된 당도
+		model.addAttribute("sour", sour);	// 선택된 산미
+		model.addAttribute("degree", degree);	//선택된 도수
+		model.addAttribute("search", search);	//검색어
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output",output);
 		
