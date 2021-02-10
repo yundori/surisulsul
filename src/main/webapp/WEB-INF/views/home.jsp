@@ -33,6 +33,7 @@
 			test에 들어가있는 두번째 boolean값의 의미 = 로그인 된 사용자의 주능 테스트 이력 여부 (테스트한적 있으면 true) 
 		 --%>
 		<c:when test="${jn_result}">
+		<c:forEach var="item" items="${output}" varStatus="status">
 			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능 본적 있음)일 때 index에 출력할 내용 --%>
 			<div class="main_best">
 		<h1>취향에 맞는 술을 추천해드려요 ! </h1>
@@ -86,6 +87,7 @@
 	</a>
 	
 	</div>
+	</c:forEach>
 		</c:when>
 		<c:otherwise>
 			<%-- 로그인 여부가 false이던지, 로그인이 true여도 주능결과가 없을 경우 index에 출력되는 내용 
