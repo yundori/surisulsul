@@ -46,42 +46,42 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area1" type="checkbox" value="0" checked />
+						<input name="areas" class="area" id="area1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(locs, '0')}">checked</c:if>/>
 						<label for="area1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area2" type="checkbox" value="서울" />
+						<input name="areas" class="area" id="area2" type="checkbox" value="서울" <c:if test="${fn:containsIgnoreCase(locs, '서울')}">checked</c:if>/>
 						<label for="area2">서울</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area3" type="checkbox" value="경기" />
+						<input name="areas" class="area" id="area3" type="checkbox" value="경기" <c:if test="${fn:containsIgnoreCase(locs, '경기')}">checked</c:if>/>
 						<label for="area3">경기도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area4" type="checkbox" value="강원" />
+						<input name="areas" class="area" id="area4" type="checkbox" value="강원" <c:if test="${fn:containsIgnoreCase(locs, '강원')}">checked</c:if>/>
 						<label for="area4">강원도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area5" type="checkbox" value="충청" />
+						<input name="areas" class="area" id="area5" type="checkbox" value="충청" <c:if test="${fn:containsIgnoreCase(locs, '충청')}">checked</c:if>/>
 						<label for="area5">충청도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area6" type="checkbox" value="전라" />
+						<input name="areas" class="area" id="area6" type="checkbox" value="전라" <c:if test="${fn:containsIgnoreCase(locs, '전라')}">checked</c:if>/>
 						<label for="area6">전라도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area7" type="checkbox" value="경상" />
+						<input name="areas" class="area" id="area7" type="checkbox" value="경상" <c:if test="${fn:containsIgnoreCase(locs, '경상')}">checked</c:if>/>
 						<label for="area7">경상도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area8" type="checkbox" value="제주" />
+						<input name="areas" class="area" id="area8" type="checkbox" value="제주" <c:if test="${fn:containsIgnoreCase(locs, '제주')}">checked</c:if>/>
 						<label for="area8">제주도</label>
 					</div>
 				</div>
@@ -89,37 +89,37 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense1" type="checkbox" value="0" checked />
+						<input name="incense" class="incense" id="incense1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(keys, '0')}">checked</c:if>/>
 						<label for="incense1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물" />
+						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물" <c:if test="${fn:containsIgnoreCase(keys, '곡물')}">checked</c:if>/>
 						<label for="incense2">곡물향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일" />
+						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일" <c:if test="${fn:containsIgnoreCase(keys, '과일')}">checked</c:if>/>
 						<label for="incense3">과일향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃" />
+						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃" <c:if test="${fn:containsIgnoreCase(keys, '꽃')}">checked</c:if>/>
 						<label for="incense4">꽃향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀" />
+						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀" <c:if test="${fn:containsIgnoreCase(keys, '꿀')}">checked</c:if>/>
 						<label for="incense5">꿀향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩" />
+						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩" <c:if test="${fn:containsIgnoreCase(keys, '누룩')}">checked</c:if>/>
 						<label for="incense6">누룩향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜" />
+						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜" <c:if test="${fn:containsIgnoreCase(keys, '알콜')}">checked</c:if>/>
 						<label for="incense7">알콜향</label>
 					</div>
 				</div>
