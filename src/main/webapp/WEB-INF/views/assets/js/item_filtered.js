@@ -120,5 +120,10 @@ $(document).ready(function() {
 		$('.incense').attr("checked", true);
 		printKeyword('.result_list_incense','incense_result', 6, 'incense');
 	}
+	
+	
+	printKeyword('.result_list_type','types_result', 5, 'types');
+	printKeyword('.result_list_area','area_result', 7, 'area');
+	printKeyword('.result_list_incense','incense_result', 6, 'incense');
 
 });

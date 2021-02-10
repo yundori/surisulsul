@@ -13,32 +13,32 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types1" type="checkbox" value="0" checked />
+						<input name="types" class="types" id="types1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(types, '0')}">checked</c:if>/>
 						<label for="types1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types2" type="checkbox" value="탁주" />
+						<input name="types" class="types" id="types2" type="checkbox" value="탁주" <c:if test="${fn:containsIgnoreCase(types, '탁주')}">checked</c:if>/>
 						<label for="types2">탁주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types3" type="checkbox" value="청주" />
+						<input name="types" class="types" id="types3" type="checkbox" value="청주" <c:if test="${fn:containsIgnoreCase(types, '청주')}">checked</c:if>/>
 						<label for="types3">청주/약주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types4" type="checkbox" value="과실주" />
+						<input name="types" class="types" id="types4" type="checkbox" value="과실주" <c:if test="${fn:containsIgnoreCase(types, '과실주')}">checked</c:if>/>
 						<label for="types4">과실주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types5" type="checkbox" value="증류주" />
+						<input name="types" class="types" id="types5" type="checkbox" value="증류주" <c:if test="${fn:containsIgnoreCase(types, '증류주')}">checked</c:if>/>
 						<label for="types5">증류주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types6" type="checkbox" value="기타" />
+						<input name="types" class="types" id="types6" type="checkbox" value="기타" <c:if test="${fn:containsIgnoreCase(types, '기타')}">checked</c:if>/>
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
@@ -130,10 +130,10 @@
 						<span class="slider_title">당도</span>
 						<div class="bar_slider">
 							<select id="bar_slider_sugar" name="sweet" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${sweet == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${sweet == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${sweet == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${sweet == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -142,10 +142,10 @@
 						<span class="slider_title">산미</span>
 						<div class="bar_slider">
 							<select id="bar_slider_acidity" name="sour" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${sour == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${sour == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${sour == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${sour == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -154,10 +154,10 @@
 						<span class="slider_title">도수</span>
 						<div class="bar_slider">
 							<select id="bar_slider_alcohol" name="degree" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${degree == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${degree == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${degree == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${degree == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -175,7 +175,7 @@
 				<ul class="result_list_incense">
 				</ul>
 			</div>
-			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요." value="" />
+			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요." value="${search}" />
 			<div class=clear></div>
 			<button type="submit" class="search_btn">검색</button>
 		</div>

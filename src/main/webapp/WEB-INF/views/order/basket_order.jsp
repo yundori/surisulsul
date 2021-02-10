@@ -94,11 +94,11 @@
             	<label for="payed_bank" class="col-md-4">입금은행정보</label>
             	<div class="col-md-6">
             		<select name="bank" class="form-control">
-            			<option value="etc">--------입금은행을 선택해주세요-------</option>
-            			<option value="kb">국민은행 123456-01-789012 (수리술술)</option>
-            			<option value="sh">신한은행 123-123-123456 (수리술술)</option>
-            			<option value="nh">농협은행 123-5678-1234-01 (수리술술)</option>
-            			<option value="wr">우리은행 1234-567-890123 (수리술술)</option>
+            			<option value="etc" value="0">--------입금은행을 선택해주세요-------</option>
+            			<option value="kb" value="1">국민은행 123456-01-789012 (수리술술)</option>
+            			<option value="sh" value="2">신한은행 123-123-123456 (수리술술)</option>
+            			<option value="nh" value="3">농협은행 123-5678-1234-01 (수리술술)</option>
+            			<option value="wr" value="4">우리은행 1234-567-890123 (수리술술)</option>
             		</select>
             	</div>
 			</div>
