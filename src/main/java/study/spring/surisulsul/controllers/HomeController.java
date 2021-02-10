@@ -94,7 +94,7 @@ public class HomeController {
 		try {
 			//Mapper안에 SQL문 작성 따로 해야될 0,4
 			//Impl에 어떤 메서드로 들어가는지 확인해서 아래 구문 수정
-			best_output = productService.best_ProductList(null);
+			best_output = productService.main_best_ProductList(null);
 		} catch (Exception e) {	e.printStackTrace(); }
 		
 		/** View 처리  */
