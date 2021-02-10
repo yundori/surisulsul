@@ -99,7 +99,7 @@
             <span class="icon_description text_visible">비</span>
         </label>
         <div class="juneung_buttons">
-	        <button type="submit" >나의주능결과</button>
+	        <button type="submit" onclick="check()">나의 주능결과</button>
 	        <button type="reset">다시하기</button>
         </div>
     </form>
