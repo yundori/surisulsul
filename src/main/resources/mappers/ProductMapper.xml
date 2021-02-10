@@ -27,6 +27,12 @@
         <result property="types" column="types" />
         <result property="locs" column="locs" />
         <result property="keys" column="keys" />
+        <result property="sweet1" column="sweet1" />
+        <result property="sweet2" column="sweet2" />
+        <result property="sour1" column="sour1" />
+        <result property="sour2" column="sour2" />
+        <result property="degree1" column="degree1" />
+        <result property="degree2" column="degree2" />
         <result property="search" column="search" />
         
         <result property="total_qty" column="total_qty" />
@@ -78,14 +84,17 @@
             <if test="keys != null and keys != ''">
             	AND ((key1 IN (${keys})) OR (key2 IN (${keys})))
             </if>
-            <if test="sweet != null and sweet != ''">
-            	AND sweet = #{sweet}
+            <if test="(sweet1 != null and sweet1 != '') and (sweet2 != null and sweet2 != '')">
+            	AND (sweet = #{sweet1} OR sweet = #{sweet2})
             </if>
-            <if test="sour != null and sour != ''">
-            	AND sour = #{sour}
+            <if test="(sour1 != null and sour1 != '') and (sour2 != null and sour2 != '')">
+            	AND (sour = #{sour1} OR sour = #{sour2})
             </if>
-            <if test="degree != null and degree != ''">
-            	AND degree = #{degree}
+            <if test="degree1 != null and degree1 != ''">
+            	AND degree &gt;= #{degree1}
+            	<if test="degree2 != null and degree2 != ''">
+            		AND degree &lt;= #{degree2}
+            	</if>
             </if>
             <if test="search != null and search != ''">
             	AND name LIKE concat('%', #{search}, '%')
@@ -130,6 +139,34 @@
     <select id="selectCountAll" parameterType="study.spring.surisulsul.model.Product"
         resultType="int">
     	SELECT COUNT(*) FROM products
+    	<where>
+		  
+			<if test="types != null and types != ''">
+				type IN (${types})
+			</if>
+			<if test="locs != null and locs != ''">
+            	AND loc IN (${locs})
+            </if>
+            <if test="keys != null and keys != ''">
+            	AND ((key1 IN (${keys})) OR (key2 IN (${keys})))
+            </if>
+            <if test="(sweet1 != null and sweet1 != '') and (sweet2 != null and sweet2 != '')">
+            	AND (sweet = #{sweet1} OR sweet = #{sweet2})
+            </if>
+            <if test="(sour1 != null and sour1 != '') and (sour2 != null and sour2 != '')">
+            	AND (sour = #{sour1} OR sour = #{sour2})
+            </if>
+            <if test="degree1 != null and degree1 != ''">
+            	AND degree &gt;= #{degree1}
+            	<if test="degree2 != null and degree2 != ''">
+            		AND degree &lt;= #{degree2}
+            	</if>
+            </if>
+            <if test="search != null and search != ''">
+            	AND name LIKE concat('%', #{search}, '%')
+            </if>
+            
+		</where>
     </select>
     
     <!-- 상품 데이터 저장 -->

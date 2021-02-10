@@ -70,7 +70,7 @@ public class ItemController {
 		
 		/** 
 		 * 리스트를 in연산자에 넣을 문자열로 바꾸기
-		 * 파라미터값이 있고 전체선택("0")이 포함되지 않은 경우에만 실행
+		 * 파라미터값이 있고 전체선택("0")이 포함되지 않은 경우에만 input 객체에 담기
 		 */
 		// 종류별
 		if(types != null && types.size() != 0 && !types.get(0).equals("0")) {
@@ -101,14 +101,29 @@ public class ItemController {
 			input.setKeys(check_keys);
 		}
 
+		/**
+		 * 당도, 산미, 도수 등급 나누기
+		 * 당도, 산미 : 1 -> 1,2 / 2 -> 3,4 / 3 -> 5,6
+		 * 도수 : 1 -> 1~10 / 2 -> 11~20 / 3 -> 21~
+		 * 
+		 * input 객체에 넣기
+		 */
 		if(sweet != 0) {
-			input.setSweet(sweet);
+			sweet *= 2;
+			input.setSweet1(sweet - 1);
+			input.setSweet2(sweet);
 		}
 		if(sour != 0) {
-			input.setSour(sour);
+			sour *= 2;
+			input.setSour1(sour - 1);
+			input.setSour2(sour);
 		}
 		if(degree != 0) {
-			input.setDegree(degree);
+			degree *= 10;
+			input.setDegree1(degree - 9);
+			if(degree != 30) { //3 -> 21 ~ 이기 때문
+				input.setDegree2(degree);
+			}
 		}
 		
 		List<Product> output = null; //조회결과가 저장될 객체
@@ -117,6 +132,7 @@ public class ItemController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = productService.getProductCount(input);
+			System.out.println(">>>>>>>>상품목록개수 : " + totalCount);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
