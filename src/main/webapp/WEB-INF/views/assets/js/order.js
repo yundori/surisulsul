@@ -8,11 +8,40 @@ $( document ).ready( function() {
 			 } else {
 			  $(".ab").prop("checked", false);
 			 }
+			 
+			 var basketItem = $('input:checkbox[name=basketItem]').length;
+	    	var selectedBasketItem = $('input:checkbox[name=basketItem]:checked').length;
+	    	
+	    	if(basketItem != selectedBasketItem) {
+	    		console.log('basketItem!=selectedBasketItem');
+		     	$('#go_order').bind('click', false);
+        		$('#go_order_comment').removeClass("hidden");
+		     	
+		    }else{
+		    	console.log('basketItem==selectedBasketItem');
+		    	$('#go_order').unbind('click', false);
+        		$('#go_order_comment').addClass("hidden");
+		    }
         } );
         
         // 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
         $( '.ab' ).click( function() {
-  			$(".check_all").prop("checked", false);
+  			
+  			var basketItem = $('input:checkbox[name=basketItem]').length;
+	    	var selectedBasketItem = $('input:checkbox[name=basketItem]:checked').length;
+	    	
+	    	if(basketItem != selectedBasketItem) {
+	    		console.log('basketItem!=selectedBasketItem');
+		     	$('#go_order').bind('click', false);
+        		$('#go_order_comment').removeClass("hidden");
+  				$(".check_all").prop("checked", false);
+		     	
+		    }else{
+		    	console.log('basketItem==selectedBasketItem');
+		    	$('#go_order').unbind('click', false);
+        		$('#go_order_comment').addClass("hidden");
+			  	$(".check_all").prop("checked", true);
+		    }	    
         } );
         
 		
@@ -94,7 +123,7 @@ $( document ).ready( function() {
 	            /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
 	    });
 	
-	    /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
+	    /** order_form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
 	    $("#order_form").validate({
 	        /** 입력검사 규칙 */
 	        rules: {
@@ -126,4 +155,6 @@ $( document ).ready( function() {
                 }
 	        }
 	    }); // end validate()
+	    
+	    
 } );

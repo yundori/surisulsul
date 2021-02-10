@@ -82,7 +82,7 @@ public class OrderController {
 		/** 결과 확인을 위한 페이지 이동 */
 		//alert 띄우고,,, 장바구니로 이동 시 basket.do 호출
 		// 장바구니로 이동하지 않을 시 현재 페이지 잔류
-		return webHelper.redirect(null, "선택하신 상품이 장바구니에 추가되었습니다.");
+		return webHelper.redirect(contextPath+"/item_details.do", "선택하신 상품이 장바구니에 추가되었습니다.");
 	}
 	
 	/** 장바구니 페이지로 연결 */
@@ -105,10 +105,12 @@ public class OrderController {
 		List<Basket> output = null; //조회 결과가 저장될 객체
 		boolean select_basket_result = false; //output에 결과가 있으면 true
 		int total_price = 0;
+		int cnt = 0;
 				
 		try {
 			//데이터 조회하기
 			output = basketService.getBasketList(input);
+			cnt = basketService.getBasketCount(input);
 			
 			if(output.size()!=0) { //output에 결과가 있는 경우
 				select_basket_result = true;
@@ -122,6 +124,7 @@ public class OrderController {
 		
 		//view처리
 		model.addAttribute("output", output);
+		model.addAttribute("cnt", cnt);
 		model.addAttribute("total_price", total_price);
 		model.addAttribute("result", select_basket_result);
 		return "order/basket";

@@ -98,6 +98,12 @@
     box-shadow: none;
     border-radius: 3px;
 }
+/** basket.jsp --> 주문/결제 체크박스 미선택 시 나오는 메시지*/
+#basket #go_order_comment{
+	font-size:15px;
+	color:#ff0000;
+	margin-top:23px;
+}
 
 /** basket_order.jsp --> 입력 페이지 컨텐츠 영역 설정 */
 .basket_order_form {
