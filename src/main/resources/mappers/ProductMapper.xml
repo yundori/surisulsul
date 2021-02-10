@@ -70,25 +70,25 @@
 		<where>
 		  
 			<if test="types != null and types != ''">
-				type IN (#{types}) AND 
+				type IN (${types})
 			</if>
 			<if test="locs != null and locs != ''">
-            	loc IN (#{locs}) AND
+            	AND loc IN (${locs})
             </if>
             <if test="keys != null and keys != ''">
-            	((key1 IN #{keys}) OR (key2 IN #{keys})) AND
+            	AND ((key1 IN (${keys})) OR (key2 IN (${keys})))
             </if>
             <if test="sweet != null and sweet != ''">
-            	sweet = #{sweet} AND
+            	AND sweet = #{sweet}
             </if>
             <if test="sour != null and sour != ''">
-            	sour = #{sour} AND
+            	AND sour = #{sour}
             </if>
             <if test="degree != null and degree != ''">
-            	degree = #{degree} AND
+            	AND degree = #{degree}
             </if>
             <if test="search != null and search != ''">
-            	search = #{search}
+            	AND name LIKE concat('%', #{search}, '%')
             </if>
             
 		</where>

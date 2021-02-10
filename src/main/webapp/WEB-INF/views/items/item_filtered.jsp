@@ -13,7 +13,7 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types1" type="checkbox" value="전체 종류" checked />
+						<input name="types" class="types" id="types1" type="checkbox" value="0" checked />
 						<label for="types1">전체 선택</label>
 					</div>
 					
@@ -23,7 +23,7 @@
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types3" type="checkbox" value="청주/약주" />
+						<input name="types" class="types" id="types3" type="checkbox" value="청주" />
 						<label for="types3">청주/약주</label>
 					</div>
 					
@@ -38,7 +38,7 @@
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types6" type="checkbox" value="기타 주류" />
+						<input name="types" class="types" id="types6" type="checkbox" value="기타" />
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
@@ -46,42 +46,42 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area1" type="checkbox" value="전체 지역" checked />
+						<input name="areas" class="area" id="area1" type="checkbox" value="0" checked />
 						<label for="area1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area2" type="checkbox" value="서울" />
+						<input name="areas" class="area" id="area2" type="checkbox" value="서울" />
 						<label for="area2">서울</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area3" type="checkbox" value="경기도" />
+						<input name="areas" class="area" id="area3" type="checkbox" value="경기" />
 						<label for="area3">경기도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area4" type="checkbox" value="강원도" />
+						<input name="areas" class="area" id="area4" type="checkbox" value="강원" />
 						<label for="area4">강원도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area5" type="checkbox" value="충청도" />
+						<input name="areas" class="area" id="area5" type="checkbox" value="충청" />
 						<label for="area5">충청도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area6" type="checkbox" value="전라도" />
+						<input name="areas" class="area" id="area6" type="checkbox" value="전라" />
 						<label for="area6">전라도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area7" type="checkbox" value="경상도" />
+						<input name="areas" class="area" id="area7" type="checkbox" value="경상" />
 						<label for="area7">경상도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="area" class="area" id="area8" type="checkbox" value="제주도" />
+						<input name="areas" class="area" id="area8" type="checkbox" value="제주" />
 						<label for="area8">제주도</label>
 					</div>
 				</div>
@@ -89,37 +89,37 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense1" type="checkbox" value="전체 향" checked />
+						<input name="incense" class="incense" id="incense1" type="checkbox" value="0" checked />
 						<label for="incense1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물향" />
+						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물" />
 						<label for="incense2">곡물향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일향" />
+						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일" />
 						<label for="incense3">과일향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃향" />
+						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃" />
 						<label for="incense4">꽃향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀향" />
+						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀" />
 						<label for="incense5">꿀향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩향" />
+						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩" />
 						<label for="incense6">누룩향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜향" />
+						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜" />
 						<label for="incense7">알콜향</label>
 					</div>
 				</div>
@@ -129,11 +129,11 @@
 					<div class="slider">
 						<span class="slider_title">당도</span>
 						<div class="bar_slider">
-							<select id="bar_slider_sugar" name="bar_slider" autocomplete="off">
+							<select id="bar_slider_sugar" name="sweet" autocomplete="off">
                         		<option value="1">낮음</option>
                         		<option value="2">중간</option>
                         		<option value="3">높음</option>
-                        		<option value="4" selected>전체</option>
+                        		<option value="0" selected>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -141,11 +141,11 @@
 					<div class="slider">
 						<span class="slider_title">산미</span>
 						<div class="bar_slider">
-							<select id="bar_slider_acidity" name="bar_slider" autocomplete="off">
+							<select id="bar_slider_acidity" name="sour" autocomplete="off">
                         		<option value="1">낮음</option>
                         		<option value="2">중간</option>
                         		<option value="3">높음</option>
-                        		<option value="4" selected>전체</option>
+                        		<option value="0" selected>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -153,11 +153,11 @@
 					<div class="slider">
 						<span class="slider_title">도수</span>
 						<div class="bar_slider">
-							<select id="bar_slider_alcohol" name="bar_slider" autocomplete="off">
+							<select id="bar_slider_alcohol" name="degree" autocomplete="off">
                         		<option value="1">낮음</option>
                         		<option value="2">중간</option>
                         		<option value="3">높음</option>
-                        		<option value="4" selected>전체</option>
+                        		<option value="0" selected>전체</option>
                     		</select>
 						</div>
 					</div>

@@ -1,6 +1,7 @@
 package study.spring.surisulsul.controllers;
 
 import java.text.DateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,37 +53,37 @@ public class HomeController {
 	 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
-		//logger.info("Welcome home! The client locale is {}.", locale);
-		//세션값 받아오기
+		// 세션 값 받아오기
 		HttpSession session = request.getSession();		
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		
 		boolean jn_result = false;
 		List<Product> jn_output = null;
 		
-		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
-		if(loginSession==null) { 
+		// 로그인 세션이 없을 경우 = 로그인이 안됐을 경우 alert 발생
+		if(loginSession == null) { 
 			jn_result = false;
-		}else { //로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
-			if(loginSession.getJn_result()==null) {//로그인 O / 주능결과 X
+		} else { //로그인 세션이 있는 경우 = 로그인 된 사용자가 있을 경우
+			if(loginSession.getJn_result() == null) { // 로그인 O , 주능결과 X
 				jn_result=false;
-			}else {//로그인 O / 주능결과 O
+			} else {// 로그인 O , 주능결과 O
 				jn_result=true;
 				
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
 				
 				jn_output = new ArrayList<Product>();
+				
 				/**주능 결과에 해당하는 술 가져오기*/
 				
-				//Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
-				//public List<Product> selectJn_result(Product input);
-				//ProducServiceImpl > selectJn_result() > mapper에 있는 select구문 실행
-				
-				//output = productService.selectJn_result(input);
+				// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
+				// public List<Product> jnItemList(Product );
+					
+				// output = productService.jn_ProductList(input);
 			}
 		}
 		
+		// 인기 많은 술 best 4 
 		List<Product> best_output = new ArrayList<Product>();
 		try {
 			//Mapper안에 SQL문 작성 따로 해야될 0,4
@@ -106,11 +107,7 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	/** 주능 테스트 
-	로그인 O, 주능 테스트 결과 X / 로그인 X -> 주능 테스트 배너 노출
-	로그인 O, 주능 테스트 결과 O -> 주능 테스트 결과 노출 */
 	
-	/** main_bestitem 4개 */
 	
 	
 	
