@@ -16,7 +16,7 @@
 
         <h4>내가 좋아하는 술</h4>
         <label>
-            <input type="radio" name="drink" value="beer" />
+            <input type="radio" name="drink" value="beer"/>
             <img src="${contextPath}/assets/img/juneung/d_beer.png"  class="icons"/>
             <span class="icon_description text_visible">맥주</span>
         </label>

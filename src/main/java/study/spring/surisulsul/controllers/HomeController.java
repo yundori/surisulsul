@@ -68,16 +68,22 @@ public class HomeController {
 				jn_result=false;
 			} else {// 로그인 O , 주능결과 O
 				jn_result=true;
-				
+
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
 				
 				jn_output = new ArrayList<Product>();
 				
-				/**주능 결과에 해당하는 술 가져오기*/
-				
+				/**주능 결과에 해당하는 술 가져오기 */
 				// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
-				// public List<Product> jnItemList(Product );
+				// public List<Product> jn_output(Product);
+				// input.setJn_result(jn_result); 
+				
+				
+				try {
+					jn_output = productService.jn_ProductList(input);
+				} catch (Exception e) { e.printStackTrace(); }
+				
 					
 				// output = productService.jn_ProductList(input);
 			}
