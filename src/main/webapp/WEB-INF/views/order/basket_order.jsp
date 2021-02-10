@@ -15,44 +15,40 @@
 			<td>수량</td>
 			<td>총 가격</td>
 		</tr>
-		<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
-		<tr>
-			<td id="left_align"><img src="${contextPath}/assets/img/items/best1.PNG" class="clearfix"/>블루베리 생 막걸리 * 6병</td>
-			<td>25,000</td>
-			<td>1병</td>
-			<td>25,000원</td>
-		</tr>
-		<tr>
-			<td id="left_align"><img src="${contextPath}/assets/img/items/best2.PNG" class="clearfix"/>아이엠더문 오리지날/화이트 에디션</td>
-			<td>59,000</td>
-			<td>2병</td>
-			<td>118,000원</td>
-		</tr>
-		<!--</c:forEach>-->
+		<%-- 조회 결과에 따른 반복 처리 --%>
+    	<c:forEach var="item" items="${output }" varStatus="status">
+			<tr>
+				<td id="left_align"><img src="${contextPath}/assets/img/items/item${item.p_id}.jpg" class="clearfix"/>${item.p_name}</td>
+				<td><fmt:formatNumber value="${item.p_price }" pattern="#,###"/></td>
+				<td>${item.qty }병</td>
+				<td><fmt:formatNumber value="${item.p_price * item.qty }" pattern="#,###"/>원</td>
+			</tr>
+		</c:forEach>
 		<tr class="final_cost">
 			<td colspan="2"><b>총 상품 금액</b></td>
-			<td colspan="2"><b>143,000원</b></td>
+			<td colspan="2"><b><fmt:formatNumber value="${total_price}" pattern="#,###"/></b></td>
 		</tr>
 	</table>
 	
 	<h2>주문/결제하기</h2>
 	<form action="${pageContext.request.contextPath }/order/order_ok.do" method="post" class="basket_order_form" name="order_form" id="order_form">
-		<%-- <c:forEach var="i" begin="${first }" end="${last }" varStatus="status">
-		<input type="hidden" name="item" value="1"/>
-		</c:forEach> --%>
+		<%-- 조회 결과에 따른 반복 처리 --%>
+    	<c:forEach var="item" items="${output }" varStatus="status">
+			<input type="hidden" name="item" value="${item.id }"/>
+		</c:forEach>
 		<fieldset id="sender_info">
 			<legend>주문자 정보</legend>
 			<div>
 		        <label for="user_name" class="col-mdd-4">주문자</label>
-		        <span class="col-mdd-6" id="user_name">마수리</span>
+		        <span class="col-mdd-6" id="user_name">${loginSession.name }</span>
             </div>
             <div>        
 		        <label for="email" class="col-mdd-4">이메일</label>
-		        <span class="col-mdd-6" id="email">surisul@gmail.com</span>
+		        <span class="col-mdd-6" id="email">${loginSession.email }</span>
             </div>
             <div>
 		        <label for="tel" class="col-mdd-4">연락처</label>
-		        <span class="col-mdd-6" id="tel">01012345678</span>
+		        <span class="col-mdd-6" id="tel">${loginSession.phone }</span>
             </div>
 		</fieldset> 
 		
@@ -65,12 +61,15 @@
 			
 			<label for='address' class="col-md-4">주소</label>
             <div class="col-md-6">
+                <input type="hidden" value="${loginSession.postcode }" id="hiddenPostcode">
                 <input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" readonly>
             </div>
             <input type="button" onclick="execDaumPostcode()" class="chk-email" value="우편번호 찾기">
             
             <div class="set_location">
+            	<input type="hidden" value="${loginSession.address1 }" id="hiddenAddress1">
 	            <input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" readonly>
+            	<input type="hidden" value="${loginSession.address2 }" id="hiddenAddress2">
 	            <input type="text" class="form-control" id="detailAddress" placeholder="기타 상세 주소">
 				<div class="details_info">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</div>
             </div>

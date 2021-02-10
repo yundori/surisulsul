@@ -162,9 +162,36 @@ public class OrderController {
 	
 	/** 주문 페이지로 연결 */
 	@RequestMapping(value = "/order.do", method = RequestMethod.GET)
-	public ModelAndView go_order(Model model) {
-		//View 처리
-		return new ModelAndView("order/basket_order");
+	public String go_order(Model model, HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Basket input = new Basket();
+		input.setLoginId(loginSession.getId());		
+				
+		List<Basket> output = null; //조회 결과가 저장될 객체
+		int total_price = 0;
+				
+		try {
+			//데이터 조회하기
+			output = basketService.getBasketList(input);
+			
+			if(output.size()!=0) { //output에 결과가 있는 경우
+				for(int i=0; i<output.size(); i++) {
+					total_price+=(output.get(i).getP_price())*(output.get(i).getQty());
+				}
+				
+			}
+			
+		} catch (Exception e) {	e.printStackTrace(); }
+		
+		//view처리
+		model.addAttribute("output", output);
+		model.addAttribute("total_price", total_price);
+		model.addAttribute("loginSession", loginSession);
+		return "order/basket_order";
 	}
 	
 	/** 주문 내용 INSERT 처리 + 주문 결과 페이지로 연결 */

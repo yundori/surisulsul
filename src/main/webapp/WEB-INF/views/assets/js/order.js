@@ -52,18 +52,32 @@ $( document ).ready( function() {
         		//체크박스 체크되어있을 경우
 	        	var name = $('#user_name').html();
 	        	var phone = $('#tel').html();
+	        	var postcode = $('#hiddenPostcode').val();
+	        	var address1 = $('#hiddenAddress1').val();
+	        	var address2 = $('#hiddenAddress2').val();
 	        	
 	        	// 주소도 가져와서 출력할 수 있으면 좋을 것 같습니다
 	        	$('#receiver_name').val(name);
 	        	$("#receiver_name").attr("readonly",true);
 	        	$('#receiver_tel').val(phone);
 	        	$("#receiver_tel").attr("readonly",true);
+	        	
+	        	$('#postcode').val(postcode);
+	        	$('#address').val(address1);
+	        	$('#detailAddress').val(address2);
+	        	$("#detailAddress").attr("readonly",true);
+	        	
         	}else{
         		//체크박스 해제했을 경우
         		$('#receiver_name').val('');
 	        	$("#receiver_name").attr("readonly",false);
 	        	$('#receiver_tel').val('');
 	        	$("#receiver_tel").attr("readonly",false);
+	        	
+	        	$('#postcode').val('');
+	        	$('#address').val('');
+	        	$('#detailAddress').val('');
+	        	$("#detailAddress").attr("readonly",false);
         	}
         	
         } );
