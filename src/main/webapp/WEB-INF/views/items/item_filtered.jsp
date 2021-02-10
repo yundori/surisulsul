@@ -175,7 +175,7 @@
 				<ul class="result_list_incense">
 				</ul>
 			</div>
-			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요."/>
+			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요." value="" />
 			<div class=clear></div>
 			<button type="submit" class="search_btn">검색</button>
 		</div>

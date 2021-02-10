@@ -26,15 +26,19 @@ public class Product {
 	private String edit_date; // 상품 수정 날짜
 	private String jn_result; // 해당 술의 주능 결과
 	
-	private String types;	//체크박스에 선택된 주종리스트
-	private String locs;	//체크박스에 선택된 지역리스트
-	private String keys;	//체크박스에 선택된 향리스트
-	private String search;	//검색창을 통한 검색어
+	// 2) 체크박스 선택된 컬럼
+	private String types; //체크박스에 선택된 주종리스트
+	private String locs; //체크박스에 선택된 지역리스트
+	private String keys; //체크박스에 선택된 향리스트
+	private int sweet1, sweet2; //당도 범위
+	private int sour1, sour2; //산미 범위
+	private int degree1, degree2; //도수 범위
+	private String search; //검색창을 통한 검색어
 
-	// 2) Join 절에 따른 추가 컬럼
-	private int total_qty;	// 총 매출 수량
+	// 3) Join 절에 따른 추가 컬럼
+	private int total_qty; // 총 매출 수량
 
-	// 3) 페이지 구현을 위한 static 변수
+	// 4) 페이지 구현을 위한 static 변수
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;
 
