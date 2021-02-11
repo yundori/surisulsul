@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -75,7 +76,7 @@ public class ExtraController {
 	
 	/** 주능 페이지로 연결 */
 	@RequestMapping(value = "/juneung.do", method = RequestMethod.GET)
-	public ModelAndView juneung(Locale locale, Model model, HttpServletRequest request) {
+	public ModelAndView juneung(Model model, HttpServletRequest request) {
 		// 세션값 받아오기
             //로그인 여부 확인 ->로그인 페이지로 이동
 		//session에서 logininfo 받아오기
@@ -106,15 +107,47 @@ public class ExtraController {
             }
             model.addAttribute("output", output);
             model.addAttribute("jn_result", jn_result);
-            
 		return new ModelAndView("extra/juneung");
 	}
 	
 	/** 주능 페이지에서 가져온 값 처리 */
 	@RequestMapping(value = "/juneung_ok.do", method = RequestMethod.POST)
-	public String juneung_ok(Model model) {
-
-		return "mypage/mypage";
+	public ModelAndView juneung_ok(Model model, HttpServletRequest request,
+			@RequestParam(value="drink", required=false) String drink,
+			@RequestParam(value="food", required=false) String food,
+			@RequestParam(value="people", required=false) String people,
+			@RequestParam(value="mood", required=false) String mood){
+		System.out.println("주능_ok 메서드로 연결");
+		
+		//세션정보 가져오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.redirect(contextPath+"/account/login.do", "로그인 후 이용해주세요.");
+		}else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+			Member input = new Member();
+			String result = null;
+			
+			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("meat") || food.equals("meat"))){result = "무궁화"; }
+			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("meat") || food.equals("meat"))){result = "수국";}
+			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("fruit") || food.equals("fruit"))){result = "진달래";}
+			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("fruit") || food.equals("fruit"))){result = "해바라기";}
+			
+			/**데이터 저장하기*/
+			input.setId(loginSession.getId());
+			input.setAddress2("222");
+			input.setJn_result(result);
+			
+			try {
+				memberService.editMember(input);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return webHelper.redirect(contextPath+"/mypage/mypage.do", "결과가 나왔습니다!");
 	}
 	
 	

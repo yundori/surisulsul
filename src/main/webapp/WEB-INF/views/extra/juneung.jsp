@@ -5,8 +5,6 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/juneung.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 
-<c:set var="jn_result" value='${request.getAttribute("jn_result")}' />
-
 <div id="juneung_content">
     <h1>술학능력시험 - 주(酒)능</h1>
 
@@ -105,5 +103,6 @@
     </form>
 </div>
 <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+
 <script src="${contextPath}/assets/js/juneung.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
