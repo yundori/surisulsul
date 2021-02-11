@@ -113,10 +113,10 @@ public class ExtraController {
 	/** 주능 페이지에서 가져온 값 처리 */
 	@RequestMapping(value = "/juneung_ok.do", method = RequestMethod.POST)
 	public ModelAndView juneung_ok(Model model, HttpServletRequest request,
-			@RequestParam(value="drink", required=false) String drink,
-			@RequestParam(value="food", required=false) String food,
-			@RequestParam(value="people", required=false) String people,
-			@RequestParam(value="mood", required=false) String mood){
+			@RequestParam(value="drink", required=true) String drink,
+			@RequestParam(value="food", required=true) String food,
+			@RequestParam(value="people", required=true) String people,
+			@RequestParam(value="mood", required=true) String mood){
 		System.out.println("주능_ok 메서드로 연결");
 		
 		//세션정보 가져오기
@@ -130,10 +130,10 @@ public class ExtraController {
 			Member input = new Member();
 			String result = null;
 			
-			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("meat") || food.equals("meat"))){result = "무궁화"; }
-			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("meat") || food.equals("meat"))){result = "수국";}
-			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("fruit") || food.equals("fruit"))){result = "진달래";}
-			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("fruit") || food.equals("fruit"))){result = "해바라기";}
+			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("meat") || food.equals("fish"))){result = "무궁화"; }
+			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("meat") || food.equals("fish"))){result = "수국";}
+			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("fruit") || food.equals("snack"))){result = "진달래";}
+			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("fruit") || food.equals("snack"))){result = "해바라기";}
 			
 			/**데이터 저장하기*/
 			input.setId(loginSession.getId());
@@ -141,7 +141,7 @@ public class ExtraController {
 			input.setJn_result(result);
 			
 			try {
-				memberService.editMember(input);
+				memberService.editJnMember(input);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
