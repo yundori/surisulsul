@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -21,11 +21,9 @@
 
 		<div class="order_table">
 			<table>
-				<thead>
-					<tr>
-						<th class="psn_order_date" rowspan="4">주문날짜/번호 : 2021-01-19 / 3</th>
-					</tr>
-				</thead>
+				<tr>
+					<th class="psn_order_date" rowspan="4">주문날짜/번호 : 2021-01-19 / 3</th>
+				</tr>
 				<tbody>
 					<tr>
 						<td>
@@ -66,9 +64,8 @@
 						<td>배송완료<br /> <a href="#" class="write_review btn_yellow"
 							onClick="openPop()"returnfalse;>후기쓰기</a></td>
 					</tr>
-				</tbody>
 			</table>
-			
+
 			<!-- 페이지 번호 구현 -->
 			<%-- 이전 그룹에 대한 링크 --%>
 			<c:choose>
