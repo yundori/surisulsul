@@ -11,7 +11,10 @@
 			<h1>한국의 대표적인 리큐르/기타주류</h1>
 			<h3>인삼주와 매실주와 오카피주 등은 리큐르로 분류,<br/>
 				기타주류에는 1호 주정, 2호 발효주류, 3호 증류주류에 속하지 않은 술이다.​</h3> 
-			<input type="button" value="기타주류 종류별 보기 > " id="go_liquerurs" class="go_drink_button" action="${pageContext.request.contextPath}/items/item_filtered.do" />
+			<form method="post" action="${pageContext.request.contextPath}/item_filtered.do" name="filtered_form" id="filtered_form">
+			<input type="hidden" name="types" class="types" id="types6" value="기타" />
+			<input type="submit" value="기타주류 종류별 보기 >" id="go_cheongju" class="go_drink_button"/>
+			</form>
 		</span>
 	</div>
 	<div id="drinks_content">

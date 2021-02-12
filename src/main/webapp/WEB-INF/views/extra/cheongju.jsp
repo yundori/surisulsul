@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/drinks.css" />
 
 	<div id="drinks_img">
+			
+			
 		<img src="${contextPath}/assets/img/drinks/cheongju.png" class="drinks_img_detail" /> 
 		<span id="drinks_name">
 			<h1>한국의 다양한 약주/청주</h1>
@@ -13,9 +15,10 @@
 				<br /> 청주는 탁주의 상대적인 말로, 본래 맑은 술을
 				뜻한다.
 			</h3> 
+			<form method="post" action="${pageContext.request.contextPath}/item_filtered.do" name="filtered_form" id="filtered_form">
 			<input type="hidden" name="types" class="types" id="types3" value="청주" />
-			<button type="submit" value="청주" name="types" id="go_cheongju" class="go_drink_button" onClick="location.href='${pageContext.request.contextPath}/item_filtered.do'">
-			약주/청주 종류별 보기 > </button>
+			<input type="submit" value="약주/청주 종류별 보기 >" id="go_cheongju" class="go_drink_button"/>
+			</form>
 		</span>
 	</div>
 	<div id="drinks_content">

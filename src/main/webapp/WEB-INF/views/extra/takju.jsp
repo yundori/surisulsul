@@ -9,7 +9,11 @@
 	    <span id="drinks_name">
 		    <h1>한국의 다양한 막걸리들</h1>
 		    <h3>쌀이나 각종 곡류와 누룩으로 빚어 말 그대로<br/>막 걸러내었다 하여 붙여진 이름이 막걸리다.</h3>
-	    	<input type="button" value="막걸리 종류별 보기 > " id="go_takju" class="go_drink_button" onclick="location='${pageContext.request.contextPath}/items/item_filtered.do'" />
+	    	<form method="post" action="${pageContext.request.contextPath}/item_filtered.do" name="filtered_form" id="filtered_form">
+			<input type="hidden" name="types" class="types" id="types2" value="탁주" />
+			<input type="submit" value="막걸리 종류별 보기 >" id="go_cheongju" class="go_drink_button"/>
+			</form>
+
 	    </span>
     </div>
     <div id="drinks_content">

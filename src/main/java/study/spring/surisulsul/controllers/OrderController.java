@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import retrofit2.http.GET;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
@@ -347,6 +346,7 @@ public class OrderController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 3; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		boolean result = false; // 구매했어요 데이터를 받아와서 결과를 보낼 변수 
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -354,7 +354,6 @@ public class OrderController {
 		input.setLoginId(loginSession.getId());
 
 		List<Order> orderOutput = null; // orders 테이블 조회 결과가 저장될 객체
-		List<Order> subOutput = null;	// orders_sub 테이블 조회 결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
 
 		try {
@@ -369,13 +368,17 @@ public class OrderController {
 
 			// 데이터 조회하기
 			orderOutput = orderService.getOrderList(input);
+			if(orderOutput.size()>0) {
+				result = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		/** 3) View 처리 */
-		model.addAttribute("orderOutput", orderOutput);
+		model.addAttribute("output", orderOutput);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("result", result);
 		return new ModelAndView("mypage/past_order");
 	}
 }
