@@ -130,30 +130,24 @@
 			</c:choose>
 	<div class="psn_result">
 	<ul class="psn_result_inner">
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick1"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
+	<%--조회 결과에 따른 반복처리 --%>
+	<c:forEach var="item" items="${pro_output}" varStatus="status">
+		<li class="pick_item">
+		<%--상세 페이지로 이동하는 URL --%>
+		<c:url value="/item_details.do" var="viewUrl">
+			<c:param name="prodid" value="${item.id}" />
+		</c:url>
+		
+			<a href="${viewUrl}" class="pick_link"> 
+			<span class="psn_pick_bg">
+				<img class="psn_pick" src="${contextPath}/assets/img/items/${item.img}">
+			</span> 
+			<span class="psn_pick_text">
+					<h3 class="psn_pick_title">${item.name}</h3>
+					<p class="psn_pick_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</p>
 			</span>
 		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick2"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick3"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick4"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
+	</c:forEach>
 	</ul>
 	</div>
 	<div class="psn_jn_again">

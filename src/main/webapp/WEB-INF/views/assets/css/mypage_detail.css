@@ -180,36 +180,9 @@
 }
 
 /**나를 위한 추천 상품 설정*/
-.psn_pick1 {
-    background: url(../img/mypage/rec_01.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-
-}
-
-.psn_pick2 {
-    background: url(../img/mypage/rec_02.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-
-}
-
-.psn_pick3 {
-    background: url(../img/mypage/rec_03.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-
-}
-
-.psn_pick4 {
-    background: url(../img/mypage/rec_04.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-
+.psn_pick {
+	width : 100%;
+	height : 100%;
 }
 
 /**나를 위한 추천 상품 결과 없음 높이 설정*/
