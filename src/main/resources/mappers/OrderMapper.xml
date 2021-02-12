@@ -66,7 +66,7 @@
 		payment, pay_cash, pay_card, pay_result, send_result, reg_date, edit_date) 
 		VALUES 
 		(#{price}, #{b_id}, #{b_name}, #{b_phone},
-		#{r_name}, #{r_phone}, #{r_postcode}, #{r_address1}, #{r_address2}.
+		#{r_name}, #{r_phone}, #{r_postcode}, #{r_address1}, #{r_address2},
 		#{payment}, #{pay_cash}, #{pay_card}, #{pay_result}, 'N', now(), now());
 	</insert>
 	

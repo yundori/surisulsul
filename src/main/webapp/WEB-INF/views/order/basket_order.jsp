@@ -99,10 +99,10 @@
             	<div class="col-md-6">
             		<select name="bank" class="form-control">
             			<option value="etc" value="0">--------입금은행을 선택해주세요-------</option>
-            			<option value="kb" value="국민">국민은행 123456-01-789012 (수리술술)</option>
-            			<option value="sh" value="신한">신한은행 123-123-123456 (수리술술)</option>
-            			<option value="nh" value="농협">농협은행 123-5678-1234-01 (수리술술)</option>
-            			<option value="wr" value="우리">우리은행 1234-567-890123 (수리술술)</option>
+            			<option value="국민">국민은행 123456-01-789012 (수리술술)</option>
+            			<option value="신한">신한은행 123-123-123456 (수리술술)</option>
+            			<option value="농협">농협은행 123-5678-1234-01 (수리술술)</option>
+            			<option value="우리">우리은행 1234-567-890123 (수리술술)</option>
             		</select>
             	</div>
 			</div>

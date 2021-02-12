@@ -155,7 +155,7 @@ public class OrderController {
 				
 				//데이터 삭제
 				try {
-					basketService.deleteBasket(input);
+					basketService.deleteBasketItem(input);
 				} catch (Exception e) { e.printStackTrace(); }
 			}
 		}else { //체크된 박스 없이 submit됐을 경우
@@ -265,7 +265,7 @@ public class OrderController {
 		input.setR_address2(address2);
 		input.setPayment(payment);
 		if(payment.equals("cash")) {	//현금 결제 radio 선택 시
-			input.setPay_cash(payed_bank+"("+payed_name+")");
+			input.setPay_cash(payed_bank+" ("+payed_name+")");
 			input.setPay_card(null);
 			input.setPay_result("N");
 		}else {							//카드 결제 radio 선택 시
@@ -278,6 +278,7 @@ public class OrderController {
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값 저장
 			orderService.addOrder(input);
+			order_result = true;
 		} catch (Exception e) { e.printStackTrace(); }
 		
 		/** 4) 주문상세(orders_sub) 테이블에 데이터 저장 */
@@ -300,12 +301,20 @@ public class OrderController {
 			try {
 				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 subInput 객체에 PK값 저장
 				orderService.addOrderProducts(subInput);
-			} catch (Exception e) { e.printStackTrace(); }
+				order_result = true;
+			} catch (Exception e) { e.printStackTrace(); order_result=false; }
 		}
 		
-		/** 5) 여기까지 정상 수행 시 order_result를 true로 바꾸고 View 처리 */
-		order_result = true;
-		//View 처리
+		/** 5) 여기까지 정상 수행 시 로그인되어있는 해당 아이디의 장바구니에 있는 내용 모두 삭제 */
+		Basket basketInput = new Basket();
+		basketInput.setLoginId(loginSession.getId());
+		try {
+			basketService.deleteBasket(basketInput); 
+			order_result = true;
+		} catch (Exception e) { e.printStackTrace(); order_result=false; }
+		
+		
+		/** 6) View 처리 */
 		model.addAttribute("result", order_result);
 		return new ModelAndView("order/order_result");
 	}
