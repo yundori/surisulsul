@@ -50,14 +50,9 @@ $(function() {
 			if (result.value) {
 				swal('취소', '탈퇴가 취소되었습니다.', 'success');
 			} else if (result.dismiss === 'cancel') {
-				swal({
-					title: '탈퇴',
-					text: "탈퇴처리가 완료되었습니다.",
-					type: 'success',
-					confirmButtonText: '확인',
-				}).then(function() {
-					window.location = '../index/index.jsp';
-				});
+			var hostIndex = location.href.indexOf(location.host)+location.host.length;
+			var contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1) );
+				location.replace(contextPath+'/mypage/is_out.do');
 			}
 		});
 	});

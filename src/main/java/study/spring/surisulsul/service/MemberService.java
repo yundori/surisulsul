@@ -37,4 +37,7 @@ public interface MemberService {
 	
 	//주능 회원정보 수정
 	public int editJnMember(Member input) throws Exception;
+	
+	//회원 탈퇴
+	public int outMember(Member input) throws Exception;
 }

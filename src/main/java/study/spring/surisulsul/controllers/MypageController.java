@@ -148,5 +148,31 @@ public class MypageController {
 	public String my_opinion(Model model) {
 		return "mypage/my_opinion";
 	}
+	/** 탈퇴하기 */
+	@RequestMapping(value = "/mypage/is_out.do", method = RequestMethod.GET)
+	public ModelAndView is_out(Model model, HttpServletRequest request) {
+		// 세션값 받아오기
+		HttpSession session = request.getSession();
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		int output = 0;
+
+		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if (loginSession == null) {
+			String redirectUrl = "../account/login.do";
+			return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
+
+		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+			Member member = new Member();
+			member.setId(loginSession.getId());
+
+			try {
+				output = memberService.outMember(member);
+				session.invalidate();
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+		}
+		return new ModelAndView("redirect:/");
+	}
 
 }
