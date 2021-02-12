@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.model.Basket;
 import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.service.OrderService;
 
@@ -144,6 +145,25 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/**
+	 * 주문 데이터가 저장되어 있는 갯수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
+	@Override
+	public int getOrderCount(Order input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectOrderCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 
 		return result;

@@ -2,7 +2,6 @@ package study.spring.surisulsul.controllers;
 
 import java.text.DateFormat;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,52 +35,51 @@ import study.spring.surisulsul.service.SalesService;
 @Slf4j
 @Controller
 public class HomeController {
-	
+
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	ProductService productService;
-	
+
 	@Autowired
 	MemberService memberService;
-	
+
 	@Autowired
 	SalesService salesService;
 
-	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-	
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(HomeController.class);
+
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 * */
-	 
+	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		// 세션 값 받아오기
-		HttpSession session = request.getSession();		
+		HttpSession session = request.getSession();
 		Member loginSession = (Member) session.getAttribute("loginInfo");
-		
+
 		boolean jn_result = false;
 		List<Product> jn_output = null;
-		
+
 		// 로그인 세션이 없을 경우 = 로그인이 안됐을 경우 alert 발생
-		if(loginSession == null) { 
+		if (loginSession == null) {
 			jn_result = false;
-		} else { //로그인 세션이 있는 경우 = 로그인 된 사용자가 있을 경우
-			if(loginSession.getJn_result() == null) { // 로그인 O , 주능결과 X
-				jn_result=false;
+		} else { // 로그인 세션이 있는 경우 = 로그인 된 사용자가 있을 경우
+			if (loginSession.getJn_result() == null) { // 로그인 O , 주능결과 X
+				jn_result = false;
 			} else {// 로그인 O , 주능결과 O
 				jn_result = true;
 
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
-				
+
 				jn_output = new ArrayList<Product>();
-					
-				
+
 				try {
 					jn_output = productService.jn_ProductList(input);
 				} catch (Exception e) {
@@ -89,52 +87,31 @@ public class HomeController {
 				}
 			}
 		}
-		
-		// 인기 많은 술 best 4 
+
+		// 인기 많은 술 best 4
 		List<Product> best_output = new ArrayList<Product>();
-		
+
 		try {
-			
 			best_output = productService.main_best_ProductList(null);
-			
-		} catch (Exception e) {	
-			
-			e.printStackTrace(); 
-			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		/** View 처리  */
+
+		/** View 처리 */
 		model.addAttribute("jn_output", jn_output);
 		model.addAttribute("jn_result", jn_result);
 		model.addAttribute("best_output", best_output);
-		
-		return "home"; 
+
+		return "home";
 	}
 
-		
-	
-	
 	/** 로그아웃 처리 */
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
-		
+
 		session.invalidate();
-		
+
 		return "redirect:/";
 	}
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
 }

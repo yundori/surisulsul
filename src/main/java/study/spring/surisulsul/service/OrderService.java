@@ -45,6 +45,13 @@ public interface OrderService {
 	public int addOrderProducts(Order input) throws Exception;
 	
 	/**
+	 * 주문 데이터가 저장되어 있는 갯수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
+	public int getOrderCount(Order input) throws Exception;
+	
+	/**
 	 * 주문 취소 : 주문 데이터 삭제하기
 	 * @param Order 삭제할 정보를 담고 있는 Beans
 	 * @return int

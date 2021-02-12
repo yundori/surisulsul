@@ -31,7 +31,6 @@
          test에 들어가있는 두번째 boolean값의 의미 = 로그인 된 사용자의 주능 테스트 이력 여부 (테스트한적 있으면 true) 
        --%>
 		<c:when test="${jn_result}">
-
 			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능 본적 있음)일 때 index에 출력할 내용 --%>
 			<div class="main_best">
 				<h1>취향에 맞는 술을 추천해드려요 !</h1>
@@ -70,20 +69,21 @@
 	</c:choose>
 	<!-- 3. 인기 많은 술 best !
          상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
-	<div class="main_best">
+	<div class="main_best" id="main_best_top">
 		<h1>인기 많은 술</h1>
 		<c:forEach var="item" items="${best_output}" varStatus="status">
-			<a href="${pageContext.request.contextPath}/best_items.do"> <c:url
-					value="/item_details.do" var="viewUrl">
+			<c:url value="/item_details.do" var="viewUrl">
 					<c:param name="prodid" value="${item.id}" />
-				</c:url> <a href="${viewUrl}">
+			</c:url> 
+				<a href="${viewUrl}">
 					<div class="main_best_img" id="best_img1">
 						<img src="${contextPath}/assets/img/items/${item.img}" alt="인기많은술1" />
 						<div class="over">
 						<div class="main_best_over">
-						<span class="over_title">{$item.name}</span>
+						<span class="over_title">${item.name}</span>
 						<p class="over_des"><fmt:formatNumber value="${item.price}" pattern="#,###" />원</p>
 					</div>
+				</div>
 				</div>
 			</a>
 		</c:forEach>
