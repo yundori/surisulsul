@@ -70,7 +70,7 @@
 		data : {
 			labels : [ "당도", "산미", "도수" ], // 각각의 bar에 표시할 x축 라벨
 			datasets : [ {
-				data : [ ${output.sweet} / 8, ${output.sour} / 8, ${output.degree} / 8 ], // 각 bar에 대한 y축 좌표 데이터
+				data : [ ${output.sweet} / 10, ${output.sour} / 10, ${output.degree} / 10 ], // 각 bar에 대한 y축 좌표 데이터
 				backgroundColor : [// 각 bar의 배경 색상
 							'rgba(142, 68, 173, 0.6)',
 							'rgba(74, 68, 173, 0.6)',
@@ -106,7 +106,7 @@
 						var meta = chartInstance.controller.getDatasetMeta(i);
 						meta.data.forEach(function (bar, index) {
 							var data = dataset.data[index];							
-							ctx.fillText(data * 8, bar._model.x + 10, bar._model.y);
+							ctx.fillText(data * 10, bar._model.x + 10, bar._model.y);
 						});
 					});
 				}
