@@ -28,6 +28,7 @@ import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.MemberService;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.SalesService;
 
 /**
  * Handles requests for the application home page.
@@ -42,6 +43,10 @@ public class HomeController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	SalesService salesService;
+
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -70,14 +75,12 @@ public class HomeController {
 				jn_result=false;
 			} else {// 로그인 O , 주능결과 O
 				jn_result = true;
-				System.out.println("여기까지 성공");
 
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
 				
 				jn_output = new ArrayList<Product>();
-				
-				// 주능 결과에 맞는 상품 (술) 가져오기
+					
 				
 				try {
 					jn_output = productService.jn_ProductList(input);
@@ -91,9 +94,14 @@ public class HomeController {
 		List<Product> best_output = new ArrayList<Product>();
 		
 		try {
+			
 			best_output = productService.main_best_ProductList(null);
+			
 		} catch (Exception e) {	
-			e.printStackTrace(); }
+			
+			e.printStackTrace(); 
+			
+		}
 		
 		/** View 처리  */
 		model.addAttribute("jn_output", jn_output);
