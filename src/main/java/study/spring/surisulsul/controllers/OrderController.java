@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import retrofit2.http.GET;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Basket;
@@ -86,7 +87,7 @@ public class OrderController {
 		/** 결과 확인을 위한 페이지 이동 */
 		//alert 띄우고,,, 장바구니로 이동 시 basket.do 호출
 		// 장바구니로 이동하지 않을 시 현재 페이지 잔류
-		return webHelper.redirect(contextPath+"/item_details.do", "선택하신 상품이 장바구니에 추가되었습니다.");
+		return webHelper.redirect(null, "선택하신 상품이 장바구니에 추가되었습니다.");
 	}
 	
 	/** 장바구니 페이지로 연결 */
@@ -274,11 +275,17 @@ public class OrderController {
 			input.setPay_result("Y");
 		}
 		
+		Order orderInfo = new Order();
+		
 		/** 3) 주문(orders) 테이블에 데이터 저장 */
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값 저장
 			orderService.addOrder(input);
 			order_result = true;
+			
+			// Order 정보 저장 이후 방금 저장한 Order 정보를 SELECT 해오기
+			orderInfo = orderService.getOrderItem(input);
+			
 		} catch (Exception e) { e.printStackTrace(); }
 		
 		/** 4) 주문상세(orders_sub) 테이블에 데이터 저장 */
@@ -287,7 +294,7 @@ public class OrderController {
 		Order subInput = new Order();
 		for(int i=0; i<basketItems.size(); i++) {
 			//orders_sub의 o_id에 들어갈 값 (orders 테이블에 담긴 정보의 PK값)
-			subInput.setO_id(input.getO_id());
+			subInput.setO_id(orderInfo.getO_id());
 			
 			//orders_sub에 들어갈 값 (hidden에서 가져온거)
 			subInput.setP_id(Integer.parseInt(basketItems.get(i)));
@@ -296,7 +303,7 @@ public class OrderController {
 			subInput.setP_qty(Integer.parseInt(basketQty.get(i)));
 			
 			//orders_sub에 o_date에 들어갈 값 (orders 테이블에 담긴 reg_date 컬럼값)
-			subInput.setReg_date(input.getReg_date());
+			subInput.setReg_date(orderInfo.getReg_date());
 			
 			try {
 				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 subInput 객체에 PK값 저장
@@ -305,7 +312,7 @@ public class OrderController {
 			} catch (Exception e) { e.printStackTrace(); order_result=false; }
 		}
 		
-		/** 5) 여기까지 정상 수행 시 로그인되어있는 해당 아이디의 장바구니에 있는 내용 모두 삭제 */
+		/** 5) 여기까지 정상 수행 시 로그인되어있는 해당 아이디의 장바구니에 있는 내용 모두 삭제 */ 
 		Basket basketInput = new Basket();
 		basketInput.setLoginId(loginSession.getId());
 		try {
@@ -313,8 +320,15 @@ public class OrderController {
 			order_result = true;
 		} catch (Exception e) { e.printStackTrace(); order_result=false; }
 		
-		
-		/** 6) View 처리 */
+		/** 6) order_sub에 들어있는 모든 내용을 조회하여 model.addAttribute로 전송 */
+		List<Order> orderSubList = null;
+		try {
+			orderSubList = orderService.getOrderSubList(subInput);
+		} catch (Exception e) { e.printStackTrace(); }
+				
+		/** 7) View 처리 */
+		model.addAttribute("orderInfo", orderInfo);
+		model.addAttribute("orderSubList", orderSubList);
 		model.addAttribute("result", order_result);
 		return new ModelAndView("order/order_result");
 	}

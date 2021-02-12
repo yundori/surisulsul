@@ -58,6 +58,12 @@
 		WHERE o.b_id=#{loginId};	
 	</select>
 	
+	<!-- 주문 단일행 조회 - 주문 PK로 주문정보 받아오기 -->
+	<select id="selectItem" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT id AS o_id, r_name, r_phone, r_address1, r_address2, reg_date FROM orders
+		WHERE id=#{o_id} AND b_id=${b_id};
+	</select>
+	
 	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->
 	<insert id="insertOrderItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="o_id">
 		INSERT INTO orders 
@@ -75,6 +81,12 @@
 		INSERT INTO orders_sub (o_id, p_id, p_name, p_price, qty, o_date)
 		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{p_qty}, #{reg_date});
 	</insert>
+	
+	<!-- 주문하기 - 주문이 처리 된 이후 order_result 페이지에서 결과 확인을 위해 orders_sub 테이블 내용 조회 -->
+	<select id="selectOrderSubList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT p_id, p_name, qty FROM orders_sub
+		WHERE o_id=#{o_id};
+	</select>
 	
 	<!-- 주문취소 - orders 테이블에서 주문 관련 데이터 취소(=삭제=DELETE) 기능 정의 -->
 	<delete id="deleteOrderItem" parameterType="study.spring.surisulsul.model.Order">

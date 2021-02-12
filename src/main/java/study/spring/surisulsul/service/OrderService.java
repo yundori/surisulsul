@@ -15,6 +15,20 @@ public interface OrderService {
 	public List<Order> getOrderList(Order input) throws Exception;
 	
 	/**
+	 * 주문 내역 확인 : 주문 INSERT 처리 이후 바로 주문 정보 조회
+	 * @return 조회 결과에 대한 Order객체
+	 * @throws Exception
+	 */
+	public Order getOrderItem(Order input) throws Exception;
+	
+	/**
+	 * 주문 내역 확인 : 주문 INSERT 처리 이후 바로 orders_sub 데이터 조회
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Order> getOrderSubList(Order input) throws Exception;
+	
+	/**
 	 * 주문 기능 : 주문 데이터 등록하기
 	 * @param Order 저장할 정보를 담고 있는 Beans
 	 * @return int

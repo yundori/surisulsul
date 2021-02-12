@@ -34,7 +34,7 @@
 	<form action="${pageContext.request.contextPath }/order/order_ok.do" method="post" class="basket_order_form" name="order_form" id="order_form">
 		<%-- 조회 결과에 따른 반복 처리 --%>
     	<c:forEach var="item" items="${output }" varStatus="status">
-			<input type="hidden" name="basketItems" value="${item.id }"/>
+			<input type="hidden" name="basketItems" value="${item.p_id }"/>
 			<input type="hidden" name="basketNames" value="${item.p_name }"/>
 			<input type="hidden" name="basketPrices" value="${item.p_price }"/>
 			<input type="hidden" name="basketQty" value="${item.qty }"/>
