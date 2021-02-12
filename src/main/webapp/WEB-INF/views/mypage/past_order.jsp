@@ -25,7 +25,7 @@
 				<c:forEach var="item" items="${output }" varStatus="status">
 					<c:if test="${status.index==0 || output.get(status.index-1).o_id!=item.o_id}">
 						<tr>
-							<th class="psn_order_date" >주문날짜/번호 : ${item.reg_date } /	${item.o_id } </th>
+							<th class="psn_order_date" colspan="4">주문날짜/번호 : ${item.reg_date } /	${item.o_id } </th>
 						</tr>
 					</c:if>
 						<tr>

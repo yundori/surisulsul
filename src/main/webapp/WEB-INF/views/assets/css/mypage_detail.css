@@ -313,7 +313,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
     width: 80%;
     min-width: 800px;
     font-size: 18px;
-    margin: 10px auto 20px;
+    margin: 0px auto 20px;
 }
 
 .order_table table {
@@ -329,9 +329,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
     font-size: 15px;
     font-weight: 600;
     text-align:left;
-    padding-top:15px;
-    padding-bottom: 10px;
-    border-bottom:2px solid #6A60A9;
+    padding-top:25px;
 }
 
 .order_table td {
