@@ -13,6 +13,7 @@
 			<input type="hidden" name="types" class="types" id="types2" value="탁주" />
 			<input type="submit" value="막걸리 종류별 보기 >" id="go_cheongju" class="go_drink_button"/>
 			</form>
+
 	    </span>
     </div>
     <div id="drinks_content">

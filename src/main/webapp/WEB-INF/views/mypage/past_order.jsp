@@ -17,53 +17,44 @@
 </div>
 <c:choose>
 	<%--c:when test 조건 -> 최근 주문 내역이 있는 경우 -> 주문 내역 DB 내용 존재 --%>
-	<c:when test="true">
+	<c:when test="${output.size()!=0 }">
 
 		<div class="order_table">
 			<table>
-				<tr>
-					<th class="psn_order_date" rowspan="4">주문날짜/번호 : 2021-01-19 / 3</th>
-				</tr>
-				<tbody>
-					<tr>
-						<td>
-							<div class="table_min_height">
-								<a href="#" class="item_thumb"> <img
-									src="${contextPath}/assets/img/items/best1.PNG" />
-								</a>
-								<div class="order_item_info">
-									<a href="#" class="item">
-										<p class="order_item_name">상품명</p>
-										<p class="order_item_price">00,000원</p>
-									</a>
+				<%-- 조회 결과에 따른 반복 처리 --%>
+				<c:forEach var="item" items="${output }" varStatus="status">
+					<c:if test="${status.index==0 || output.get(status.index-1).o_id!=item.o_id}">
+						<tr>
+							<th class="psn_order_date" colspan="4">주문날짜/번호 : ${item.reg_date } /	${item.o_id } </th>
+						</tr>
+					</c:if>
+						<tr>
+							<td>
+								<div class="table_min_height">
+									<a href="${pageContext.request.contextPath }/item_details.do?prodid=${item.p_id}" class="item_thumb"> <img src="${contextPath}/assets/img/items/item${item.p_id }.jpg" /> </a>
+									<div class="order_item_info">
+										<a href="${pageContext.request.contextPath }/item_details.do?prodid=${item.p_id}" class="item">
+											<p class="order_item_name">${item.p_name }</p>
+											<p class="order_item_price"><fmt:formatNumber value="${item.p_price }" pattern="#,###"/>원</p>
+										</a>
+									</div>
 								</div>
-							</div>
-						</td>
-						<td>1</td>
-						<td>00,000원</td>
-						<td>상품준비중<br /> <a href="#" class="cancel_order btn_nor"
-							type="button"returnfalse;>주문취소</a></td>
-
-					</tr>
-					<tr>
-						<td>
-							<div class="table_min_height">
-								<a href="#" class="item_thumb"> <img
-									src="${contextPath}/assets/img/items/best2.PNG" />
-								</a>
-								<div class="order_item_info">
-									<a href="#" class="item">
-										<p class="order_item_name">상품명</p>
-										<p class="order_item_price">00,000원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						<td>1</td>
-						<td>00,000원</td>
-						<td>배송완료<br /> <a href="#" class="write_review btn_yellow"
-							onClick="openPop()"returnfalse;>후기쓰기</a></td>
-					</tr>
+							</td>
+							<td>${item.p_qty }</td>
+							<td><fmt:formatNumber value="${item.p_price * item.p_qty}" pattern="#,###"/>원</td>
+							<c:choose>
+								<c:when test="${item.pay_result=='Y' && item.send_result=='N' }">
+									<td>상품준비중<br /> <a href="#" class="cancel_order btn_nor" type="button"returnfalse;>주문취소</a></td>
+								</c:when>
+								<c:when test="${item.pay_result=='N' && item.send_result=='N' }">
+									<td>입금대기중<br /> <a href="#" class="cancel_order btn_nor" type="button"returnfalse;>주문취소</a></td>
+								</c:when>
+								<c:otherwise>
+									<td>배송완료<br /> <a href="#" class="write_review btn_yellow" onClick="openPop()"returnfalse;>후기쓰기</a></td>
+								</c:otherwise>
+							</c:choose>
+						</tr>
+				</c:forEach>
 			</table>
 
 			<!-- 페이지 번호 구현 -->
@@ -72,7 +63,7 @@
 				<%-- 이전 그룹으로 이동 가능하다면? --%>
 				<c:when test="${pageData.prevPage > 0}">
 					<%-- 이동할 URL 생성 --%>
-					<c:url value="/past_order.do" var="prevPageUrl">
+					<c:url value="/mypage/past_order.do" var="prevPageUrl">
 						<c:param name="page" value="${pageData.prevPage}" />
 					</c:url>
 					<a href="${prevPageUrl}">[이전]</a>
@@ -86,7 +77,7 @@
 			<c:forEach var="i" begin="${pageData.startPage}"
 				end="${pageData.endPage}" varStatus="status">
 				<%-- 이동할 URL 생성 --%>
-				<c:url value="/past_order.do" var="pageUrl">
+				<c:url value="/mypage/past_order.do" var="pageUrl">
 					<c:param name="page" value="${i}" />
 				</c:url>
 
@@ -108,7 +99,7 @@
 				<%-- 다음 그룹으로 이동 가능하다면? --%>
 				<c:when test="${pageData.nextPage > 0}">
 					<%-- 이동할 URL 생성 --%>
-					<c:url value="/past_order.do" var="nextPageUrl">
+					<c:url value="/mypage/past_order.do" var="nextPageUrl">
 						<c:param name="page" value="${pageData.nextPage}" />
 					</c:url>
 					<a href="${nextPageUrl}">[다음]</a>
@@ -143,16 +134,14 @@
 		$(".cancel_order").click(function() {
 			//확인, 취소버튼에 따른 후속 처리 구현
 			swal({
-				title : '주문 취소',
-				text : "정말 주문을 취소하시겠습니까?",
+				title : '정말 주문을 취소하시겠습니까?',
+				text : "해당 상품이 포함된 주문이 전체 취소됩니다.",
 				type : 'question',
 				confirmButtonText : '아니오',
 				showCancelButton : true,
 				cancelButtonText : '네',
 			}).then(function(result) {
 				if (result.value) {
-					swal('확인', '주문이 그대로 진행됩니다.', 'success');
-				} else if (result.dismiss === 'cancel') {
 					swal({
 						title : '주문 취소',
 						text : "주문취소가 완료되었습니다.",
@@ -161,6 +150,8 @@
 					}).then(function() {
 						window.location = '../mypage/mypage.jsp';
 					});
+				} else if (result.dismiss === 'cancel') {
+					swal('확인', '주문이 그대로 진행됩니다.', 'success');
 				}
 			});
 		});
