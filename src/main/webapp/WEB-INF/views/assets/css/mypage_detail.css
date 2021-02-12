@@ -326,14 +326,15 @@ li .pick_item .swiper-slide .swiper-slide-next {
 
 /**구매했어요 표 border 설정*/
 .order_table th {
-    border-bottom: 2px solid #000000;
     font-size: 15px;
     font-weight: 600;
+    text-align:left;
     padding-bottom: 10px;
+    border-bottom:2px solid #6A60A9;
 }
 
 .order_table td {
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #aaa;
     padding: 10px;
     vertical-align: middle;
 }

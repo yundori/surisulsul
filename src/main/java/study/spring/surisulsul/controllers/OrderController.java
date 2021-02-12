@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import retrofit2.http.GET;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
@@ -354,7 +353,6 @@ public class OrderController {
 		input.setLoginId(loginSession.getId());
 
 		List<Order> orderOutput = null; // orders 테이블 조회 결과가 저장될 객체
-		List<Order> subOutput = null;	// orders_sub 테이블 조회 결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
 
 		try {
@@ -369,6 +367,9 @@ public class OrderController {
 
 			// 데이터 조회하기
 			orderOutput = orderService.getOrderList(input);
+			for(int i=0; i<orderOutput.size(); i++) {
+				System.out.println(orderOutput.get(i).toString());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
