@@ -19,10 +19,10 @@
 
 		<div class="item_keyword_lists">
 			<ul class="keyword_lists_ul">
-				<li class="keyword_lists_li type_li">#종류</li>
-				<li class="keyword_lists_li area_li">#지역</li>
-				<li class="keyword_lists_li incense1_li">#향1</li>
-				<li class="keyword_lists_li incense2_li">#향2</li>
+				<li class="keyword_lists_li type_li">#${output.type}</li>
+				<li class="keyword_lists_li area_li">#${output.loc}</li>
+				<li class="keyword_lists_li incense1_li">#${output.key1}</li>
+				<li class="keyword_lists_li incense2_li">#${output.key2}</li>
 			</ul>
 		</div>
 
@@ -40,15 +40,12 @@
 
 		<div class="item_info_suri">
 			<h4>고도리 복숭아와인은...?</h4>
-			<p>고도리 복숭아와인은 GAP 인증을 받은 황도와 백도를 반씩 사용해 만든 스위트 와인입니다. 병에 붙여져 있는
-				라벨의 복숭아 그림만으로도 무슨 맛일지 예상가는데요. 색깔은 연주황색과 약간의 금색을 띄고 있습니다. 향을 맡아보면 복숭아
-				통조림을 딱 열었을 때 느껴지는 복숭아의 농익은 달콤한 향기가 입맛을 돋우는데요. 맛을 보면 입안 가득 복숭아의 향과 맛을
-				느낄 수 있습니다. 등등</p>
+			<p>${output.des2}</p>
 		</div>
 		
 		<div class="item_info_suri">
 			<h4>고도리 복숭아와인과 어울리는 음식</h4>
-			<p>어쩌고, 저쩌고, 음식명</p>
+			<p>${output.food}</p>
 		</div>
 
 		<div class="suri_rules">
@@ -73,7 +70,7 @@
 		data : {
 			labels : [ "당도", "산미", "도수" ], // 각각의 bar에 표시할 x축 라벨
 			datasets : [ {
-				data : [ 1, 3, 4 ], // 각 bar에 대한 y축 좌표 데이터
+				data : [ ${output.sweet} / 8, ${output.sour} / 8, ${output.degree} / 8 ], // 각 bar에 대한 y축 좌표 데이터
 				backgroundColor : [// 각 bar의 배경 색상
 							'rgba(142, 68, 173, 0.6)',
 							'rgba(74, 68, 173, 0.6)',
@@ -109,7 +106,7 @@
 						var meta = chartInstance.controller.getDatasetMeta(i);
 						meta.data.forEach(function (bar, index) {
 							var data = dataset.data[index];							
-							ctx.fillText(data, bar._model.x + 10, bar._model.y);
+							ctx.fillText(data * 8, bar._model.x + 10, bar._model.y);
 						});
 					});
 				}
