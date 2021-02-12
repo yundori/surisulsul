@@ -40,7 +40,7 @@
 				<c:forEach var="item" items="${jn_output}" varStatus="status">
 					<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
 						<div class="main_best_img" id="best_img1">
-							<img src="${contextPath}/assets/items/${item.img}.jpg"
+							<img src="${contextPath}/assets/img/items/${item.img}"
 								alt="주능 결과 추천 술" />
 							<div class="over">
 								<div class="main_best_over">
