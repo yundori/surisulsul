@@ -31,9 +31,9 @@
 						<tr>
 							<td>
 								<div class="table_min_height">
-									<a href="#" class="item_thumb"> <img src="${contextPath}/assets/img/items/item${item.p_id }.jpg" /> </a>
+									<a href="${pageContext.request.contextPath }/item_details.do?prodid=${item.p_id}" class="item_thumb"> <img src="${contextPath}/assets/img/items/item${item.p_id }.jpg" /> </a>
 									<div class="order_item_info">
-										<a href="#" class="item">
+										<a href="${pageContext.request.contextPath }/item_details.do?prodid=${item.p_id}" class="item">
 											<p class="order_item_name">${item.p_name }</p>
 											<p class="order_item_price"><fmt:formatNumber value="${item.p_price }" pattern="#,###"/>원</p>
 										</a>
