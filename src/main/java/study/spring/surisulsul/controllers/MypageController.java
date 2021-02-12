@@ -110,7 +110,7 @@ public class MypageController {
 						jn_result_name = output.getJn_result();
 
 						Product input = new Product();
-						input.setJn_result(loginSession.getJn_result());
+						input.setJn_result(output.getJn_result());
 
 						jn_output = new ArrayList<Product>();
 						

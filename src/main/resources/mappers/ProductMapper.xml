@@ -50,7 +50,7 @@
 				jn_result = '${jn_result}'
 			</if>
 		</where>
-		ORDER BY p.name ASC
+		ORDER BY RAND()
 		LIMIT 0, 4
 	</select>
 
