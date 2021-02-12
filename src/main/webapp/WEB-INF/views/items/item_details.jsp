@@ -20,7 +20,7 @@
 				<h3 class="item_name">${output.name}</h3>
 			 	<h5 class="item_plain_info">${output.des1}</h5>
 			 	<h5 class="item_ingre">원재료 : ${output.igd}</h5>
-			 	<h5 class="item_plain_info">용량 : ${output.size}</h5>
+			 	<h5 class="item_plain_info">용량 : ${output.size}ml (개당)</h5>
 			 	<h5 class="item_period">예상 배송 기간 : 2일</h5>
 			 	<h5 class="item_price_text">판매가격</h5>
 			 	<h4 class="item_price"><fmt:formatNumber value="${output.price}" pattern="#,###"/>원</h4>
@@ -41,13 +41,13 @@
 		</div>
 		<div class="order_info">
 			<form method="post" action="${pageContext.request.contextPath}/basket/add_ok.do" name="basket_form" id="basket_form">
-				<input type="hidden" name="p_id" value="2"/>
-				<input type="hidden" name="p_name" value="고도리 복숭아와인"/>
-				<input type="hidden" name="p_price" value="20000"/>
+				<input type="hidden" name="p_id" value="${output.id}"/>
+				<input type="hidden" name="p_name" value="${output.name}"/>
+				<input type="hidden" name="p_price" value="${output.price}"/>
 				
 				<h3 class="order_title">주문 안내</h3>
-				<h4 class="order_item_name">제품명 : <span>고도리 복숭아와인</span></h4>
-				<h4 class="order_item_price">개당 판매가 : <span><fmt:formatNumber value="20000" pattern="#,###"/></span>원</h4>
+				<h4 class="order_item_name">제품명 : <span>${output.name}</span></h4>
+				<h4 class="order_item_price">개당 판매가 : <span><fmt:formatNumber value="${output.price}" pattern="#,###"/></span>원</h4>
 				<label class="order_quantity_label" for="order_quantity">주문 수량 : </label>
 				<select name="order_quantity" id="order_quantity">
 					<option value="0">수량 선택</option>
@@ -85,17 +85,17 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
+
 <script type="text/javascript">
 	/** tab메뉴 구현 **/
 	$(function() {
 		$('.tab_menu').click(function() {
-			//var activeTab = $(this).attr('data-tab');
 			var activeTab = $(this).data('tab');
 			$('.tab_menu').css('background-color', 'white');
 			$(this).css('background-color', '#FBD14B');
 			$.ajax({
 				type : 'GET',
-				url : activeTab + ".do",
+				url : activeTab + ".do/" + ${output.id},
 				dataType : "html",
 				error : function() {
 					alert('실패');

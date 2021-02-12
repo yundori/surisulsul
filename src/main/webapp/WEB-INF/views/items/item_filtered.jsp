@@ -222,9 +222,9 @@
 										</c:choose>
 									</span> <br/>
 									<ul class="item_tag_list">
-										<li class="item_tag item_type_tag">${item.type}</li>
-										<li class="item_tag item_area_tag">${item.loc}</li>
-										<li class="item_tag item_keyword_tag">${item.key1}</li>
+										<li class="item_tag item_type_tag">#${item.type}</li>
+										<li class="item_tag item_area_tag">#${item.loc}</li>
+										<li class="item_tag item_keyword_tag">#${item.key1}</li>
 									</ul>
 								</a>
 							</li>
