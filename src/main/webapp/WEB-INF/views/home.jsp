@@ -35,12 +35,13 @@
 			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능 본적 있음)일 때 index에 출력할 내용 --%>
 			<div class="main_best">
 				<h1>취향에 맞는 술을 추천해드려요 !</h1>
-
-				<!-- 밑의 a 태그 경로는 임시 설정입니다 ! 추후 세부 페이지가 생기면 변경 -->
 				<c:forEach var="item" items="${jn_output}" varStatus="status">
-					<a href="${pageContext.request.contextPath}/mypage/my_recommend.do">
+					<c:url value="/item_details.do" var="viewUrl">
+						<c:param name="prodid" value="${item.id}" />
+					</c:url>
+					<a href="${viewUrl}">
 						<div class="main_best_img" id="best_img1">
-							<img src="${contextPath}/assets/items/${item.img}.jpg"
+							<img src="${contextPath}/assets/img/items/${item.img}"
 								alt="주능 결과 추천 술" />
 							<div class="over">
 								<div class="main_best_over">
@@ -54,10 +55,7 @@
 						</div>
 					</a>
 				</c:forEach>
-
 			</div>
-
-
 		</c:when>
 		<c:otherwise>
 			<%-- 로그인 여부가 false이던지, 로그인이 true여도 주능결과가 없을 경우 index에 출력되는 내용 
@@ -72,24 +70,24 @@
 	</c:choose>
 	<!-- 3. 인기 많은 술 best !
          상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
-	<c:forEach var="item" items="${best_output}" varStatus="status">
-		<div class="main_best">
-			<h1>인기 많은 술</h1>
-			<a href="${pageContext.request.contextPath}/best_items.do">
-				<div class="main_best_img" id="best_img1">
-					<img src="${contextPath}/assets/img/items/{$item.img}" alt="인기많은술1" />
-					<div class="over">
+	<div class="main_best">
+		<h1>인기 많은 술</h1>
+		<c:forEach var="item" items="${best_output}" varStatus="status">
+			<a href="${pageContext.request.contextPath}/best_items.do"> <c:url
+					value="/item_details.do" var="viewUrl">
+					<c:param name="prodid" value="${item.id}" />
+				</c:url> <a href="${viewUrl}">
+					<div class="main_best_img" id="best_img1">
+						<img src="${contextPath}/assets/img/items/${item.img}" alt="인기많은술1" />
+						<div class="over">
 						<div class="main_best_over">
-							<span class="over_title">{$item.name}</span>
-							<p class="over_des">
-								<fmt:formatNumber value="${item.price}" pattern="#,###" />
-								원
-							</p>
-						</div>
+						<span class="over_title">{$item.name}</span>
+						<p class="over_des"><fmt:formatNumber value="${item.price}" pattern="#,###" />원</p>
 					</div>
+				</div>
 			</a>
-		</div>
-	</c:forEach>
+		</c:forEach>
+	</div>
 	<!-- 4. 우리 술 종류
          각 종류의 대표 이미지 , hover시 강조효과
          img, 종류명 클릭 시 각 페이지로 이동 가능(a태그에 같은 페이지 걸어두기) -->
