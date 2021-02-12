@@ -51,7 +51,7 @@
 	<!-- 주문내역 - 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		<!-- orders테이블과 orders_sub 테이블의 JOIN -->
-		SELECT o.id AS o_id, os.o_date AS reg_date, os.p_name, os.p_price, os.qty, o.price, o.pay_result, o.send_result
+		SELECT o.id AS o_id, os.o_date AS reg_date, os.p_id, os.p_name, os.p_price, os.qty, o.price, o.pay_result, o.send_result
 		FROM orders o
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
