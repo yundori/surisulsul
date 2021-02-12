@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import retrofit2.http.GET;
+import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Basket;
@@ -335,7 +336,46 @@ public class OrderController {
 	
 	/** 내가 주문한 내역 확인 --> OrderController */
 	@RequestMapping(value = "/mypage/past_order.do", method = RequestMethod.GET)
-	public String past_order(Model model) {
-		return "mypage/past_order";
+	public ModelAndView past_order(Model model, HttpServletRequest request,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		/** 0) 세션값 받아오기 */
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 3; // 한 페이지당 표시할 목록 수
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Order input = new Order();
+		input.setLoginId(loginSession.getId());
+
+		List<Order> orderOutput = null; // orders 테이블 조회 결과가 저장될 객체
+		List<Order> subOutput = null;	// orders_sub 테이블 조회 결과가 저장될 객체
+		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = orderService.getOrderCount(input);
+			// 페이지 번호 계산 --> 계산 결과를 로그로 출력
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
+			Order.setOffset(pageData.getOffset());
+			Order.setListCount(pageData.getListCount());
+
+			// 데이터 조회하기
+			orderOutput = orderService.getOrderList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		/** 3) View 처리 */
+		model.addAttribute("orderOutput", orderOutput);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("mypage/past_order");
 	}
 }
