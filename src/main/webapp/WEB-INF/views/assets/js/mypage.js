@@ -4,8 +4,13 @@ $(document).ready(function() {
 	$(".tab-button-item-link").click(function(e) {
 		//링크의 페이지 이동을 방지
 		e.preventDefault();
+		
+		//탭 클릭시 이미지 변경
+		$(".tab-button-item-link").not(this).removeClass("selected");
+		$(this).addClass("selected");
+		
 		var activeTab = $(this).attr('data-tab');
-		console.log(activeTab);
+
 		$.ajax({
 			type: 'GET',
 			url: activeTab + ".do",
@@ -15,7 +20,6 @@ $(document).ready(function() {
 				console.log(">>에러" + error.status);
 			},
 			success: function(data) {
-				console.log(">>성공>>");
 				$('.tab-panel').html(data);
 			}
 		});

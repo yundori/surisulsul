@@ -43,7 +43,7 @@
 	<select id="jnItemList"
 		parameterType="study.spring.surisulsul.model.Product"
 		resultMap="productMap">
-		SELECT img, name, price, jn_result
+		SELECT id, img, name, price, jn_result
 		FROM products p
 		<where>
 			<if test="jn_result != null and jn_result != ''">
