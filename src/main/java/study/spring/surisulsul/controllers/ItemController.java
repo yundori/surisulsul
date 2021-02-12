@@ -19,7 +19,9 @@ import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Sales;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.SalesService;
 
 @Controller
 @Slf4j
@@ -36,6 +38,9 @@ public class ItemController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
+	SalesService salesService;
+	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -44,6 +49,25 @@ public class ItemController {
 	@RequestMapping(value = "/best_items.do", method = RequestMethod.GET)
 	public String best_item(Model model) {
 		
+		List<Product> output = null;
+		int sales_cnt = 0;
+		
+		try {
+			
+			sales_cnt = salesService.getSalesCount(null);
+			
+			if(sales_cnt == 0) {
+				output = productService.best_ProductList_price(null);
+			}
+			else {
+				output = productService.best_ProductList(null);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/best_items";
 	}
 	
