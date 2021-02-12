@@ -43,7 +43,7 @@
 	<nav class="psn_tab">
 		<ul class="psn_tab_inner">
 			<li class="tab_forme">
-				<a data-tab="my_recommend selected" class="tab-button-item-link" href="#"  id="default">나를 위한 추천술</a>
+				<a data-tab="my_recommend" class="tab-button-item-link selected" href="#"  id="default">나를 위한 추천술</a>
 			</li>
 			<li class="tab_wishlist">
 				<a data-tab="wishlist" class="tab-button-item-link" href="#">관심있어요</a>

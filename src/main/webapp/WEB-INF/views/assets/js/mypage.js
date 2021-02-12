@@ -20,7 +20,7 @@ $(document).ready(function() {
 				console.log(">>에러" + error.status);
 			},
 			success: function(data) {
-				$('.tab-panel').html(data);
+				$('.tab-panel').html(data);	
 			}
 		});
 	});
