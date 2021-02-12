@@ -2,6 +2,7 @@ package study.spring.surisulsul.controllers;
 
 import java.text.DateFormat;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.MemberService;
@@ -67,36 +69,42 @@ public class HomeController {
 			if(loginSession.getJn_result() == null) { // 로그인 O , 주능결과 X
 				jn_result=false;
 			} else {// 로그인 O , 주능결과 O
-				jn_result=true;
-				
+				jn_result = true;
+				System.out.println("여기까지 성공");
+
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
 				
 				jn_output = new ArrayList<Product>();
 				
-				/**주능 결과에 해당하는 술 가져오기*/
+				// 주능 결과에 맞는 상품 (술) 가져오기
 				
-				// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
-				// public List<Product> jnItemList(Product );
-					
-				// output = productService.jn_ProductList(input);
+				try {
+					jn_output = productService.jn_ProductList(input);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
 		// 인기 많은 술 best 4 
 		List<Product> best_output = new ArrayList<Product>();
+		
 		try {
-			//Mapper안에 SQL문 작성 따로 해야될 0,4
-			//Impl에 어떤 메서드로 들어가는지 확인해서 아래 구문 수정
-			best_output = productService.best_ProductList(null);
-		} catch (Exception e) {	e.printStackTrace(); }
+			best_output = productService.main_best_ProductList(null);
+		} catch (Exception e) {	
+			e.printStackTrace(); }
 		
 		/** View 처리  */
 		model.addAttribute("jn_output", jn_output);
 		model.addAttribute("jn_result", jn_result);
 		model.addAttribute("best_output", best_output);
-		return "home";
+		
+		return "home"; 
 	}
+
+		
+	
 	
 	/** 로그아웃 처리 */
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)

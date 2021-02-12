@@ -13,32 +13,32 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">종류별</h2>
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types1" type="checkbox" value="0" checked />
+						<input name="types" class="types" id="types1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(types, '0')}">checked</c:if>/>
 						<label for="types1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types2" type="checkbox" value="탁주" />
+						<input name="types" class="types" id="types2" type="checkbox" value="탁주" <c:if test="${fn:containsIgnoreCase(types, '탁주')}">checked</c:if>/>
 						<label for="types2">탁주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types3" type="checkbox" value="청주" />
+						<input name="types" class="types" id="types3" type="checkbox" value="청주" <c:if test="${fn:containsIgnoreCase(types, '청주')}">checked</c:if>/>
 						<label for="types3">청주/약주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types4" type="checkbox" value="과실주" />
+						<input name="types" class="types" id="types4" type="checkbox" value="과실주" <c:if test="${fn:containsIgnoreCase(types, '과실주')}">checked</c:if>/>
 						<label for="types4">과실주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types5" type="checkbox" value="증류주" />
+						<input name="types" class="types" id="types5" type="checkbox" value="증류주" <c:if test="${fn:containsIgnoreCase(types, '증류주')}">checked</c:if>/>
 						<label for="types5">증류주</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="types" class="types" id="types6" type="checkbox" value="기타" />
+						<input name="types" class="types" id="types6" type="checkbox" value="기타" <c:if test="${fn:containsIgnoreCase(types, '기타')}">checked</c:if>/>
 						<label for="types6">기타 주류</label>
 					</div>
 				</div>
@@ -46,42 +46,42 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">지역별</h2>
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area1" type="checkbox" value="0" checked />
+						<input name="areas" class="area" id="area1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(locs, '0')}">checked</c:if>/>
 						<label for="area1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area2" type="checkbox" value="서울" />
+						<input name="areas" class="area" id="area2" type="checkbox" value="서울" <c:if test="${fn:containsIgnoreCase(locs, '서울')}">checked</c:if>/>
 						<label for="area2">서울</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area3" type="checkbox" value="경기" />
+						<input name="areas" class="area" id="area3" type="checkbox" value="경기" <c:if test="${fn:containsIgnoreCase(locs, '경기')}">checked</c:if>/>
 						<label for="area3">경기도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area4" type="checkbox" value="강원" />
+						<input name="areas" class="area" id="area4" type="checkbox" value="강원" <c:if test="${fn:containsIgnoreCase(locs, '강원')}">checked</c:if>/>
 						<label for="area4">강원도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area5" type="checkbox" value="충청" />
+						<input name="areas" class="area" id="area5" type="checkbox" value="충청" <c:if test="${fn:containsIgnoreCase(locs, '충청')}">checked</c:if>/>
 						<label for="area5">충청도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area6" type="checkbox" value="전라" />
+						<input name="areas" class="area" id="area6" type="checkbox" value="전라" <c:if test="${fn:containsIgnoreCase(locs, '전라')}">checked</c:if>/>
 						<label for="area6">전라도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area7" type="checkbox" value="경상" />
+						<input name="areas" class="area" id="area7" type="checkbox" value="경상" <c:if test="${fn:containsIgnoreCase(locs, '경상')}">checked</c:if>/>
 						<label for="area7">경상도</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="areas" class="area" id="area8" type="checkbox" value="제주" />
+						<input name="areas" class="area" id="area8" type="checkbox" value="제주" <c:if test="${fn:containsIgnoreCase(locs, '제주')}">checked</c:if>/>
 						<label for="area8">제주도</label>
 					</div>
 				</div>
@@ -89,37 +89,37 @@
 				<div class="check_boxes">
 					<h2 class="checkbox_title">향</h2>
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense1" type="checkbox" value="0" checked />
+						<input name="incense" class="incense" id="incense1" type="checkbox" value="0" <c:if test="${fn:containsIgnoreCase(keys, '0')}">checked</c:if>/>
 						<label for="incense1">전체 선택</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물" />
+						<input name="incense" class="incense" id="incense2" type="checkbox" value="곡물" <c:if test="${fn:containsIgnoreCase(keys, '곡물')}">checked</c:if>/>
 						<label for="incense2">곡물향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일" />
+						<input name="incense" class="incense" id="incense3" type="checkbox" value="과일" <c:if test="${fn:containsIgnoreCase(keys, '과일')}">checked</c:if>/>
 						<label for="incense3">과일향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃" />
+						<input name="incense" class="incense" id="incense4" type="checkbox" value="꽃" <c:if test="${fn:containsIgnoreCase(keys, '꽃')}">checked</c:if>/>
 						<label for="incense4">꽃향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀" />
+						<input name="incense" class="incense" id="incense5" type="checkbox" value="꿀" <c:if test="${fn:containsIgnoreCase(keys, '꿀')}">checked</c:if>/>
 						<label for="incense5">꿀향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩" />
+						<input name="incense" class="incense" id="incense6" type="checkbox" value="누룩" <c:if test="${fn:containsIgnoreCase(keys, '누룩')}">checked</c:if>/>
 						<label for="incense6">누룩향</label>
 					</div>
 					
 					<div class="checkbox_input">
-						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜" />
+						<input name="incense" class="incense" id="incense7" type="checkbox" value="알콜" <c:if test="${fn:containsIgnoreCase(keys, '알콜')}">checked</c:if>/>
 						<label for="incense7">알콜향</label>
 					</div>
 				</div>
@@ -130,10 +130,10 @@
 						<span class="slider_title">당도</span>
 						<div class="bar_slider">
 							<select id="bar_slider_sugar" name="sweet" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${sweet == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${sweet == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${sweet == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${sweet == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -142,10 +142,10 @@
 						<span class="slider_title">산미</span>
 						<div class="bar_slider">
 							<select id="bar_slider_acidity" name="sour" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${sour == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${sour == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${sour == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${sour == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -154,10 +154,10 @@
 						<span class="slider_title">도수</span>
 						<div class="bar_slider">
 							<select id="bar_slider_alcohol" name="degree" autocomplete="off">
-                        		<option value="1">낮음</option>
-                        		<option value="2">중간</option>
-                        		<option value="3">높음</option>
-                        		<option value="0" selected>전체</option>
+                        		<option value="1" <c:if test="${degree == '1'}">selected</c:if>>낮음</option>
+                        		<option value="2" <c:if test="${degree == '2'}">selected</c:if>>중간</option>
+                        		<option value="3" <c:if test="${degree == '3'}">selected</c:if>>높음</option>
+                        		<option value="0" <c:if test="${degree == '0'}">selected</c:if>>전체</option>
                     		</select>
 						</div>
 					</div>
@@ -175,7 +175,7 @@
 				<ul class="result_list_incense">
 				</ul>
 			</div>
-			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요."/>
+			<input type="text" name="title_search" id="title_search" placeholder="직접 입력해 주세요." value="${search}" />
 			<div class=clear></div>
 			<button type="submit" class="search_btn">검색</button>
 		</div>
@@ -198,7 +198,13 @@
 						<%-- 조회 결과에 따른 반복처리 --%>
 				 		<c:forEach var="item" items="${output}" varStatus="status">
 							<li class="item_info">
-								<a href="${pageContext.request.contextPath}/item_details.do">
+								
+								<%-- 상세페이지로 이동하기 위한 URL --%>
+								<c:url value="/item_details.do" var="viewUrl">
+									<c:param name="prodid" value="${item.id}" />
+								</c:url>
+								
+								<a href="${viewUrl}">
 									<img class="item_img" src="${contextPath}/assets/img/items/${item.img}" /> <br/>
 									<span class="item_title">${item.name}</span>
 									<span class="item_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</span> <br/>
@@ -216,9 +222,9 @@
 										</c:choose>
 									</span> <br/>
 									<ul class="item_tag_list">
-										<li class="item_tag item_type_tag">${item.type}</li>
-										<li class="item_tag item_area_tag">${item.loc}</li>
-										<li class="item_tag item_keyword_tag">${item.key1}</li>
+										<li class="item_tag item_type_tag">#${item.type}</li>
+										<li class="item_tag item_area_tag">#${item.loc}</li>
+										<li class="item_tag item_keyword_tag">#${item.key1}</li>
 									</ul>
 								</a>
 							</li>

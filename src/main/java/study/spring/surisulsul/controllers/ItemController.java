@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,9 +50,9 @@ public class ItemController {
 	/* 내가찾는술 페이지로 이동 */
 	@RequestMapping(value = "/item_filtered.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String item_filtered(Model model, HttpServletResponse response,
-			@RequestParam(value = "types", required=false) List<String> types,
-			@RequestParam(value = "areas", required=false) List<String> locs,
-			@RequestParam(value = "incense", required=false) List<String> keys,
+			@RequestParam(value = "types", defaultValue = "0") List<String> types,
+			@RequestParam(value = "areas", defaultValue = "0") List<String> locs,
+			@RequestParam(value = "incense", defaultValue = "0") List<String> keys,
 			@RequestParam(value = "sweet", defaultValue = "0") int sweet,
 			@RequestParam(value = "sour", defaultValue = "0") int sour,
 			@RequestParam(value = "degree", defaultValue = "0") int degree,
@@ -70,7 +71,7 @@ public class ItemController {
 		
 		/** 
 		 * 리스트를 in연산자에 넣을 문자열로 바꾸기
-		 * 파라미터값이 있고 전체선택("0")이 포함되지 않은 경우에만 실행
+		 * 파라미터값이 있고 전체선택("0")이 포함되지 않은 경우에만 input 객체에 담기
 		 */
 		// 종류별
 		if(types != null && types.size() != 0 && !types.get(0).equals("0")) {
@@ -101,14 +102,36 @@ public class ItemController {
 			input.setKeys(check_keys);
 		}
 
+		/**
+		 * 당도, 산미, 도수 등급 나누기
+		 * 당도, 산미 : 1 -> 1,2 / 2 -> 3,4 / 3 -> 5,6
+		 * 도수 : 1 -> 1~10 / 2 -> 11~20 / 3 -> 21~
+		 * 
+		 * input 객체에 넣기
+		 */
 		if(sweet != 0) {
-			input.setSweet(sweet);
+			int sweet_res = sweet * 2;
+			input.setSweet1(sweet_res - 1);
+			input.setSweet2(sweet_res);
 		}
 		if(sour != 0) {
-			input.setSour(sour);
+			int sour_res = sour * 2;
+			input.setSour1(sour_res - 1);
+			input.setSour2(sour_res);
 		}
 		if(degree != 0) {
-			input.setDegree(degree);
+			int degree_res = degree * 10;
+			input.setDegree1(degree_res - 9);
+			if(degree != 3) { //3 -> 21 ~ 이기 때문
+				input.setDegree2(degree_res);
+			}
+		}
+		
+		/**
+		 * 검색창 검색어 input 객체에 담기
+		 */
+		if(search != null) {
+			input.setSearch(search);
 		}
 		
 		List<Product> output = null; //조회결과가 저장될 객체
@@ -117,6 +140,7 @@ public class ItemController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = productService.getProductCount(input);
+			System.out.println(">>>>>>>>상품목록개수 : " + totalCount);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
@@ -130,6 +154,13 @@ public class ItemController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("types", types);	// 선택된 종류별 리스트
+		model.addAttribute("locs", locs);	// 선택된 지역별 리스트
+		model.addAttribute("keys", keys);	// 선택된 향별 리스트
+		model.addAttribute("sweet", sweet);	// 선택된 당도
+		model.addAttribute("sour", sour);	// 선택된 산미
+		model.addAttribute("degree", degree);	//선택된 도수
+		model.addAttribute("search", search);	//검색어
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output",output);
 		
@@ -138,15 +169,39 @@ public class ItemController {
 	
 	/* 상품상세페이지로 이동 */
 	@RequestMapping(value = "/item_details.do", method = RequestMethod.GET)
-	public String item_details(Model model) {
+	public String item_details(Model model, HttpServletResponse response,
+			@RequestParam(value = "prodid", defaultValue = "0") int prodid) {
 		
+		Product input = new Product();
+		input.setId(prodid);
+		
+		Product output = null;
+		try {
+			output = productService.details_ProductItem(input);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/item_details";
 	}
 	
 	/* 상품정보 탭페이지로 이동 */
-	@RequestMapping(value = "/item_info.do", method = RequestMethod.GET)
-	public String item_info(Model model) {
+	@RequestMapping(value = "/item_info.do/{prodid}", method = RequestMethod.GET)
+	public String item_info(Model model, HttpServletResponse response,
+			@PathVariable int prodid) {
 		
+		Product input = new Product();
+		input.setId(prodid);
+		
+		Product output = null;
+		try {
+			output = productService.info_ProductItem(input);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/item_info";
 	}
 	

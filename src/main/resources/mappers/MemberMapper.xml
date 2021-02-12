@@ -132,5 +132,14 @@
 		parameterType="study.spring.surisulsul.model.Member" resultType="int">
 		SELECT count(*) FROM members WHERE email=#{email} AND is_out='N';
 	</select>
+	
+	<!-- 주능 수정 정의 -->
+	<update id="updateJnMember"
+		parameterType="study.spring.surisulsul.model.Member">
+		UPDATE members SET
+		jn_result=#{jn_result}, edit_date=now()
+		WHERE
+		id=#{id};
+	</update>
 
 </mapper>

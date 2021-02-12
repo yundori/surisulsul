@@ -35,4 +35,6 @@ public interface MemberService {
 	// 로그인 시 이메일 체크용 조회
 	public int getLoginEmailCount(Member input) throws Exception;
 	
+	//주능 회원정보 수정
+	public int editJnMember(Member input) throws Exception;
 }
