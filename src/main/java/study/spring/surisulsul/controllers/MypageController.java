@@ -152,12 +152,6 @@ public class MypageController {
 	public String wishlist(Model model) {
 		return "mypage/wishlist";
 	}
-
-	/** 내가 주문한 내역 확인 --> OrderController */
-	@RequestMapping(value = "/mypage/past_order.do", method = RequestMethod.GET)
-	public String past_order(Model model) {
-		return "mypage/past_order";
-	}
 	
 	/** 내가 작성한 리뷰/문의 확인 */
 	@RequestMapping(value = "/mypage/my_opinion.do", method = RequestMethod.GET)

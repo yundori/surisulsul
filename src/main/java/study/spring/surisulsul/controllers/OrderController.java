@@ -332,4 +332,10 @@ public class OrderController {
 		model.addAttribute("result", order_result);
 		return new ModelAndView("order/order_result");
 	}
+	
+	/** 내가 주문한 내역 확인 --> OrderController */
+	@RequestMapping(value = "/mypage/past_order.do", method = RequestMethod.GET)
+	public String past_order(Model model) {
+		return "mypage/past_order";
+	}
 }
