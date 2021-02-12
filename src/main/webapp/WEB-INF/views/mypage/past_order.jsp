@@ -134,16 +134,14 @@
 		$(".cancel_order").click(function() {
 			//확인, 취소버튼에 따른 후속 처리 구현
 			swal({
-				title : '주문 취소',
-				text : "정말 주문을 취소하시겠습니까?",
+				title : '정말 주문을 취소하시겠습니까?',
+				text : "해당 상품이 포함된 주문이 전체 취소됩니다.",
 				type : 'question',
 				confirmButtonText : '아니오',
 				showCancelButton : true,
 				cancelButtonText : '네',
 			}).then(function(result) {
 				if (result.value) {
-					swal('확인', '주문이 그대로 진행됩니다.', 'success');
-				} else if (result.dismiss === 'cancel') {
 					swal({
 						title : '주문 취소',
 						text : "주문취소가 완료되었습니다.",
@@ -152,6 +150,8 @@
 					}).then(function() {
 						window.location = '../mypage/mypage.jsp';
 					});
+				} else if (result.dismiss === 'cancel') {
+					swal('확인', '주문이 그대로 진행됩니다.', 'success');
 				}
 			});
 		});
