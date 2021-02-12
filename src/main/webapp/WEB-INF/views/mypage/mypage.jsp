@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 
@@ -55,24 +56,12 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="tab-panel">
-<%--             <div id="tab-page-my_recommend">
-                <%@ include file="../mypage/my_recommend.jsp"%>
-            </div>
-            <div id="tab-page-wishlist" class="hide">
-                <%@ include file="../mypage/wishlist.jsp"%>
-            </div>
-            <div id="tab-page-past_order" class="hide">
-                <%@ include file="../mypage/past_order.jsp"%>
-            </div>
-            <div id="tab-page-my_opinion" class="hide">
-                <%@ include file="../mypage/my_opinion.jsp"%>
-            </div> --%>
-        </div>
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     
 <script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-
+	<div class="tab-panel">
+    </div>
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
