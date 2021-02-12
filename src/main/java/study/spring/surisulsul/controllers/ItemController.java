@@ -168,8 +168,20 @@ public class ItemController {
 	
 	/* 상품상세페이지로 이동 */
 	@RequestMapping(value = "/item_details.do", method = RequestMethod.GET)
-	public String item_details(Model model) {
+	public String item_details(Model model, HttpServletResponse response,
+			@RequestParam(value = "prodid", defaultValue = "0") int prodid) {
 		
+		Product input = new Product();
+		input.setId(prodid);
+		
+		Product output = null;
+		try {
+			output = productService.details_ProductItem(input);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/item_details";
 	}
 	
