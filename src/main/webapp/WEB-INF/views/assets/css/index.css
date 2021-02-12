@@ -73,6 +73,10 @@
 .juneung_empty {
    position: relative;
 }
+
+.test_img {
+	padding-bottom: 120px;
+}
 /* 주능 테스트 배너 안 버튼 (임시)
 ----------------------------*/
 .login_no_button {
