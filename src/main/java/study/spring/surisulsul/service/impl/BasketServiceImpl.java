@@ -91,13 +91,13 @@ public class BasketServiceImpl implements BasketService {
 	}
 
 	/**
-	 * 장바구니 데이터 삭제하기
+	 * 장바구니 데이터 삭제하기 - 선택 상품 삭제
 	 * @param Basket 삭제할 정보를 담고 있는 Beans
 	 * @return int
 	 * @throws Exception
 	 */
 	@Override
-	public int deleteBasket(Basket input) throws Exception {
+	public int deleteBasketItem(Basket input) throws Exception {
 		int result = 0;
 
 		try {
@@ -116,4 +116,30 @@ public class BasketServiceImpl implements BasketService {
 		return result;
 	}
 
+	
+	/**
+	 * 장바구니 데이터 삭제하기 - 정상 주문 완료 후 장바구니 내용 전체 삭제
+	 * @param Basket 삭제할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int deleteBasket(Basket input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.delete("BasketMapper.deleteBasket", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+
+		return result;
+	}
 }

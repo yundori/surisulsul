@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,9 @@ import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Sales;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.SalesService;
 
 @Controller
 @Slf4j
@@ -35,6 +38,9 @@ public class ItemController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
+	SalesService salesService;
+	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -43,6 +49,25 @@ public class ItemController {
 	@RequestMapping(value = "/best_items.do", method = RequestMethod.GET)
 	public String best_item(Model model) {
 		
+		List<Product> output = null;
+		int sales_cnt = 0;
+		
+		try {
+			
+			sales_cnt = salesService.getSalesCount(null);
+			
+			if(sales_cnt == 0) {
+				output = productService.best_ProductList_price(null);
+			}
+			else {
+				output = productService.best_ProductList(null);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/best_items";
 	}
 	
@@ -168,15 +193,39 @@ public class ItemController {
 	
 	/* 상품상세페이지로 이동 */
 	@RequestMapping(value = "/item_details.do", method = RequestMethod.GET)
-	public String item_details(Model model) {
+	public String item_details(Model model, HttpServletResponse response,
+			@RequestParam(value = "prodid", defaultValue = "0") int prodid) {
 		
+		Product input = new Product();
+		input.setId(prodid);
+		
+		Product output = null;
+		try {
+			output = productService.details_ProductItem(input);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/item_details";
 	}
 	
 	/* 상품정보 탭페이지로 이동 */
-	@RequestMapping(value = "/item_info.do", method = RequestMethod.GET)
-	public String item_info(Model model) {
+	@RequestMapping(value = "/item_info.do/{prodid}", method = RequestMethod.GET)
+	public String item_info(Model model, HttpServletResponse response,
+			@PathVariable int prodid) {
 		
+		Product input = new Product();
+		input.setId(prodid);
+		
+		Product output = null;
+		try {
+			output = productService.info_ProductItem(input);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output",output);
 		return "items/item_info";
 	}
 	

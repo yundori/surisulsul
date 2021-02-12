@@ -198,7 +198,13 @@
 						<%-- 조회 결과에 따른 반복처리 --%>
 				 		<c:forEach var="item" items="${output}" varStatus="status">
 							<li class="item_info">
-								<a href="${pageContext.request.contextPath}/item_details.do">
+								
+								<%-- 상세페이지로 이동하기 위한 URL --%>
+								<c:url value="/item_details.do" var="viewUrl">
+									<c:param name="prodid" value="${item.id}" />
+								</c:url>
+								
+								<a href="${viewUrl}">
 									<img class="item_img" src="${contextPath}/assets/img/items/${item.img}" /> <br/>
 									<span class="item_title">${item.name}</span>
 									<span class="item_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</span> <br/>
@@ -216,9 +222,9 @@
 										</c:choose>
 									</span> <br/>
 									<ul class="item_tag_list">
-										<li class="item_tag item_type_tag">${item.type}</li>
-										<li class="item_tag item_area_tag">${item.loc}</li>
-										<li class="item_tag item_keyword_tag">${item.key1}</li>
+										<li class="item_tag item_type_tag">#${item.type}</li>
+										<li class="item_tag item_area_tag">#${item.loc}</li>
+										<li class="item_tag item_keyword_tag">#${item.key1}</li>
 									</ul>
 								</a>
 							</li>

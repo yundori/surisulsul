@@ -81,7 +81,7 @@
 					</td>
 				</tr>
 			</table>
-			<a href="${pageContext.request.contextPath }/" id="go_shopping">상품 담으러 가기</a><!-- index나 키워드선택 페이지로 이동 -->			
+			<a href="${pageContext.request.contextPath }/item_filtered.do" id="go_shopping">상품 담으러 가기</a><!-- index나 키워드선택 페이지로 이동 -->			
 		</c:otherwise>
 	</c:choose>
 	

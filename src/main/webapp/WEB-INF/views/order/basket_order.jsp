@@ -34,8 +34,12 @@
 	<form action="${pageContext.request.contextPath }/order/order_ok.do" method="post" class="basket_order_form" name="order_form" id="order_form">
 		<%-- 조회 결과에 따른 반복 처리 --%>
     	<c:forEach var="item" items="${output }" varStatus="status">
-			<input type="hidden" name="item" value="${item.id }"/>
+			<input type="hidden" name="basketItems" value="${item.p_id }"/>
+			<input type="hidden" name="basketNames" value="${item.p_name }"/>
+			<input type="hidden" name="basketPrices" value="${item.p_price }"/>
+			<input type="hidden" name="basketQty" value="${item.qty }"/>
 		</c:forEach>
+		<input type="hidden" name="totalPrice" value="${total_price }"/>
 		<fieldset id="sender_info">
 			<legend>주문자 정보</legend>
 			<div>
@@ -68,9 +72,9 @@
             
             <div class="set_location">
             	<input type="hidden" value="${loginSession.address1 }" id="hiddenAddress1">
-	            <input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" readonly>
+	            <input type="text" class="form-control" id="address" name="address1" placeholder="도로명 주소" readonly>
             	<input type="hidden" value="${loginSession.address2 }" id="hiddenAddress2">
-	            <input type="text" class="form-control" id="detailAddress" placeholder="기타 상세 주소">
+	            <input type="text" class="form-control" id="detailAddress" name="address2" placeholder="기타 상세 주소">
 				<div class="details_info">제주도 및 산간지역은 배송기간이 1~2일 추가될 수 있습니다.</div>
             </div>
 		
@@ -84,8 +88,8 @@
 			<legend>결제 정보</legend>
 			<label for="pay_money" class="col-md-4">결제 방법</label>
 			<div class="col-md-6">
-				<input type="radio" name="payment" value="pay_money" class="payment_info" checked="checked"/> 무통장 입금
-				<input type="radio" name="payment" value="pay_card" class="payment_info"/> 카드결제<br/><br/>
+				<input type="radio" name="payment" value="cash" class="payment_info" checked="checked"/> 무통장 입금
+				<input type="radio" name="payment" value="card" class="payment_info"/> 카드결제<br/><br/>
 			</div>
 			
 			<div id="pay_details_money">
@@ -95,10 +99,10 @@
             	<div class="col-md-6">
             		<select name="bank" class="form-control">
             			<option value="etc" value="0">--------입금은행을 선택해주세요-------</option>
-            			<option value="kb" value="1">국민은행 123456-01-789012 (수리술술)</option>
-            			<option value="sh" value="2">신한은행 123-123-123456 (수리술술)</option>
-            			<option value="nh" value="3">농협은행 123-5678-1234-01 (수리술술)</option>
-            			<option value="wr" value="4">우리은행 1234-567-890123 (수리술술)</option>
+            			<option value="국민">국민은행 123456-01-789012 (수리술술)</option>
+            			<option value="신한">신한은행 123-123-123456 (수리술술)</option>
+            			<option value="농협">농협은행 123-5678-1234-01 (수리술술)</option>
+            			<option value="우리">우리은행 1234-567-890123 (수리술술)</option>
             		</select>
             	</div>
 			</div>
@@ -112,15 +116,15 @@
 			<div class="personal_info_details">
 				<div class="details_info">구매 시 참고사항 : 본 상품은 식품/주류 상품이므로 수령 후 반품/교환이 불가합니다.</div>
 				<div id="personal_info_all">
-					<input type="checkbox" name="items" id="all" class="check_all">
+					<input type="checkbox" name="terms" id="all" class="check_all">
 					약관 전체동의 (원활한 주문 처리를 위하여 이용약관에 동의해주시기 바랍니다.)
 				</div>
 				<div>
-					<input type="checkbox" name="items" id="item1" class="ab">
+					<input type="checkbox" name="terms" id="item1" class="ab">
 					주문하실 상품, 가격, 배송정보 등을 확인하였으며 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
 				</div>
 				<div>
-					<input type="checkbox" name="items" id="item2" class="ab">
+					<input type="checkbox" name="terms" id="item2" class="ab">
 					<div id="personal_info_item2">
 					1. 접근매체의 양도 및 양수, 대여 및 사용위임, 질권설정 기타 담보 제공 및 이의 알선과 접근 매체를 제 3자에게 누설 및 노출, 방치하는 것은 금지됨. (제 17조, 제 21조, 제 23조)<br/><br/>
 					2. 소비자가 재화를 공급받는 날부터 3영업일이 지나도록 정당한 사유의 제시 없이 그 공급받은 사실을 통보하지 않는 경우 소비자의 동의 없이 판매자에게 결제 대금을 지급할 수 있으며,
