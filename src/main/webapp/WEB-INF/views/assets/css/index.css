@@ -136,6 +136,10 @@
    margin-bottom: 30px;
 }
 
+#main_best_top {
+	margin-top: -120px;
+}
+
 /* 인기 많은 술 이미지
 ----------------------------*/
 .main_best_img {
@@ -203,6 +207,9 @@
    font-size: 15px;
 }
 
+.over_title {
+	line-height: 20px;
+}
 /** 우리 술 종류.css */
 .main_drink {
    width: 1100px;
