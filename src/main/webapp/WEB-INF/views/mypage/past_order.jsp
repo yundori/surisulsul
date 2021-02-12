@@ -4,16 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
-<link rel="stylesheet" type="text/css"
-   href="${contextPath}/assets/css/common.css?time=${currentTime}" />
-<link rel="stylesheet" type="text/css"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-   <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
 <%-- JSTL로 변수 생성 --%>
 <%-- 1) 캐시를 방지하기 위해 자주 수정되는 css,js 파일에 설정하는 용도 --%>
 <c:set var="currentTime" value="<%=System.currentTimeMillis()%>" />
