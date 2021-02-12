@@ -48,14 +48,11 @@ public class MypageController {
 
 	/** 회원 정보 확인 */
 	@RequestMapping(value = "/mypage/mypage.do", method = RequestMethod.GET)
-	public ModelAndView mypage(Locale locale, Model model, HttpServletRequest request) {
+	public ModelAndView mypage(Model model, HttpServletRequest request) {
 		// 세션값 받아오기
 		HttpSession session = request.getSession();
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		Member output = null;
-		
-		boolean jn_result = false;
-		List<Product> jn_output = null;
 
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 		if (loginSession == null) {
@@ -72,48 +69,80 @@ public class MypageController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 
-			if (loginSession.getJn_result() == null) {// 로그인 O / 주능결과 X
-				jn_result = false;
-			} else {// 로그인 O / 주능결과 O
-				jn_result = true;
-
-				Product input = new Product();
-				input.setJn_result(loginSession.getJn_result());
-
-				jn_output = new ArrayList<Product>();
-				/** 주능 결과에 해당하는 술 가져오기 */
-
-				// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
-				// public List<Product> selectJn_result(Product input);
-				// ProducServiceImpl > selectJn_result() > mapper에 있는 select구문 실행
-
-				// output = productService.selectJn_result(input);
-			}
-		}
-
-		List<Product> best_output = new ArrayList<Product>();
-		try {
-			// Mapper안에 SQL문 작성 따로 해야될 0,4
-			// Impl에 어떤 메서드로 들어가는지 확인해서 아래 구문 수정
-			best_output = productService.jn_ProductList(null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 		/** View 처리 */
-		model.addAttribute("output", output);
-		model.addAttribute("jn_output", jn_output);
-		model.addAttribute("jn_result", jn_result);
-		model.addAttribute("best_output", best_output);
-		
+		model.addAttribute("output", output);	
+		}
 		return new ModelAndView("mypage/mypage");
 	}
 
 	/** 주능 결과 확인 */
 	@RequestMapping(value = "/mypage/my_recommend.do", method = RequestMethod.GET)
-	public String my_recommend(Model model) {
-		System.out.println("mypage/my_recommend 메서드 정상적으로 들어옴.");
-		return "mypage/my_recommend";
+	public ModelAndView my_recommend(Model model, HttpServletRequest request) {
+		// 세션값 받아오기
+		System.out.println("my_recommend.do 실행>>");
+				HttpSession session = request.getSession();
+				Member loginSession = (Member) session.getAttribute("loginInfo");
+				Member output = null;
+				
+				boolean jn_result = false;
+				List<Product> jn_output = null;
+				String jn_result_name = null;
+
+				// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+				if (loginSession == null) {
+					String redirectUrl = "../account/login.do";
+					return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
+
+				} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+					Member member = new Member();
+					member.setId(loginSession.getId());
+
+					try {
+						output = memberService.getMemberItem(member);
+					} catch (Exception e) {
+						return webHelper.redirect(null, e.getLocalizedMessage());
+					}
+
+					if (output.getJn_result() == null) {// 로그인 O / 주능결과 X
+						jn_result = false;
+						System.out.println("jn_result=false");
+					} else {// 로그인 O / 주능결과 O
+						jn_result = true;
+						jn_result_name = output.getJn_result();
+						System.out.println("jn_result=true");
+						System.out.println(jn_result_name);
+
+						Product input = new Product();
+						input.setJn_result(loginSession.getJn_result());
+
+						jn_output = new ArrayList<Product>();
+						/** 주능 결과에 해당하는 술 가져오기 */
+
+						// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
+						// public List<Product> selectJn_result(Product input);
+						// ProducServiceImpl > selectJn_result() > mapper에 있는 select구문 실행
+
+						// output = productService.selectJn_result(input);
+					}
+				}
+
+				List<Product> best_output = new ArrayList<Product>();
+				try {
+					// Mapper안에 SQL문 작성 따로 해야될 0,4
+					// Impl에 어떤 메서드로 들어가는지 확인해서 아래 구문 수정
+					best_output = productService.jn_ProductList(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				/** View 처리 */
+				model.addAttribute("output", output);
+				model.addAttribute("jn_output", jn_output);
+				model.addAttribute("jn_result", jn_result);
+				model.addAttribute("jn_result_name", jn_result_name);
+				model.addAttribute("best_output", best_output);
+				
+				return new ModelAndView("mypage/my_recommend");
 	}
 
 	/** 상품 상세페이지 이동 --> ItemController */
