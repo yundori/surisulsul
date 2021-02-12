@@ -11,27 +11,37 @@
 		<div id="slides">
 			<ul class="slides-container">
 				<!-- 슬라이드 1 (무료배송, 이동 페이지 없음.)-->
-				<li><a href="#"> <img
-						src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" /></a></li>
+				<li>
+				<a href="#"> 
+				<img src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" />
+				</a>
+				</li>
+				
 				<!-- 슬라이드 2 (내가 찾는 술) -->
-				<li><a
-					href="${pageContext.request.contextPath}/item_filtered.do"><img
-						src="${contextPath}/assets/img/index/banner2.png" alt="메인배너" /></a></li>
-				<!-- 슬라이드 3 (우리 술 종류) -->
-				<li><a href="${pageContext.request.contextPath}/takju.do"><img
-						src="${contextPath}/assets/img/index/banner3.png" alt="메인배너" /></a></li>
+				<li>
+				<a href="${pageContext.request.contextPath}/item_filtered.do">
+				<img src="${contextPath}/assets/img/index/banner2.png" alt="메인배너" />
+				</a>
+				</li>
+				
+				<!-- 슬라이드 3 (우리 술 종류 -> 탁주로 이동합니다.) -->
+				<li>
+				<a href="${pageContext.request.contextPath}/takju.do">
+				<img src="${contextPath}/assets/img/index/banner3.png" alt="메인배너" />
+				</a>
+				</li>
 			</ul>
 		</div>
 	</div>
+	
 	<!-- 2. 주능 테스트 결과
         1. 로그인 ok , 테스트 ok -> 주능 결과에 맞게 요약 보여줌
-        2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움 -->
+        2. 로그인 ok , 테스트 x -> 주능 테스트 해보세요 ! 배너 띄움
+        3. 로그인 x -> 주능 테스트 해보세요 ! 배너 띄움 -->
+        
 	<c:choose>
-		<%-- 여기서 test에 들어가있는 첫번째 true의 의미 = 로그인 여부 (로그인 되어있으면 true)
-         test에 들어가있는 두번째 boolean값의 의미 = 로그인 된 사용자의 주능 테스트 이력 여부 (테스트한적 있으면 true) 
-       --%>
 		<c:when test="${jn_result}">
-			<%-- 로그인 여부가 true이고, 동시에 본 사용자의 주능 테스트 이력 역시 true(주능 본적 있음)일 때 index에 출력할 내용 --%>
+			<%-- 1번의 경우 (true) --%>
 			<div class="main_best">
 				<h1>취향에 맞는 술을 추천해드려요 !</h1>
 				<c:forEach var="item" items="${jn_output}" varStatus="status">
@@ -40,15 +50,11 @@
 					</c:url>
 					<a href="${viewUrl}">
 						<div class="main_best_img" id="best_img1">
-							<img src="${contextPath}/assets/img/items/${item.img}"
-								alt="주능 결과 추천 술" />
+							<img src="${contextPath}/assets/img/items/${item.img}" alt="주능 결과 추천 술" />
 							<div class="over">
 								<div class="main_best_over">
 									<span class="over_title">${item.name}</span>
-									<p class="over_des">
-										<fmt:formatNumber value="${item.price}" pattern="#,###" />
-										원
-									</p>
+									<p class="over_des"><fmt:formatNumber value="${item.price}" pattern="#,###" />원</p>
 								</div>
 							</div>
 						</div>
@@ -56,19 +62,20 @@
 				</c:forEach>
 			</div>
 		</c:when>
+		
 		<c:otherwise>
-			<%-- 로그인 여부가 false이던지, 로그인이 true여도 주능결과가 없을 경우 index에 출력되는 내용 
-            주능을 보시겠습니까? + 주능보러가기 버튼 --%>
+			<%-- 2,3번의 경우 (false) --%>
 			<div class="juneung_empty">
 				<div class="test_img">
-					<a href="${pageContext.request.contextPath}/juneung.do"> <img
-						src="${contextPath}/assets/img/index/juneung.png" alt="주능 테스트배너" /></a>
+					<a href="${pageContext.request.contextPath}/juneung.do"> 
+					<img src="${contextPath}/assets/img/index/juneung.png" alt="주능 테스트배너" />
+					</a>
 				</div>
 			</div>
 		</c:otherwise>
 	</c:choose>
-	<!-- 3. 인기 많은 술 best !
-         상품에 hover 시, 이미지 어두워지고 가격과 상품명 노출 -->
+	
+	<!-- 3. 인기 많은 술 best 4 -->
 	<div class="main_best" id="main_best_top">
 		<h1>인기 많은 술</h1>
 		<c:forEach var="item" items="${best_output}" varStatus="status">
@@ -82,10 +89,10 @@
 						<div class="main_best_over">
 						<span class="over_title">${item.name}</span>
 						<p class="over_des"><fmt:formatNumber value="${item.price}" pattern="#,###" />원</p>
+						</div>
+						</div>
 					</div>
-				</div>
-				</div>
-			</a>
+				</a>
 		</c:forEach>
 	</div>
 	<!-- 4. 우리 술 종류
