@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Basket;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.service.BasketService;
 import study.spring.surisulsul.service.OrderService;
 
@@ -25,6 +27,9 @@ public class OrderController {
 	
 	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
+	
 	
 	//Service 패턴 객체 주입
 	@Autowired
@@ -44,7 +49,6 @@ public class OrderController {
 			@RequestParam(value = "p_name", required = true) String p_name,
 			@RequestParam(value = "p_price", defaultValue = "0") int p_price,
 			@RequestParam(value = "order_quantity", defaultValue = "0") int qty){
-		System.out.println("장바구니 add_ok 메서드로 연결");
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
 		Member loginSession = (Member) session.getAttribute("loginInfo");
@@ -196,9 +200,111 @@ public class OrderController {
 	
 	/** 주문 내용 INSERT 처리 + 주문 결과 페이지로 연결 */
 	@RequestMapping(value = "/order/order_ok.do", method = RequestMethod.POST)
-	public ModelAndView go_order_result(Model model) {
+	public ModelAndView go_order_result(Model model, HttpServletRequest request,
+			@RequestParam(value="basketItems", required=false) List<String> basketItems,
+			@RequestParam(value="basketNames", required=false) List<String> basketNames,
+			@RequestParam(value="basketPrices", required=false) List<String> basketPrices,
+			@RequestParam(value="basketQty", required=false) List<String> basketQty,
+			@RequestParam(value="totalPrice", required=false) int total_price,
+			@RequestParam(value="receiver_name", required=false) String r_name,
+			@RequestParam(value="receiver_tel", required=false) String r_phone,
+			@RequestParam(value="postcode", required=false) String postcode,
+			@RequestParam(value="address1", required=false) String address1,
+			@RequestParam(value="address2", required=false) String address2,
+			@RequestParam(value="payment", required=false) String payment,
+			@RequestParam(value="payed_name", required=false) String payed_name,
+			@RequestParam(value="bank", required=false) String payed_bank,
+			@RequestParam(value="terms", required=false) List<String> terms) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
 		boolean order_result = false;
 		
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */		
+		// 이름 유효성 검사
+		if(r_name.equals("")) {return webHelper.redirect(null, "수령인 이름을 입력하세요.");}
+		if(!regexHelper.isKor(r_name)) {return webHelper.redirect(null, "이름은 한글만 가능합니다.");}
+		
+		// 핸드폰 번호 유효성 검사
+		if(r_phone.equals("")) {return webHelper.redirect(null, "핸드폰 번호를 입력하세요.");}
+		if(!regexHelper.isCellPhone(r_phone)) {return webHelper.redirect(null, "핸드폰 번호를 - 없이 올바른 양식으로 입력해 주세요.");}
+		
+		// 주소 유효성 검사
+		if(postcode.equals("")) {return webHelper.redirect(null, "우편번호를 입력하세요.");}
+		if(address1.equals("")) {return webHelper.redirect(null, "주소를 입력하세요.");}
+		if(address2.equals("")) {return webHelper.redirect(null, "상세주소를 입력하세요.");}
+		
+		//payment가 현금일 경우 유효성 검사 -> payed_name과 payed_bank
+		//payment가 카드일 경우 유효성 검사 -> 보류
+		if(payment.equals("cash")) {
+			if(payed_name.equals("")) {return webHelper.redirect(null, "입금자명을 입력하세요.");}
+			if(!regexHelper.isKor(payed_name)) {return webHelper.redirect(null, "이름은 한글만 가능합니다.");}
+			if(payed_bank.equals("") || payed_bank==null || payed_bank.equals("0")) {
+				return webHelper.redirect(null, "입금 은행을 선택해주세요.");
+			}
+		}else if(payment.equals("card")) {
+			
+		}
+		
+		// 이용약관 동의 유효성 검사
+		if(terms.size()<3) {return webHelper.redirect(null, "이용약관에 모두 동의해주세요.");}
+		
+		/** 2) 데이터 beans에 저장 */
+		//orders 테이블에 들어갈 주문 정보 (구매자/수령자/결제방식 등)
+		Order input = new Order();
+		input.setPrice(total_price);
+		input.setB_id(loginSession.getId());
+		input.setB_name(loginSession.getName());
+		input.setB_phone(loginSession.getPhone());
+		input.setR_name(r_name);
+		input.setR_phone(r_phone);
+		input.setR_postcode(postcode);
+		input.setR_address1(address1);
+		input.setR_address2(address2);
+		input.setPayment(payment);
+		if(payment.equals("cash")) {	//현금 결제 radio 선택 시
+			input.setPay_cash(payed_bank+"("+payed_name+")");
+			input.setPay_card(null);
+			input.setPay_result("N");
+		}else {							//카드 결제 radio 선택 시
+			input.setPay_cash(null);
+			input.setPay_card("cardname");
+			input.setPay_result("Y");
+		}
+		
+		/** 3) 주문(orders) 테이블에 데이터 저장 */
+		try {
+			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값 저장
+			orderService.addOrder(input);
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		/** 4) 주문상세(orders_sub) 테이블에 데이터 저장 */
+		// 1. basketItem의 size만큼 반복문을 돌면서 들어갈 데이터 준비
+		// 2. orders_sub에 들어갈 데이터가 준비되면 orders_sub 테이블에 INSERT 수행
+		Order subInput = new Order();
+		for(int i=0; i<basketItems.size(); i++) {
+			//orders_sub의 o_id에 들어갈 값 (orders 테이블에 담긴 정보의 PK값)
+			subInput.setO_id(input.getO_id());
+			
+			//orders_sub에 들어갈 값 (hidden에서 가져온거)
+			subInput.setP_id(Integer.parseInt(basketItems.get(i)));
+			subInput.setP_name(basketNames.get(i));
+			subInput.setP_price(Integer.parseInt(basketPrices.get(i)));
+			subInput.setP_qty(Integer.parseInt(basketQty.get(i)));
+			
+			//orders_sub에 o_date에 들어갈 값 (orders 테이블에 담긴 reg_date 컬럼값)
+			subInput.setReg_date(input.getReg_date());
+			
+			try {
+				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 subInput 객체에 PK값 저장
+				orderService.addOrderProducts(subInput);
+			} catch (Exception e) { e.printStackTrace(); }
+		}
+		
+		/** 5) 여기까지 정상 수행 시 order_result를 true로 바꾸고 View 처리 */
+		order_result = true;
 		//View 처리
 		model.addAttribute("result", order_result);
 		return new ModelAndView("order/order_result");

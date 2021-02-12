@@ -30,6 +30,7 @@
 		<result property="p_id" column="p_id" />
 		<result property="p_name" column="p_name" />
 		<result property="p_price" column="p_price" />
+		<result property="p_qty" column="qty" />
 		
 		<result property="total_qty" column="total_qty" />
 	</resultMap>
@@ -66,13 +67,13 @@
 		VALUES 
 		(#{price}, #{b_id}, #{b_name}, #{b_phone},
 		#{r_name}, #{r_phone}, #{r_postcode}, #{r_address1}, #{r_address2}.
-		#{payment}, #{pay_cash}, #{pay_card}, #{pay_result}, #{send_result}, now(), now());
+		#{payment}, #{pay_cash}, #{pay_card}, #{pay_result}, 'N', now(), now());
 	</insert>
 	
 	<!-- 주문하기 - orders_sub 테이블에 주문 상세 상품 목록 입력(INSERT) 기능 정의 -->
 	<insert id="insertSubItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="sub_id">
 		INSERT INTO orders_sub (o_id, p_id, p_name, p_price, qty, o_date)
-		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{qty}, #{o_date});
+		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{p_qty}, #{reg_date});
 	</insert>
 	
 	<!-- 주문취소 - orders 테이블에서 주문 관련 데이터 취소(=삭제=DELETE) 기능 정의 -->
