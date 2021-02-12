@@ -136,7 +136,7 @@
 		<h3 class="psn_title_dsc">아직 관심있어요를 누른 상품이 없습니다.
 		<br/>
 		<span class="psn_gotest">관심있는 상품을 찜해두면 편하게 확인할 수 있습니다.</span></h3>
-		<a href="${pageContext.request.contextPath}/items/item_filtered.do" class="btn_blue">관심있는
+		<a href="${pageContext.request.contextPath}/item_filtered.do" class="btn_blue">관심있는
 			상품 담으러 가기</a>
 		<%--나중에 윗 줄 <a> 주소 수정 --%>
 	</div>

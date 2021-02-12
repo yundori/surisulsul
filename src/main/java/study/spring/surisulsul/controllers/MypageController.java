@@ -79,10 +79,10 @@ public class MypageController {
 	@RequestMapping(value = "/mypage/my_recommend.do", method = RequestMethod.GET)
 	public ModelAndView my_recommend(Model model, HttpServletRequest request) {
 		// 세션값 받아오기
-		System.out.println("my_recommend.do 실행>>");
 				HttpSession session = request.getSession();
 				Member loginSession = (Member) session.getAttribute("loginInfo");
 				Member output = null;
+				List<Product> pro_output = null;
 				
 				boolean jn_result = false;
 				List<Product> jn_output = null;
@@ -105,34 +105,24 @@ public class MypageController {
 
 					if (output.getJn_result() == null) {// 로그인 O / 주능결과 X
 						jn_result = false;
-						System.out.println("jn_result=false");
 					} else {// 로그인 O / 주능결과 O
 						jn_result = true;
 						jn_result_name = output.getJn_result();
-						System.out.println("jn_result=true");
-						System.out.println(jn_result_name);
 
 						Product input = new Product();
 						input.setJn_result(loginSession.getJn_result());
 
 						jn_output = new ArrayList<Product>();
+						
 						/** 주능 결과에 해당하는 술 가져오기 */
-
-						// Mapper안에 해당하는 주능 결과를 가져오는 SQL문 작성
-						// public List<Product> selectJn_result(Product input);
-						// ProducServiceImpl > selectJn_result() > mapper에 있는 select구문 실행
-
-						// output = productService.selectJn_result(input);
+						try {
+							pro_output = productService.jn_ProductList(input);
+							System.out.println(pro_output);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
-				}
-
-				List<Product> best_output = new ArrayList<Product>();
-				try {
-					// Mapper안에 SQL문 작성 따로 해야될 0,4
-					// Impl에 어떤 메서드로 들어가는지 확인해서 아래 구문 수정
-					best_output = productService.jn_ProductList(null);
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 
 				/** View 처리 */
@@ -140,7 +130,7 @@ public class MypageController {
 				model.addAttribute("jn_output", jn_output);
 				model.addAttribute("jn_result", jn_result);
 				model.addAttribute("jn_result_name", jn_result_name);
-				model.addAttribute("best_output", best_output);
+				model.addAttribute("pro_output", pro_output);
 				
 				return new ModelAndView("mypage/my_recommend");
 	}
