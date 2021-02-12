@@ -340,7 +340,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
 
 /**구매했어요 표 넓이 설정
 --> 상품 정보안내 열 넓이 설정*/
-.order_table td:nth-child(2) {
+.order_table td:nth-child(1) {
     min-width: 300px;
     position: relative;
     padding-left: 122px;
@@ -349,7 +349,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
 
 /**구매했어요 표 줄 간격 설정
 --> 상품주문상태와 버튼 사이 간격 설정*/
-.order_table td:nth-child(5) {
+.order_table td:nth-child(4) {
     line-height: 2em;
 }
 
