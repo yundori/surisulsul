@@ -55,7 +55,11 @@
 		FROM orders o
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
-		WHERE o.b_id=#{loginId};	
+		WHERE o.b_id=#{loginId}
+		ORDER BY o.id DESC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 주문 단일행 조회 - 주문 PK로 주문정보 받아오기 -->
@@ -66,8 +70,11 @@
 	
 	<!-- 주문 목록 수 조회 - 구매했어요:페이지네이션 사용 용도 -->
 	<select id="selectOrderCount" parameterType="study.spring.surisulsul.model.Order" resultType="int">
-		SELECT COUNT(*) FROM orders
-		WHERE b_id=#{loginId};
+		SELECT COUNT(*)
+		FROM orders o
+		INNER JOIN orders_sub os
+		ON o.id=os.o_id
+		WHERE o.b_id=#{loginId};
 	</select>
 	
 	<!-- 주문하기 - orders 테이블에 주문 관련 데이터 입력(INSERT) 기능 정의 -->

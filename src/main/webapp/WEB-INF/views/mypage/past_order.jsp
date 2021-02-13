@@ -10,6 +10,8 @@
 <%-- 2) 프로젝트이름 기반의 절대경로값 --%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
+
 <div class="psn_past_order">
 	<div class="psn_title">
 		<h2 class="psn_title_txt">구매했어요</h2>
@@ -44,19 +46,20 @@
 							<td><fmt:formatNumber value="${item.p_price * item.p_qty}" pattern="#,###"/>원</td>
 							<c:choose>
 								<c:when test="${item.pay_result=='Y' && item.send_result=='N' }">
-									<td>상품준비중<br /> <a href="#" class="cancel_order btn_nor" type="button"returnfalse;>주문취소</a></td>
+									<td>상품준비중<br /> <a href="javascript:cancelOrder(${item.o_id});" class="cancel_order btn_nor" type="button" >주문취소</a></td>
 								</c:when>
 								<c:when test="${item.pay_result=='N' && item.send_result=='N' }">
-									<td>입금대기중<br /> <a href="#" class="cancel_order btn_nor" type="button"returnfalse;>주문취소</a></td>
+									<td>입금대기중<br /> <a href="javascript:cancelOrder(${item.o_id});" class="cancel_order btn_nor" type="button" >주문취소</a></td>
 								</c:when>
 								<c:otherwise>
-									<td>배송완료<br /> <a href="#" class="write_review btn_yellow" onClick="openPop()"returnfalse;>후기쓰기</a></td>
+									<td>배송완료<br /> <a href="#" class="write_review btn_yellow" onClick="openPop(); return false;">후기쓰기</a></td>
 								</c:otherwise>
 							</c:choose>
 						</tr>
 				</c:forEach>
 			</table>
-
+		</div>
+		<div class="pageNumber">
 			<!-- 페이지 번호 구현 -->
 			<%-- 이전 그룹에 대한 링크 --%>
 			<c:choose>
@@ -69,8 +72,8 @@
 					<a href="${prevPageUrl}">[이전]</a>
 				</c:when>
 				<c:otherwise>
-			[이전]
-		</c:otherwise>
+					[이전]
+				</c:otherwise>
 			</c:choose>
 
 			<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
@@ -85,11 +88,11 @@
 				<c:choose>
 					<%-- 현재 머물고있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
 					<c:when test="${pageData.nowPage == i}">
-						<strong>[${i}]</strong>
+						<strong>${i}</strong>
 					</c:when>
 					<%-- 나머지 페이지의 경우 링크 적용함 --%>
 					<c:otherwise>
-						<a href="${pageUrl}">[${i}]</a>
+						<a href="${pageUrl}">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -105,11 +108,10 @@
 					<a href="${nextPageUrl}">[다음]</a>
 				</c:when>
 				<c:otherwise>
-			[다음]
-		</c:otherwise>
+					[다음]
+				</c:otherwise>
 			</c:choose>
 		</div>
-
 	</c:when>
 	<%--c:otherwise --> 주능 테스트 이력이 없는 경우 -> 주능 결과 DB에 데이터 X --%>
 	<c:otherwise>
@@ -128,32 +130,30 @@
 				.open('../mypage/write_review.jsp', '후기쓰기',
 						'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 	}
-
+	
 	//주문취소
-	$(function() {
-		$(".cancel_order").click(function() {
-			//확인, 취소버튼에 따른 후속 처리 구현
-			swal({
-				title : '정말 주문을 취소하시겠습니까?',
-				text : "해당 상품이 포함된 주문이 전체 취소됩니다.",
-				type : 'question',
-				confirmButtonText : '아니오',
-				showCancelButton : true,
-				cancelButtonText : '네',
-			}).then(function(result) {
-				if (result.value) {
-					swal({
-						title : '주문 취소',
-						text : "주문취소가 완료되었습니다.",
-						type : 'success',
-						confirmButtonText : '확인',
-					}).then(function() {
-						window.location = '../mypage/mypage.jsp';
-					});
-				} else if (result.dismiss === 'cancel') {
-					swal('확인', '주문이 그대로 진행됩니다.', 'success');
-				}
-			});
+	function cancelOrder(orderId) {
+		//확인, 취소버튼에 따른 후속 처리 구현
+		swal({
+			title : '정말 주문을 취소하시겠습니까?',
+			text : "해당 상품이 포함된 주문이 전체 취소됩니다.",
+			type : 'question',
+			confirmButtonText : '네',
+			showCancelButton : true,
+			cancelButtonText : '아니오',
+		}).then(function(result) {
+			if (result.value) {
+					/*swal({
+					title : '주문 취소',
+					text : "주문취소가 완료되었습니다.",
+					type : 'success',
+					confirmButtonText : '확인',
+				}).then(function() {*/
+					window.location = '${pageContext.request.contextPath }/order/delete_ok.do?orderId='+orderId;
+				/*});*/					
+			} else if (result.dismiss === 'cancel') {
+				swal('확인', '주문이 그대로 진행됩니다.', 'success');
+			}
 		});
-	});
+	}
 </script>

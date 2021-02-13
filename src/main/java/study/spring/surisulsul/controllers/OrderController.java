@@ -344,9 +344,8 @@ public class OrderController {
 		
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 3; // 한 페이지당 표시할 목록 수
+		int listCount = 4; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
-		boolean result = false; // 구매했어요 데이터를 받아와서 결과를 보낼 변수 
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -359,6 +358,7 @@ public class OrderController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = orderService.getOrderCount(input);
+			System.out.println(">>>>>>>>주문목록개수 : " + totalCount);
 			// 페이지 번호 계산 --> 계산 결과를 로그로 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
@@ -368,9 +368,6 @@ public class OrderController {
 
 			// 데이터 조회하기
 			orderOutput = orderService.getOrderList(input);
-			if(orderOutput.size()>0) {
-				result = true;
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -378,7 +375,27 @@ public class OrderController {
 		/** 3) View 처리 */
 		model.addAttribute("output", orderOutput);
 		model.addAttribute("pageData", pageData);
-		model.addAttribute("result", result);
 		return new ModelAndView("mypage/past_order");
+	}
+	
+	@RequestMapping(value = "/order/delete_ok.do", method = RequestMethod.GET)
+	public ModelAndView orderDelete(Model model, HttpServletRequest request,
+			@RequestParam(value = "orderId", defaultValue = "0") int orderId) {
+		
+		System.out.println("orderId = "+orderId);
+		
+		/** 파라미터 유효성 검사 */
+		if(orderId == 0 ) {
+			return webHelper.redirect(null, "잘못된 요청입니다.");
+		}
+		
+		Order input = new Order();
+		input.setO_id(orderId);
+		
+		try {
+			orderService.deleteOrder(input);
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		return webHelper.redirect(contextPath+"/mypage/mypage.do", "주문취소가 정상 처리 되었습니다.");
 	}
 }
