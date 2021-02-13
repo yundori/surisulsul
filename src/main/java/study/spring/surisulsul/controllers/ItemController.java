@@ -226,7 +226,7 @@ public class ItemController {
 			
 			// 위시리스트 존재 여부 확인
 			try {
-				same_output = wishlistService.getWishlistCount(input);
+				same_output = wishlistService.getSameWishlistCount(input);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

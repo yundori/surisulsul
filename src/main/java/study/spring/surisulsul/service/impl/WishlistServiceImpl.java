@@ -42,7 +42,7 @@ public class WishlistServiceImpl implements WishlistService {
 	}
 
 	/**
-	 * 해당 wishlist 존재 여부 조회
+	 * wishlist 갯수 조회
 	 */
 	@Override
 	public int getWishlistCount(Wishlist input) throws Exception {

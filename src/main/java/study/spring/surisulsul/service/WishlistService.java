@@ -14,7 +14,7 @@ public interface WishlistService {
 	public List<Wishlist> getWishlistList(Wishlist input) throws Exception;
 
 	/**
-	 * 해당 상품의 위시리스트 데이터가 저장되어 있는지 조회
+	 * 해당 회원의 위시리스트 갯수 조회
 	 * 
 	 * @return int
 	 * @throws Exception
