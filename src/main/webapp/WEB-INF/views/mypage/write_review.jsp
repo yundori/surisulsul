@@ -39,8 +39,8 @@
                 <div class="item-name">경성과하주</div>
                 <div class="item-price">28,000원</div>
             </div>
-            <form>
-                <div class="form-group stars stars-example-fontawesome" method="post" action="${pageContext.request.contextPath}/account/write_review_ok.do">
+            <form id="addForm" action="${pageContext.request.contextPath}/review">
+                <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
                     <select id="example-fontawesome" name="rating" autocomplete="off">
                         <option value="1">1</option>
@@ -66,9 +66,33 @@
             </form>
         </div>
     </div>
+    
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
+    $(function() {
+        // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+        $("#addForm").ajaxForm({
+            // 전송 메서드 지정
+            method: "POST",
+            // 서버에서 200 응답을 전달한 경우 실행됨
+            success: function(json) {
+                console.log(json);
+                
+                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+                if (json.rt == "OK") {
+                	alert("리뷰 작성이 완료되었습니다.");
+                    window.close();
+                }
+            }
+        });
+    });
     $('.write-content').keyup(function(e) {
         var content = $(this).val();
         $('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
