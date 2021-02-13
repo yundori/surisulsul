@@ -55,7 +55,8 @@
 		FROM orders o
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
-		WHERE o.b_id=#{loginId};	
+		WHERE o.b_id=#{loginId}
+		ORDER BY o.id DESC;	
 	</select>
 	
 	<!-- 주문 단일행 조회 - 주문 PK로 주문정보 받아오기 -->

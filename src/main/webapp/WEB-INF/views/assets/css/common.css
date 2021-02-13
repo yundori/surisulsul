@@ -251,3 +251,20 @@ label #cancel {
     font-size: 14px;
     font-weight: bold;
 }
+
+/********************************
+---------페이지네이션 div--------
+*********************************/
+.pageNumber{
+	margin:10px auto 30px;
+	font-size:16px;
+	text-align:center;
+	color:#757575;
+}
+.pageNumber a{
+	color:#000;
+}
+.pageNumber strong{
+	color:#000;
+	margin:0 5px;
+}
