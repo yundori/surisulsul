@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="item_info">
 	<div>
@@ -28,7 +31,21 @@
 
 		<div class="jn_result">
 			<h4>주로 찾는 사람들</h4>
-			<img src="${contextPath}/surisulsul/assets/img/mypage/flower01.png" />
+			<c:choose>
+			<c:when test="${'무궁화' eq output.jn_result}">
+				<img src="${contextPath}/surisulsul/assets/img/mypage/flower01.png" />
+			</c:when>
+			<c:when test="${'수국' eq output.jn_result}">
+				<img src="${contextPath}/surisulsul/assets/img/mypage/flower04.png" />
+			</c:when>
+			<c:when test="${'진달래' eq output.jn_result}">
+				<img src="${contextPath}/surisulsul/assets/img/mypage/flower03.png" />
+			</c:when>
+			<c:otherwise>
+				<img src="${contextPath}/surisulsul/assets/img/mypage/flower02.png" />
+			</c:otherwise>
+			</c:choose>
+			
 			<ul>
 				<li>이런 타입의 사람들이 많이 찾습니다!</li>
 				<li>주능 테스트 타입 요약 항목1</li>
@@ -62,6 +79,7 @@
 		
 	</div>
 </div>
+
 <script>
 	/** 차트 구현 **/
 	var ctx = document.getElementById('item_chart').getContext('2d');
