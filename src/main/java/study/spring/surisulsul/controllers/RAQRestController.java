@@ -40,11 +40,48 @@ public class RAQRestController {
 	@RequestMapping(value="/review", method=RequestMethod.POST)
 	public Map<String, Object> write_review(
 			@RequestParam(value="p_id", defaultValue="0") int p_id,
-			@RequestParam(value="title", required = false) String title,
 			@RequestParam(value="content", required = false) String content,
 			@RequestParam(value="star", defaultValue="0") int star,
 			@RequestParam(value="rev_img", required = false) String rev_img) {
-		return null;
+		
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
+		if(content.equals("")) {return webHelper.getJsonWarning("후기 내용을 입력하세요.");}
+		if(rev_img.equals("")) { rev_img = "default.png"; } 
+		
+		// 숫자형으로 선언된 파라미터
+		if (p_id==0) {return webHelper.getJsonWarning("상품이 선택되지 않았습니다.");}
+		if (star==0) {return webHelper.getJsonWarning("별점을 입력하세요. 1~5 사이로 입력 가능합니다.");}
+
+		
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Review input = new Review();
+		input.setM_id(1);
+		input.setM_name("마수리");
+		input.setP_id(p_id);
+		input.setContent(content);
+		input.setStar(star);
+		input.setRev_img(rev_img);
+		
+		Review output = null;
+
+
+		try {
+			// 데이터 저장
+			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
+			reviewAndQnaService.addReview(input);
+			
+			// 데이터 조회
+			output = reviewAndQnaService.getReviewItem(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** 3) 결과를 확인하기 위한 JSON 출력 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item", output);
+		return webHelper.getJsonData(map);
 	}
 	
 	/** 리뷰 수정에 대한 action 페이지 */
@@ -55,8 +92,43 @@ public class RAQRestController {
 	
 	/** 문의 작성에 대한 action 페이지 */
 	@RequestMapping(value="/question", method=RequestMethod.POST)
-	public Map<String, Object> write_question() {
-		return null;
+	public Map<String, Object> write_question(
+			@RequestParam(value="p_id", defaultValue="0") int p_id,
+			@RequestParam(value="content", required = false) String content) {
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
+		if(content.equals("")) {return webHelper.getJsonWarning("문의 내용을 입력하세요.");}
+		
+		// 숫자형으로 선언된 파라미터
+		if (p_id==0) {return webHelper.getJsonWarning("상품이 선택되지 않았습니다.");}
+
+		
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Qna input = new Qna();
+		input.setM_id(1);
+		input.setM_name("마수리");
+		input.setP_id(p_id);
+		input.setContent(content);
+		
+		Qna output = null;
+
+
+		try {
+			// 데이터 저장
+			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
+			reviewAndQnaService.addQna(input);
+			
+			// 데이터 조회
+			output = reviewAndQnaService.getQnaItem(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** 3) 결과를 확인하기 위한 JSON 출력 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item", output);
+		return webHelper.getJsonData(map);
 	}
 	
 	/** 문의 수정에 대한 action 페이지 */

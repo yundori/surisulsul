@@ -9,14 +9,14 @@ public class Review {
 		private int m_id;
 		private String m_name;
 		private int p_id;
-		private String title;
 		private String content;
-		private String star;
+		private int star;
 		private String reg_date;
 		private String edit_date;
 		private String rev_img;
 
 		// 2) Join 절에 따른 추가 컬럼
+		private String p_name;
 		
 		// 3) 페이지 구현을 위한 static 변수
 		/** LIMIT 절에서 사용할 조회 시작 위치 */

@@ -19,6 +19,25 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 	@Autowired
 	SqlSession sqlSession;
 	
+	/** 단일 리뷰 조회 */
+	public Review getReviewItem(Review input) throws Exception{
+		Review result = null;
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectReviewItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
 	/** 상품별 리뷰 목록 조회 */
 	@Override
 	public List<Review> getProductReviewList(Review input) throws Exception {
@@ -137,6 +156,25 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
 
+		return result;
+	}
+
+	/** 단일 문의 조회 */
+	public Qna getQnaItem(Qna input) throws Exception{
+		Qna result = null;
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectQnaItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 		return result;
 	}
 

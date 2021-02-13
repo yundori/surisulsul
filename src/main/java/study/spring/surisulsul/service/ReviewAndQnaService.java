@@ -6,6 +6,9 @@ import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
 
 public interface ReviewAndQnaService {
+	
+	// 단일 리뷰 조회
+	public Review getReviewItem(Review input) throws Exception;
 
 	// 상품별 리뷰 목록 조회
 	public List<Review> getProductReviewList(Review input) throws Exception;
@@ -24,6 +27,9 @@ public interface ReviewAndQnaService {
 
 	// 리뷰 삭제
 	public int deleteReview(Review input) throws Exception;
+	
+	// 단일 문의 조회
+	public Qna getQnaItem(Qna input) throws Exception;
 
 	// 상품별 문의 목록 조회
 	public List<Qna> getProductQnaList(Qna input) throws Exception;

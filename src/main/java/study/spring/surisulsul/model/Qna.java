@@ -16,7 +16,7 @@ public class Qna {
 	private String edit_date;
 	
 	// 2) Join 절을 위한 추가 컬럼
-	
+	private String p_name;
 	// 3) 페이지 구현을 위한 static 변수
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;

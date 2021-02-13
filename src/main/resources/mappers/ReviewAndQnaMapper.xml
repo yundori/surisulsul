@@ -11,12 +11,12 @@
 		<result property="m_id" column="m_id" />
 		<result property="m_name" column="m_name" />
 		<result property="p_id" column="p_id" />
-		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="star" column="star" />
 		<result property="reg_date" column="reg_date" />
 		<result property="edit_date" column="edit_date" />
 		<result property="rev_img" column="rev_img" />
+		<result property="p_name" column="p_name" />
 	</resultMap>
 
 	<resultMap id="qnaMap"
@@ -26,13 +26,22 @@
 		<result property="m_id" column="m_id" />
 		<result property="m_name" column="m_name" />
 		<result property="p_id" column="p_id" />
-		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="status" column="status" />
 		<result property="reg_date" column="reg_date" />
 		<result property="edit_date" column="edit_date" />
+		<result property="p_name" column="p_name" />
 	</resultMap>
 
+	<!-- 단일 리뷰 조회를 위한 기능 정의 -->
+	<select id="selectReviewItem"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT r.m_id, r.m_name, r.p_id, r.content, r.star, r.reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
+		INNER JOIN products p ON r.p_id = p.id
+		WHERE r.id=#{id};
+	</select>
+	
 	<!-- 상품별 리뷰 목록 조회(다중행 조회)를 위한 기능 정의 -->
 	<select id="productReviewList"
 		parameterType="study.spring.surisulsul.model.Review"
@@ -68,8 +77,8 @@
 		parameterType="study.spring.surisulsul.model.Review"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO review (m_id, m_name,
-		p_id, title, content, star, reg_date, edit_date, rev_img) VALUES
-		(#{m_id}, #{m_name}, #{p_id}, #{title}, #{content}, #{star}, now(),
+		p_id, content, star, reg_date, edit_date, rev_img) VALUES
+		(#{m_id}, #{m_name}, #{p_id}, #{content}, #{star}, now(),
 		now(), #{rev_img});
 	</insert>
 
@@ -77,7 +86,7 @@
 	<update id="updateReview"
 		parameterType="study.spring.surisulsul.model.Review">
 		UPDATE review SET m_id=#{m_id}, m_name=#{m_name},
-		p_id=#{p_id}, title=#{title}, content=#{content}, star=#{star},
+		p_id=#{p_id}, content=#{content}, star=#{star},
 		reg_date=#{reg_date}, edit_date=now(), rev_img=#{rev_img} WHERE
 		id=#{id};
 	</update>
@@ -87,6 +96,15 @@
 		parameterType="study.spring.surisulsul.model.Review">
 		DELETE FROM review WHERE id=#{id}
 	</delete>
+	
+	<!-- 단일 문의 조회를 위한 기능 정의 -->
+	<select id="selectQnaItem"
+		parameterType="study.spring.surisulsul.model.Qna"
+		resultMap="qnaMap">
+		SELECT q.m_id, q.m_name, q.p_id, q.content, q.status, q.reg_date, q.edit_date, p.name `p_name` FROM qna q
+		INNER JOIN products p ON q.p_id = p.id
+		WHERE q.id=#{id};
+	</select>
 
 	<!-- 상품별 문의 목록 조회(다중행 조회)를 위한 기능 정의 -->
 	<select id="productQnaList"
@@ -121,15 +139,15 @@
 		parameterType="study.spring.surisulsul.model.Qna"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO qna (m_id, m_name,
-		p_id, title, content, status, reg_date, edit_date) VALUES (#{m_id},
-		#{m_name}, #{p_id}, #{title}, #{content}, 'N', now(), now());
+		p_id, content, status, reg_date, edit_date) VALUES (#{m_id},
+		#{m_name}, #{p_id}, #{content}, 'N', now(), now());
 	</insert>
 
 	<!-- 문의 수정을 위한 기능 정의 -->
 	<update id="updateQna"
 		parameterType="study.spring.surisulsul.model.Qna">
 		UPDATE qna SET m_id=#{m_id}, m_name=#{m_name},
-		p_id=#{p_id}, title=#{title}, content=#{content}, status='N',
+		p_id=#{p_id}, content=#{content}, status='N',
 		reg_date=#{reg_date}, edit_date=now(), rev_img=#{rev_img} WHERE
 		id=#{id} AND status='N';
 	</update>
