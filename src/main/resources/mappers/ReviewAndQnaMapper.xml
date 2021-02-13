@@ -26,6 +26,7 @@
 		<result property="m_id" column="m_id" />
 		<result property="m_name" column="m_name" />
 		<result property="p_id" column="p_id" />
+		<result property="type" column="type" />
 		<result property="content" column="content" />
 		<result property="status" column="status" />
 		<result property="reg_date" column="reg_date" />
@@ -101,7 +102,7 @@
 	<select id="selectQnaItem"
 		parameterType="study.spring.surisulsul.model.Qna"
 		resultMap="qnaMap">
-		SELECT q.m_id, q.m_name, q.p_id, q.content, q.status, q.reg_date, q.edit_date, p.name `p_name` FROM qna q
+		SELECT q.m_id, q.m_name, q.p_id, q.type, q.content, q.status, q.reg_date, q.edit_date, p.name `p_name` FROM qna q
 		INNER JOIN products p ON q.p_id = p.id
 		WHERE q.id=#{id};
 	</select>
@@ -139,16 +140,16 @@
 		parameterType="study.spring.surisulsul.model.Qna"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO qna (m_id, m_name,
-		p_id, content, status, reg_date, edit_date) VALUES (#{m_id},
-		#{m_name}, #{p_id}, #{content}, 'N', now(), now());
+		p_id, type, content, status, reg_date, edit_date) VALUES (#{m_id},
+		#{m_name}, #{p_id}, #{type}, #{content}, 'N', now(), now());
 	</insert>
 
 	<!-- 문의 수정을 위한 기능 정의 -->
 	<update id="updateQna"
 		parameterType="study.spring.surisulsul.model.Qna">
 		UPDATE qna SET m_id=#{m_id}, m_name=#{m_name},
-		p_id=#{p_id}, content=#{content}, status='N',
-		reg_date=#{reg_date}, edit_date=now(), rev_img=#{rev_img} WHERE
+		p_id=#{p_id}, type=#{type}, content=#{content}, status='N',
+		reg_date=#{reg_date}, edit_date=now() WHERE
 		id=#{id} AND status='N';
 	</update>
 

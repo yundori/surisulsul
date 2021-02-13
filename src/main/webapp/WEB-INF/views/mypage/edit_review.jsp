@@ -32,33 +32,33 @@
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="${contextPath}/assets/img/${output.img}" />
+                            <img class="thumbnail-photo" src="../assets/img/example.jpg" />
                         </div>
                     </div>
                 </div>
-                <div class="item-name">${output.name}</div>
-                <div class="item-price">${output.price}</div>
+                <div class="item-name">경성과하주</div>
+                <div class="item-price">28,000원</div>
             </div>
-            <form id="addForm" action="${pageContext.request.contextPath}/review">
-            <input type="hidden" name="p_id" value="${output.id}"/>
+            <form id="editForm" action="${pageContext.request.contextPath}/review">
+            <input type="hidden" name="id" value="${output.id}" />
                 <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
                     <select id="example-fontawesome" name="rating" autocomplete="off">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="1" <c:if test="${output.star==1}">selected</c:if>>1</option>
+                        <option value="2" <c:if test="${output.star==2}">selected</c:if>>2</option>
+                        <option value="3" <c:if test="${output.star==3}">selected</c:if>>3</option>
+                        <option value="4" <c:if test="${output.star==4}">selected</c:if>>4</option>
+                        <option value="5" <c:if test="${output.star==5}">selected</c:if>>5</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="label text-center">어떤 점이 좋았나요?</label><br />
-                    <textarea class="write-content" placeholder="내용을 입력해 주세요."></textarea>
+                    <textarea class="write-content" placeholder="내용을 입력해 주세요." value="${output.content}"></textarea>
                     <span class="input-limit">0/1,000</span>
                 </div>
                 <div class="form-group">
                     <label class="label text-center file-attach-button" for="photo">사진 첨부하기</label><br />
-                    <input type="file" name="photo" id="photo" class="file-attach" /><br />
+                    <input type="file" name="photo" id="photo" class="file-attach" value="${output.rev_img}"/><br />
                     <span class="notice">상품과 무관한 사진 첨부 시 통보 없이 삭제될 수 있습니다.</span>
                 </div>
                 <div>
@@ -79,14 +79,14 @@
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-        $("#addForm").ajaxForm({
+        $("#editForm").ajaxForm({
             // 전송 메서드 지정
-            method: "POST",
+            method: "PUT",
             // 서버에서 200 응답을 전달한 경우 실행됨
             success: function(json) {
                 console.log(json);
                 
-                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+             // 수정이 완료되면 창닫기
                 if (json.rt == "OK") {
                 	alert("리뷰 작성이 완료되었습니다.");
                     window.close();

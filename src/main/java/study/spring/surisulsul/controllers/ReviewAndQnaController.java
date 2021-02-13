@@ -1,5 +1,7 @@
 package study.spring.surisulsul.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -7,9 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Qna;
+import study.spring.surisulsul.model.Review;
+import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.ReviewAndQnaService;
 
 @Controller
 public class ReviewAndQnaController {
@@ -22,6 +31,11 @@ public class ReviewAndQnaController {
 	RegexHelper regexHelper;
 
 	/** Service 패턴 구현체 주입 */
+	@Autowired
+	ReviewAndQnaService reviewAndQnaService;
+	
+	@Autowired
+	ProductService productService;
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -29,65 +43,190 @@ public class ReviewAndQnaController {
 	
 	/** 리뷰 작성 페이지로 이동 */
 	@RequestMapping(value="/mypage/write_review.do", method=RequestMethod.GET)
-	public String write_review(Model model) {
-		return "mypage/write_review";
-	}
-	
-	/** 리뷰 작성에 대한 action 페이지 */
-	@RequestMapping(value="/mypage/write_review_ok.do", method=RequestMethod.POST)
-	public void write_review_ok(Model model) {
+	public ModelAndView write_review(Model model,
+			@RequestParam(value="p_id", defaultValue="0") int p_id) {
+		/** 1) 제품 정보 조회하기 */
+		// 조회할 조건 객체
+		Product input = new Product();
+		input.setId(p_id);
 		
+		// 결과를 받을 객체
+		Product output = null;
+		
+		try {
+			// 데이터 조회
+			output = productService.details_ProductItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 작성 폼 페이지에 제품 정보 보내기 */
+		model.addAttribute("output", output);
+		return new ModelAndView("mypage/write_review");
 	}
 	
 	/** 리뷰 수정 페이지로 이동 */
 	@RequestMapping(value="/mypage/edit_review.do", method=RequestMethod.GET)
-	public String edit_review(Model model) {
-		return "mypage/write_review";
-	}
-	
-	/** 리뷰 수정에 대한 action 페이지 */
-	@RequestMapping(value="/mypage/edit_review_ok.do", method=RequestMethod.POST)
-	public void edit_review_ok(Model model) {
+	public ModelAndView edit_review(Model model,
+			@RequestParam(value="id", defaultValue="0") int id) {
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 수정이 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if(id==0) {
+			return webHelper.redirect(null, "잘못된 접근입니다.");
+		}
+		/** 2) 데이터 조회하기 */
+		Review input = new Review();
+		input.setId(id);
 		
+		Review output = null;
+		
+		try {
+			output = reviewAndQnaService.getReviewItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("mypage/edit_review");
 	}
 	
 	/** 문의 작성 페이지로 이동 */
 	@RequestMapping(value="/items/write_question.do", method=RequestMethod.GET)
-	public String write_question(Model model) {
-		return "items/write_question";
-	}
-	
-	/** 문의 작성 페이지로 이동 */
-	@RequestMapping(value="/items/write_question_ok.do", method=RequestMethod.POST)
-	public void write_question_ok(Model model) {
+	public ModelAndView write_question(Model model,
+			@RequestParam(value="p_id", defaultValue="0") int p_id) {
+		/** 1) 제품 정보 조회하기 */
+		// 조회할 조건 객체
+		Product input = new Product();
+		input.setId(p_id);
 		
+		// 결과를 받을 객체
+		Product output = null;
+		
+		try {
+			// 데이터 조회
+			output = productService.details_ProductItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 작성 폼 페이지에 제품 정보 보내기 */
+		model.addAttribute("output", output);
+		return new ModelAndView("items/write_question");
 	}
 	
 	/** 문의 수정 페이지로 이동 */
 	@RequestMapping(value="/items/edit_question.do", method=RequestMethod.GET)
-	public String edit_question(Model model) {
-		return "items/write_question";
-	}
-	
-	/** 문의 수정 페이지로 이동 */
-	@RequestMapping(value="/items/edit_question_ok.do", method=RequestMethod.POST)
-	public void edit_question_ok(Model model) {
+	public ModelAndView edit_question(Model model,
+			@RequestParam(value="id", defaultValue="0") int id) {
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 수정이 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if(id==0) {
+			return webHelper.redirect(null, "잘못된 접근입니다.");
+		}
+		/** 2) 데이터 조회하기 */
+		Qna input = new Qna();
+		input.setId(id);
 		
+		Qna output = null;
+		
+		try {
+			output = reviewAndQnaService.getQnaItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("mypage/edit_Qna");
 	}
-	
+
 	/** 상품 상세 - 리뷰 페이지로 이동 */
 	@RequestMapping(value="/items/item_reviews.do", method=RequestMethod.GET)
-	public String item_reviews(
+	public ModelAndView item_reviews(Model model,
 			//상세 페이지에서 조회할 상품 번호
 			@RequestParam(value="p_id", defaultValue="1") int p_id,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage) {
-		return "items/item_reviews";
+		/** 1) 페이지 구현에 필요한 변수값 생성*/
+		int totalCount = 0;
+		int listCount = 5;
+		int pageCount = 5;
+		
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Review input = new Review();
+		input.setP_id(p_id);
+		
+		List<Review> output = null; // 조회 결과가 저장될 객체
+		PageData pageData = null;
+		
+		try {
+			// 전체 게시글 수 조회
+			totalCount = reviewAndQnaService.getReviewCount(input);
+			
+			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			// SQL의 limit 절에서 사용될 값을 Beans의 static 변수에 저장
+			Review.setOffset(pageData.getOffset());
+			Review.setListCount(pageData.getListCount());
+			
+			// 데이터 조회하기
+			output = reviewAndQnaService.getProductReviewList(input);
+		}catch(Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("p_id", p_id);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("items/item_reviews");
 	}
 	
 	/** 상품 상세 - 문의 페이지로 이동 */
 	@RequestMapping(value="/items/item_question.do", method=RequestMethod.GET)
-	public String item_question(Model model) {
-		return "items/item_question";
+	public ModelAndView item_question(Model model,
+			//상세 페이지에서 조회할 상품 번호
+			@RequestParam(value="p_id", defaultValue="1") int p_id,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value="page", defaultValue="1") int nowPage) {
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성*/
+		int totalCount = 0;
+		int listCount = 5;
+		int pageCount = 5;
+		
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Qna input = new Qna();
+		input.setP_id(p_id);
+		
+		List<Qna> output = null; // 조회 결과가 저장될 객체
+		PageData pageData = null;
+		
+		try {
+			// 전체 게시글 수 조회
+			totalCount = reviewAndQnaService.getQnaCount(input);
+			
+			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			// SQL의 limit 절에서 사용될 값을 Beans의 static 변수에 저장
+			Review.setOffset(pageData.getOffset());
+			Review.setListCount(pageData.getListCount());
+			
+			// 데이터 조회하기
+			output = reviewAndQnaService.getProductQnaList(input);
+		}catch(Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("p_id", p_id);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("items/item_question");
 	}
 }

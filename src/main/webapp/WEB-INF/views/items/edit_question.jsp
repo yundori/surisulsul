@@ -20,49 +20,42 @@
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
 <body>
- <div class="pop-up">
+<div class="pop-up">
         <div class="pop-up-title">
-            후기 작성하기
+            문의 작성하기
         </div>
         <div class="pop-up-content">
             <div class="selected-item">
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="${contextPath}/assets/img/${output.img}" />
+                            <img class="thumbnail-photo" src="../assets/img/example.jpg" />
                         </div>
                     </div>
                 </div>
-                <div class="item-name">${output.name}</div>
-                <div class="item-price">${output.price}</div>
+                <div class="item-name">경성과하주</div>
+                <div class="item-price">28,000원</div>
             </div>
-            <form id="addForm" action="${pageContext.request.contextPath}/review">
-            <input type="hidden" name="p_id" value="${output.id}"/>
-                <div class="form-group stars stars-example-fontawesome">
-                    <label class="label text-center">상품은 만족하셨나요?</label><br />
-                    <select id="example-fontawesome" name="rating" autocomplete="off">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+            <form id="editForm" action="${pageContext.request.contextPath}/question">
+            <input type="hidden" name="id" value="${output.id}" />
+                <div class="form-group">
+                    <label class="label text-center">문의 분류 선택</label><br />
+                    <select id="category" class="category">
+                        <option value="0" <c:if test="${output.type==0}">selected</c:if>>--------</option>
+                        <option value="1" <c:if test="${output.type==1}">selected</c:if>>상품 문의</option>
+                        <option value="2" <c:if test="${output.type==2}">selected</c:if>>배송 문의</option>
+                        <option value="3" <c:if test="${output.type==3}">selected</c:if>>대량 구매</option>
+                        <option value="4" <c:if test="${output.type==4}">selected</c:if>>기타 문의</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="label text-center">어떤 점이 좋았나요?</label><br />
-                    <textarea class="write-content" placeholder="내용을 입력해 주세요."></textarea>
+                    <label class="label text-center">문의 내용 작성하기</label><br />
+                    <textarea class="write-content" placeholder="내용을 입력해 주세요." value="${output.content}"></textarea>
                     <span class="input-limit">0/1,000</span>
                 </div>
-                <div class="form-group">
-                    <label class="label text-center file-attach-button" for="photo">사진 첨부하기</label><br />
-                    <input type="file" name="photo" id="photo" class="file-attach" /><br />
-                    <span class="notice">상품과 무관한 사진 첨부 시 통보 없이 삭제될 수 있습니다.</span>
-                </div>
-                <div>
-                    <button type="submit">작성하기</button>
+                <div><button type="submit">작성하기</button>
                 </div>
             </form>
         </div>
@@ -75,20 +68,19 @@
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-        $("#addForm").ajaxForm({
+        $("#editForm").ajaxForm({
             // 전송 메서드 지정
-            method: "POST",
+            method: "PUT",
             // 서버에서 200 응답을 전달한 경우 실행됨
             success: function(json) {
                 console.log(json);
                 
-                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+            	// 수정이 완료되면 창닫기
                 if (json.rt == "OK") {
-                	alert("리뷰 작성이 완료되었습니다.");
+                	alert("문의 수정이 완료되었습니다.");
                     window.close();
                 }
             }
@@ -104,14 +96,5 @@
             $('.input-limit').html("1,000/1,000");
         }
     });
-    $(function() {
-        function ratingEnable() {
-            $('#example-fontawesome').barrating({
-                theme: 'fontawesome-stars',
-                showSelectedRating: false
-            });
-        }
-        ratingEnable();
-    });
     </script>
-  </body>
+    </body>
