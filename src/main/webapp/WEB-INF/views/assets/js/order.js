@@ -148,7 +148,7 @@ $( document ).ready( function() {
 	            // [수령자 - 주소] 필수
 	            postcode: { required: true },   
 	            // [개인정보 수집/제공 동의] 필수, 최소 무조건 3개 다 동의
-               	items: { required: true, minlength: 3 }     
+               	terms: { required: true, minlength: 3 }     
 	        },
 	        /** 규칙이 맞지 않을 경우의 메시지 */
 	        messages: {
@@ -163,7 +163,7 @@ $( document ).ready( function() {
 	            postcode: {
 	                required: "우편번호와 주소를 입력하세요."
 	            },
-	            items: {
+	            terms: {
                     required: "개인정보 수집/제공 약관에 동의해주세요.",
                     minlength: "개인정보 수집/제공 약관에 모두 동의해주세요."
                 }

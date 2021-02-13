@@ -9,32 +9,6 @@
 <c:set var="currentTime" value="<%=System.currentTimeMillis()%>" />
 <%-- 2) 프로젝트이름 기반의 절대경로값 --%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
-<!doctype html>
-<html>
-
-<head>
-<meta charset="UTF-8" />
-<title>surisulsul</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css"
-   href="${contextPath}/assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-<!-- 모바일 아이콘 지원 -->
-    <link rel="shortcut icon" href="${contextPath}/assets/img/favicon.png" />
-    <link rel="icon" href="${contextPath}/assets/img/favicon.png" />
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css"
-   href="${contextPath}/assets/css/common.css?time=${currentTime}" />
-<link rel="stylesheet" type="text/css"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-   <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
-   <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</head>
-</head>
-<body>
 
 <div class="psn_recommend_list">
 
@@ -204,5 +178,3 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${contextPath}/assets/js/my_opinion.js?time=${currentTime}"
 	type="text/javascript" charset="utf-8"></script>
-	</body>
-	</html>

@@ -12,7 +12,12 @@
 			<c:forEach var="item" items="${output}" varStatus="status">
 			
 				<li class="item_info">
-					<a href="${pageContext.request.contextPath}/item_details.do">
+					<%-- 상세페이지로 이동하기 위한 URL --%>
+					<c:url value="/item_details.do" var="viewUrl">
+						<c:param name="prodid" value="${item.id}" />
+					</c:url>
+					
+					<a href="${viewUrl}">
 						<c:if test="${status.count == 1}">
 							<img class="best_ranking" src="${contextPath}/assets/img/items/first.png" />
 						</c:if>
@@ -41,8 +46,8 @@
 						</span> <br/>
 						<ul class="item_tag_list">
 							<li class="item_tag item_type_tag">#${item.type}</li>
-							<li class="item_tag item_area_tag">#지역${item.loc}</li>
-							<li class="item_tag item_keyword_tag">#키워드${item.key1}</li>
+							<li class="item_tag item_area_tag">#${item.loc}</li>
+							<li class="item_tag item_keyword_tag">#${item.key1}</li>
 						</ul>
 					</a>
 				</li>

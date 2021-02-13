@@ -141,5 +141,14 @@
 		WHERE
 		id=#{id};
 	</update>
+	
+	<!-- 회원 탈퇴하기 : is_out 수정 정의 -->
+	<update id="outMember"
+		parameterType="study.spring.surisulsul.model.Member">
+		UPDATE members SET
+		is_out='Y', edit_date=now()
+		WHERE
+		id=#{id};
+	</update>
 
 </mapper>

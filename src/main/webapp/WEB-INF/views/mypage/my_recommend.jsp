@@ -9,39 +9,14 @@
 <c:set var="currentTime" value="<%=System.currentTimeMillis()%>" />
 <%-- 2) 프로젝트이름 기반의 절대경로값 --%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
-<!doctype html>
-<html>
-
-<head>
-<meta charset="UTF-8" />
-<title>surisulsul</title>
-<!-- 크로스 브라우징 호환성 시작 -->
-<link rel="stylesheet" type="text/css"
-   href="${contextPath}/assets/css/reset.css" />
-<!-- 크로스 브라우징 호환성 끝 -->
-<!-- 모바일 아이콘 지원 -->
-    <link rel="shortcut icon" href="${contextPath}/assets/img/favicon.png" />
-    <link rel="icon" href="${contextPath}/assets/img/favicon.png" />
-<!-- CSS 파일 참조 처리 -->
-<link rel="stylesheet" type="text/css"
-   href="${contextPath}/assets/css/common.css?time=${currentTime}" />
-<link rel="stylesheet" type="text/css"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-   <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/mypage_detail.css?time=${currentTime}" />
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</head>
-</head>
-<body>
-
 <div class="psn_recommend">
 <c:choose>
 		<%--c:when test 조건 -> 주능 테스트 이력이 있는 경우 -> 주능 결과 DB 내용 존재 --%>
-		<c:when test="true">
+		<c:when test="${jn_result }">
 	<div class="psn_title">
 			<c:choose>
 				<%--c:when test 조건 -> 무궁화 --%>
-				<c:when test="false">
+				<c:when test="${jn_result_name eq '무궁화'}" >
 		<h2 class="psn_title_txt">나의 주(酒)능 결과 : <span class="flower_type">무궁화</span></h2>
 		<p>엉뚱하고 가끔 알 수 없지만 알고보면 섬세한 감정을 보유한 당신<br/>
 		당신은 자신만의 환상의 세계에 대해 자주 꿈꾸곤 합니다.<br/>
@@ -63,7 +38,7 @@
 				</c:when>
 				
 				<%--c:when test 조건 -> 해바라기 --%>
-				<c:when test="false">
+				<c:when test="${jn_result_name eq '해바라기'}" >
 		<h2 class="psn_title_txt">나의 주(酒)능 결과 : <span class="flower_type">해바라기</span></h2>
 		<p>고귀하고 자유로우며 내면에서부터 빛을 뿜어내는 당신<br/>
 		성격이 둥글둥글한 당신은 주위 사람들을 소중히 여길 줄 아는 사람입니다.<br/>
@@ -85,7 +60,7 @@
 				</c:when>
 				
 				<%--c:when test 조건 -> 진달래 --%>
-				<c:when test="true">
+				<c:when test="${jn_result_name eq '진달래'}" >
 		<h2 class="psn_title_txt">나의 주(酒)능 결과 : <span class="flower_type">진달래</span></h2>
 		<p>모든 일에 애정이 넘치며 어디서나 눈에 띄는 당신<br/>
 		꿈을 이루기 위해서라면 무엇이든 할 수 있는 당신입니다.<br/>
@@ -107,7 +82,7 @@
 				</c:when>
 				
 				<%--c:when test 조건 -> 수국 --%>
-				<c:when test="false">
+				<c:when test="${jn_result_name eq '수국'}" >
 		<h2 class="psn_title_txt">나의 주(酒)능 결과 : <span class="flower_type">수국</span></h2>
 		<p>부드럽고 침착하며, 뛰어난 감성을 지닌 당신<br/>
 		당신은 정서적으로 안정적이며 사교성이 좋습니다.<br/>
@@ -130,31 +105,28 @@
 			</c:choose>
 	<div class="psn_result">
 	<ul class="psn_result_inner">
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick1"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
+	<%--조회 결과에 따른 반복처리 --%>
+	<c:forEach var="item" items="${pro_output}" varStatus="status">
+		<li class="pick_item">
+		<%--상세 페이지로 이동하는 URL --%>
+		<c:url value="/item_details.do" var="viewUrl">
+			<c:param name="prodid" value="${item.id}" />
+		</c:url>
+		
+			<a href="${viewUrl}" class="pick_link"> 
+			<span class="psn_pick_bg">
+				<img class="psn_pick" src="${contextPath}/assets/img/items/${item.img}">
+			</span> 
+			<span class="psn_pick_text">
+					<h3 class="psn_pick_title">${item.name}</h3>
+					<p class="psn_pick_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</p>
 			</span>
 		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick2"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick3"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
-		<li class="pick_item"><a href="#" class="pick_link"> <span
-				class="psn_pick_bg psn_pick4"></span> <span class="psn_pick_text">
-					<h3 class="psn_pick_title">상품명</h3>
-					<p class="psn_pick_price">00,000원</p>
-			</span>
-		</a></li>
+	</c:forEach>
 	</ul>
+	</div>
+	<div class="psn_jn_again">
+	<a href="${pageContext.request.contextPath}/juneung.do" class="btn_yellow">💌주(酒)능 다시보기</a>
 	</div>
 	</c:when>
 		<%--c:otherwise --> 주능 테스트 이력이 없는 경우 -> 주능 결과 DB에 데이터 X --%>
@@ -174,5 +146,3 @@
 		</c:otherwise>
 </c:choose>
 </div>
-</body>
-</html>

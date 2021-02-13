@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.model.Basket;
 import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.service.OrderService;
 
@@ -43,6 +44,58 @@ public class OrderServiceImpl implements OrderService {
 		}
 
 		return result;
+	}
+	
+	/**
+	 * 주문 내역 확인 : 주문 INSERT 처리 이후 바로 주문 조회
+	 * @return 조회 결과에 대한 Order객체
+	 * @throws Exception
+	 */
+	@Override
+	public Order getOrderItem(Order input) throws Exception{
+		Order result = null;
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/**
+	 * 주문 내역 확인 : 주문 INSERT 처리 이후 바로 orders_sub 데이터 조회
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Order> getOrderSubList(Order input) throws Exception{
+
+		List<Order> result = null;
+
+		try {
+			result = sqlSession.selectList("OrderMapper.selectOrderSubList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+		
 	}
 
 	/**
@@ -92,6 +145,25 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/**
+	 * 주문 데이터가 저장되어 있는 갯수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
+	@Override
+	public int getOrderCount(Order input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectOrderCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 
 		return result;

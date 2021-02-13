@@ -30,6 +30,14 @@ public interface BasketService {
 	public int addBasket(Basket input) throws Exception;
 	
 	/**
+	 * 장바구니 데이터 삭제하기 - 선택 삭제
+	 * @param Basket 삭제할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int deleteBasketItem(Basket input) throws Exception;
+	
+	/**
 	 * 장바구니 데이터 삭제하기
 	 * @param Basket 삭제할 정보를 담고 있는 Beans
 	 * @return int

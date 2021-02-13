@@ -16,23 +16,21 @@
     		<table id="order_result_table">
     			<tr>
     				<td>배송지</td>
-    				<td><b>수리술</b><br/>010-1234-5678<br/>서울특별시 서초구 서초대로77길 55 에이프로스퀘어 3층</td>
+    				<td><b>${orderInfo.r_name }</b><br/>${orderInfo.r_phone }<br/>${orderInfo.r_address1 } ${orderInfo.r_address2 }</td>
     			</tr>
     			<tr>
     				<td>주문번호</td>
-    				<td><b>20210118-주문번호어쩌고</b></td>
+    				<td><b>${orderInfo.o_id}</b></td>
     			</tr>
+    		<%-- 조회 결과에 따른 반복 처리 --%>
+    		<c:forEach var="item" items="${orderSubList }" varStatus="status">
     			<tr>
-    				<td rowspan="2">주문상품</td>
-    				<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
-    				<td><img src="${contextPath}/assets/img/items/best1.PNG"/>블루베리 생 막걸리 * 6병 (1개)</td>
+    				<td></td>
+    				<td><img src="${contextPath}/assets/img/items/item${item.p_id}.jpg"/>${item.p_name } (${item.p_qty }개)</td>
     			</tr>
-    			<tr>
-    				<td><img src="${contextPath}/assets/img/items/best2.PNG"/>아이엠더문 오리지날/화이트 에디션 (2개)</td>
-    				<!--</c:forEach>-->
-    			</tr>    			
+    		</c:forEach>
     		</table>
-    		<a href="${pageContext.request.contextPath }/" id="go_mypage">구매내역</a>
+    		<a href="${pageContext.request.contextPath }/mypage/mypage.do" id="go_mypage">구매내역</a>
     		<a href="${pageContext.request.contextPath }/" id="go_home">쇼핑 계속하기</a>
     	</c:when>
     	
