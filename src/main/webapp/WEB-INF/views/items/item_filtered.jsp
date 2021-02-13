@@ -235,57 +235,61 @@
 			
 			<div class="clean"></div>
 		</div>
+		
+		<div class="pageNumber">
 		<!-- 페이지 번호 구현 -->
 		<%-- 이전 그룹에 대한 링크 --%>
-	<c:choose>
-		<%-- 이전 그룹으로 이동 가능하다면? --%>
-		<c:when test="${pageData.prevPage > 0}">
-			<%-- 이동할 URL 생성 --%>
-			<c:url value="/item_filtered.do" var="prevPageUrl">
-				<c:param name="page" value="${pageData.prevPage}" />
-			</c:url>
-			<a href="${prevPageUrl}">[이전]</a>
-		</c:when>
-		<c:otherwise>
-			[이전]
-		</c:otherwise>
-	</c:choose>
-
-	<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
-	<c:forEach var="i" begin="${pageData.startPage}"
-		end="${pageData.endPage}" varStatus="status">
-		<%-- 이동할 URL 생성 --%>
-		<c:url value="/item_filtered.do" var="pageUrl">
-			<c:param name="page" value="${i}" />
-		</c:url>
-
-		<%-- 페이지 번호 출력 --%>
 		<c:choose>
-			<%-- 현재 머물고있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-			<c:when test="${pageData.nowPage == i}">
-				<strong>[${i}]</strong>
+			<%-- 이전 그룹으로 이동 가능하다면? --%>
+			<c:when test="${pageData.prevPage > 0}">
+				<%-- 이동할 URL 생성 --%>
+				<c:url value="/item_filtered.do" var="prevPageUrl">
+					<c:param name="page" value="${pageData.prevPage}" />
+				</c:url>
+				<a href="${prevPageUrl}">[이전]</a>
 			</c:when>
-			<%-- 나머지 페이지의 경우 링크 적용함 --%>
 			<c:otherwise>
-				<a href="${pageUrl}">[${i}]</a>
+				[이전]
 			</c:otherwise>
 		</c:choose>
-	</c:forEach>
 
-	<%-- 다음 그룹에 대한 링크 --%>
-	<c:choose>
-		<%-- 다음 그룹으로 이동 가능하다면? --%>
-		<c:when test="${pageData.nextPage > 0}">
+		<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
+		<c:forEach var="i" begin="${pageData.startPage}"
+			end="${pageData.endPage}" varStatus="status">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/item_filtered.do" var="nextPageUrl">
-				<c:param name="page" value="${pageData.nextPage}" />
+			<c:url value="/item_filtered.do" var="pageUrl">
+				<c:param name="page" value="${i}" />
 			</c:url>
-			<a href="${nextPageUrl}">[다음]</a>
-		</c:when>
-		<c:otherwise>
-			[다음]
-		</c:otherwise>
-	</c:choose>
+	
+			<%-- 페이지 번호 출력 --%>
+			<c:choose>
+				<%-- 현재 머물고있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+				<c:when test="${pageData.nowPage == i}">
+					<strong>[${i}]</strong>
+				</c:when>
+				<%-- 나머지 페이지의 경우 링크 적용함 --%>
+				<c:otherwise>
+					<a href="${pageUrl}">[${i}]</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<%-- 다음 그룹에 대한 링크 --%>
+		<c:choose>
+			<%-- 다음 그룹으로 이동 가능하다면? --%>
+			<c:when test="${pageData.nextPage > 0}">
+				<%-- 이동할 URL 생성 --%>
+				<c:url value="/item_filtered.do" var="nextPageUrl">
+					<c:param name="page" value="${pageData.nextPage}" />
+				</c:url>
+				<a href="${nextPageUrl}">[다음]</a>
+			</c:when>
+			<c:otherwise>
+				[다음]
+			</c:otherwise>
+		</c:choose>
+		</div>
+		
 	</div>
 
 <script src="${contextPath}/assets/js/item_filtered.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
