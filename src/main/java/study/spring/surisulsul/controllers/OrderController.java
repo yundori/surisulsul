@@ -344,7 +344,7 @@ public class OrderController {
 		
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 3; // 한 페이지당 표시할 목록 수
+		int listCount = 4; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
@@ -358,6 +358,7 @@ public class OrderController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = orderService.getOrderCount(input);
+			System.out.println(">>>>>>>>주문목록개수 : " + totalCount);
 			// 페이지 번호 계산 --> 계산 결과를 로그로 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
