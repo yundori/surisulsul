@@ -9,7 +9,7 @@ public class Qna {
 	private int m_id;
 	private String m_name;
 	private int p_id;
-	private String title;
+	private int type;
 	private String content;
 	private String status;
 	private String reg_date;
