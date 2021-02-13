@@ -14,8 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
+import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.ReviewAndQnaService;
 
 @Controller
@@ -32,6 +34,9 @@ public class ReviewAndQnaController {
 	@Autowired
 	ReviewAndQnaService reviewAndQnaService;
 	
+	@Autowired
+	ProductService productService;
+	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -40,7 +45,23 @@ public class ReviewAndQnaController {
 	@RequestMapping(value="/mypage/write_review.do", method=RequestMethod.GET)
 	public ModelAndView write_review(Model model,
 			@RequestParam(value="p_id", defaultValue="0") int p_id) {
-		model.addAttribute("p_id", p_id);
+		/** 1) 제품 정보 조회하기 */
+		// 조회할 조건 객체
+		Product input = new Product();
+		input.setId(p_id);
+		
+		// 결과를 받을 객체
+		Product output = null;
+		
+		try {
+			// 데이터 조회
+			output = productService.details_ProductItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 작성 폼 페이지에 제품 정보 보내기 */
+		model.addAttribute("output", output);
 		return new ModelAndView("mypage/write_review");
 	}
 	
@@ -74,7 +95,23 @@ public class ReviewAndQnaController {
 	@RequestMapping(value="/items/write_question.do", method=RequestMethod.GET)
 	public ModelAndView write_question(Model model,
 			@RequestParam(value="p_id", defaultValue="0") int p_id) {
-		model.addAttribute("p_id", p_id);
+		/** 1) 제품 정보 조회하기 */
+		// 조회할 조건 객체
+		Product input = new Product();
+		input.setId(p_id);
+		
+		// 결과를 받을 객체
+		Product output = null;
+		
+		try {
+			// 데이터 조회
+			output = productService.details_ProductItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 작성 폼 페이지에 제품 정보 보내기 */
+		model.addAttribute("output", output);
 		return new ModelAndView("items/write_question");
 	}
 	

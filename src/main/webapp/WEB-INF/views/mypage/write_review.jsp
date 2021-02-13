@@ -32,14 +32,15 @@
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="../assets/img/example.jpg" />
+                            <img class="thumbnail-photo" src="${contextPath}/assets/img/${output.img}" />
                         </div>
                     </div>
                 </div>
-                <div class="item-name">경성과하주</div>
-                <div class="item-price">28,000원</div>
+                <div class="item-name">${output.name}</div>
+                <div class="item-price">${output.price}</div>
             </div>
             <form id="addForm" action="${pageContext.request.contextPath}/review">
+            <input type="hidden" name="p_id" value="${output.id}"/>
                 <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
                     <select id="example-fontawesome" name="rating" autocomplete="off">
