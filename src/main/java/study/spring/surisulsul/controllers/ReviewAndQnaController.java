@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
@@ -76,7 +77,11 @@ public class ReviewAndQnaController {
 	
 	/** 상품 상세 - 리뷰 페이지로 이동 */
 	@RequestMapping(value="/items/item_reviews.do", method=RequestMethod.GET)
-	public String item_reviews(Model model) {
+	public String item_reviews(
+			//상세 페이지에서 조회할 상품 번호
+			@RequestParam(value="p_id", defaultValue="1") int p_id,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value="page", defaultValue="1") int nowPage) {
 		return "items/item_reviews";
 	}
 	

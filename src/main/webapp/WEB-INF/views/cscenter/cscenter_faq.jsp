@@ -40,3 +40,16 @@
         <!--</c:forEach>-->
         <!-- 게시글이 많다면 페이지네이션 -->
     </div>
+    
+     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".collapse-title a").click(function(e) {
+            e.preventDefault();
+
+            var target = $(this).attr('href');
+            $(target).slideToggle(100);
+            $(".content").not($(target)).slideUp(100);
+        });
+    });
+    </script>

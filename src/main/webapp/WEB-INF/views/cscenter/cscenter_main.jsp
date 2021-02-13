@@ -8,33 +8,56 @@
     <div class="tab">
         <ul class="tab-button">
             <li class="tab-button-item fix-center">
-                <a class="tab-button-item-link selected" href="#tab-page-1">알립니다</a>
+                <a data-tab="notice" class="tab-button-item-link" href="#" id="default">알립니다</a>
             </li>
             <li class="tab-button-item fix-center">
-                <a class="tab-button-item-link" href="#tab-page-2">자주 묻는 질문</a>
+                <a data-tab="faq" class="tab-button-item-link" href="#">자주 묻는 질문</a>
             </li>
         </ul>
         <div class="tab-panel">
-            <div id="tab-page-1">
+           <%--<div id="tab-page-1">
                 <%@ include file="/WEB-INF/views/cscenter/cscenter_notice.jsp"%>
             </div>
             <div id="tab-page-2" class="hide">
                 <%@ include file="/WEB-INF/views/cscenter/cscenter_faq.jsp"%>
-            </div>
+            </div> --%> 
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        $(".tab-button-item-link").click(function(e) {
-            e.preventDefault();
-            $(".tab-button-item-link").not(this).removeClass("selected");
-            $(this).addClass("selected");
-            var target = $(this).attr('href');
-            $(target).removeClass('hide');
-            $(".tab-panel>div").not($(target)).addClass('hide');
+    $(document).ready(function() {
+    	$(function() {
+            $(".tab-button-item-link").click(function(e) {
+                e.preventDefault();
+                
+                var activeTab = $(this).attr('data-tab');
+        		console.log(activeTab);
+        		$.ajax({
+        			type: 'GET',
+        			url: activeTab + ".do",
+        			dataType: "html",
+        			error: function() {
+        				alert('통신실패');
+        				console.log(">>에러" + error.status);
+        			},
+        			success: function(data) {
+        				console.log(">>성공>>");
+        				$('.tab-panel').html(data);
+        			}
+        		});
+                
+                /*$(".tab-button-item-link").not(this).removeClass("selected");
+                $(this).addClass("selected");
+                var target = $(this).attr('href');
+                $(target).removeClass('hide');
+                $(".tab-panel>div").not($(target)).addClass('hide');*/
+            });
+            
         });
+        $('#default').click();
+    	
     });
+    
     </script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

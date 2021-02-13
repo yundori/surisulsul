@@ -51,7 +51,7 @@
  * 선택된 탭 버튼 디자인
  * -------------------------- */
 
-.tab-button-item-link.selected {
+#default {
     background-color: #fbd14b;
     color: #fff;
 }
