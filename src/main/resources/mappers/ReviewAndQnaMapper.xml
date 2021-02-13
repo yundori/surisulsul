@@ -148,7 +148,7 @@
 		parameterType="study.spring.surisulsul.model.Qna">
 		UPDATE qna SET m_id=#{m_id}, m_name=#{m_name},
 		p_id=#{p_id}, content=#{content}, status='N',
-		reg_date=#{reg_date}, edit_date=now(), rev_img=#{rev_img} WHERE
+		reg_date=#{reg_date}, edit_date=now() WHERE
 		id=#{id} AND status='N';
 	</update>
 
