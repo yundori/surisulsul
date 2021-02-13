@@ -42,7 +42,7 @@ public class WishlistServiceImpl implements WishlistService {
 	}
 
 	/**
-	 * wishlist 갯수 조회
+	 * 해당 wishlist 존재 여부 조회
 	 */
 	@Override
 	public int getWishlistCount(Wishlist input) throws Exception {
@@ -100,6 +100,21 @@ public class WishlistServiceImpl implements WishlistService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("위시리스트 데이터 삭제에 실패했습니다.");
+		}
+
+		return result;
+	}
+	/**
+	 * 중복된 wishlist 갯수 조회
+	 */
+	@Override
+	public int getSameWishlistCount(Wishlist input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlSession.selectOne("WishlistMapper.sameCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("중복된 위시리스트 데이터 수 조회에 실패했습니다.");
 		}
 
 		return result;

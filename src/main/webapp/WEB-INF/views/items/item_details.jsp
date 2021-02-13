@@ -14,7 +14,21 @@
 	<span class="title">상품 상세</span>
 	<div class="item_detail">
 		<div class="item_detail_infos">
-			<button type="button" id="wishlist_btn" class="wishlist_btn"></button>
+		<form method="post" action="${pageContext.request.contextPath}/addWish.do" name="wishlist" id="wishlist">
+				<input type="hidden" name="prodid" value="${output.id}"/>
+				<c:choose>
+					<c:when test="${wishlist eq 'wishlist_btn' }">
+				<button type="submit" id="wishlist_btn" class="wishlist_btn" ></button>
+					</c:when>
+					<c:when test="${wishlist eq 'wishlist_ok_btn' }">
+				<button type="submit" id="wishlist_ok_btn" class="wishlist_ok_btn" ></button>
+					</c:when>
+					<c:otherwise>
+					<button type="submit" id="wishlist_btn" class="wishlist_btn" ></button>
+					</c:otherwise>
+				</c:choose>
+		</form>
+			
 			<img class="item_img" src="${contextPath}/assets/img/items/${output.img}" />
 			<div class="item_detail_info">
 				<h3 class="item_name">${output.name}</h3>
@@ -127,13 +141,7 @@
 	});
 	
 	/** 위시리스트 체크 **/
-	$(function() {
-		$(".wishlist_btn").click(function(e) {
-            e.preventDefault();
-            
-            $(this).toggleClass("wishlist_ok_btn");
-        });
-	});
+
 	
 </script>
 

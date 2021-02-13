@@ -14,12 +14,20 @@ public interface WishlistService {
 	public List<Wishlist> getWishlistList(Wishlist input) throws Exception;
 
 	/**
-	 * 위시리스트 데이터가 저장되어 있는 갯수 조회
+	 * 해당 상품의 위시리스트 데이터가 저장되어 있는지 조회
 	 * 
 	 * @return int
 	 * @throws Exception
 	 */
 	public int getWishlistCount(Wishlist input) throws Exception;
+	
+	/**
+	 * 위시리스트 중복 데이터가 저장되어 있는 갯수 조회
+	 * 
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getSameWishlistCount(Wishlist input) throws Exception;
 
 	/**
 	 * 위시리스트 데이터 등록하기

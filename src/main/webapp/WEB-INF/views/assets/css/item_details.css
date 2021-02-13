@@ -67,6 +67,8 @@
 	border: none;
 	outline: none;
 	position: absolute;
+	left: 350px;
+	top: 500px;
 }
 
 .item_img {

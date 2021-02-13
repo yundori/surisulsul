@@ -1,9 +1,12 @@
 package study.spring.surisulsul.controllers;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,26 +16,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Sales;
+import study.spring.surisulsul.model.Wishlist;
+import study.spring.surisulsul.service.MemberService;
 import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.SalesService;
+import study.spring.surisulsul.service.WishlistService;
 
 @Controller
 @Slf4j
 public class ItemController {
-	/** WebHelper 주입 
+	/** WebHelper 주입 */
 	@Autowired
-	WebHelper webHelper;*/
+	WebHelper webHelper;
 
-	/** RegexHelper 주입 
+	/** RegexHelper 주입 */
 	@Autowired
-	RegexHelper regexHelper;*/
+	RegexHelper regexHelper;
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
@@ -40,6 +48,12 @@ public class ItemController {
 	
 	@Autowired
 	SalesService salesService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	WishlistService wishlistService;
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -193,9 +207,39 @@ public class ItemController {
 	
 	/* 상품상세페이지로 이동 */
 	@RequestMapping(value = "/item_details.do", method = RequestMethod.GET)
-	public String item_details(Model model, HttpServletResponse response,
+	public String item_details(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "prodid", defaultValue = "0") int prodid) {
+		// 세션값 받아오기
+		HttpSession session = request.getSession();
+		Member loginSession = (Member) session.getAttribute("loginInfo");
 		
+		int same_output = 0;
+		String wishlist = null;
+		
+		//로그인 세션이 있는 경우 - 해당 상품 wishlist 확인
+		if(loginSession != null) {
+			
+			// 데이터 저장하기
+			Wishlist input = new Wishlist();
+			input.setM_id(loginSession.getId());
+			input.setP_id(prodid);
+			
+			// 위시리스트 존재 여부 확인
+			try {
+				same_output = wishlistService.getWishlistCount(input);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			//해당 회원의 위시리스트에 이 상품이 있다면 -> 꽉찬 하트
+			if(same_output == 1) {
+				wishlist = "wishlist_ok_btn";
+			}else {//해당 회원의 위시리스트에 이 상품이 없다면 -> 빈 하트
+				wishlist="wishlist_btn";
+			}
+		}
+		
+		//로그인 세션이 없는 경우
 		Product input = new Product();
 		input.setId(prodid);
 		
@@ -207,6 +251,8 @@ public class ItemController {
 		}
 		
 		model.addAttribute("output",output);
+		model.addAttribute("wishlist", wishlist);
+		
 		return "items/item_details";
 	}
 	
@@ -242,5 +288,79 @@ public class ItemController {
 		
 		return "items/item_question";
 	}*/
+	
+	/**wishlist 추가 action 처리 */
+	@RequestMapping(value = "/addWish.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView add_wish(Model model, HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "prodid", defaultValue = "0") int prodid)  {
+		System.out.println("wishlist 추가 기능 시작 >>");
+		// 세션값 받아오기
+				HttpSession session = request.getSession();
+				Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+				String wishlist = null;
+				int same_output = 0;
+				
+				// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+				if (loginSession == null) {
+					String redirectUrl = contextPath +"/account/login.do";
+					//String redirectUrl = "../account/login.do";
+					return webHelper.redirect(redirectUrl, "로그인이 필요합니다.");
+				}
+				
+				//prodid가 0인 경우 = 잘못된 접근
+				if(prodid == 0) {
+					return webHelper.redirect(contextPath, "잘못된 접근입니다.");
+				}
 
+				// 데이터 저장하기
+				Wishlist input = new Wishlist();
+				input.setM_id(loginSession.getId());
+				input.setP_id(prodid);
+				
+				// 중복 위시리스트 확인
+				try {
+					same_output = wishlistService.getSameWishlistCount(input);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				if(same_output == 1) {
+					//위시리스트 삭제 구현
+					try {
+						wishlistService.deleteWishlist(input);
+						wishlist = "wishlist_btn";
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}else if(same_output == 0) {
+					//위시리스트 추가 구현
+					try {
+						wishlistService.addWishlist(input);
+						wishlist = "wishlist_ok_btn";
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}else {
+					return webHelper.redirect(contextPath, "error >> 위시리스트에 중복된 상품이 많습니다.");
+				}
+				
+				Product product = new Product();
+				product.setId(prodid);
+				
+				Product output = null;
+				try {
+					output = productService.details_ProductItem(product);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+				//view 처리
+				model.addAttribute("wishlist", wishlist);
+				model.addAttribute("output",output);
+				
+				return new ModelAndView("items/item_details");
+	}
 }
