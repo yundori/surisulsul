@@ -56,12 +56,12 @@
 			</li>
 		</ul>
 	</nav>
-
+	<div class="tab-panel">
+    </div>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     
 <script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-	<div class="tab-panel">
-    </div>
+
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

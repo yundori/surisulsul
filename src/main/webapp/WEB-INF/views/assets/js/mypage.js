@@ -32,7 +32,7 @@ $(document).ready(function() {
 function openPw() {
 	var popup = window.open(
 		'chk_pw.do', '비밀번호 확인',
-		'width=500, height=250, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+		'width=500, height=300, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }
 
 //탈퇴하기
