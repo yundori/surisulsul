@@ -92,13 +92,17 @@ public class ExtraController {
 			return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
 
 		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+			
 			Member member = new Member();
 			member.setId(loginSession.getId());
-            try {
+			 
+			try {
 				output = memberService.getMemberItem(member);
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
+           
+			
             if (loginSession.getJn_result() == null) {// 로그인 O / 주능결과 X
 				jn_result = false;
 			} else {// 로그인 O / 주능결과 O
