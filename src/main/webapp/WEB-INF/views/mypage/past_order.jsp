@@ -52,7 +52,7 @@
 									<td>입금대기중<br /> <a href="javascript:cancelOrder(${item.o_id});" class="cancel_order btn_nor" type="button" >주문취소</a></td>
 								</c:when>
 								<c:otherwise>
-									<td>배송완료<br /> <a href="#" class="write_review btn_yellow" onClick="openPop(); return false;">후기쓰기</a></td>
+									<td>배송완료<br /> <a href="javascript:openPop(${item.p_id});" class="write_review btn_yellow">후기쓰기</a></td>
 								</c:otherwise>
 							</c:choose>
 						</tr>
@@ -125,9 +125,9 @@
 
 <script>
 	//팝업열기
-	function openPop() {
+	function openPop(prodId) {
 		var popup = window
-				.open('../mypage/write_review.jsp', '후기쓰기',
+				.open('${pageContext.request.contextPath }/mypage/write_review.do?p_id='+prodId, '후기쓰기',
 						'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 	}
 	
