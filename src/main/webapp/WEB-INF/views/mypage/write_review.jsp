@@ -39,7 +39,7 @@
                 <div class="item-name">${output.name}</div>
                 <div class="item-price">${output.price}</div>
             </div>
-            <form id="addForm" action="${pageContext.request.contextPath}/review">
+            <form id="addForm" action="${pageContext.request.contextPath}/review" method="POST">
             <input type="hidden" name="p_id" value="${output.id}"/>
                 <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />

@@ -37,7 +37,7 @@ public class RAQRestController {
 	String contextPath;
 
 	/** 리뷰 작성에 대한 action 페이지 */
-	@RequestMapping(value = "/review", method = RequestMethod.POST)
+	@RequestMapping(value = "review", method = RequestMethod.POST)
 	public Map<String, Object> write_review(@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
@@ -293,7 +293,7 @@ public class RAQRestController {
 	}
 
 	/** 상품 상세 - 리뷰 페이지로 이동 */
-	@RequestMapping(value = "review", method = RequestMethod.GET)
+	@RequestMapping(value = "/review_view", method = RequestMethod.GET)
 	public Map<String, Object> get_reviews(
 			// 상세 페이지에서 조회할 상품 번호
 			@RequestParam(value = "p_id", defaultValue = "1") int p_id,
