@@ -158,8 +158,12 @@
 /**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(상품명)*/
 .psn_pick_title {
     margin-top: 70%;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 400;
+    white-space : nowrap;
+    overflow : hidden;
+    text-overflow : ellipsis;
+    padding : 0 10px;
 }
 
 /**나를 위한 추천 상품 > 링크 > 내용박스 > 텍스트(가격)*/

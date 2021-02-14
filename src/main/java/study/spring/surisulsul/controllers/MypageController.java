@@ -151,8 +151,8 @@ public class MypageController {
 
 		int wish_count = 0;
 		boolean wishlist;
-		List<Wishlist> wish_product_list = null;
-		List<Product> wish_product_output = null;
+		Member output = null;
+		List<Product> member_product = null;
 		
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 		if (loginSession == null) {
@@ -163,6 +163,12 @@ public class MypageController {
 		}else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
 			Member member = new Member();
 			member.setId(loginSession.getId());
+			
+			try {
+				output = memberService.getMemberItem(member);
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
 			
 			// 데이터 저장하기
 			Wishlist input = new Wishlist();
@@ -180,37 +186,24 @@ public class MypageController {
 			} else {// 로그인 O / 위시리스트 O
 				wishlist = true;
 				
-				//데이터 저장하기
-				Wishlist wish = new Wishlist();
-				wish.setM_id(member.getId());
+				Product product = new Product();
+				product.setM_id(output.getId());
+				System.out.println(product);
 				
-				//wishlist p_id List 불러오기
 				try {
-					wish_product_list=wishlistService.getWishlistList(wish);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				/**wishlist에서 p_id 불러온 값을
-				 * Product에서 p_id와 일치하는 값을 찾아 -> ProductMapper 추가
-				 * Product Service, Impl 추가 수정해서
-				 * ArrayList<Product>()로 가져오기
-				 */
-
-				wish_product_output = new ArrayList<Product>();
-				
-				/** 해당하는 술 가져오기 */
-				try {
-					//wish_product_output = productService.wish_ProductList(wish_product_list);
-					System.out.println(wish_product_output);
+					member_product = productService.wish_ProductList(product);
+					System.out.println(member_product);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		}
 		
 		/**View 처리*/
+		model.addAttribute("output", output);
+		model.addAttribute("wishlist", wishlist);
+		model.addAttribute("member_product", member_product);
 		
 		return new ModelAndView("mypage/wishlist");
 	}

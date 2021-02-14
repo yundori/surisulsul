@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Wishlist;
 import study.spring.surisulsul.service.ProductService;
 
 @Slf4j
@@ -274,6 +275,28 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("주능 결과에 맞는 상품 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/**Wishlist에 있는 상품 조회*/
+	@Override
+	public List<Product> wish_ProductList(Product input) throws Exception {
+		List<Product> result = null;
+
+		try {
+			result = sqlSession.selectList("ProductMapper.wishlistProductList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 위시리스트 상품이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("해당 위시리스트 상품 조회에 실패했습니다.");
 		}
 
 		return result;

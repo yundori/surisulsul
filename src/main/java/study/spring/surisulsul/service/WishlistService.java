@@ -5,13 +5,6 @@ import java.util.List;
 import study.spring.surisulsul.model.Wishlist;
 
 public interface WishlistService {
-	/**
-	 * 위시리스트 데이터 목록 조회
-	 * 
-	 * @return 조회 결과에 대한 컬렉션
-	 * @throws Exception
-	 */
-	public List<Wishlist> getWishlistList(Wishlist input) throws Exception;
 
 	/**
 	 * 해당 회원의 위시리스트 갯수 조회

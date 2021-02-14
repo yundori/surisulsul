@@ -3,9 +3,18 @@ package study.spring.surisulsul.service;
 import java.util.List;
 
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Wishlist;
 
 /** 상품 데이터 조회 기능을 제공하기 위한 Service 계층 */
 public interface ProductService {
+	/**
+	 * 위시리스트에 있는 상품 목록 조회
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> wish_ProductList(Product input) throws Exception;
 	
 	/**
 	 * 주능 결과 4개 목록 조회

@@ -37,7 +37,23 @@
 		<result property="search" column="search" />
 
 		<result property="total_qty" column="total_qty" />
+		<result property="p_id" column="p_id" />
+		<result property="m_id" column="m_id" />
 	</resultMap>
+	
+	<!-- wishlist에 존재하는 상품 조회 -->
+	<select id="wishlistProductList"
+		parameterType="study.spring.surisulsul.model.Product"
+		resultMap="productMap">
+		SELECT p.id, img, name, price
+		FROM products p
+		INNER JOIN wishlist w
+		ON p.id=w.p_id
+			<where>
+				m_id='${m_id}'
+			</where> 
+		ORDER BY w.reg_date desc
+	</select>
 
 	<!-- 주능 결과 4개 상품 조회 -->
 	<select id="jnItemList"

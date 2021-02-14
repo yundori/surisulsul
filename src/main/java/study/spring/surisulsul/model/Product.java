@@ -37,6 +37,8 @@ public class Product {
 
 	// 3) Join 절에 따른 추가 컬럼
 	private int total_qty; // 총 매출 수량
+	private int p_id; // wishlist product id
+	private int m_id; // wishlist product id
 
 	// 4) 페이지 구현을 위한 static 변수
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
