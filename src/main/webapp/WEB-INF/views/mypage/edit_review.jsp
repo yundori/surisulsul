@@ -43,7 +43,7 @@
             <input type="hidden" name="id" value="${output.id}" />
                 <div class="form-group stars stars-example-fontawesome">
                     <label class="label text-center">상품은 만족하셨나요?</label><br />
-                    <select id="example-fontawesome" name="rating" autocomplete="off">
+                    <select id="example-fontawesome" name="star" autocomplete="off">
                         <option value="1" <c:if test="${output.star==1}">selected</c:if>>1</option>
                         <option value="2" <c:if test="${output.star==2}">selected</c:if>>2</option>
                         <option value="3" <c:if test="${output.star==3}">selected</c:if>>3</option>
@@ -53,12 +53,12 @@
                 </div>
                 <div class="form-group">
                     <label class="label text-center">어떤 점이 좋았나요?</label><br />
-                    <textarea class="write-content" placeholder="내용을 입력해 주세요." value="${output.content}"></textarea>
+                    <textarea class="write-content" placeholder="내용을 입력해 주세요." value="${output.content}" name="content"></textarea>
                     <span class="input-limit">0/1,000</span>
                 </div>
                 <div class="form-group">
                     <label class="label text-center file-attach-button" for="photo">사진 첨부하기</label><br />
-                    <input type="file" name="photo" id="photo" class="file-attach" value="${output.rev_img}"/><br />
+                    <input type="file" name="rev_img" id="photo" class="file-attach" value="${output.rev_img}"/><br />
                     <span class="notice">상품과 무관한 사진 첨부 시 통보 없이 삭제될 수 있습니다.</span>
                 </div>
                 <div>

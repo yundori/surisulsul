@@ -38,11 +38,11 @@
                 <div class="item-name">${output.name}</div>
                 <div class="item-price">${output.price}</div>
             </div>
-            <form id="addForm" action="${pageContext.request.contextPath}/question">
+            <form id="addForm" action="${pageContext.request.contextPath}/question" method="post">
             	<input type="hidden" name="p_id" value="${output.id}"/>
                 <div class="form-group">
                     <label class="label text-center">문의 분류 선택</label><br />
-                    <select id="category" class="category">
+                    <select id="category" class="category" name="type">
                         <option value="0">--------</option>
                         <option value="1">상품 문의</option>
                         <option value="2">배송 문의</option>
@@ -52,11 +52,8 @@
                 </div>
                 <div class="form-group">
                     <label class="label text-center">문의 내용 작성하기</label><br />
-                    <textarea class="write-content" placeholder="내용을 입력해 주세요."></textarea>
+                    <textarea class="write-content" placeholder="내용을 입력해 주세요." name="content"></textarea>
                     <span class="input-limit">0/1,000</span>
-                </div>
-                <div class="form-group">
-                    <label><input type="checkbox" name="lock" class="lock" id="lock" />&nbsp;나의 문의를 비밀글로 작성합니다.</label>
                 </div>
                 <div><button type="submit">작성하기</button>
                 </div>
