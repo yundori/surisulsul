@@ -315,7 +315,7 @@ public class RAQRestController {
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = reviewAndQnaService.getReviewCount(input);
+			totalCount = reviewAndQnaService.getProductReviewCount(input);
 
 			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
@@ -362,7 +362,7 @@ public class RAQRestController {
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = reviewAndQnaService.getQnaCount(input);
+			totalCount = reviewAndQnaService.getProductQnaCount(input);
 
 			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
