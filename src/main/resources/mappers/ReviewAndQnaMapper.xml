@@ -72,6 +72,12 @@
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">
 		SELECT count(*) FROM review WHERE p_id=#{p_id};
 	</select>
+	
+	<!-- 회원별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="selectCountMemberReview"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT count(*) FROM review WHERE m_id=#{m_id};
+	</select>
 
 	<!-- 리뷰 작성을 위한 기능 정의 -->
 	<insert id="addReview"
@@ -133,6 +139,12 @@
 	<select id="selectCountProductQna"
 		parameterType="study.spring.surisulsul.model.Qna" resultType="int">
 		SELECT count(*) FROM qna WHERE p_id=#{p_id};
+	</select>
+	
+	<!-- 회원별 문의 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="selectCountMemberQna"
+		parameterType="study.spring.surisulsul.model.Qna" resultType="int">
+		SELECT count(*) FROM qna WHERE m_id=#{m_id};
 	</select>
 
 	<!-- 문의 작성을 위한 기능 정의 -->
