@@ -46,7 +46,10 @@
 							<h4 class="user_id_filter">suri****</h4>
 							<h4 class="reivew_date">${item.reg_date}</h4>
 							<h4 class="review_rating_text">평점</h4>
-							<h4 class="review_rating">${item.star}</h4>
+							
+							<h4 class="review_rating">
+							<c:forEach var="i" begin="1" end="${item.star}" step="1">★</c:forEach><c:forEach var="i" begin="1" end="${5-item.star}" step="1">☆</c:forEach>
+							</h4>
 						</td>
 					</tr>
 					</c:forEach>
