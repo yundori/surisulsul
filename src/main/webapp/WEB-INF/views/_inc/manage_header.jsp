@@ -30,10 +30,13 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-</head>
 
 <body link="none" vlink="none" alink="none">
    <div class="header">
+      <h1>
+         <a href="${pageContext.request.contextPath}/">
+         <img src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
+      </h1>
       <input type="checkbox" id="check"> 
       <label for="check">
          <i class="fas fa-bars" id="btn"></i> 
@@ -46,24 +49,17 @@
          <ul>
             <li><a href="${pageContext.request.contextPath}/manage_home.do">오늘의 알림</a></li>
             
-            <li class="drink_type">쇼핑몰관리</li>
+            <li class="drink_type"><a>쇼핑몰관리</a></li>
             	<div class="drink_inner">
 		            <li><a href="#">회원관리</a></li>
-		            <br/>
 					<li><a href="#">상품관리</a></li>
 					<li><a href="#">상품문의관리</a></li>
 					<li><a href="#">상품후기관리</a></li>
-					<br/>
 					<li><a href="#">주문내역</a></li>
 					<li><a href="#">미완료주문</a></li>
-					<br/>
 					<li><a href="#">고객센터관리</a></li>
-            	</div>
-            	
-            <br />
-            <br />
-            
-            <li class="drink_type">쇼핑몰현황</li>
+            	</div>            
+            <li class="drink_type"><a>쇼핑몰현황</a></li>
             	<div class="drink_inner">
 		            <li><a href="#">매출현황</a></li>
 		            <li><a href="#">상품판매순위</a></li>

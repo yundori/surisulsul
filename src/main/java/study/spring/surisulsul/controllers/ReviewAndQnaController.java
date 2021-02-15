@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -142,10 +143,10 @@ public class ReviewAndQnaController {
 	}
 
 	/** 상품 상세 - 리뷰 페이지로 이동 */
-	@RequestMapping(value="/items/item_reviews.do", method=RequestMethod.GET)
+	@RequestMapping(value="/item_reviews.do/{p_id}", method=RequestMethod.GET)
 	public ModelAndView item_reviews(Model model,
 			//상세 페이지에서 조회할 상품 번호
-			@RequestParam(value="p_id", defaultValue="1") int p_id,
+			@PathVariable int p_id,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage) {
 		/** 1) 페이지 구현에 필요한 변수값 생성*/
@@ -186,10 +187,10 @@ public class ReviewAndQnaController {
 	}
 	
 	/** 상품 상세 - 문의 페이지로 이동 */
-	@RequestMapping(value="/items/item_question.do", method=RequestMethod.GET)
+	@RequestMapping(value="/item_question.do/{p_id}", method=RequestMethod.GET)
 	public ModelAndView item_question(Model model,
 			//상세 페이지에서 조회할 상품 번호
-			@RequestParam(value="p_id", defaultValue="1") int p_id,
+			@PathVariable int p_id,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage) {
 		
