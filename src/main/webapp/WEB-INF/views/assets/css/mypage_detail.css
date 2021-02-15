@@ -437,7 +437,6 @@ li .pick_item .swiper-slide .swiper-slide-next {
     vertical-align: middle;
     margin: auto;
     border-collapse: collapse;
-    table-layout: fixed;
     width: 1200px;
 }
 
