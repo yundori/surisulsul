@@ -33,10 +33,12 @@ public class CscenterController {
 	
 	/** 고객센터 페이지로 이동 */
 	@RequestMapping(value="/cscenter/cscenter_main.do", method=RequestMethod.GET)
-	public ModelAndView cscenter_main(Model model,
-			@RequestParam(value="default", defaultValue="a")String type) {
-		model.addAttribute("type", type);
-		return webHelper.redirect("cscenter/cscenter_main", null);
+	public String cscenter_main(Model model
+			//, @RequestParam(value="default", defaultValue="a")String type
+			) {
+		//model.addAttribute("type", type);
+		//return webHelper.redirect("cscenter_main", null);
+		return "cscenter/cscenter_main";
 	}
 	
 	/** 공지사항 페이지로 이동 */
