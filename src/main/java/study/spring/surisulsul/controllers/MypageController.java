@@ -23,6 +23,7 @@ import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.model.Wishlist;
 import study.spring.surisulsul.service.MemberService;
@@ -218,17 +219,23 @@ public class MypageController {
 	@RequestMapping(value = "/mypage/my_opinion.do", method = RequestMethod.GET)
 	public ModelAndView my_opinion(Model model, HttpServletRequest request,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			@RequestParam(value = "q_page", defaultValue = "1") int q_nowPage) {
 		
 		/** 0) 세션값 받아오기 */
 		HttpSession session = request.getSession();		
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		Member output = null;
 		
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		/** 1-1) 리뷰 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 4; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		
+		/** 1-2) 문의 페이지 구현에 필요한 변수값 생성 */
+		int q_totalCount = 0; // 전체 게시글 수
+		int q_listCount = 4; // 한 페이지당 표시할 목록 수
+		int q_pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 				if (loginSession == null) {
@@ -245,7 +252,7 @@ public class MypageController {
 						return webHelper.redirect(null, e.getLocalizedMessage());
 					}
 				}
-		/** 2) 데이터 조회*/
+		/** 2) 리뷰 데이터 조회*/
 				Review input = new Review();
 				input.setM_id(output.getId());
 				
@@ -253,7 +260,7 @@ public class MypageController {
 				PageData pageData = null;
 				
 				try {
-					//전체 게시글 수 조회
+					//전체 리뷰 수 조회
 					totalCount=reviewAndQnaService.getMemberReviewCount(input);
 					System.out.println(">>해당회원의 리뷰개수 :"+totalCount);
 					
@@ -270,11 +277,39 @@ public class MypageController {
 					e.printStackTrace();
 				}
 				
+		/** 2-2) 문의 데이터 조회*/
+				Qna q_input = new Qna();
+				q_input.setM_id(output.getId());
+				
+				List<Qna> qnaOutput = null; //조회 결과가 저장될 객체
+				PageData q_pageData = null;
+				
+				try {
+					//전체 문의 수 조회
+					q_totalCount=reviewAndQnaService.getMemberQnaCount(q_input);
+					System.out.println(">>해당회원의 문의개수 :"+q_totalCount);
+					
+					// 페이지 번호 계산 --> 계산 결과를 로그로 출력
+					q_pageData = new PageData(q_nowPage, q_totalCount, q_listCount, q_pageCount);
+
+					// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
+					Qna.setOffset(q_pageData.getOffset());
+					Qna.setListCount(q_pageData.getListCount());
+
+					// 데이터 조회하기
+					qnaOutput = reviewAndQnaService.getMemberQnaList(q_input);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				
 			/** 3) View 처리 */
 				model.addAttribute("output", output);
 				model.addAttribute("reviewOutput", reviewOutput);
+				model.addAttribute("pageData", pageData);
+				model.addAttribute("qnaOutput", qnaOutput);
+				model.addAttribute("q_pageData", q_pageData);
 				
-		
 				return new ModelAndView("mypage/my_opinion");
 	}
 	/** 탈퇴하기 */

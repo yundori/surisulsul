@@ -47,7 +47,8 @@
 	<select id="productReviewList"
 		parameterType="study.spring.surisulsul.model.Review"
 		resultMap="reviewMap">
-		SELECT * FROM review
+		SELECT r.m_id, r.m_name, r.p_id, r.content, r.star, date_format(r.reg_date,'%Y-%m-%d') as reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
+		INNER JOIN products p ON r.p_id = p.id
 		WHERE p_id=#{p_id}
 		ORDER BY reg_date DESC
 		<if test="listCount>0">
