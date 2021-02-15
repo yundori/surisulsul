@@ -60,19 +60,22 @@
 
 .jn_result>h4 {
 	font-size: 20px;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
 
 .jn_result img {
-	width: 110px;
-	height: 110px;
-	margin-left: 20px;
+	max-width: 130px;
+	height: 130px;
+	margin: 0 20px;
 	padding: 0;
 	border-radius: 200px;
 }
 
 .jn_result>ul {
 	float: right;
+	position: relative;
+	right: 100px;
+	top: 10px;
 }
 
 .jn_result li {
