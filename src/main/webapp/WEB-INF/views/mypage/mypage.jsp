@@ -64,4 +64,23 @@
     
 <script src="${contextPath}/assets/js/mypage.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 
+
+<script>
+$(".tab-button-item-link").click(function(e) {
+	e.preventDefault();
+	var tab = $(this).data('tab');
+	window.location.replace('#' + tab);
+});
+
+$(function() {
+	var tab = window.location.hash;
+	console.log(tab);
+	if (!tab) {
+		tab = "#my_recommend";
+	}
+	
+	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
+});
+</script>
+
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

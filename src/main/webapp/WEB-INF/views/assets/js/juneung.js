@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var data = "${jn_result}";
 	$(document).ready(function() {
 		//주능 결과 값 없을 시 false, 있을 시 true -> 재응시 여부 묻기
-			if (data = false) {
+			if (data = true) {
 			console.log("성공>>");
 		swal({
 			title: '주능 응시 결과가 있습니다!',

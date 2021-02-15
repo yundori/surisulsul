@@ -30,7 +30,7 @@
     			</tr>
     		</c:forEach>
     		</table>
-    		<a href="${pageContext.request.contextPath }/mypage/mypage.do" id="go_mypage">구매내역</a>
+    		<a href="${pageContext.request.contextPath }/mypage/mypage.do#past_order" id="go_mypage">구매내역</a>
     		<a href="${pageContext.request.contextPath }/" id="go_home">쇼핑 계속하기</a>
     	</c:when>
     	

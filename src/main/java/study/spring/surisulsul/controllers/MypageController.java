@@ -17,13 +17,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.model.Wishlist;
 import study.spring.surisulsul.service.MemberService;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.ReviewAndQnaService;
 import study.spring.surisulsul.service.WishlistService;
 
 @Controller
@@ -46,6 +50,9 @@ public class MypageController {
 	
 	@Autowired
 	WishlistService wishlistService;
+	
+	@Autowired
+	ReviewAndQnaService reviewAndQnaService;
 
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -61,7 +68,7 @@ public class MypageController {
 
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 		if (loginSession == null) {
-			String redirectUrl = "../account/login.do";
+			String redirectUrl = contextPath +"/account/login.do";
 			return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
 
 		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
@@ -95,7 +102,7 @@ public class MypageController {
 
 				// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 				if (loginSession == null) {
-					String redirectUrl = "../account/login.do";
+					String redirectUrl = contextPath +"/account/login.do";
 					return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
 
 				} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
@@ -157,7 +164,6 @@ public class MypageController {
 		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 		if (loginSession == null) {
 			String redirectUrl = contextPath +"/account/login.do";
-			//String redirectUrl = "../account/login.do";
 			return webHelper.redirect(redirectUrl, "로그인이 필요합니다.");
 			
 		}else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
@@ -210,8 +216,66 @@ public class MypageController {
 	
 	/** 내가 작성한 리뷰/문의 확인 */
 	@RequestMapping(value = "/mypage/my_opinion.do", method = RequestMethod.GET)
-	public String my_opinion(Model model) {
-		return "mypage/my_opinion";
+	public ModelAndView my_opinion(Model model, HttpServletRequest request,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		/** 0) 세션값 받아오기 */
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		Member output = null;
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 4; // 한 페이지당 표시할 목록 수
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		
+		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+				if (loginSession == null) {
+					String redirectUrl = contextPath +"/account/login.do";
+					return webHelper.redirect(redirectUrl, "로그인이 필요합니다.");
+					
+				}else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+					Member member = new Member();
+					member.setId(loginSession.getId());
+					
+					try {
+						output = memberService.getMemberItem(member);
+					} catch (Exception e) {
+						return webHelper.redirect(null, e.getLocalizedMessage());
+					}
+				}
+		/** 2) 데이터 조회*/
+				Review input = new Review();
+				input.setM_id(output.getId());
+				
+				List<Review> reviewOutput = null; // 조회 결과가 저장될 객체
+				PageData pageData = null;
+				
+				try {
+					//전체 게시글 수 조회
+					totalCount=reviewAndQnaService.getMemberReviewCount(input);
+					System.out.println(">>해당회원의 리뷰개수 :"+totalCount);
+					
+					// 페이지 번호 계산 --> 계산 결과를 로그로 출력
+					pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+					// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
+					Review.setOffset(pageData.getOffset());
+					Review.setListCount(pageData.getListCount());
+
+					// 데이터 조회하기
+					reviewOutput = reviewAndQnaService.getMemberReviewList(input);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			/** 3) View 처리 */
+				model.addAttribute("output", output);
+				model.addAttribute("reviewOutput", reviewOutput);
+				
+		
+				return new ModelAndView("mypage/my_opinion");
 	}
 	/** 탈퇴하기 */
 	@RequestMapping(value = "/mypage/is_out.do", method = RequestMethod.GET)
