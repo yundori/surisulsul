@@ -144,3 +144,4 @@
 	type="text/javascript" charset="utf-8"></script>
 <script src="${contextPath}/assets/js/index.js?time=${currentTime}"
 	type="text/javascript" charset="utf-8"></script>
+<script src="${contextPath}/assets/js/juneung.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
