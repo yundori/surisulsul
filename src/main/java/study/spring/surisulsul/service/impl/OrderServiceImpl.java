@@ -170,6 +170,30 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
+	 * 해당 orders_sub 컬럼에 has_review 값을 Y로 변경
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public int updateReview(Order input) throws Exception{
+		int result = 0;
+
+		try {
+			result = sqlSession.update("OrderMapper.updateReview", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
 	 * 주문 취소 : 주문 데이터 삭제하기
 	 * @param Order 삭제할 정보를 담고 있는 Beans
 	 * @return int
