@@ -67,7 +67,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
-    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.

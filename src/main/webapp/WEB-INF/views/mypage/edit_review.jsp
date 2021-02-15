@@ -74,7 +74,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
-    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
