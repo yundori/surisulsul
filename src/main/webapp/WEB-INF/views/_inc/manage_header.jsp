@@ -30,10 +30,13 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-</head>
 
 <body link="none" vlink="none" alink="none">
    <div class="header">
+      <h1>
+         <a href="${pageContext.request.contextPath}/">
+         <img src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
+      </h1>
       <input type="checkbox" id="check"> 
       <label for="check">
          <i class="fas fa-bars" id="btn"></i> 
@@ -46,7 +49,7 @@
          <ul>
             <li><a href="${pageContext.request.contextPath}/manage_home.do">오늘의 알림</a></li>
             
-            <li class="drink_type">쇼핑몰관리</li>
+            <li class="manage_menu1">쇼핑몰관리</li>
             	<div class="drink_inner">
 		            <li><a href="#">회원관리</a></li>
 		            <br/>
