@@ -17,6 +17,8 @@
 		<h2 class="psn_title_txt">구매했어요</h2>
 	</div>
 </div>
+
+<div id="order-container">
 <c:choose>
 	<%--c:when test 조건 -> 최근 주문 내역이 있는 경우 -> 주문 내역 DB 내용 존재 --%>
 	<c:when test="${output.size()!=0 }">
@@ -69,7 +71,7 @@
 					<c:url value="/mypage/past_order.do" var="prevPageUrl">
 						<c:param name="page" value="${pageData.prevPage}" />
 					</c:url>
-					<a href="${prevPageUrl}">[이전]</a>
+					<a href="${prevPageUrl}" class="page-link">[이전]</a>
 				</c:when>
 				<c:otherwise>
 					[이전]
@@ -92,7 +94,7 @@
 					</c:when>
 					<%-- 나머지 페이지의 경우 링크 적용함 --%>
 					<c:otherwise>
-						<a href="${pageUrl}">${i}</a>
+						<a href="${pageUrl}" class="page-link">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -105,7 +107,7 @@
 					<c:url value="/mypage/past_order.do" var="nextPageUrl">
 						<c:param name="page" value="${pageData.nextPage}" />
 					</c:url>
-					<a href="${nextPageUrl}">[다음]</a>
+					<a href="${nextPageUrl}" class="page-link">[다음]</a>
 				</c:when>
 				<c:otherwise>
 					[다음]
@@ -122,6 +124,7 @@
 		</div>
 	</c:otherwise>
 </c:choose>
+</div>
 
 <script>
 	//팝업열기
@@ -156,4 +159,14 @@
 			}
 		});
 	}
+	
+	$(document).on("click", ".page-link", function(e) {
+		e.preventDefault();
+		const url = $(this).attr('href');
+		console.log(url);
+		
+		$("#order-container").load(url, function() {
+			$("html, body").scrollTop("#order-container");
+		});
+	});
 </script>
