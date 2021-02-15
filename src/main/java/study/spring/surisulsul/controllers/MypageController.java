@@ -21,6 +21,7 @@ import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.model.Wishlist;
@@ -248,16 +249,31 @@ public class MypageController {
 				Review input = new Review();
 				input.setM_id(output.getId());
 				
-				List<Review> my_output = null; // 조회 결과가 저장될 객체
+				List<Review> reviewOutput = null; // 조회 결과가 저장될 객체
 				PageData pageData = null;
 				
 				try {
-					/**RAQMapper에서 멤버별 리뷰 갯수 세는 것 만들기*/
-					totalCount=reviewAndQnaService.getMemberReviewList(input);
+					//전체 게시글 수 조회
+					totalCount=reviewAndQnaService.getMemberReviewCount(input);
+					System.out.println(">>해당회원의 리뷰개수 :"+totalCount);
+					
+					// 페이지 번호 계산 --> 계산 결과를 로그로 출력
+					pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+					// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
+					Review.setOffset(pageData.getOffset());
+					Review.setListCount(pageData.getListCount());
+
+					// 데이터 조회하기
+					reviewOutput = reviewAndQnaService.getMemberReviewList(input);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
+				
+			/** 3) View 처리 */
+				model.addAttribute("output", output);
+				model.addAttribute("reviewOutput", reviewOutput);
+				
 		
 				return new ModelAndView("mypage/my_opinion");
 	}
