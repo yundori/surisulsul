@@ -84,11 +84,26 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 	/** 상품별 리뷰 수 조회 */
 	@Override
-	public int getReviewCount(Review input) throws Exception {
+	public int getProductReviewCount(Review input) throws Exception {
 		int result = 0;
 
 		try {
 			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountProductReview", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/** 회원별 리뷰 수 조회 */
+	@Override
+	public int getMemberReviewCount(Review input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountMemberReview", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
@@ -224,11 +239,26 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 	/** 상품별 문의 수 조회 */
 	@Override
-	public int getQnaCount(Qna input) throws Exception {
+	public int getProductQnaCount(Qna input) throws Exception {
 		int result = 0;
 
 		try {
 			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountProductQna", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/** 회원별 문의 수 조회 */
+	@Override
+	public int getMemberQnaCount(Qna input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountMemberQna", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

@@ -17,7 +17,10 @@ public interface ReviewAndQnaService {
 	public List<Review> getMemberReviewList(Review input) throws Exception;
 
 	// 상품별 리뷰 수 조회
-	public int getReviewCount(Review input) throws Exception;
+	public int getProductReviewCount(Review input) throws Exception;
+	
+	// 회원별 리뷰 수 조회
+	public int getMemberReviewCount(Review input) throws Exception;
 
 	// 리뷰 작성
 	public int addReview(Review input) throws Exception;
@@ -38,7 +41,10 @@ public interface ReviewAndQnaService {
 	public List<Qna> getMemberQnaList(Qna input) throws Exception;
 
 	// 상품별 문의 수 조회
-	public int getQnaCount(Qna input) throws Exception;
+	public int getProductQnaCount(Qna input) throws Exception;
+	
+	// 상품별 문의 수 조회
+	public int getMemberQnaCount(Qna input) throws Exception;
 
 	// 문의 작성
 	public int addQna(Qna input) throws Exception;
