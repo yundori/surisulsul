@@ -52,6 +52,13 @@ public interface OrderService {
 	public int getOrderCount(Order input) throws Exception;
 	
 	/**
+	 * 해당 orders_sub 컬럼에 has_review 값을 Y로 변경
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateReview(Order input) throws Exception;
+	
+	/**
 	 * 주문 취소 : 주문 데이터 삭제하기
 	 * @param Order 삭제할 정보를 담고 있는 Beans
 	 * @return int

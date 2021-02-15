@@ -31,6 +31,7 @@
 		<result property="p_name" column="p_name" />
 		<result property="p_price" column="p_price" />
 		<result property="p_qty" column="qty" />
+		<result property="has_review" column="has_review" />
 		
 		<result property="total_qty" column="total_qty" />
 	</resultMap>
@@ -51,7 +52,7 @@
 	<!-- 주문내역 - 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		<!-- orders테이블과 orders_sub 테이블의 JOIN -->
-		SELECT o.id AS o_id, os.o_date AS reg_date, os.p_id, os.p_name, os.p_price, os.qty, o.price, o.pay_result, o.send_result
+		SELECT o.id AS o_id, os.o_date AS reg_date, os.p_id, os.p_name, os.p_price, os.qty, os.has_review, o.price, o.pay_result, o.send_result
 		FROM orders o
 		INNER JOIN orders_sub os
 		ON o.id=os.o_id
@@ -91,8 +92,8 @@
 	
 	<!-- 주문하기 - orders_sub 테이블에 주문 상세 상품 목록 입력(INSERT) 기능 정의 -->
 	<insert id="insertSubItem" parameterType="study.spring.surisulsul.model.Order" useGeneratedKeys="true" keyProperty="sub_id">
-		INSERT INTO orders_sub (o_id, p_id, p_name, p_price, qty, o_date)
-		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{p_qty}, #{reg_date});
+		INSERT INTO orders_sub (o_id, p_id, p_name, p_price, qty, has_review, o_date)
+		VALUES (#{o_id}, #{p_id}, #{p_name}, #{p_price}, #{p_qty}, 'N', #{reg_date});
 	</insert>
 	
 	<!-- 주문하기 - 주문이 처리 된 이후 order_result 페이지에서 결과 확인을 위해 orders_sub 테이블 내용 조회 -->
@@ -110,6 +111,12 @@
 	<delete id="deleteSubItem" parameterType="study.spring.surisulsul.model.Order">
 		DELETE FROM orders_sub WHERE o_id=#{o_id};
 	</delete>
+	
+	<!-- 리뷰 작성 후 해당 orders_sub 컬럼에 has_review 상태 Y로 업데이트 -->
+	<update id="updateReview" parameterType="study.spring.surisulsul.model.Order">
+		UPDATE orders_sub SET has_review='Y'
+		WHERE o_id=#{o_id} AND p_id=#{p_id};
+	</update>
 	
 	<!-- sales 테이블에 INSERT할 SELECT-GROUP BY 내용 -->
 	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Order" resultMap="salesMap">
