@@ -34,24 +34,43 @@
 			<c:choose>
 			<c:when test="${'무궁화' eq output.jn_result}">
 				<img src="${contextPath}/surisulsul/assets/img/mypage/flower01.png" />
+				<ul>
+					<li>#국내파</li>
+					<li>#육류파</li>
+					<li>#깔끔한</li>
+					<li>#높은도수</li>
+				</ul>
 			</c:when>
 			<c:when test="${'수국' eq output.jn_result}">
 				<img src="${contextPath}/surisulsul/assets/img/mypage/flower04.png" />
+				<ul>
+					<li>#해외파</li>
+					<li>#가벼운</li>
+					<li>#상큼한</li>
+					<li>#낮은도수</li>
+				</ul>
 			</c:when>
 			<c:when test="${'진달래' eq output.jn_result}">
 				<img src="${contextPath}/surisulsul/assets/img/mypage/flower03.png" />
+				<ul>
+					<li>#국내파</li>
+					<li>#가벼운</li>
+					<li>#깔끔한</li>
+					<li>#중간도수</li>
+				</ul>
 			</c:when>
 			<c:otherwise>
 				<img src="${contextPath}/surisulsul/assets/img/mypage/flower02.png" />
+				<ul>
+					<li>#해외파</li>
+					<li>#육류파</li>
+					<li>#달콤한</li>
+					<li>#낮은도수</li>
+				</ul>
 			</c:otherwise>
 			</c:choose>
 			
-			<ul>
-				<li>이런 타입의 사람들이 많이 찾습니다!</li>
-				<li>주능 테스트 타입 요약 항목1</li>
-				<li>주능 테스트 타입 요약 항목2</li>
-				<li>주능 테스트 타입 요약 항목3</li>
-			</ul>
+			
 		</div>
 		<div class="clear"></div>
 
