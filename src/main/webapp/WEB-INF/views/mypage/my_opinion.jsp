@@ -32,58 +32,39 @@
 			<tbody>
 				<c:choose>
 					<%--c:when test 조건 -> 최근 구매 내역이 있는 경우 -> 후기를 작성했는지 여부 -> 주문 내역 DB 내용 존재 --%>
-					<c:when test="true">
-						<!--<c:forEach var="i" begin="${first }" end="${last }" varStatus="status">-->
+					<c:when test="${reviewOutput.size()!=0 }">
+						<c:forEach var="review" items="${reviewOutput }" varStatus="status">
+						
+						<%--상세 페이지로 이동하는 URL --%>
+						<c:url value="/item_details.do" var="viewUrl">
+							<c:param name="prodid" value="${review.p_id}" />
+						</c:url>
+						
 						<tr>
-							<td><input type="checkbox" name="item1" id="item1"
-								class="ab"></td>
-							<td><a href="#">블루베리 생막걸리</a></td>
+							<td><input type="checkbox" name="reviewItem" id="review${review.id }"
+								class="ab" value="${review.id }"></td>
+							<td><a href="${viewUrl }">${review.p_id }</a></td>
+							<%--윗 줄 p_id가 아니라 p_name으로 추후 수정 --%>
 							<td>
 								<div class="table_min_height">
-									<a href="#" class="review_item_thumb"> <img
-										src="${contextPath}/assets/img/no-image.jpg" />
+									<a href="#" class="review_item_thumb"> 
+									<img class="review_img" src="${contextPath}/surisulsul/assets/img/${item.rev_img}" />
 									</a>
 									<div class="review_item_info">
 										<a href="#" class="item">
-											<p class="review_item_name">상품후기 작성내용/상품후기 작성내용/상품후기
-												작성내용/상품후기 작성내용/ 상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/
-												상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/ 상품후기 작성내용/상품후기
-												작성내용/상품후기 작성내용/상품후기 작성내용/</p>
+											<p class="review_item_name">${review.content}</p>
 										</a>
 									</div>
 								</div>
 
 							</td>
-							<td>2021-01-19</td>
-							<td><a href="#" class="edit_recommend btn_gray"
-								onClick="openPop()"returnfalse;>수정하기</a></td>
+							<td>${review.reg_date}</td>
+							<td><a href="javascript:openPop(${review.p_id});" class="edit_recommend btn_gray">수정하기</a></td>
 						</tr>
-						<tr>
-							<td><input type="checkbox" name="item2" id="item2"
-								class="ab"></td>
-							<td><a href="#">블루베리 생막걸리</a></td>
-							<td>
-								<div class="table_min_height">
-									<a href="#" class="review_item_thumb"> <img
-										src="${contextPath}/assets/img/no-image.jpg" />
-									</a>
-									<div class="review_item_info">
-										<a href="#" class="item">
-											<p class="review_item_name">상품후기 작성내용/상품후기 작성내용/상품후기
-												작성내용/상품후기 작성내용/ 상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/
-												상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/상품후기 작성내용/ 상품후기 작성내용/상품후기
-												작성내용/상품후기 작성내용/상품후기 작성내용/</p>
-										</a>
-									</div>
-								</div>
-
-							</td>
-							<td>2021-01-19</td>
-							<td><a href="#" class="edit_recommend btn_gray"
-								onClick="openPop()" return false;>수정하기</a></td>
-						</tr>
-						<!--</c:forEach>-->
+						
+						</c:forEach>
 					</c:when>
+					
 					<%--c:otherwise --> 주문내역이 없는 경우/후기를 작성하지 않은 경우 -> DB에 데이터 X --%>
 					<c:otherwise>
 						<tr>
@@ -121,43 +102,32 @@
 			<tbody>
 				<c:choose>
 					<%--c:when test 조건 -> 최근 문의 내역 존재 여부 -> 문의 내역 DB 내용 존재 --%>
-					<c:when test="false">
+					<c:when test="${qnaOutput.size()!=0 }">
+						<c:forEach var="qna" items="${qnaOutput }" varStatus="status">
 						<tr>
-							<td><input type="checkbox" name="item1" id="item1"
-								class="cd"></td>
-							<td><a href="#">제주몬순커피주</a></td>
+							<td><input type="checkbox" name="qnaItem" id="qna${qna.id }"
+								class="cd" value="${qna.id }"></td>
+							<td><a href="#">${qna.p_id }</a></td>
+							<%--윗 줄 p_id가 아니라 p_name으로 추후 수정 --%>
 							<td>
 								<div class="table_min_height">
 									<div class="qna_item_info">
-										<a href="#"> <span class="qna_area">[분류 : 대량구매]</span>
-											<p class="qna_item_name">상품문의 남깁니다. 혹시 대량구매 가능할까요?</p>
+										<a href="#"> 
+											<%--분류 : c:choose와 c:when으로 나누기 --%>
+											<span class="qna_area">[분류 : 대량구매]</span>
+											<p class="qna_item_name">${qna.content }</p>
 										</a>
 									</div>
 								</div>
 
 							</td>
-							<td>2021-01-19</td>
+							<td>${qna.reg_date }</td>
+							<%--처리상태 : c:choose와 c:when으로 나누기 --%>
 							<td>답변 대기중</td>
 						</tr>
-						<tr>
-							<td><input type="checkbox" name="item2" id="item2"
-								class="cd"></td>
-							<td><a href="#">블루베리 생막걸리</a></td>
-							<td>
-								<div class="table_min_height">
-									<div class="qna_item_info">
-										<a href="#"> <span class="qna_area">[분류 : 상품문의]</span>
-											<p class="qna_item_name">이거 유통기한이 어떻게 되나요? 제가 2주간 출장을 가게
-												되는데 미리 받아놓고 2주 정도 뒤에 마셔도 맛이 괜찮을까요? 혹시 예약일에 맞춰서 주문도 가능할까요?</p>
-										</a>
-									</div>
-								</div>
-
-							</td>
-							<td>2021-01-17</td>
-							<td>답변완료</td>
-						</tr>
+						</c:forEach>
 					</c:when>
+					
 					<%--c:otherwise --> 문의 내역이 없는 경우 -> DB에 데이터 X --%>
 					<c:otherwise>
 						<tr>
