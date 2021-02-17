@@ -113,12 +113,5 @@ public class HomeController {
 
 		return "redirect:/";
 	}
-	
-	/** 관리자페이지 이동 처리 */
-	@RequestMapping(value = "/manage_home.do", method = RequestMethod.GET)
-	public String go_manage_home() throws Exception {
-		
-		return "manage/manage_home";
-	}
 
 }
