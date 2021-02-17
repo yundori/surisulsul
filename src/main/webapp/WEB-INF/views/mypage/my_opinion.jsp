@@ -48,7 +48,7 @@
 							<td>
 								<div class="table_min_height">
 									<a href="#" class="review_item_thumb"> 
-									<img class="review_img" src="${contextPath}/surisulsul/assets/img/${item.rev_img}" />
+									<img class="review_img" src="${contextPath}/assets/img/${review.rev_img}" />
 									</a>
 									<div class="review_item_info">
 										<a href="#" class="item">
@@ -59,7 +59,7 @@
 
 							</td>
 							<td>${review.reg_date}</td>
-							<td><a href="javascript:openPop(${review.p_id});" class="edit_recommend btn_gray">수정하기</a></td>
+							<td><a href="javascript:openPop(${review.id});" class="edit_recommend btn_gray">수정하기</a></td>
 						</tr>
 						
 						</c:forEach>
