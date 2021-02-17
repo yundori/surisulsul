@@ -15,7 +15,7 @@
 			이 술에 대해 궁금하다면 <span>상품에 대한 문의를 남길 수 있습니다.</span>
 			</h3>
 		
-			<a href="#" class="write_question_btn">문의 작성</a>
+			<a href="javascript:openPop(${p_id});" class="write_question_btn">문의 작성</a>
 		</div>
 		
 		<div class="question_lists">
@@ -26,92 +26,56 @@
 				<span class="que_answer">답변 상태</span>
 				<span class="que_date">작성 일시</span>
 			</div>
-			
-			
-			
+
 			<c:choose>
-			<c:when test="true">
+			<%-- 조회 결과가 없는 경우 --%>
+			<c:when test="${output==null||fn:length(output)==0}">
+				<hr />
+				<div class="review_none">
+					<table>
+						<tr>
+							<td><h1>상품 문의가 없습니다.</h1></td>
+						</tr>
+					</table>
+				</div>
+			</c:when>
+			<c:otherwise>
 			<c:forEach var="item" items="${output}" varStatus="status">
 				<%-- 출력을 위한 상품 번호 --%>
 				<c:set var="p_id" value="${item.p_id}"/>
 			
 			<div class="question_list">
 				<div class="question_default">
-					<span class="que_number">${status.index}</span>
-					<span class="que_type">${item.type}</span>
-					<div class="que_content">${item.content}</div>
-					<span class="que_answer"><c:choose><c:when test="${item.status.equals("Y")}">답변완료</c:when><c:otherwise>대기중</c:otherwise></c:choose></span>
-					<span class="que_date">2021-01-19</span>
+					<span class="que_number">${status.index+1}</span>
+					<span class="que_type">
+					<c:choose>
+					<c:when test="${item.type==1}">
+					상품 문의
+					</c:when>
+					<c:when test="${item.type==2}">
+					배송 문의
+					</c:when>
+					<c:when test="${item.type==3}">
+					대량 구매
+					</c:when>
+					<c:when test="${item.type==4}">
+					기타 문의
+					</c:when>
+					<c:otherwise>
+					분류 없음
+					</c:otherwise>
+					</c:choose>
+					
+					</span>
+					<div class="que_content">${item.p_name}</div>
+					<span class="que_answer"><c:choose><c:when test="${item.status eq Y}">답변완료</c:when><c:otherwise>대기중</c:otherwise></c:choose></span>
+					<span class="que_date">${item.reg_date}</span>
 					<div class="question_detail">
-						<span>배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</span><br />
-						배송은 2~3일 정도 소요됩니다.
+						<span>${item.content}</span>
 					</div>
 				</div>
 			</div>
 			</c:forEach>
-			<div class="question_list">
-				<div class="question_default">
-					<span class="que_number">4</span>
-					<span class="que_type">배송</span>
-					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다!!!!!!!!!!!!</div>
-					<span class="que_answer">대기</span>
-					<span class="que_date">2021-01-19</span>
-					<div class="question_detail">
-						<span>배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</span><br />
-						배송은 2~3일 정도 소요됩니다.
-					</div>
-				</div>
-			</div>
-			
-			<div class="question_list">
-				<div class="question_default">
-					<span class="que_number">3</span>
-					<span class="que_type">환불</span>
-					<div class="que_content">아직 배송전인데 환불 안되나요?</div>
-					<span class="que_answer">완료</span>
-					<span class="que_date">2021-01-19</span>
-					<div class="question_detail">
-						<span>아직 배송전인데 환불 안되나요?</span><br />
-						수리술술에서는 주문과 동시에 술제조가 들어가기 때문에 환불이 어렵습니다. 죄송합니다.
-					</div>
-				</div>
-			</div>
-			
-			<div class="question_list">
-				<div class="question_default">
-					<span class="que_number">2</span>
-					<span class="que_type">교환</span>
-					<div class="que_content">상품하자가 있어 교환가능한가요?</div>
-					<span class="que_answer">대기</span>
-					<span class="que_date">2021-01-18</span>
-					<div class="question_detail">
-						<span>상품하자가 있어 교환가능한가요?</span><br />
-						확인 후 바로 조치해드리겠습니다. 불편을 드려 죄송합니다.
-					</div>
-				</div>
-			</div>
-			
-			<div class="question_list">
-				<div class="question_default">
-					<span class="que_number">1</span>
-					<span class="que_type">배송</span>
-					<div class="que_content">배송지 변경 가능할까요?</div>
-					<span class="que_answer">완료</span>
-					<span class="que_date">2021-01-17</span>
-					<div class="question_detail">
-						<span>배송지 변경 가능할까요?</span><br />
-						확인 후 바로 연락드리겠습니다. 감사합니다.
-					</div>
-				</div>
-				
-			</div>
-			
-			</c:when>
-			<c:otherwise>
-				<hr />
-				<div class="question_none">
-					<h1>상품 문의가 없습니다.</h1>
-				</div>
 			</c:otherwise>
 			</c:choose>
 		</div>
@@ -121,6 +85,13 @@
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+//팝업열기
+function openPop(prodId) {
+	var popup = window
+			.open('${pageContext.request.contextPath }/items/write_question.do?p_id='
+							+ prodId, '문의작성',
+					'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+}
     $(function() {
         $(".question_default").click(function(e) {
             e.preventDefault();

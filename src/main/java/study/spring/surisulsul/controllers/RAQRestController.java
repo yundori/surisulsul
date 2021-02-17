@@ -176,6 +176,7 @@ public class RAQRestController {
 	/** 문의 작성에 대한 action 페이지 */
 	@RequestMapping(value = "/question", method = RequestMethod.POST)
 	public Map<String, Object> write_question(@RequestParam(value = "p_id", defaultValue = "0") int p_id,
+			@RequestParam(value="type", defaultValue="0") int type,
 			@RequestParam(value = "content", required = false) String content) {
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
@@ -186,6 +187,10 @@ public class RAQRestController {
 		// 숫자형으로 선언된 파라미터
 		if (p_id == 0) {
 			return webHelper.getJsonWarning("상품이 선택되지 않았습니다.");
+			
+		}
+		if (type == 0) {
+			return webHelper.getJsonWarning("문의 분류를 선택해주세요.");
 		}
 
 		/** 2) 데이터 저장하기 */
@@ -193,6 +198,7 @@ public class RAQRestController {
 		Qna input = new Qna();
 		input.setM_id(1);
 		input.setM_name("마수리");
+		input.setType(type);
 		input.setP_id(p_id);
 		input.setContent(content);
 
@@ -220,6 +226,7 @@ public class RAQRestController {
 	public Map<String, Object> edit_question(
 			@RequestParam(value = "id", defaultValue = "0") int id,
 			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
+			@RequestParam(value="type", defaultValue="0") int type,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "reg_date", required = false) String reg_date) {
 
@@ -238,12 +245,17 @@ public class RAQRestController {
 		if (p_id == 0) {
 			return webHelper.getJsonWarning("상품이 선택되지 않았습니다.");
 		}
+		if (type == 0) {
+			return webHelper.getJsonWarning("문의 분류를 선택해주세요.");
+		}
+
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Qna input = new Qna();
 		input.setId(id);
 		input.setM_id(1);
 		input.setM_name("마수리");
+		input.setType(type);
 		input.setP_id(p_id);
 		input.setContent(content);
 		input.setReg_date(reg_date);
