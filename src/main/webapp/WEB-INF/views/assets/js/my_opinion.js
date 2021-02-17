@@ -47,10 +47,10 @@ $('.cd').click(function() {
 });
 
 //팝업열기
-function openPop(prodId) {
+function openPop(revId) {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	var contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
 	var popup = window.open(
-		contextPath + 'mypage/edit_review.do?p_id=' + prodId, '후기수정',
+		contextPath + '/mypage/edit_review.do?id=' + revId, '후기수정',
 		'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }

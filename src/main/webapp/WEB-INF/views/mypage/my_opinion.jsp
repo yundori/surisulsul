@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -33,38 +33,45 @@
 				<c:choose>
 					<%--c:when test 조건 -> 최근 구매 내역이 있는 경우 -> 후기를 작성했는지 여부 -> 주문 내역 DB 내용 존재 --%>
 					<c:when test="${reviewOutput.size()!=0 }">
-						<c:forEach var="review" items="${reviewOutput }" varStatus="status">
-						
-						<%--상세 페이지로 이동하는 URL --%>
-						<c:url value="/item_details.do" var="viewUrl">
-							<c:param name="prodid" value="${review.p_id}" />
-						</c:url>
-						
-						<tr>
-							<td><input type="checkbox" name="reviewItem" id="review${review.id }"
-								class="ab" value="${review.id }"></td>
-							<td><a href="${viewUrl }">${review.p_id }</a></td>
-							<%--윗 줄 p_id가 아니라 p_name으로 추후 수정 --%>
-							<td>
-								<div class="table_min_height">
-									<a href="#" class="review_item_thumb"> 
-									<img class="review_img" src="${contextPath}/surisulsul/assets/img/${item.rev_img}" />
-									</a>
-									<div class="review_item_info">
-										<a href="#" class="item">
-											<p class="review_item_name">${review.content}</p>
-										</a>
-									</div>
-								</div>
+						<c:forEach var="review" items="${reviewOutput }"
+							varStatus="status">
 
-							</td>
-							<td>${review.reg_date}</td>
-							<td><a href="javascript:openPop(${review.p_id});" class="edit_recommend btn_gray">수정하기</a></td>
-						</tr>
-						
+							<%--상세 페이지로 이동하는 URL --%>
+							<c:url value="/item_details.do" var="viewUrl">
+								<c:param name="prodid" value="${review.p_id}" />
+							</c:url>
+
+							<tr>
+								<td><input type="checkbox" name="reviewItem"
+									id="review${review.id }" class="ab" value="${review.id }"></td>
+								<td><a href="${viewUrl }">${review.p_name }</a></td>
+								<td>
+									<div class="table_min_height">
+										<a href="#" class="review_item_thumb"> <img
+											class="review_img"
+											src="${contextPath}/assets/img/${review.rev_img}" />
+										</a>
+										<div class="review_item_info">
+											<a href="#" class="item"> <c:set var="stars"
+													value="${review.star}" /> <c:choose>
+													<c:when test="${stars != 0}">
+														<c:forEach var="i" begin="1" end="${stars}">⭐</c:forEach>
+													</c:when>
+												</c:choose>
+												<p class="review_item_name">${review.content}</p>
+											</a>
+										</div>
+									</div>
+
+								</td>
+								<td>${review.reg_date}</td>
+								<td><a href="javascript:openPop(${review.id});"
+									class="edit_recommend btn_gray">수정하기</a></td>
+							</tr>
+
 						</c:forEach>
 					</c:when>
-					
+
 					<%--c:otherwise --> 주문내역이 없는 경우/후기를 작성하지 않은 경우 -> DB에 데이터 X --%>
 					<c:otherwise>
 						<tr>
@@ -104,30 +111,28 @@
 					<%--c:when test 조건 -> 최근 문의 내역 존재 여부 -> 문의 내역 DB 내용 존재 --%>
 					<c:when test="${qnaOutput.size()!=0 }">
 						<c:forEach var="qna" items="${qnaOutput }" varStatus="status">
-						<tr>
-							<td><input type="checkbox" name="qnaItem" id="qna${qna.id }"
-								class="cd" value="${qna.id }"></td>
-							<td><a href="#">${qna.p_id }</a></td>
-							<%--윗 줄 p_id가 아니라 p_name으로 추후 수정 --%>
-							<td>
-								<div class="table_min_height">
-									<div class="qna_item_info">
-										<a href="#"> 
-											<%--분류 : c:choose와 c:when으로 나누기 --%>
-											<span class="qna_area">[분류 : 대량구매]</span>
-											<p class="qna_item_name">${qna.content }</p>
-										</a>
+							<tr>
+								<td><input type="checkbox" name="qnaItem"
+									id="qna${qna.id }" class="cd" value="${qna.id }"></td>
+								<td><a href="#">${qna.p_name }</a></td>
+								<td>
+									<div class="table_min_height">
+										<div class="qna_item_info">
+											<a href="#"> <%--분류 : c:choose와 c:when으로 나누기 --%> <span
+												class="qna_area">[분류 : 대량구매]</span>
+												<p class="qna_item_name">${qna.content }</p>
+											</a>
+										</div>
 									</div>
-								</div>
 
-							</td>
-							<td>${qna.reg_date }</td>
-							<%--처리상태 : c:choose와 c:when으로 나누기 --%>
-							<td>답변 대기중</td>
-						</tr>
+								</td>
+								<td>${qna.reg_date }</td>
+								<%--처리상태 : c:choose와 c:when으로 나누기 --%>
+								<td>답변 대기중</td>
+							</tr>
 						</c:forEach>
 					</c:when>
-					
+
 					<%--c:otherwise --> 문의 내역이 없는 경우 -> DB에 데이터 X --%>
 					<c:otherwise>
 						<tr>
