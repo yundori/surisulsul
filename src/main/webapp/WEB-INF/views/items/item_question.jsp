@@ -27,10 +27,28 @@
 				<span class="que_date">작성 일시</span>
 			</div>
 			
+			
+			
 			<c:choose>
 			<c:when test="true">
-			<%-- <forEach var="i" begin="0" end="select 데이터 수" varStatus="status" > --%>
+			<c:forEach var="item" items="${output}" varStatus="status">
+				<%-- 출력을 위한 상품 번호 --%>
+				<c:set var="p_id" value="${item.p_id}"/>
 			
+			<div class="question_list">
+				<div class="question_default">
+					<span class="que_number">4</span>
+					<span class="que_type">배송</span>
+					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다!!!!!!!!!!!!</div>
+					<span class="que_answer">대기</span>
+					<span class="que_date">2021-01-19</span>
+					<div class="question_detail">
+						<span>배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</span><br />
+						배송은 2~3일 정도 소요됩니다.
+					</div>
+				</div>
+			</div>
+			</c:forEach>
 			<div class="question_list">
 				<div class="question_default">
 					<span class="que_number">4</span>
