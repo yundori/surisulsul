@@ -31,7 +31,7 @@
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="${contextPath}/assets/img/${output.img}" />
+                            <img class="thumbnail-photo" src="${contextPath}/assets/img/items/${output.img}" />
                         </div>
                     </div>
                 </div>

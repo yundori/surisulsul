@@ -177,7 +177,6 @@ li {
 }
 
 .sidebar ul a {
-    display: block;
     height: 100%;
     width: 100%;
     line-height: 65px;
@@ -192,9 +191,6 @@ li {
     padding-left: 50px;
 }
 
-.sidebar ul a i {
-    margin-right: 16px;
-}
 
 /* 사이드바 x, 햄버거
 ----------------------------*/
@@ -251,6 +247,22 @@ label #cancel {
     font-size: 14px;
     font-weight: bold;
 }
+
+.drink_inner1 {
+    display: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.drink_inner1 li a {
+    display: block;
+    padding-top: 10px;
+    margin-top: -35px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
 /********************************
 ---------페이지네이션 div--------

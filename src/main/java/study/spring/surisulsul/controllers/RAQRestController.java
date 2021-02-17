@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.service.ReviewAndQnaService;
@@ -38,10 +42,21 @@ public class RAQRestController {
 
 	/** 리뷰 작성에 대한 action 페이지 */
 	@RequestMapping(value = "review", method = RequestMethod.POST)
-	public Map<String, Object> write_review(@RequestParam(value = "p_id", defaultValue = "0") int p_id,
+	public Map<String, Object> write_review(
+			HttpServletRequest request,
+			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
 			@RequestParam(value = "rev_img", required = false) String rev_img) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.getJsonWarning("로그인 후 이용해주세요.");
+		}
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
@@ -63,8 +78,8 @@ public class RAQRestController {
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Review input = new Review();
-		input.setM_id(1);
-		input.setM_name("마수리");
+		input.setM_id(loginSession.getId());
+		input.setM_name(loginSession.getName());
 		input.setP_id(p_id);
 		input.setContent(content);
 		input.setStar(star);

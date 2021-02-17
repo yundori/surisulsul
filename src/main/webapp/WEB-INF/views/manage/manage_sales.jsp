@@ -7,6 +7,7 @@
 	
 <div class="content">
     <h1>관리자 페이지</h1>
+    <h2>매출현황</h2>
 </div>
 
 </body>

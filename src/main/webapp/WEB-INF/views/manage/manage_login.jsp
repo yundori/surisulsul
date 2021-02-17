@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/manage/manage_home.css?time=${currentTime}" />
+	href="${contextPath}/assets/manage/manage.css?time=${currentTime}" />
 </head>
 
 <body>

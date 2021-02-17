@@ -2,6 +2,9 @@ package study.spring.surisulsul.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
@@ -45,7 +49,8 @@ public class ReviewAndQnaController {
 	/** 리뷰 작성 페이지로 이동 */
 	@RequestMapping(value="/mypage/write_review.do", method=RequestMethod.GET)
 	public ModelAndView write_review(Model model,
-			@RequestParam(value="p_id", defaultValue="0") int p_id) {
+			@RequestParam(value="p_id", defaultValue="0") int p_id) {	
+				
 		/** 1) 제품 정보 조회하기 */
 		// 조회할 조건 객체
 		Product input = new Product();
