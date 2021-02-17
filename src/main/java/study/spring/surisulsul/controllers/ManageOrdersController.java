@@ -25,7 +25,7 @@ public class ManageOrdersController {
 	}
 	
 	/** 관리자 - uncmpl_orders 페이지 처리 */
-	@RequestMapping(value = "/manage_orders.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/uncmpl_orders.do", method = RequestMethod.GET)
 	public ModelAndView uncmpl_orders(Model model) throws Exception {
 
 		return new ModelAndView("manage/uncmpl_orders");
