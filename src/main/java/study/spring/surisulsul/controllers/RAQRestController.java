@@ -106,12 +106,23 @@ public class RAQRestController {
 
 	/** 리뷰 수정에 대한 action 페이지 */
 	@RequestMapping(value = "/review", method = RequestMethod.PUT)
-	public Map<String, Object> edit_review(@RequestParam(value = "id", defaultValue = "0") int id,
+	public Map<String, Object> edit_review(
+			HttpServletRequest request,
+			@RequestParam(value = "id", defaultValue = "0") int id,
 			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
 			@RequestParam(value = "reg_date", required = false) String reg_date,
 			@RequestParam(value = "rev_img", required = false) String rev_img) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.getJsonWarning("로그인 후 이용해주세요.");
+		}
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 필수 검사 (리뷰가 존재하는지)
@@ -136,8 +147,8 @@ public class RAQRestController {
 		// 저장할 값들을 Beans에 담는다.
 		Review input = new Review();
 		input.setId(id);
-		input.setM_id(1);
-		input.setM_name("마수리");
+		input.setM_id(loginSession.getId());
+		input.setM_name(loginSession.getName());
 		input.setP_id(p_id);
 		input.setContent(content);
 		input.setStar(star);
@@ -190,9 +201,22 @@ public class RAQRestController {
 
 	/** 문의 작성에 대한 action 페이지 */
 	@RequestMapping(value = "/question", method = RequestMethod.POST)
-	public Map<String, Object> write_question(@RequestParam(value = "p_id", defaultValue = "0") int p_id,
+	public Map<String, Object> write_question(
+			HttpServletRequest request,
+			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value="type", defaultValue="0") int type,
 			@RequestParam(value = "content", required = false) String content) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.getJsonWarning("로그인 후 이용해주세요.");
+		}
+				
+				
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
 		if (content.equals("")) {
@@ -211,8 +235,8 @@ public class RAQRestController {
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Qna input = new Qna();
-		input.setM_id(1);
-		input.setM_name("마수리");
+		input.setM_id(loginSession.getId());
+		input.setM_name(loginSession.getName());
 		input.setType(type);
 		input.setP_id(p_id);
 		input.setContent(content);
@@ -239,12 +263,23 @@ public class RAQRestController {
 	/** 문의 수정에 대한 action 페이지 */
 	@RequestMapping(value = "question", method = RequestMethod.PUT)
 	public Map<String, Object> edit_question(
+			HttpServletRequest request,
 			@RequestParam(value = "id", defaultValue = "0") int id,
 			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value="type", defaultValue="0") int type,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "reg_date", required = false) String reg_date) {
 
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.getJsonWarning("로그인 후 이용해주세요.");
+		}
+				
+				
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 필수 검사 (문의가 존재하는지)
 		if (id == 0) {
@@ -268,8 +303,8 @@ public class RAQRestController {
 		// 저장할 값들을 Beans에 담는다.
 		Qna input = new Qna();
 		input.setId(id);
-		input.setM_id(1);
-		input.setM_name("마수리");
+		input.setM_id(loginSession.getId());
+		input.setM_name(loginSession.getName());
 		input.setType(type);
 		input.setP_id(p_id);
 		input.setContent(content);
