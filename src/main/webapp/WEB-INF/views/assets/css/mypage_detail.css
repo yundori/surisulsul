@@ -489,6 +489,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
+    margin-top:10px;
 }
 
 /*************************************************
