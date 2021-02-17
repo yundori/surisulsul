@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Basket;
 import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Product;
@@ -337,6 +338,66 @@ public class MypageController {
 			}
 		}
 		return new ModelAndView("redirect:/");
+	}
+	
+	/**나의 리뷰 선택 삭제 처리 */
+	@RequestMapping(value = "/mypage/delete_ok.do", method = RequestMethod.POST)
+	public ModelAndView delete_ok(Model model, HttpServletRequest request,
+			@RequestParam(value = "reviewItem", required=false) List<String> chkItems) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//input 값에 쓰일 basketId 값 선언
+		int reviewId = 0;
+		
+		if (chkItems!=null) {
+			for(int i=0; i<chkItems.size(); i++) {
+				// 데이터 삭제에 필요한 조건값을 Beans에 저장
+				Review input = new Review();
+				input.setM_id(loginSession.getId());
+				reviewId = Integer.parseInt(chkItems.get(i));
+				input.setId(reviewId);
+				
+				//데이터 삭제
+				try {
+					reviewAndQnaService.deleteReview(input);
+				} catch (Exception e) { e.printStackTrace(); }
+			}
+		}else { //체크된 박스 없이 submit됐을 경우
+			return webHelper.redirect(null, "삭제할 리뷰가 없습니다.");
+		}
+		return webHelper.redirect(contextPath+"/mypage/mypage.do#my_opinion", null);
+	}
+	
+	/**나의 문의 선택 삭제 처리 */
+	@RequestMapping(value = "/mypage/qna_delete_ok.do", method = RequestMethod.POST)
+	public ModelAndView qna_delete_ok(Model model, HttpServletRequest request,
+			@RequestParam(value = "qnaItem", required=false) List<String> chkItems) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+		
+		//input 값에 쓰일 basketId 값 선언
+		int qnaId = 0;
+		
+		if (chkItems!=null) {
+			for(int i=0; i<chkItems.size(); i++) {
+				// 데이터 삭제에 필요한 조건값을 Beans에 저장
+				Qna input = new Qna();
+				input.setM_id(loginSession.getId());
+				qnaId = Integer.parseInt(chkItems.get(i));
+				input.setId(qnaId);
+				
+				//데이터 삭제
+				try {
+					reviewAndQnaService.deleteQna(input);
+				} catch (Exception e) { e.printStackTrace(); }
+			}
+		}else { //체크된 박스 없이 submit됐을 경우
+			return webHelper.redirect(null, "삭제할 문의가 없습니다.");
+		}
+		return webHelper.redirect(contextPath+"/mypage/mypage.do#my_opinion", null);
 	}
 
 }

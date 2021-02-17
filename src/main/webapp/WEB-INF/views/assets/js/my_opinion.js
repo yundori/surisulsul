@@ -7,15 +7,15 @@ $(document).ready(function() {
 			$(".ab").prop("checked", false);
 		}
 	});
-});
-
-$(document).ready(function() {
-	var chk = $(".check_all2").prop("checked");
-	if (chk) {
+	
+	$('.check_all2').click(function() {
+		var chk2 = $(".check_all2").prop("checked");
+	if (chk2) {
 		$(".cd").prop("checked", true);
 	} else {
 		$(".cd").prop("checked", false);
 	}
+	});
 });
 
 // 체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
