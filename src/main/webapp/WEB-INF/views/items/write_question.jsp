@@ -44,10 +44,10 @@
                     <label class="label text-center">문의 분류 선택</label><br />
                     <select id="category" class="category" name="type">
                         <option value="0">--------</option>
-                        <option value="1">상품 문의</option>
-                        <option value="2">배송 문의</option>
-                        <option value="3">대량 구매</option>
-                        <option value="4">기타 문의</option>
+                        <option value=1>상품 문의</option>
+                        <option value=2>배송 문의</option>
+                        <option value=3>대량 구매</option>
+                        <option value=4>기타 문의</option>
                     </select>
                 </div>
                 <div class="form-group">
