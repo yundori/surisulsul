@@ -43,7 +43,7 @@
 							<div class="content_text">${item.content}</div>
 						</td>
 						<td class="userinfo_area">
-							<h4 class="user_id_filter">suri****</h4>
+							<h4 class="user_id_filter">${item.m_name}</h4>
 							<h4 class="reivew_date">${item.reg_date}</h4>
 							<h4 class="review_rating_text">평점</h4>
 							
