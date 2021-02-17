@@ -18,8 +18,10 @@ import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
+import study.spring.surisulsul.service.OrderService;
 import study.spring.surisulsul.service.ReviewAndQnaService;
 
 @RestController
@@ -35,6 +37,9 @@ public class RAQRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	ReviewAndQnaService reviewAndQnaService;
+	
+	@Autowired
+	OrderService orderService; 
 
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -47,7 +52,8 @@ public class RAQRestController {
 			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
-			@RequestParam(value = "rev_img", required = false) String rev_img) {
+			@RequestParam(value = "rev_img", required = false) String rev_img,
+			@RequestParam(value="o_id", defaultValue="0") int o_id) {
 		
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
@@ -78,12 +84,14 @@ public class RAQRestController {
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Review input = new Review();
+		Order inputOrder = new Order();
 		input.setM_id(loginSession.getId());
 		input.setM_name(loginSession.getName());
 		input.setP_id(p_id);
 		input.setContent(content);
 		input.setStar(star);
 		input.setRev_img(rev_img);
+		inputOrder.setO_id(o_id);
 
 		Review output = null;
 
@@ -94,6 +102,7 @@ public class RAQRestController {
 
 			// 데이터 조회
 			output = reviewAndQnaService.getReviewItem(input);
+			orderService.updateReview(inputOrder);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
