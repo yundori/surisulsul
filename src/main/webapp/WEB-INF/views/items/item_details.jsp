@@ -43,10 +43,8 @@
 			 		<c:set var="stars" value="${output.star}" />
 					<c:choose>
 						<c:when test="${stars != 0}">
-							<c:forEach var="i" begin="1" end="${stars}">★</c:forEach>
-							<c:if test="${stars} < 5">
-								<c:forEach var="j" begin="${stars}" end="5">☆</c:forEach>
-							</c:if>
+							<c:forEach var="i" begin="1" end="${stars}" step="1">★</c:forEach>
+			 				<c:forEach var="i" begin="1" end="${5-stars}" step="1">☆</c:forEach>
 						</c:when>
 						<c:otherwise>☆☆☆☆☆</c:otherwise>
 					</c:choose>
