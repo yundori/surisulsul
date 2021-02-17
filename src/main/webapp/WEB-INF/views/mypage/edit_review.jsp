@@ -32,7 +32,7 @@
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="../assets/img/example.jpg" />
+                            <img class="thumbnail-photo" src="../assets/img/items/${output.img}" />
                         </div>
                     </div>
                 </div>
