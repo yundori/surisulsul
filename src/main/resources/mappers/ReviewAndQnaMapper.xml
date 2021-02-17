@@ -60,7 +60,7 @@
 	<select id="memberReviewList"
 		parameterType="study.spring.surisulsul.model.Review"
 		resultMap="reviewMap">
-		SELECT r.m_id, r.m_name, r.p_id, r.content, r.star, date_format(r.reg_date,'%Y-%m-%d') as reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
+		SELECT r.id, r.m_id, r.m_name, r.p_id, r.content, r.star, date_format(r.reg_date,'%Y-%m-%d') as reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
 		INNER JOIN products p ON r.p_id = p.id
 		WHERE m_id=#{m_id}
 		ORDER BY reg_date DESC
@@ -130,7 +130,7 @@
 	<!-- 회원별 문의 목록 조회(다중행 조회)를 위한 기능 정의 -->
 	<select id="memberQnaList"
 		parameterType="study.spring.surisulsul.model.Qna" resultMap="qnaMap">
-		SELECT q.m_id, q.m_name, q.p_id, q.type, q.content, q.status, date_format(q.reg_date,'%Y-%m-%d') as reg_date, q.edit_date, p.name `p_name` FROM qna q
+		SELECT q.id, q.m_id, q.m_name, q.p_id, q.type, q.content, q.status, date_format(q.reg_date,'%Y-%m-%d') as reg_date, q.edit_date, p.name `p_name` FROM qna q
 		INNER JOIN products p ON q.p_id = p.id
 		WHERE m_id=#{m_id}
 		ORDER BY reg_date DESC
