@@ -43,7 +43,7 @@
 	<select id="loginMember"
 		parameterType="study.spring.surisulsul.model.Member"
 		resultMap="memberMap">
-		SELECT * FROM members WHERE email=#{email} AND pw=#{pw} AND is_out='N';
+		SELECT * FROM members WHERE email=#{email} AND pw=md5(#{pw}) AND is_out='N';
 	</select>
 	
 	<!-- 정보 수정 시 비밀번호 확인을 위한 기능 정의 
@@ -82,7 +82,7 @@
 		birthdate, jn_result, is_out,
 		reg_date, edit_date, out_date
 		) VALUES (
-		#{email}, #{name}, #{pw},
+		#{email}, #{name}, md5(#{pw}),
 		#{phone},
 		#{postcode}, #{address1}, #{address2},
 		#{birthdate}, null,
@@ -94,7 +94,7 @@
 		parameterType="study.spring.surisulsul.model.Member">
 		UPDATE members SET
 		email=#{email}, name=#{name},
-		pw=#{pw}, phone=#{phone},
+		pw=md5(#{pw}), phone=#{phone},
 		postcode=#{postcode}, address1=#{address1},
 		address2=#{address2},
 		birthdate=#{birthdate}, jn_result=#{jn_result},
@@ -146,7 +146,7 @@
 	<update id="outMember"
 		parameterType="study.spring.surisulsul.model.Member">
 		UPDATE members SET
-		is_out='Y', edit_date=now()
+		is_out='Y', edit_date=now(), out_date=now()
 		WHERE
 		id=#{id};
 	</update>
