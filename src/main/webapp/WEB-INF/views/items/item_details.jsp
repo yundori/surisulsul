@@ -71,8 +71,8 @@
 					<option value="4">4</option>
 					<option value="5">5</option>
 				</select> <br />
-				<label class="total_price_label">총 주문 가격 : </label>
-				<input type="text" name="total_price" class="total_price" placeholder="자동 입력" disabled/> <br />
+				<h4 class="total_price_label">총 주문 가격 : <span class="total_price">0</span>원</h4> <br />
+				
 				<div class="btn_div">
 					<button type="submit" class="order_btn" >장바구니 담기</button>
 				</div>
@@ -99,8 +99,23 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-
 <script type="text/javascript">
+
+	/** 총 판매가격 출력 **/
+	$(function() {
+        $('#order_quantity').change(function() {
+            var count = Number($(this).val());
+            if (count != "") {
+                var price = Number(${output.price});
+                var total = String(count * price);
+                total = total.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                $('.total_price').text(total);
+            } else if (count == 0) {
+            	$('.total_price').text(0);
+            }
+        });
+    });
+	
 	/** tab메뉴 구현 **/
 	$(function() {
 		$('.tab_menu').click(function() {
