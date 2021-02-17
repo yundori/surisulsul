@@ -19,7 +19,7 @@
 	<select id="selectListNotice"
 		parameterType="study.spring.surisulsul.model.Cscenter"
 		resultMap="cscenterMap">
-		SELECT * FROM cscenter WHERE type='A' ORDER BY reg_date DESC
+		SELECT c.title, c.content, date_format(c.reg_date,'%Y-%m-%d') as reg_date FROM cscenter c WHERE type='A' ORDER BY c.reg_date DESC
 		<if test="listCount>0">
 			LIMIT #{offset}, #{listCount}
 		</if>
@@ -29,7 +29,7 @@
 	<select id="selectListFaq"
 		parameterType="study.spring.surisulsul.model.Cscenter"
 		resultMap="cscenterMap">
-		SELECT * FROM cscenter WHERE type='A' ORDER BY reg_date DESC
+		SELECT c.title, c.content, date_format(c.reg_date,'%Y-%m-%d') as reg_date FROM cscenter c WHERE type='B' ORDER BY c.reg_date DESC
 		<if test="listCount>0">
 			LIMIT #{offset}, #{listCount}
 		</if>
