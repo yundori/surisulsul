@@ -37,10 +37,10 @@
 			
 			<div class="question_list">
 				<div class="question_default">
-					<span class="que_number">4</span>
-					<span class="que_type">배송</span>
-					<div class="que_content">배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다!!!!!!!!!!!!</div>
-					<span class="que_answer">대기</span>
+					<span class="que_number">${status.index}</span>
+					<span class="que_type">${item.type}</span>
+					<div class="que_content">${item.content}</div>
+					<span class="que_answer"><c:choose><c:when test="${item.status.equals("Y")}">답변완료</c:when><c:otherwise>대기중</c:otherwise></c:choose></span>
 					<span class="que_date">2021-01-19</span>
 					<div class="question_detail">
 						<span>배송은 얼마나 걸리나요? 3일이상 소요되면 취소할 수 있을까요? 빠른 답변 부탁드립니다.</span><br />
