@@ -97,6 +97,21 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 	
+	/** 상품별 별점 총합 조회 */
+	@Override
+	public int getProductReviewStar(Review input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.sumStarProductReview", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품별 별점 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+	
 	/** 회원별 리뷰 수 조회 */
 	@Override
 	public int getMemberReviewCount(Review input) throws Exception {
