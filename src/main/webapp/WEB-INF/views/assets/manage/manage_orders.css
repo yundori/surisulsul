@@ -1,6 +1,9 @@
 @charset "UTF-8";
 .content{
-	margin:155px 0 0 200px;
+	margin:120px 0 0 200px;
+}
+.content hr{
+	border:solid 3px #000;
 }
 .content h2{
 	font-size:1.5em;
@@ -8,10 +11,12 @@
 	letter-spacing:0.2em;
 }
 .total_cnt{
-	margin:30px 0 10px 0;
+	margin:30px 0 0 0;
 }
+
 /**----테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
 .manage_order_table{
+	margin-top:10px;
 	width:1350px;
 	text-align:center;
 }
@@ -28,6 +33,12 @@
 	line-height:230%;
 	font-size:15px;
 }
+
+/**------------------------
+---------------------------
+uncmpl_orders 페이지 단일 스타일
+--------------------------
+----------------------------*/
 /**-----보기 a 태그 스타일 -----*/
 .show_button{
 	border:none;
@@ -57,4 +68,33 @@
 	font-weight:bold;
 	background-color:#fbd14b;
 	cursor:pointer;
+}
+
+
+/**------------------------
+---------------------------
+manage_sales 페이지 단일 스타일
+--------------------------
+----------------------------*/
+.sales{
+	width:1350px;
+	margin:30px 0 10px 0;
+	padding-bottom:10px;
+	border-bottom:2px solid #bbb;
+}
+.sales .title{
+	margin-right:20px;
+	font-size:18px;
+}
+.sales input {
+	font-size:15px;
+}
+.sales .unpaid{
+	color:red;
+	text-align:right;
+	padding-right:5px;
+}
+.sales .price{
+	text-align:right;
+	padding-right:10px;
 }

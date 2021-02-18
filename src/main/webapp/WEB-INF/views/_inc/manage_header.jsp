@@ -53,13 +53,13 @@
 						<li><a href="#">상품관리</a></li>
 						<li><a href="#">상품 문의관리</a></li>
 						<li><a href="#">상품 후기관리</a></li>
-						<li><a href="#">주문내역</a></li>
-						<li><a href="#">미완료 주문</a></li>
+						<li><a href="${pageContext.request.contextPath}/manage_orders.do">주문내역</a></li>
+						<li><a href="${pageContext.request.contextPath}/uncmpl_orders.do">미완료 주문</a></li>
 						<li><a href="#">고객센터 관리</a></li>
 					</div>	
 				<li class="drink_type1"><a href="#">쇼핑몰 현황</a></li>
 					<div class="drink_inner1">
-						<li><a href="#">매출 현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/manage_sales.do">매출 현황</a></li>
 						<li><a href="#">상품 판매순위</a></li>
 						<li><a href="#">보관함 현황</a></li>
 					</div>
