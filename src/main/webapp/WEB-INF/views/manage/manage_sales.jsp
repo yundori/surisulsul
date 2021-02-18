@@ -3,11 +3,11 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/manage/manage.css" />
+	href="${contextPath}/assets/manage/manage_orders.css?time=${currentTime}" />
 	
 <div class="content">
-    <h1>관리자 페이지</h1>
     <h2>매출현황</h2>
+    <table></table>
 </div>
 
 </body>

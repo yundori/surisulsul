@@ -41,7 +41,6 @@ public class ManageOrdersController {
 
 		return new ModelAndView("manage/manage_sales");
 	}
-	
 
 
 }
