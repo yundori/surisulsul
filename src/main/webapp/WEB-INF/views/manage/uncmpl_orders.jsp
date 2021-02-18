@@ -36,8 +36,6 @@
     			<td>2021-02-18 00:00:00</td>
     			<td>
     				<input type="submit" value="보기" onclick="javascript: form.action='/manage/update';" class="show_button"/>
-    				<input type="submit" value="입금완료" onclick="javascript: form.action='/manage/update';" class="pay_button"/>
-    				<input type="submit" value="배송완료" onclick="javascript: form.action='/manage/update';" class="send_button"/>
     			</td>
     		</tr>
     		<tr>
@@ -53,13 +51,17 @@
     			<td>카드</td>
     			<td>2021-02-19 00:00:00</td>
     			<td>
-    				<input type="submit" value="보기" onclick="javascript: form.action='/manage/update';" class="show_button"/>
-    				<input type="submit" value="입금완료" onclick="javascript: form.action='/manage/update';" class="pay_button"/>
-    				<input type="submit" value="배송완료" onclick="javascript: form.action='/manage/update';" class="send_button"/>
+    				<a href="#" class="show_button">보기</a>
     			</td>
     		</tr>
     	</table>
+    	<div class="submit_buttons">
+    		<input type="submit" value="입금완료" onclick="javascript: form.action='/manage/update';" class="pay_button"/>
+    		<input type="submit" value="배송완료" onclick="javascript: form.action='/manage/update';" class="send_button"/>
+    	</div>
     </form>
+    
+    <!-- 페이지네이션 처리 -->
 </div>
 
 </body>

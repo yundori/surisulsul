@@ -28,20 +28,33 @@
 	line-height:230%;
 	font-size:15px;
 }
-/**-----미완료 주문 페이지 버튼 세개 스타일 -----------*/
+/**-----보기 a 태그 스타일 -----*/
 .show_button{
 	border:none;
 	padding:2px 5px;
 	margin:5px 3px;
 	font-size:15px;
 	background-color:#ccc;
-	cursor:pointer;
 }
+/* submit 버튼 들어가는 div 스타일 */
+.submit_buttons{
+	margin-top:10px;
+	float:right;
+	margin-right:210px;
+}
+/*float마감제*/
+.submit_buttons:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+/**-----미완료 주문 페이지 버튼 스타일 -----------*/
 .pay_button, .send_button{
 	border:none;
-	padding:2px 5px;
-	margin:5px 3px;
-	font-size:15px;
+	padding:5px 10px;
+	font-size:16px;
+	font-weight:bold;
 	background-color:#fbd14b;
 	cursor:pointer;
 }
