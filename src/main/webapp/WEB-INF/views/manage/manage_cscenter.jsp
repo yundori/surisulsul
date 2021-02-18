@@ -10,6 +10,7 @@
     <h1>공지사항 & FAQ 관리 </h1>
     <br />
     <br />
+    <input type="submit" value="전체선택" onclick="" class="all_ck"/>
     <input type="submit" value="등록" onclick="" class="cs_add"/>
     <br />
     <form name="m_cscenter_form" id="m_cscenter_form">

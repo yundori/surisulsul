@@ -42,8 +42,9 @@
 	margin: 5px 10px;
 	background-color:#fbd14b;
 	font-size: 15px;
+	letter-spacing: 2px;
 }
-.cs_add {
+.cs_add, .all_ck {
 	margin-bottom: 10px;
 }
 
@@ -59,6 +60,16 @@
 	font-size: 15px;
 	margin-right: 12px;
 	cursor:pointer;
-	
+	letter-spacing: 2px;
+}
+
+.all_ck {
+	border:none;
+	border-radius: 5px;
+	padding:5px;
+	background-color:#fbd14b;
+	font-size: 15px;
+	cursor:pointer;
+	letter-spacing: 1px;
 }
 
