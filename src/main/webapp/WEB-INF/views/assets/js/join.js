@@ -107,6 +107,7 @@ $(function() {
         }
     }); // end validate()
 
+	$.validator.setDefaults({ ignore: '' });
     /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
     $("#join_form").validate({
         /** 입력검사 규칙 */
