@@ -251,8 +251,21 @@ public class MemberController {
 
 	/** 회원정보 수정 페이지로 이동 */
 	@RequestMapping(value = "/mypage/update_info.do", method = RequestMethod.GET)
-	public String update_info(Model model) {
-		return "mypage/update_info";
+	public ModelAndView update_info(Model model,
+			HttpServletRequest request) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.redirect("account/login","로그인 후 이용해주세요.");
+		} 
+		
+		model.addAttribute("output", loginSession);
+		return new ModelAndView("mypage/update_info");
 	}
 	
 

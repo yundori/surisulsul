@@ -13,7 +13,7 @@
             <label for="email" class="col-md-4">이메일<span class="identify">*</span></label>
             <div class="col-md-6">
                 <!-- ${output.email} 이런 형식으로 유저 이메일 불러와서 고정시키기 -->
-            masuri@gmail.com
+            ${output.email} 
             </div>
         </div>
         <div class="form-group">
@@ -32,13 +32,13 @@
             <label for="user_name" class="col-md-4">이름<span class="identify">*</span></label>
             <div class="col-md-6">
                 <!-- ${output.name} 이런 형식으로 유저 이름 불러와서 고정시키기 -->
-                마수리
+                ${output.name}
             </div>
         </div>
         <div class="form-group">
             <label for="tel" class="col-md-4">전화번호<span class="identify">*</span></label>
             <div class="col-md-6">
-                <input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요." />
+                <input type="tel" name="tel" id="tel" class="form-control" value="${output.phone}"/>
             </div>
         </div>
         <div class="form-group">
