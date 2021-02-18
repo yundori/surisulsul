@@ -106,7 +106,11 @@ public class RAQRestController {
 			// 데이터 저장
 			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
 			reviewAndQnaService.addReview(input);
-
+			
+			// 데이터 조회
+			output = reviewAndQnaService.getReviewItem(input);
+			orderService.updateReview(inputOrder);
+			
 			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
 			int star_total = reviewAndQnaService.getProductReviewStar(input);
 			int prod_star = (int) Math.floor(star_total / star_cnt);
@@ -116,9 +120,6 @@ public class RAQRestController {
 			star_input.setStar(prod_star);
 			productService.editStarProduct(star_input);
 			
-			// 데이터 조회
-			output = reviewAndQnaService.getReviewItem(input);
-			orderService.updateReview(inputOrder);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
