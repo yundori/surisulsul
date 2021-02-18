@@ -114,7 +114,7 @@ $(function() {
             // [이메일] 필수 + 이메일 형식 일치 필요
             email: { required: true, email: true },
             // [이메일 중복확인] 필수 + email-chk 값 필요 (emailDupl:false가 필요)
-            emailChk: { required: true },
+            emailChk: { required: true, equalTo:"#chk-email" },
             // [비밀번호] 필수 + 글자수 길이 제한
             user_pw: { required: true, minlength: 4, maxlength: 20 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
@@ -137,6 +137,10 @@ $(function() {
             email: {
                 required: "이메일을 입력하세요.",
                 email: "이메일 형식이 잘못되었습니다."
+            },
+            emailChk:{
+            	required: "이메일 중복검사를 실행해주세요.",
+            	equalTo: "이메일 중복검사를 실행해주세요."
             },
             user_pw: {
                 required: "비밀번호를 입력하세요.",

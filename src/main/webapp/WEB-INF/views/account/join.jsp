@@ -123,22 +123,34 @@
 			var email_val = $("#email").val();
 
 			if (!email_val) {	// 입력되지 않았다면?
-				swal("이메일을 입력하세요.");	// <-- 메시지 표시
+				swal({
+                    title: "이메일 중복확인",
+                    text: "이메일을 입력하세요.",
+                    type: "warning"
+                });	// <-- 메시지 표시
 				$("#email").focus();			// <-- 커서를 강제로 넣기
 				return false;					// <-- 실행 중단
 			}
 
 			// 위의 if문을 무사히 통과했다면 내용이 존재한다는 의미이므로,
 			// 입력된 내용을 Ajax를 사용해서 웹 프로그램에게 전달한다.
-			$.post("${pageContext.request.contextPath}/account/email_chk.do", { chk_email: email_val }, function(req) {
+			$.post("${pageContext.request.contextPath}/email_chk", { chk_email: email_val }, function(req) {
 				// 사용 가능한 아이디인 경우 --> req = { result: "OK" }
 				// 사용 불가능한 아이디인 경우 --> req = { result: "FAIL" }
 				if (req.result=="OK") {
-					swal("사용 가능한 이메일입니다.");
-					$("#emailChk").val("email-chk");
+					swal({
+	                    title: "이메일 중복확인",
+	                    text: "사용 가능한 이메일입니다.",
+	                    type: "success"
+	                });
+					$("#emailChk").val("중복확인");
 					
 				} else {
-					swal("사용할 수 없는 이메일입니다.");
+					swal({
+	                    title: "이메일 중복확인",
+	                    text: "사용할 수 없는 이메일입니다.",
+	                    type: "warning"
+	                });
 					$("#email").val("");
 					$("#email").focus();
 				}

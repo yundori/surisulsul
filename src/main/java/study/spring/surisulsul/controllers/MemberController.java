@@ -1,14 +1,10 @@
 package study.spring.surisulsul.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -247,33 +243,6 @@ public class MemberController {
 
 	}
 	
-	/** 이메일 중복확인에 대한 action 페이지 */
-	@RequestMapping(value = "/account/email_chk.do", method = RequestMethod.POST)
-	public void email_chk(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam(value="chk_email", required=false) String email) throws ServletException, IOException {		
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("application/json");
-
-		Member input = new Member();
-		input.setEmail(email);
-		String result = "OK";
-		try {
-			if (memberService.getJoinEmailCount(input)>0) {
-				result = "FAIL";
-			}
-			
-		} catch (Exception e) {
-			result="OK";
-		}
-		
-		JSONObject json = new JSONObject();
-		json.put("result", result);
-		response.getWriter().print(json);
-	}
-
 	/** 비밀번호 확인 페이지로 이동 */
 	@RequestMapping(value = "/mypage/chk_pw.do", method = RequestMethod.GET)
 	public String chk_pw(Model model) {
