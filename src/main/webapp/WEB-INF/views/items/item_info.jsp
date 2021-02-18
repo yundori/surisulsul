@@ -75,12 +75,12 @@
 		<div class="clear"></div>
 
 		<div class="item_info_suri">
-			<h4>고도리 복숭아와인은...?</h4>
+			<h4>${output.name}에 대해...?</h4>
 			<p>${output.des2}</p>
 		</div>
 		
 		<div class="item_info_suri">
-			<h4>고도리 복숭아와인과 어울리는 음식</h4>
+			<h4>${output.name}에 어울리는 음식</h4>
 			<p>${output.food}</p>
 		</div>
 

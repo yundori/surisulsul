@@ -4,13 +4,21 @@
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/juneung.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
-
-<div id="juneung_content">
+<c:choose>
+<%--jstl로 회원의 jn_result가 있는지 검사 --%>
+	<%--주능 검사 이력이 있을 경우 아래 body 태그 출력 --%>
+	<c:when test="${output.jn_result != null }">
+		</body>
+	<%--body 뜨자마자 jn() 함수 호출 -> sweet alert로 재검사 여부 묻기  --%>
+		<body onload="jn();">
+	</c:when>
+</c:choose>
+<div id="juneung_content" >
     <h1>술학능력시험 - 주(酒)능</h1>
 
     <form action="${pageContext.request.contextPath}/juneung_ok.do" method="post" name="imgradio" data-tab="my_recommend">
 
-        <h2>나의 최애 주종+안주 조합 고르기</h2>
+        <h2>${output.name }님의 최애 주종+안주 조합 고르기</h2>
 
         <h4>내가 좋아하는 술</h4>
         <label>

@@ -267,7 +267,7 @@ public class MypageController {
 					
 					// 페이지 번호 계산 --> 계산 결과를 로그로 출력
 					pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
+					System.out.println(pageData);
 					// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
 					Review.setOffset(pageData.getOffset());
 					Review.setListCount(pageData.getListCount());

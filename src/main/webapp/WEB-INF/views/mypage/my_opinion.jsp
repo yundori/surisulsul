@@ -10,9 +10,10 @@
 <%-- 2) 프로젝트이름 기반의 절대경로값 --%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 
-<div class="psn_recommend_list">
+<div id="psn_recommend_list" class="psn_recommend_list">
 
 	<!-- ************나의 후기 ************ -->
+	<div id="recommend-container">
 	<div class="psn_title">
 		<h2 class="psn_title_txt">나의 후기</h2>
 	</div>
@@ -84,16 +85,74 @@
 					</c:choose>
 				</tbody>
 			</table>
-			<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+
 			<div class="delete_area">
 				<button type="submit" class="delete_this btn_nor">선택 삭제</button>
 			</div>
 		</form>
-	</div>
+					<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+			<div class="pageNumber">
+				<!-- 페이지 번호 구현 -->
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/mypage/my_opinion.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+							<c:param name="q_page" value="${q_pageData.nowPage}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="page-link" data-anchor="recommend-container">[이전]</a>
+					</c:when>
+					<c:otherwise>
+					[이전]
+				</c:otherwise>
+				</c:choose>
 
+				<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/mypage/my_opinion.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
+						<c:param name="q_page" value="${q_pageData.nowPage}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong>${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="page-link" data-anchor="recommend-container">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/mypage/my_opinion.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="q_page" value="${q_pageData.nowPage}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="page-link" data-anchor="recommend-container">[다음]</a>
+					</c:when>
+					<c:otherwise>
+					[다음]
+				</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+</div>
 
 
 	<!-- ************나의 질문 ************ -->
+	<div id="qna-container">
 	<div class="psn_title">
 		<h2 class="psn_title_txt">나의 질문</h2>
 	</div>
@@ -149,15 +208,87 @@
 					</c:choose>
 				</tbody>
 			</table>
-			<!--***** 여기에 PAGINATION 들어가야 함 *****-->
 			<div class="delete_area">
 				<button type="submit" class="delete_this btn_nor">선택 삭제</button>
 			</div>
 		</form>
-	</div>
+			<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+			<div class="pageNumber">
+				<!-- 페이지 번호 구현 -->
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${q_pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/mypage/my_opinion.do" var="prevPageUrl">
+							<c:param name="q_page" value="${q_pageData.prevPage}" />
+							<c:param name="page" value="${pageData.nowPage}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="page-link" data-anchor="qna-container">[이전]</a>
+					</c:when>
+					<c:otherwise>
+					[이전]
+				</c:otherwise>
+				</c:choose>
 
+				<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${q_pageData.startPage}"
+					end="${q_pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/mypage/my_opinion.do" var="pageUrl">
+						<c:param name="q_page" value="${i}" />
+						<c:param name="page" value="${pageData.nowPage}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${q_pageData.nowPage == i}">
+							<strong>${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="page-link" data-anchor="qna-container">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${q_pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/mypage/my_opinion.do" var="nextPageUrl">
+							<c:param name="q_page" value="${q_pageData.nextPage}" />
+							<c:param name="page" value="${pageData.nowPage}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="page-link" data-anchor="qna-container">[다음]</a>
+					</c:when>
+					<c:otherwise>
+					[다음]
+				</c:otherwise>
+				</c:choose>
+			</div>
+	</div>
+	</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${contextPath}/assets/js/my_opinion.js?time=${currentTime}"
 	type="text/javascript" charset="utf-8"></script>
+<script>
+$(document).on("click", ".page-link", function(e) {
+	e.preventDefault();
+	const url = $(this).attr('href');
+	//page 이동시 scroll 맨 위로 갈 div id값
+	var anchor = "#"+$(this).attr('data-anchor');
+	//div id의 상대 좌표
+	var offset = $(anchor).offset().top;
+
+	$("#psn_recommend_list").load(url, function(){
+		//scrollTop 적용시 고정된 표의 th부분 아래로 이동해서 
+		//div 맨 위로 보내기 위해 -100을 적용, 오른쪽은 속도 조절
+		$("html, body").animate({scrollTop : offset-100}, 0);
+	});
+});
+</script>
