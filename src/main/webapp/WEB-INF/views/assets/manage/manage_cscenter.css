@@ -3,12 +3,12 @@
 
 .content{
 	padding-top: 200px;
-	width: 1360px;
+	width: 1200px;
 	margin: auto;
 }
 
 .content h1{
-	width: 1350px;
+	width: 1200px;
 	border-bottom: 1px solid #dedede;
 	font-size: 35px;
 	font-weight: bold;
@@ -28,44 +28,37 @@
 	font-size: 16px;
 	letter-spacing: 2px;
 }
+
 .manage_cs_table td{
 	border: 1px solid #aaa;
 	line-height: 230%;
 	font-size: 15px;
 }
-/**-----보기 a 태그 스타일 -----*/
-.show_button{
-	border:none;
-	padding:2px 5px;
-	margin:5px 3px;
-	font-size:15px;
-	background-color:#ccc;
-}
-/* submit 버튼 들어가는 div 스타일 */
 
 .edit_button {
 	border:none;
 	border-radius: 5px;
 	padding:5px;
-	margin: 5px;
+	margin: 5px 10px;
 	background-color:#fbd14b;
 	font-size: 15px;
-	margin-right: 30px;
+}
+.cs_add {
+	margin-bottom: 10px;
 }
 
-/*float마감제*/
-.submit_buttons:after {
-    content: '';
-    display: block;
-    float: none;
-    clear: both;
+.cs_delete {
+	margin-top: 10px;
 }
-/**-----미완료 주문 페이지 버튼 스타일 -----------*/
-.pay_button, .send_button{
+.cs_delete, .cs_add {
+	float: right;
 	border:none;
-	padding:5px 10px;
-	font-size:16px;
-	font-weight:bold;
+	border-radius: 5px;
+	padding:5px;
 	background-color:#fbd14b;
+	font-size: 15px;
+	margin-right: 12px;
 	cursor:pointer;
+	
 }
+

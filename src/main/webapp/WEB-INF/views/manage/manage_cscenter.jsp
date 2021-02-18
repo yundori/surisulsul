@@ -3,8 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/manage/manage.css" />
-<link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/manage/manage_cscenter.css?time=${currentTime}" />
 <body>
     
@@ -13,6 +11,7 @@
     <br />
     <br />
     <input type="submit" value="등록" onclick="" class="cs_add"/>
+    <br />
     <form name="m_cscenter_form" id="m_cscenter_form">
     	<table class="manage_cs_table">
     		<tr>
@@ -20,8 +19,8 @@
     			<th>분류</th>
     			<th>이름</th>
     			<th>제목</th>
-    			<th>등록날짜</th>
-    			<th>관리</th>
+    			<th width=210>등록날짜</th>
+    			<th width=60>관리</th>
     		</tr>
     		<tr>
     			<td>
@@ -52,6 +51,7 @@
     <input type="submit" value="삭제" onclick="" class="cs_delete"/>
     
     <!-- 페이지네이션 처리 -->
+    
 </div>
 
 </body>
