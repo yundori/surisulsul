@@ -29,6 +29,9 @@ public interface MemberService {
 	// 중복 이메일 조회
 	public int getJoinEmailCount(Member input) throws Exception;
 	
+	// 비밀번호 확인용 조회
+	public Member getChkPw(Member input) throws Exception;
+	
 	// 비밀번호 찾기용 조회
 	public int getPasswordCount(Member input) throws Exception;
 	
