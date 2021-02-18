@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+
+.content{
+	padding-top: 200px;
+	width: 1360px;
+	margin: auto;
+}
+
+.content h1{
+	width: 1350px;
+	border-bottom: 1px solid #dedede;
+	font-size: 35px;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.manage_cs_table{
+	width: 1200px;
+	text-align: center;
+}
+.manage_cs_table th{
+	border: 1px solid #aaa;
+	background-color: #6a60a9;
+	color: #fff;
+	font-weight: normal;
+	line-height: 230%;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+.manage_cs_table td{
+	border: 1px solid #aaa;
+	line-height: 230%;
+	font-size: 15px;
+}
+/**-----보기 a 태그 스타일 -----*/
+.show_button{
+	border:none;
+	padding:2px 5px;
+	margin:5px 3px;
+	font-size:15px;
+	background-color:#ccc;
+}
+/* submit 버튼 들어가는 div 스타일 */
+
+.edit_button {
+	border:none;
+	border-radius: 5px;
+	padding:5px;
+	margin: 5px;
+	background-color:#fbd14b;
+	font-size: 15px;
+	margin-right: 30px;
+}
+
+/*float마감제*/
+.submit_buttons:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+/**-----미완료 주문 페이지 버튼 스타일 -----------*/
+.pay_button, .send_button{
+	border:none;
+	padding:5px 10px;
+	font-size:16px;
+	font-weight:bold;
+	background-color:#fbd14b;
+	cursor:pointer;
+}
