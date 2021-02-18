@@ -1,0 +1,47 @@
+@charset "UTF-8";
+.content{
+	margin:155px 0 0 200px;
+}
+.content h2{
+	font-size:1.5em;
+	font-weight:bold;
+	letter-spacing:0.2em;
+}
+.total_cnt{
+	margin:30px 0 10px 0;
+}
+/**----테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
+.manage_order_table{
+	width:1350px;
+	text-align:center;
+}
+.manage_order_table th{
+	border:1px solid #aaa;
+	background-color:#6a60a9;
+	color:#fff;
+	font-weight:normal;
+	line-height:220%;
+	font-size:15px;
+}
+.manage_order_table td{
+	border:1px solid #aaa;
+	line-height:230%;
+	font-size:15px;
+}
+/**-----미완료 주문 페이지 버튼 세개 스타일 -----------*/
+.show_button{
+	border:none;
+	padding:2px 5px;
+	margin:5px 3px;
+	font-size:15px;
+	background-color:#ccc;
+	cursor:pointer;
+}
+.pay_button, .send_button{
+	border:none;
+	padding:2px 5px;
+	margin:5px 3px;
+	font-size:15px;
+	background-color:#fbd14b;
+	cursor:pointer;
+}
