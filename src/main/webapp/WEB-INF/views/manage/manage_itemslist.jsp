@@ -7,8 +7,9 @@
 	<title>Hello JSP</title>
 </head>
 <body>
-	<h3>상품관리</h3>
-	<h5>총 등록상품 수 : </h5>
+<div class="content">
+	<h2>상품관리</h2>
+	<h5>총 등록상품 수 : 50개</h5>
 	<table>
 		<tr>
 			<th>상품ID</th>
@@ -23,5 +24,7 @@
 			<th>관리</th>
 		</tr>
 	</table>
+</div>
+	
 </body>
 </html>

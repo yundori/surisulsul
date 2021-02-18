@@ -19,9 +19,11 @@ import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Order;
+import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.service.OrderService;
+import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.ReviewAndQnaService;
 
 @RestController
@@ -39,7 +41,10 @@ public class RAQRestController {
 	ReviewAndQnaService reviewAndQnaService;
 	
 	@Autowired
-	OrderService orderService; 
+	OrderService orderService;
+	
+	@Autowired
+	ProductService productService;
 
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -91,6 +96,8 @@ public class RAQRestController {
 		input.setContent(content);
 		input.setStar(star);
 		input.setRev_img(rev_img);
+		
+		inputOrder.setP_id(p_id);
 		inputOrder.setO_id(o_id);
 
 		Review output = null;
@@ -100,6 +107,15 @@ public class RAQRestController {
 			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
 			reviewAndQnaService.addReview(input);
 
+			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
+			int star_total = reviewAndQnaService.getProductReviewStar(input);
+			int prod_star = (int) Math.floor(star_total / star_cnt);
+			
+			Product star_input = new Product();
+			star_input.setId(p_id);
+			star_input.setStar(prod_star);
+			productService.editStarProduct(star_input);
+			
 			// 데이터 조회
 			output = reviewAndQnaService.getReviewItem(input);
 			orderService.updateReview(inputOrder);

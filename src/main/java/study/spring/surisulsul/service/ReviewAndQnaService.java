@@ -19,6 +19,9 @@ public interface ReviewAndQnaService {
 	// 상품별 리뷰 수 조회
 	public int getProductReviewCount(Review input) throws Exception;
 	
+	// 상품별 별점 총합 조회
+	public int getProductReviewStar(Review input) throws Exception;
+	
 	// 회원별 리뷰 수 조회
 	public int getMemberReviewCount(Review input) throws Exception;
 
