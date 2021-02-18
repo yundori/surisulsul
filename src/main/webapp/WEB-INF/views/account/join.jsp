@@ -15,13 +15,13 @@
             <div class="col-md-6">
                 <!-- 중복확인이 끝났더라도 아이디 창에 새로 키를 입력하면 중복확인을 초기화시킬것 -->
                 <!-- onkeydown="inputEmail()" -->
-                <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요." />
+                <input type="email" name="email" id="email" class="form-control" onkeydown="inputEmail()" placeholder="이메일을 입력하세요." />
             </div>
             <!-- 클릭 시 db에서 값을 받아와 사용자가 입력한 email 값과 일치하는 데이터가 있는지 조회, 일치하는 값이 있으면 email-duplication의 value를 email-unuse, 없으면 email-chk로 변경 (js로 할 것) -->
             <!-- onclick = "emailChk()" -->
-            <input type="button" value="중복확인" class="chk-email" />
-            <!-- 여기의 값이 email-chk가 되면 중복확인 통과, email-unchk면 중복확인이 이루어지지 않음, email-unuse면 이미 사용중인 이메일이 있음 표시, submit 방지-->
-            <input type="hidden" name="emailChk" id="emailChk" value="email-chk" />
+            <input type="button" value="중복확인" class="chk-email" id="chk-email" />
+            <!-- 여기의 값이 email-chk가 되면 중복확인 통과 -->
+            <input type="hidden" name="emailChk" id="emailChk" />
         </div>
         <div class="form-group">
             <label for="user_pw" class="col-md-4">비밀번호<span class="identify">*</span></label>
@@ -115,5 +115,36 @@
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script src="${contextPath}/assets/js/join.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    $(function() {
+		/** 버튼 클릭시 이벤트 */
+		$("#chk-email").click(function() {
+			// 입력값을 취득하고, 내용의 존재여부를 검사한다.
+			var email_val = $("#email").val();
+
+			if (!email_val) {	// 입력되지 않았다면?
+				swal("이메일을 입력하세요.");	// <-- 메시지 표시
+				$("#email").focus();			// <-- 커서를 강제로 넣기
+				return false;					// <-- 실행 중단
+			}
+
+			// 위의 if문을 무사히 통과했다면 내용이 존재한다는 의미이므로,
+			// 입력된 내용을 Ajax를 사용해서 웹 프로그램에게 전달한다.
+			$.post("${pageContext.request.contextPath}/account/email_chk.do", { chk_email: email_val }, function(req) {
+				// 사용 가능한 아이디인 경우 --> req = { result: "OK" }
+				// 사용 불가능한 아이디인 경우 --> req = { result: "FAIL" }
+				if (req.result=="OK") {
+					swal("사용 가능한 이메일입니다.");
+					$("#emailChk").val("email-chk");
+					
+				} else {
+					swal("사용할 수 없는 이메일입니다.");
+					$("#email").val("");
+					$("#email").focus();
+				}
+			}); // end $.get
+		}); // end click
+	});
+    </script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>

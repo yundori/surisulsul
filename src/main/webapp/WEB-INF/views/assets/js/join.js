@@ -1,13 +1,9 @@
-/** 메일 중복 검사를 위한 함수
-function emailChk() {
 
-}
 
 function inputEmail() {
     document.join_form.emailChk.value = "";
 }
 
-*/
 
 /** 약관 전체 동의 */
 $('.all-terms').click(function() {
