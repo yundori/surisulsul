@@ -8,7 +8,7 @@
 <div class="content">
     <h2>미완료 주문</h2>
     <p class="total_cnt">전체 2,504건</p>
-    <form name="uncmpl_form" id="uncmpl_form">
+    <form name="uncmpl_form" id="uncmpl_form" method="POST">
     	<table class="manage_order_table">
     		<tr>
     			<th><input type="checkbox" name="all" class="check_all"></th>
