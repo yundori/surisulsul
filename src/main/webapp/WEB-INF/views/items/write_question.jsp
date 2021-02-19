@@ -20,6 +20,7 @@
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
+ <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 </head>
 <body>
 <div class="pop-up">
@@ -67,6 +68,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+      <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
@@ -78,9 +80,16 @@
                 console.log(json);
                 
                 // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-                if (json.rt == "OK") {
-                	alert("문의 작성이 완료되었습니다.");
-                    window.close();
+                if (json.result == "OK") {
+                	swal({
+	                    title: "제품 문의",
+	                    text: "선택하신 제품에 대한 문의 작성이 완료되었습니다.",
+	                    type: "success"
+	                }).then((value)=>{
+	           
+	                		window.opener.location.href="${pageContext.request.contextPath}/items/item_details.do?p_id=${output.p_id}";
+	                		window.close();	                	
+	                	});                   
                 }
             }
         });

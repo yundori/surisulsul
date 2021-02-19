@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 </head>
 <body>
  <div class="pop-up">
@@ -76,6 +77,7 @@
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+      <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
@@ -86,10 +88,17 @@
             success: function(json) {
                 console.log(json);
                 
-                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-                if (json.rt == "OK") {
-                	alert("리뷰 작성이 완료되었습니다.");
-                    window.close();
+                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.                
+                if (json.result == "OK") {
+                	swal({
+	                    title: "제품 후기",
+	                    text: "구매하신 제품에 대한 후기 작성이 완료되었습니다.",
+	                    type: "success"
+	                }).then((value)=>{
+	           
+	                		window.opener.location.href="${pageContext.request.contextPath}/mypage/mypage.do#my_opinion";
+	                		window.close();	                	
+	                	});                   
                 }
             }
         });
