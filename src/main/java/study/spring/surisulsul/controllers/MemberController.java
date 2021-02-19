@@ -268,7 +268,7 @@ public class MemberController {
 		return new ModelAndView("mypage/update_info");
 	}
 	
-	/** 회원가입에 대한 action 페이지 */
+	/** 회원 정보 수정에 대한 action 페이지 */
 	@RequestMapping(value = "/mypage/update_info_ok.do", method = RequestMethod.POST)
 	public ModelAndView update_info_ok(Model model,
 			HttpServletRequest request,
@@ -316,11 +316,22 @@ public class MemberController {
 		input.setAddress1(address1);
 		input.setAddress2(address2);
 		
+		Member output = null;		 // 사용자가 수정한 정보로 DB를 조회한 결과를 받을 객체 준비
+		
 		try {
 			// 데이터 수정
 			memberService.editMember(input);
+			output = memberService.getMemberLogin(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
+		
+		// B. 새로운 세션 정보 저장
+		if (output!=null) {
+			session.removeAttribute("loginInfo");
+			session.setAttribute("loginInfo", output);
 		}
 		
 		/** 3) 결과를 확인하기 위한 페이지 이동 */

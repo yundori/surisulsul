@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 
     <!-- 형식 검사 필수 -->
-    <form class="form-horizontal" name="update_form" id="update_form">
+    <form class="form-horizontal" name="update_form" id="update_form" action="${pageContext.request.contextPath}/mypage/update_info_ok.do" method="post">
         <div class="form-group">
             <h3 class="account-menu text-center">회원정보 수정</h3>
         </div>
