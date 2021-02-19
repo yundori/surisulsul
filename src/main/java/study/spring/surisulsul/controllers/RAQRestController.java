@@ -190,6 +190,15 @@ public class RAQRestController {
 
 			// 데이터 조회
 			output = reviewAndQnaService.getReviewItem(input);
+			
+			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
+			int star_total = reviewAndQnaService.getProductReviewStar(input);
+			int prod_star = (int) Math.floor(star_total / star_cnt);
+			
+			Product star_input = new Product();
+			star_input.setId(p_id);
+			star_input.setStar(prod_star);
+			productService.editStarProduct(star_input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

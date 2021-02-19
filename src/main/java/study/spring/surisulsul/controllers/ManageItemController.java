@@ -16,7 +16,7 @@ public class ManageItemController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	@RequestMapping(value="/manage/itemlist.do", method=RequestMethod.GET)
+	@RequestMapping(value="/manage_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_itemlist(Model model) throws Exception {
 		
 		return new ModelAndView("manage/manage_itemslist");
