@@ -101,8 +101,7 @@
 	<update id="updateReview"
 		parameterType="study.spring.surisulsul.model.Review">
 		UPDATE review SET m_id=#{m_id}, m_name=#{m_name},
-		p_id=#{p_id}, content=#{content}, star=#{star},
-		reg_date=#{reg_date}, edit_date=now(), rev_img=#{rev_img} WHERE
+		p_id=#{p_id}, content=#{content}, star=#{star}, edit_date=now(), rev_img=#{rev_img} WHERE
 		id=#{id};
 	</update>
 
