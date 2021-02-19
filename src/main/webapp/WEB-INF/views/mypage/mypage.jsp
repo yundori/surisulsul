@@ -71,7 +71,7 @@ $(".tab-button-item-link").click(function(e) {
 	var tab = $(this).data('tab');
 	window.location.replace('#' + tab);
 });
-/*
+
 $(function() {
 	var tab = window.location.hash;
 	console.log(tab);
@@ -81,7 +81,8 @@ $(function() {
 	
 	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
 	
-});*/
+});
+
 $( window ).on( 'hashchange', function( e ) {
     console.log( 'hash changed' );
     var tab = window.location.hash;
