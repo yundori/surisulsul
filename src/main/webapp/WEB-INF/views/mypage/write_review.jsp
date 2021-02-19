@@ -20,8 +20,8 @@
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 </head>
 <body>
  <div class="pop-up">
@@ -40,7 +40,7 @@
                 <div class="item-name">${output.name}</div>
                 <div class="item-price">${output.price}</div>
             </div>
-            <form id="addForm" action="${pageContext.request.contextPath}/review" method="POST">
+            <form id="addForm" action="${pageContext.request.contextPath}/review" enctype="multipart/form-data">
             <input type="hidden" name="p_id" value="${output.id}"/>
             <input type="hidden" name="o_id" value="${o_id}"/>
                 <div class="form-group stars stars-example-fontawesome">
@@ -77,7 +77,7 @@
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-      <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
@@ -95,10 +95,21 @@
 	                    text: "구매하신 제품에 대한 후기 작성이 완료되었습니다.",
 	                    type: "success"
 	                }).then((value)=>{
-	           
-	                		window.opener.location.href="${pageContext.request.contextPath}/mypage/mypage.do#my_opinion";
-	                		window.close();	                	
-	                	});                   
+	                	window.opener.location.href="${pageContext.request.contextPath}/mypage/mypage.do#my_opinion";
+	                	window.close();	                	
+	                });                   
+                } else if (json.result=="NOT_CONTENT"){
+                	swal({
+	                    title: "제품 후기",
+	                    text: "후기 내용을 입력해 주세요.",
+	                    type: "warning"
+	                });
+                } else {
+                	swal({
+	                    title: "제품 후기",
+	                    text: "후기 작성에 실패했습니다. 다시 시도해주세요.",
+	                    type: "error"
+	                });
                 }
             }
         });

@@ -1,5 +1,6 @@
 package study.spring.surisulsul.controllers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
+import study.spring.surisulsul.helper.UploadItem;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Order;
@@ -57,7 +60,7 @@ public class RAQRestController {
 			@RequestParam(value = "p_id", defaultValue = "0") int p_id,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
-			@RequestParam(value = "rev_img", required = false) String rev_img,
+			@RequestParam(value = "rev_img", required = false) MultipartFile rev_img,
 			@RequestParam(value="o_id", defaultValue="0") int o_id) {
 		
 		//세션값 받아오기
@@ -70,12 +73,10 @@ public class RAQRestController {
 		}
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		String result = null;
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
 		if (content.equals("")) {
-			return webHelper.getJsonWarning("후기 내용을 입력하세요.");
-		}
-		if (rev_img.equals("")) {
-			rev_img = "default.png";
+			result="NOT_CONTENT";
 		}
 
 		// 숫자형으로 선언된 파라미터
@@ -85,7 +86,22 @@ public class RAQRestController {
 		if (star == 0) {
 			return webHelper.getJsonWarning("별점을 입력하세요. 1~5 사이로 입력 가능합니다.");
 		}
-
+		
+		// 업로드 된 파일이 존재하는지 확인
+		String fileName = null; // 이미지명 저장
+		// 업로드 된 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		try {
+			item=webHelper.saveMultipartFile(rev_img);
+			fileName = item.getFilePath().replace("/", "");
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			fileName = "default.png";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.getJsonWarning("첨부한 사진 업로드에 실패했습니다.");
+		}
+		
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Review input = new Review();
@@ -95,13 +111,13 @@ public class RAQRestController {
 		input.setP_id(p_id);
 		input.setContent(content);
 		input.setStar(star);
-		input.setRev_img(rev_img);
+		input.setRev_img(fileName);
 		
 		inputOrder.setO_id(o_id);
 		inputOrder.setP_id(p_id);
 
 		Review output = null;
-
+		
 		try {
 			// 데이터 저장
 			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
@@ -119,14 +135,17 @@ public class RAQRestController {
 			star_input.setId(p_id);
 			star_input.setStar(prod_star);
 			productService.editStarProduct(star_input);
-			
+			if (!content.equals("")) {
+				result = "OK";
+			}
 		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
+			result = "FAIL";
 		}
 
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
+		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
 
