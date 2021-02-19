@@ -95,8 +95,8 @@
 	                    text: "구매하신 제품에 대한 후기 작성이 완료되었습니다.",
 	                    type: "success"
 	                }).then((value)=>{
-	                	window.opener.location.href="${pageContext.request.contextPath}/mypage/mypage.do#my_opinion";
-	                	window.close();	                	
+	                	window.opener.location="${pageContext.request.contextPath}/mypage/mypage.do";
+	                	// window.close();	                	
 	                });                   
                 } else if (json.result=="NOT_CONTENT"){
                 	swal({

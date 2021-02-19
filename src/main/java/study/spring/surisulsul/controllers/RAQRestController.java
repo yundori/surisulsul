@@ -150,7 +150,7 @@ public class RAQRestController {
 	}
 
 	/** 리뷰 수정에 대한 action 페이지 */
-	@RequestMapping(value = "/review", method = RequestMethod.PUT)
+	@RequestMapping(value = "review_edit", method = RequestMethod.POST)
 	public Map<String, Object> edit_review(
 			HttpServletRequest request,
 			@RequestParam(value = "id", defaultValue = "0") int id,

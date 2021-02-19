@@ -38,7 +38,7 @@
 	<select id="selectReviewItem"
 		parameterType="study.spring.surisulsul.model.Review"
 		resultMap="reviewMap">
-		SELECT r.m_id, r.m_name, r.p_id, r.content, r.star, r.reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
+		SELECT r.id, r.m_id, r.m_name, r.p_id, r.content, r.star, r.reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
 		INNER JOIN products p ON r.p_id = p.id
 		WHERE r.id=#{id};
 	</select>

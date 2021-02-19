@@ -40,7 +40,7 @@
                 <div class="item-name">${product.name}</div>
                 <div class="item-price">${product.price}</div>
             </div>
-            <form id="editForm" action="${pageContext.request.contextPath}/review" enctype="multipart/form-data">
+            <form name="editForm" id="editForm" action="${pageContext.request.contextPath}/review_edit" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${output.id}" />
             <input type="hidden" name="p_id" value="${output.p_id}" />
                 <div class="form-group stars stars-example-fontawesome">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label class="label text-center">어떤 점이 좋았나요?</label><br />
-                    <textarea class="write-content" placeholder="내용을 입력해 주세요." value="${output.content}" name="content"></textarea>
+                    <textarea class="write-content" placeholder="내용을 입력해 주세요." name="content" value="${output.content}"></textarea>
                     <span class="input-limit">0/1,000</span>
                 </div>
                 <div class="form-group">
@@ -83,7 +83,7 @@
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
         $("#editForm").ajaxForm({
             // 전송 메서드 지정
-            method: "PUT",
+            method: "POST",
             // 서버에서 200 응답을 전달한 경우 실행됨
             success: function(json) {
                 console.log(json);
