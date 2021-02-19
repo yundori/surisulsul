@@ -20,26 +20,28 @@
 <!-- CSS 파일 참조 처리 -->
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/popup.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 </head>
 <body>
 <div class="pop-up">
         <div class="pop-up-title">
-            문의 작성하기
+            문의 수정하기
         </div>
-        <div class="pop-up-content">
+       <div class="pop-up-content">
             <div class="selected-item">
                 <div class="item-photo wrapper">
                     <div class="thumbnail">
                         <div class="thumbnail-centered">
-                            <img class="thumbnail-photo" src="../assets/img/example.jpg" />
+                            <img class="thumbnail-photo" src="../assets/img/items/${product.img}" />
                         </div>
                     </div>
                 </div>
-                <div class="item-name">경성과하주</div>
-                <div class="item-price">28,000원</div>
+                <div class="item-name">${product.name}</div>
+                <div class="item-price">${product.price}</div>
             </div>
             <form id="editForm" action="${pageContext.request.contextPath}/question">
             <input type="hidden" name="id" value="${output.id}" />
+            <input type="hidden" name="p_id" value="${output.p_id}" />
                 <div class="form-group">
                     <label class="label text-center">문의 분류 선택</label><br />
                     <select id="category" class="category" name="type">
@@ -67,6 +69,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <!-- jQuery Ajax Setup -->
     <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+    <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
     $(function() {
         // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
@@ -77,10 +81,34 @@
             success: function(json) {
                 console.log(json);
                 
-            	// 수정이 완료되면 창닫기
-                if (json.rt == "OK") {
-                	alert("문의 수정이 완료되었습니다.");
-                    window.close();
+             // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.                
+                if (json.result == "OK") {
+                	swal({
+	                    title: "제품 문의",
+	                    text: "구매하신 제품에 대한 문의 수정이 완료되었습니다.",
+	                    type: "success"
+	                }).then((value)=>{
+	                	window.opener.location.href="${pageContext.request.contextPath}/mypage/mypage.do#my_opinion";
+	                	window.close();	                	
+	                });                   
+                } else if (json.result=="NOT_CONTENT"){
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 내용을 입력해 주세요.",
+	                    type: "warning"
+	                });
+                } else if (json.result=="NOT_TYPE"){
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 분류를 선택해 주세요.",
+	                    type: "warning"
+	                });
+                } else {
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 수정에 실패했습니다. 다시 시도해주세요.",
+	                    type: "error"
+	                });
                 }
             }
         });

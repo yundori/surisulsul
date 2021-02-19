@@ -158,7 +158,7 @@ public class RAQRestController {
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "star", defaultValue = "0") int star,
 			@RequestParam(value = "reg_date", required = false) String reg_date,
-			@RequestParam(value = "rev_img", required = false) String rev_img) {
+			@RequestParam(value = "rev_img", required = false) MultipartFile rev_img) {
 		
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
@@ -173,12 +173,10 @@ public class RAQRestController {
 		// 필수 검사 (리뷰가 존재하는지)
 		if (id == 0) { return webHelper.getJsonWarning("잘못된 접근입니다."); }
 
+		String result = null;
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
 		if (content.equals("")) {
-			return webHelper.getJsonWarning("후기 내용을 입력하세요.");
-		}
-		if (rev_img.equals("")) {
-			rev_img = "default.png";
+			result="NOT_CONTENT";
 		}
 
 		// 숫자형으로 선언된 파라미터
@@ -188,6 +186,23 @@ public class RAQRestController {
 		if (star == 0) {
 			return webHelper.getJsonWarning("별점을 입력하세요. 1~5 사이로 입력 가능합니다.");
 		}
+		
+		
+		// 업로드 된 파일이 존재하는지 확인
+				String fileName = null; // 이미지명 저장
+				// 업로드 된 결과가 저장된 Beans를 리턴받는다.
+				UploadItem item = null;
+				try {
+					item=webHelper.saveMultipartFile(rev_img);
+					fileName = item.getFilePath().replace("/", "");
+				} catch (NullPointerException e) {
+					e.printStackTrace();
+					fileName = "default.png";
+				} catch (Exception e) {
+					e.printStackTrace();
+					return webHelper.getJsonWarning("첨부한 사진 업로드에 실패했습니다.");
+				}
+		
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Review input = new Review();
@@ -198,10 +213,11 @@ public class RAQRestController {
 		input.setContent(content);
 		input.setStar(star);
 		input.setReg_date(reg_date);
-		input.setRev_img(rev_img);
+		input.setRev_img(fileName);
 
 		// 수정된 결과를 조회할 객체
 		Review output = null;
+		
 
 		try {
 			// 데이터 수정
@@ -209,6 +225,7 @@ public class RAQRestController {
 
 			// 데이터 조회
 			output = reviewAndQnaService.getReviewItem(input);
+			
 			
 			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
 			int star_total = reviewAndQnaService.getProductReviewStar(input);
@@ -218,13 +235,17 @@ public class RAQRestController {
 			star_input.setId(p_id);
 			star_input.setStar(prod_star);
 			productService.editStarProduct(star_input);
+			if (!content.equals("")) {
+				result = "OK";
+			}
 		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
+			result="FAIL";
 		}
 
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
+		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
 
@@ -272,9 +293,10 @@ public class RAQRestController {
 				
 				
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		String result=null;
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
 		if (content.equals("")) {
-			return webHelper.getJsonWarning("문의 내용을 입력하세요.");
+			result ="NOT_CONTENT";
 		}
 
 		// 숫자형으로 선언된 파라미터
@@ -283,7 +305,7 @@ public class RAQRestController {
 			
 		}
 		if (type == 0) {
-			return webHelper.getJsonWarning("문의 분류를 선택해주세요.");
+			result="NOT_TYPE";
 		}
 
 		/** 2) 데이터 저장하기 */
@@ -304,13 +326,17 @@ public class RAQRestController {
 
 			// 데이터 조회
 			output = reviewAndQnaService.getQnaItem(input);
+			if(!content.equals("")&& type!=0) {
+				result="OK";
+			}
 		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
+			result="FAIL";
 		}
 
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
+		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
 
@@ -335,6 +361,7 @@ public class RAQRestController {
 				
 				
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		String result = null;
 		// 필수 검사 (문의가 존재하는지)
 		if (id == 0) {
 			return webHelper.getJsonWarning("잘못된 접근입니다.");
@@ -342,7 +369,7 @@ public class RAQRestController {
 
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
 		if (content.equals("")) {
-			return webHelper.getJsonWarning("문의 내용을 입력하세요.");
+			result = "NOT_CONTENT";
 		}
 
 		// 숫자형으로 선언된 파라미터
@@ -350,7 +377,7 @@ public class RAQRestController {
 			return webHelper.getJsonWarning("상품이 선택되지 않았습니다.");
 		}
 		if (type == 0) {
-			return webHelper.getJsonWarning("문의 분류를 선택해주세요.");
+			result = "NOT_TYPE";
 		}
 
 		/** 2) 데이터 저장하기 */
@@ -373,13 +400,17 @@ public class RAQRestController {
 
 			// 데이터 조회
 			output = reviewAndQnaService.getQnaItem(input);
+			if (!content.equals("")&& type!=0) {
+				result="OK";
+			}
 		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
+			result="FAIL";
 		}
 
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
+		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
 

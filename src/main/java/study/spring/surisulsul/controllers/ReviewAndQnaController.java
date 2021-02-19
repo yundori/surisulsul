@@ -88,14 +88,22 @@ public class ReviewAndQnaController {
 		
 		Review output = null;
 		
+		// 페이지에 불러올 제품 정보를 조회할 객체
+	    Product inputProduct = new Product();
+		
+		Product product = null;
+		
 		try {
 			output = reviewAndQnaService.getReviewItem(input);
+			inputProduct.setId(output.getP_id());
+			product = productService.details_ProductItem(inputProduct);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
+		model.addAttribute("product",product);
 		return new ModelAndView("mypage/edit_review");
 	}
 	
@@ -138,14 +146,22 @@ public class ReviewAndQnaController {
 		
 		Qna output = null;
 		
+		// 페이지에 불러올 제품 정보를 조회할 객체
+	    Product inputProduct = new Product();
+		
+		Product product = null;
+		
 		try {
 			output = reviewAndQnaService.getQnaItem(input);
+			inputProduct.setId(output.getP_id());
+			product = productService.details_ProductItem(inputProduct);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
+		model.addAttribute("product",product);
 		return new ModelAndView("mypage/edit_Qna");
 	}
 

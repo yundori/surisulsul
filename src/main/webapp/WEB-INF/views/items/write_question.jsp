@@ -79,17 +79,33 @@
             success: function(json) {
                 console.log(json);
                 
-                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
                 if (json.result == "OK") {
                 	swal({
 	                    title: "제품 문의",
 	                    text: "선택하신 제품에 대한 문의 작성이 완료되었습니다.",
 	                    type: "success"
 	                }).then((value)=>{
-	           
-	                		window.opener.location.href="${pageContext.request.contextPath}/items/item_details.do?p_id=${output.p_id}";
-	                		window.close();	                	
-	                	});                   
+	                	window.opener.location.href="${pageContext.request.contextPath}/item_details.do?prodid=${output.id}";
+	                	window.close();	                	
+	                });                   
+                } else if (json.result=="NOT_CONTENT"){
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 내용을 입력해 주세요.",
+	                    type: "warning"
+	                });
+                } else if (json.result=="NOT_TYPE"){
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 분류를 선택해 주세요.",
+	                    type: "warning"
+	                });
+                } else {
+                	swal({
+	                    title: "제품 문의",
+	                    text: "문의 작성에 실패했습니다. 다시 시도해주세요.",
+	                    type: "error"
+	                });
                 }
             }
         });
