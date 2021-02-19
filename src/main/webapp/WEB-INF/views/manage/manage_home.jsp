@@ -11,7 +11,6 @@
 	<div class="all_main">
 		<div class="chart">
 			<canvas id="canvas">
-				차트 자리
 			</canvas>
 		</div>
 		<div class="manage_main">

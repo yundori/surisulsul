@@ -37,6 +37,11 @@ import study.spring.surisulsul.service.SalesService;
 public class HomeController {
 
 	/** Service 패턴 구현체 주입 */
+	
+	/** WebHelper 주입 */
+	@Autowired
+	WebHelper webHelper;
+	
 	@Autowired
 	ProductService productService;
 
@@ -61,16 +66,28 @@ public class HomeController {
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		// 세션 값 받아오기
 		HttpSession session = request.getSession();
-		Member loginSession = (Member) session.getAttribute("loginInfo");
+		Member loginSession = (Member)session.getAttribute("loginInfo");
+		Member output = null;
 
 		boolean jn_result = false;
 		List<Product> jn_output = null;
 
 		// 로그인 세션이 없을 경우 = 로그인이 안됐을 경우 alert 발생
 		if (loginSession == null) {
+			
 			jn_result = false;
+
 		} else { // 로그인 세션이 있는 경우 = 로그인 된 사용자가 있을 경우
-			if (loginSession.getJn_result() == null) { // 로그인 O , 주능결과 X
+			Member member = new Member();
+			member.setId(loginSession.getId());
+
+			try {
+				output = memberService.getMemberItem(member);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if (output.getJn_result() == null) { // 로그인 O , 주능결과 X
 				jn_result = false;
 			} else {// 로그인 O , 주능결과 O
 				jn_result = true;
@@ -98,6 +115,7 @@ public class HomeController {
 		}
 
 		/** View 처리 */
+		model.addAttribute("output", output);
 		model.addAttribute("jn_output", jn_output);
 		model.addAttribute("jn_result", jn_result);
 		model.addAttribute("best_output", best_output);
