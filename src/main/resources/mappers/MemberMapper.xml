@@ -125,6 +125,13 @@
 		SELECT count(*) FROM members WHERE name=#{name} AND phone=#{phone} AND
 		email=#{email} AND is_out='N';
 	</select>
+	
+	<!-- 비밀번호 찾기 시 이름과 전화번호, 이메일로 해당하는 회원이 있는지 조회하기 -->
+	<select id="findPwMember"
+		parameterType="study.spring.surisulsul.model.Member" resultMap="memberMap">
+		SELECT * FROM members WHERE name=#{name} AND phone=#{phone} AND
+		email=#{email} AND is_out='N';
+	</select>
 
 	<!-- 로그인 시 존재하는 이메일 여부 체크 -->
 	<select id="chkEmailLogin"

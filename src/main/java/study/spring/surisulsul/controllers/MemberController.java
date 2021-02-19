@@ -237,11 +237,7 @@ public class MemberController {
 		return "account/find_pw";
 	}
 
-	/** 비밀번호 찾기에 대한 action 페이지 */
-	@RequestMapping(value = "/account/find_pw_ok.do", method = RequestMethod.POST)
-	public void find_pw_ok(Model model) {
-
-	}
+	
 	
 	/** 비밀번호 확인 페이지로 이동 */
 	@RequestMapping(value = "/mypage/chk_pw.do", method = RequestMethod.GET)

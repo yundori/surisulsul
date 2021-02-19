@@ -2,7 +2,7 @@ package study.spring.surisulsul.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -71,6 +71,85 @@ public class MemberRestController {
 		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
+	
+	/** 비밀번호 찾기에 대한 action 페이지 */
+	@RequestMapping(value = "find_pw", method = RequestMethod.POST)
+	public Map<String, Object> find_pw(Model model,
+			HttpServletRequest request,
+			@RequestParam(value="user_name", required=false) String name,
+			@RequestParam(value="tel", required=false) String phone,
+			@RequestParam(value="email", required=false) String email) {
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리한다.
+		// 이름에 대한 유효성 검사
+		if (name.equals("")) { return webHelper.getJsonWarning("이름을 입력하세요."); }
+		if(!regexHelper.isKor(name)) {return webHelper.getJsonWarning("이름은 한글만 가능합니다.");}
+		
+		// 핸드폰 번호에 대한 유효성 검사
+		if (phone.equals("")) { return webHelper.getJsonWarning("핸드폰 번호를 - 없이 입력하세요."); }
+		if(!regexHelper.isCellPhone(phone)) {return webHelper.getJsonWarning("핸드폰 번호를 - 없이 올바른 양식으로 입력해 주세요.");}
+		
+		// 이메일에 대한 유효성 검사
+		if (email.equals("")) { return webHelper.getJsonWarning("이메일을 입력하세요."); }
+		if(!regexHelper.isEmail(email)) {return webHelper.getJsonWarning("입력하신 이메일의 형식이 바르지 않습니다."); }
+		
+		/** 2) 데이터 조회하기 */
+		// 데이터를 조회하기 위해 필요한 값을 Beans에 담는다.
+		Member input = new Member();
+		input.setName(name);
+		input.setPhone(phone);
+		input.setEmail(email);
+		
+		String result = null;			//  성공 여부를 구분할 문자열
+		Member update_info = null;      //  비밀번호 재발급을 위해 로드할 회원 정보 (회원 정보 업데이트용)
+		
+		try {
+			if (memberService.getPasswordCount(input)>0) {  // 입력한 회원 정보 조회에 성공하면
+				result = "OK";
+				try {
+					update_info = memberService.getPasswordMember(input);    // 회원 정보를 불러옴
+					
+					// 비밀번호 난수 생성을 위한 구문
+					StringBuffer newPw = new StringBuffer();     // 새로 생성되는 비밀번호를 입력받을 문자열
+					Random rnd = new Random();
+					for (int i = 0; i < 9; i++) {
+					    int rIndex = rnd.nextInt(3);        // 소문자, 대문자, 숫자를 구분하기 위한 난수
+					    switch (rIndex) {
+					    case 0:
+					        // a-z
+					        newPw.append((char) ((int) (rnd.nextInt(26)) + 97));    // 소문자 난수
+					        break;
+					    case 1:
+					        // A-Z
+					        newPw.append((char) ((int) (rnd.nextInt(26)) + 65));    // 대문자 난수
+					        break;
+					    case 2:
+					        // 0-9
+					        newPw.append((rnd.nextInt(10)));             // 숫자 난수
+					        break;
+					    }
+					}
+					
+					System.out.println("[CAUTION] 새로 생성된 비밀번호 : "+ newPw.toString());
+					
+					update_info.setPw(newPw.toString());          // 비밀번호를 새로 세팅
+					memberService.editMember(update_info);      // 새로 세팅한 비밀번호로 회원 정보 업데이트
+				} catch (Exception e) {
+					result = "UPDATE_FAIL";
+				}
+			} else {
+				result="INPUT_ERROR";
+			}
+			
+		} catch (Exception e) {
+			result="INPUT_ERROR";
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", result);
+		return webHelper.getJsonData(map);
+	}
+	
 	
 	/** 비밀번호 확인에 대한 action 페이지 */
 	@RequestMapping(value = "chk_pw", method = RequestMethod.POST)

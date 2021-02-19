@@ -106,6 +106,33 @@ $(function() {
             }
         }
     }); // end validate()
+    
+    $("#find_pw_form").validate({
+        /** 입력검사 규칙 */
+        rules: {
+            // [이름] 필수
+            user_name: { required: true, kor: true },
+            // [연락처] 필수
+            tel: { required: true, phone: true },
+            // [이메일] 필수 + 이메일 형식 일치 필요
+            email: { required: true, email: true }
+        },
+        /** 규칙이 맞지 않을 경우의 메시지 */
+        messages: {
+             email: {
+                required: "이메일을 입력하세요.",
+                email: "이메일 형식이 잘못되었습니다."
+            },
+            tel: {
+                required: "연락처를 입력하세요.",
+                phone: "연락처 형식이 잘못되었습니다."
+            },
+            user_name: {
+                required: "이름을 입력하세요.",
+                kor: "이름은 한글만 입력 가능합니다."
+            }
+        }
+    }); // end validate()
 
 	$.validator.setDefaults({ ignore: '' });
     /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */

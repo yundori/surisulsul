@@ -221,6 +221,28 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+	
+	/** 비밀번호 재발급에 필요한 회원 정보 조회 (단일) **/
+	@Override
+	public Member getPasswordMember(Member input) throws Exception {
+		Member result = null;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.findPwMember", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 로그인 시 이메일 체크용 조회 */
 	@Override

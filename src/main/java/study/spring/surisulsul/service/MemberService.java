@@ -35,6 +35,8 @@ public interface MemberService {
 	// 비밀번호 찾기용 조회
 	public int getPasswordCount(Member input) throws Exception;
 	
+	public Member getPasswordMember(Member input) throws Exception;
+	
 	// 로그인 시 이메일 체크용 조회
 	public int getLoginEmailCount(Member input) throws Exception;
 	
