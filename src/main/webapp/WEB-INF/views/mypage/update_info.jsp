@@ -13,7 +13,7 @@
             <label for="email" class="col-md-4">이메일<span class="identify">*</span></label>
             <div class="col-md-6">
                 <!-- ${output.email} 이런 형식으로 유저 이메일 불러와서 고정시키기 -->
-            masuri@gmail.com
+            ${output.email} 
             </div>
         </div>
         <div class="form-group">
@@ -32,31 +32,31 @@
             <label for="user_name" class="col-md-4">이름<span class="identify">*</span></label>
             <div class="col-md-6">
                 <!-- ${output.name} 이런 형식으로 유저 이름 불러와서 고정시키기 -->
-                마수리
+                ${output.name}
             </div>
         </div>
         <div class="form-group">
             <label for="tel" class="col-md-4">전화번호<span class="identify">*</span></label>
             <div class="col-md-6">
-                <input type="tel" name="tel" id="tel" class="form-control" placeholder="휴대폰 번호를 - 없이 입력하세요." />
+                <input type="tel" name="tel" id="tel" class="form-control" value="${output.phone}"/>
             </div>
         </div>
         <div class="form-group">
             <label for='birthdate' class="col-md-4">생년월일 <span class='identify'>*</span></label>
             <div class="col-md-6">
                 <!-- ${output.birthdate} 이런 형식으로 유저 생년월일 불러와서 고정시키기 (date.format이나 string 함수 활용할 것을 권장) -->
-                2021년 1월 18일
+                ${output.birthdate}
             </div>
         </div>
         <div class="form-group">
             <label for='address' class="col-md-4">주소 <span class='identify'>*</span></label>
             <div class="col-md-8">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="postcode" id="postcode" readonly="우편번호" placeholder="우편번호">
+                    <input type="text" class="form-control" name="postcode" id="postcode" readonly="우편번호" value="${output.postcode}">
                 </div>
                 <input type="button" onclick="execDaumPostcode()" class="chk-email" value="우편번호 찾기"><br/><br/>
-                <input type="text" class="form-control" name="address" id="address" readonly="주소" placeholder="도로명 주소"><br/><br/>
-                <input type="text" class="form-control" name="detailAddress" id="detailAddress" placeholder="기타 상세 주소">
+                <input type="text" class="form-control" name="address" id="address" readonly="주소" value="${output.address1}"><br/><br/>
+                <input type="text" class="form-control" name="detailAddress" id="detailAddress" value="${output.address2}">
             </div>
         </div>
         <div class="form-group">

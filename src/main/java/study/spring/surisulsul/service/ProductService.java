@@ -114,6 +114,15 @@ public interface ProductService {
 	 * @throws Exception
 	 */
 	public int editProduct(Product input) throws Exception;
+	
+	/**
+	 * 상품 별점 데이터 수정
+	 * 
+	 * @param Product 수정할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int editStarProduct(Product input) throws Exception;
 
 	/**
 	 * 상품 데이터 삭제

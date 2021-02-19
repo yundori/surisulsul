@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+
+.content{
+	padding-top: 200px;
+	width: 1200px;
+	margin: auto;
+}
+
+.content h1{
+	width: 1200px;
+	border-bottom: 1px solid #dedede;
+	font-size: 35px;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.manage_cs_table{
+	width: 1200px;
+	text-align: center;
+}
+.manage_cs_table th{
+	border: 1px solid #aaa;
+	background-color: #6a60a9;
+	color: #fff;
+	font-weight: normal;
+	line-height: 230%;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+
+.manage_cs_table td{
+	border: 1px solid #aaa;
+	line-height: 230%;
+	font-size: 15px;
+}
+
+.edit_button {
+	border:none;
+	border-radius: 5px;
+	padding:5px;
+	margin: 5px 10px;
+	background-color:#fbd14b;
+	font-size: 15px;
+	letter-spacing: 2px;
+}
+.cs_add, .all_ck {
+	margin-bottom: 10px;
+}
+
+.cs_delete {
+	margin-top: 10px;
+}
+.cs_delete, .cs_add {
+	float: right;
+	border:none;
+	border-radius: 5px;
+	padding:5px;
+	background-color:#fbd14b;
+	font-size: 15px;
+	margin-right: 12px;
+	cursor:pointer;
+	letter-spacing: 2px;
+}
+
+.all_ck {
+	border:none;
+	border-radius: 5px;
+	padding:5px;
+	background-color:#fbd14b;
+	font-size: 15px;
+	cursor:pointer;
+	letter-spacing: 1px;
+}
+

@@ -115,7 +115,12 @@
     width: auto;
     height: auto;
     font-size: 15px;
+    color : #FBD14B;
     float: left;
+}
+
+.item_rating .item_stars {
+	color : #FBD14B;
 }
 
 .item_info .item_tag_list {

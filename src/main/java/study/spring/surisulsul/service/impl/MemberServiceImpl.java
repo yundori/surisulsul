@@ -184,6 +184,28 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+	
+	/** 비밀번호 확인용 조회 */
+	@Override
+	public Member getChkPw(Member input) throws Exception {
+		Member result = null;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.chkPw", input);
+			
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 비밀번호 찾기용 조회 */
 	@Override

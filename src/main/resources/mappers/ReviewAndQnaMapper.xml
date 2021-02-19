@@ -75,6 +75,12 @@
 		SELECT count(*) FROM review WHERE p_id=#{p_id};
 	</select>
 	
+	<!-- 상품별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="sumStarProductReview"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT sum(star) FROM review WHERE p_id=#{p_id};
+	</select>
+	
 	<!-- 회원별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
 	<select id="selectCountMemberReview"
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">

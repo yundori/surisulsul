@@ -1,14 +1,10 @@
 package study.spring.surisulsul.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -247,33 +243,6 @@ public class MemberController {
 
 	}
 	
-	/** 이메일 중복확인에 대한 action 페이지 */
-	@RequestMapping(value = "/account/email_chk.do", method = RequestMethod.POST)
-	public void email_chk(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam(value="chk_email", required=false) String email) throws ServletException, IOException {		
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("application/json");
-
-		Member input = new Member();
-		input.setEmail(email);
-		String result = "OK";
-		try {
-			if (memberService.getJoinEmailCount(input)>0) {
-				result = "FAIL";
-			}
-			
-		} catch (Exception e) {
-			result="OK";
-		}
-		
-		JSONObject json = new JSONObject();
-		json.put("result", result);
-		response.getWriter().print(json);
-	}
-
 	/** 비밀번호 확인 페이지로 이동 */
 	@RequestMapping(value = "/mypage/chk_pw.do", method = RequestMethod.GET)
 	public String chk_pw(Model model) {
@@ -282,10 +251,82 @@ public class MemberController {
 
 	/** 회원정보 수정 페이지로 이동 */
 	@RequestMapping(value = "/mypage/update_info.do", method = RequestMethod.GET)
-	public String update_info(Model model) {
-		return "mypage/update_info";
+	public ModelAndView update_info(Model model,
+			HttpServletRequest request) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.redirect("account/login","로그인 후 이용해주세요.");
+		} 
+		
+		model.addAttribute("output", loginSession);
+		return new ModelAndView("mypage/update_info");
 	}
 	
+	/** 회원가입에 대한 action 페이지 */
+	@RequestMapping(value = "/mypage/update_info_ok.do", method = RequestMethod.POST)
+	public ModelAndView update_info_ok(Model model,
+			HttpServletRequest request,
+			@RequestParam(value="user_pw", required=false) String pw,
+			@RequestParam(value="user_pw_re", required=false) String pw_re,
+			@RequestParam(value="tel", required=false) String phone,
+			@RequestParam(value="postcode", required=false) String postcode,
+			@RequestParam(value="address", required=false) String address1,
+			@RequestParam(value="detailAddress", required=false) String address2) {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
 
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		
+		// 비밀번호+비밀번호 확인 유효성 검사
+		if(pw.equals("")) {return webHelper.redirect(null, "비밀번호를 입력하세요.");}
+		if(pw_re.equals("")) {return webHelper.redirect(null, "비밀번호 확인란에 비밀번호를 입력하세요.");}
+		
+		// 핸드폰 번호 유효성 검사
+		if(phone.equals("")) {return webHelper.redirect(null, "핸드폰 번호를 입력하세요.");}
+		if(!regexHelper.isCellPhone(phone)) {return webHelper.redirect(null, "핸드폰 번호를 - 없이 올바른 양식으로 입력해 주세요.");}
+
+		// 주소 유효성 검사
+		if(postcode.equals("")) {return webHelper.redirect(null, "우편번호를 입력하세요.");}
+		if(address1.equals("")) {return webHelper.redirect(null, "주소를 입력하세요.");}
+		if(address2.equals("")) {return webHelper.redirect(null, "상세주소를 입력하세요.");}
+
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Member input = new Member();
+		// 세션 데이터에서 받아올 값 (수정 불가 값)
+		input.setId(loginSession.getId());
+		input.setEmail(loginSession.getEmail());
+		input.setName(loginSession.getName());
+		input.setBirthdate(loginSession.getBirthdate());
+		input.setJn_result(loginSession.getJn_result());
+		input.setReg_date(loginSession.getReg_date());
+		
+		// 수정 페이지에서 수정하는 값
+		input.setPw(pw);
+		input.setPhone(phone);
+		input.setPostcode(postcode);
+		input.setAddress1(address1);
+		input.setAddress2(address2);
+		
+		try {
+			// 데이터 수정
+			memberService.editMember(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장 시 생성된 PK 값을 상세 페이지로 전달해야 한다.
+		String redirectUrl = contextPath + "/mypage/mypage.do#my_recommend";
+		return webHelper.redirect(redirectUrl, "회원 정보 수정이 완료되었습니다.");
+	}
 	
 }

@@ -229,14 +229,32 @@
 	<update id="updateItem"
 		parameterType="study.spring.surisulsul.model.Product">
 		UPDATE products SET
-		id=#{id}, name=#{name}, price=#{price}, type=#{type},
-		loc=#{loc}, key1=#{key1}, key2=#{key2},
-		sweet=#{sweet}, sour=#{sour},
-		degree=#{degree}, igd=#{igd},
-		size=#{size}, des1=#{des1}, des2=#{des2},
-		food=#{food},
-		img=#{img}, star=#{star}, edit_date=now(),
-		jn_result=#{jn_result}
+			id=#{id},
+			name=#{name},
+			price=#{price},
+			type=#{type},
+			loc=#{loc},
+			key1=#{key1},
+			key2=#{key2},
+			sweet=#{sweet},
+			sour=#{sour},
+			degree=#{degree},
+			igd=#{igd},
+			size=#{size},
+			des1=#{des1},
+			des2=#{des2},
+			food=#{food},
+			img=#{img},
+			star=#{star},
+			jn_result=#{jn_result},
+			edit_date=now()
+		WHERE id=#{id};
+	</update>
+	
+	<update id="starUpdateItem"
+		parameterType="study.spring.surisulsul.model.Product">
+		UPDATE products SET
+			star=#{star}
 		WHERE id=#{id};
 	</update>
 
