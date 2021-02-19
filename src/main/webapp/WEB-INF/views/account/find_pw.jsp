@@ -73,6 +73,12 @@
 	                    text: "입력하신 회원 정보가 올바르지 않습니다.",
 	                    type: "warning"
 	                });
+                } else if (json.result=="SEND_MAIL_FAIL") {
+                	swal({
+	                    title: "비밀번호 찾기",
+	                    text: "재발급된 비밀번호를 메일로 발송하는데 실패했습니다.",
+	                    type: "error"
+	                });
                 } else {
                 	swal({
 	                    title: "비밀번호 찾기",

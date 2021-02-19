@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import study.spring.surisulsul.helper.MailHelper;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
@@ -29,6 +30,9 @@ public class MemberRestController {
 	/** RegexHelper 주입 */
 	@Autowired
 	RegexHelper regexHelper;
+	
+	@Autowired
+	MailHelper mailHelper;
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
@@ -134,6 +138,13 @@ public class MemberRestController {
 					
 					update_info.setPw(newPw.toString());          // 비밀번호를 새로 세팅
 					memberService.editMember(update_info);      // 새로 세팅한 비밀번호로 회원 정보 업데이트
+					
+					try {
+						mailHelper.sendMail(update_info.getEmail(), update_info.getName() + " 회원님의 비밀번호가 재발급되었습니다.", "안녕하세요, 회원님. 수리술술에서 발송한 메일입니다.\n "+update_info.getEdit_date()+"에 재발급된 회원님의 비밀번호는 " + newPw.toString() +" 입니다.");
+					} catch (Exception e) {
+						e.printStackTrace();
+						result = "SEND_MAIL_FAIL";
+					}
 				} catch (Exception e) {
 					result = "UPDATE_FAIL";
 				}
