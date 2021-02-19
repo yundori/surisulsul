@@ -49,7 +49,8 @@ public class ReviewAndQnaController {
 	/** 리뷰 작성 페이지로 이동 */
 	@RequestMapping(value="/mypage/write_review.do", method=RequestMethod.GET)
 	public ModelAndView write_review(Model model,
-			@RequestParam(value="p_id", defaultValue="0") int p_id) {	
+			@RequestParam(value="p_id", defaultValue="0") int p_id,
+			@RequestParam(value="o_id", defaultValue="0") int o_id) {	
 				
 		/** 1) 제품 정보 조회하기 */
 		// 조회할 조건 객체
@@ -68,6 +69,7 @@ public class ReviewAndQnaController {
 		
 		/** 작성 폼 페이지에 제품 정보 보내기 */
 		model.addAttribute("output", output);
+		model.addAttribute("o_id", o_id);
 		return new ModelAndView("mypage/write_review");
 	}
 	

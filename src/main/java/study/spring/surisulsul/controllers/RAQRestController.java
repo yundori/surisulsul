@@ -97,7 +97,6 @@ public class RAQRestController {
 		input.setStar(star);
 		input.setRev_img(rev_img);
 		
-		inputOrder.setP_id(p_id);
 		inputOrder.setO_id(o_id);
 		inputOrder.setP_id(p_id);
 
