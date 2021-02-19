@@ -19,6 +19,6 @@ public class ManageItemController {
 	@RequestMapping(value="/manage_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_itemlist(Model model) throws Exception {
 		
-		return new ModelAndView("manage/manage_itemslist");
+		return new ModelAndView("manage/manage_itemlist");
 	}
 }
