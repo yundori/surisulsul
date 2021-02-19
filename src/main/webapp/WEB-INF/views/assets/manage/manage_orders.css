@@ -49,9 +49,7 @@ uncmpl_orders 페이지 단일 스타일
 }
 /* submit 버튼 들어가는 div 스타일 */
 .submit_buttons{
-	margin-top:10px;
-	float:right;
-	margin-right:210px;
+	margin:10px auto 20px;
 }
 /*float마감제*/
 .submit_buttons:after {
