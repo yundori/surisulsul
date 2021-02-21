@@ -8,6 +8,8 @@
 <div class="content">
 	<h2>상품관리</h2>
 	<h3 class="item_total">총 등록상품 수 : 50개</h3>
+	<button class="newitem_add">상품 등록</button>
+	
 	<table class="manage_itemlist_table">
 		<tr>
 			<th rowspan="2" width="50">상품ID</th>
@@ -15,7 +17,6 @@
 			<th rowspan="2" width="90">상품가격</th>
 			<th colspan="6">타입별(분류)</th>
 			<th rowspan="2" width="70">용량(ml)</th>
-			<!--  <th rowspan="2" width="150">음식</th> -->
 			<th width="200">원재료</th>
 			<th width="350">상품설명</th>
 			<th rowspan="2" width="80">주능결과</th>
