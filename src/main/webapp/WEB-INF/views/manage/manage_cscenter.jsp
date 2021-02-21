@@ -4,14 +4,12 @@
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/manage/manage_cscenter.css?time=${currentTime}" />
-<body>
     
     <div class="content">
     <h1>공지사항 & FAQ 관리 </h1>
     <br />
     <br />
-    <input type="submit" value="전체선택" onclick="" class="all_ck"/>
-    <input type="submit" value="등록" onclick="" class="cs_add"/>
+    <input type="button" value="등록" onclick="javascript:opencsPop();" class="cs_add"/>
     <br />
     <form name="m_cscenter_form" id="m_cscenter_form">
     	<table class="manage_cs_table">
@@ -55,6 +53,12 @@
     
 </div>
 
-</body>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
 
-</html>
+//팝업열기
+function opencsPop() {
+	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_add.do','_blank',
+					'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+}
+</script>

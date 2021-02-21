@@ -18,7 +18,7 @@
 			</tr>
 			<tr>
 				<td>새로 가입한 회원 수</td>
-				<td width="60%">n 명</td>
+				<td width=100>n 명</td>
 			</tr>
 			<tr>
 				<td>오늘 탈퇴한 회원 수</td>

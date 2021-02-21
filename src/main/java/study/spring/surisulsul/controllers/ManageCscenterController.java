@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.model.Product;
 
 @Slf4j
 @Controller
@@ -26,12 +28,12 @@ public class ManageCscenterController {
 		return new ModelAndView("manage/manage_cscenter");
 	}
 	
-	/** cs -> 수정 버튼 : popup으로 수정 (내용 불러와야 함)
-				등록 버튼 : 새 글 등록이라고 위에 뜨게 하고 -> 드롭다운으로 분류 선택하기 ,
-						내용 등록하면 사용자 페이지, 관리자 페이지 모두에 등록되어야 함
-				삭제 버튼 : 클릭하면 alert 창 띄우고 ("정말 삭제하시겠습니까?") 
-						삭제되면 삭제가 완료 되었습니다. 띄우고 전 페이지로 돌아감
-	*/
+	/** 알립니다 & FAQ 등록 팝업 페이지 */
+	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.GET)
+	public ModelAndView cecenter_add(Model model)  throws Exception {
+		
+		return new ModelAndView("manage/manage_cscenter_add");
+	}
 	
 	
 }
