@@ -7,7 +7,12 @@
 
 <div class="content">
 	<h2>회원관리</h2>
-	<h3 class="member_total">총 회원 수 : n명</h3>
+	<a href="#" class="manage_members_all"> <span class="btn_total">전체
+			</span> <span class="btn_num">0,000명</span>
+	</a>
+	<a href="#" class="manage_members_out"> <span class="btn_total">탈퇴
+			</span> <span class="btn_num">0,000명</span>
+	</a>
 	<table class=manage_member_table>
 		<thead>
 			<tr>
@@ -26,7 +31,8 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><input type="checkbox" name="man_members" class="ab" value="${member.id }"></td>
+				<td><input type="checkbox" name="man_members" class="ab"
+					value="${member.id }"></td>
 				<td>id</td>
 				<td>email@email.com</td>
 				<td>name</td>

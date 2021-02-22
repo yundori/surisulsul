@@ -15,8 +15,30 @@
 	font-size: 19px;
 	font-weight: bold;
 }
+/** 전체 회원 정렬 / 탈퇴 회원 정렬 버튼 설정 */
+.manage_members_all, .manage_members_out{
+	line-height : 30px;
+	font-size : 0.92em;
+	display : inline-block;
+	margin : 20px 5px 5px 0
+}
+.btn_total{
+	float : left;
+	background : #9eacc6;
+	color : #fff;
+	border-radius : 5px 0 0 5px;
+	padding : 0 5px;
+}
 
-/**----테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
+.btn_num{
+	float : left;
+	background : #ededed;
+	color : #666;
+	border-radius : 0 5px 5px 0;
+	padding : 0 5px;
+}
+
+/** 테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
 .manage_member_table{
 	margin-top:10px;
 	width:1350px;
