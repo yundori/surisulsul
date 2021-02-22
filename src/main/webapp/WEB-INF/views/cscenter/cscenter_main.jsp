@@ -25,20 +25,11 @@
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript">   
-    /*$(".tab-button-item-link").click(function(e) {
-    	console.log('>>>>>>>>>>>>>>0');
-    	e.preventDefault();
-    	var tab = $(this).data('tab');
-    	window.location.replace('#' + tab);
-    });*/
+    <script type="text/javascript">
     
-    $(".tab-button-item-link").click(function(e) {
+    function loadTab(activeTab) {
         console.log( '>>>>>>>>>>>>>>1' );
-        e.preventDefault();
-        
-        var activeTab = $(this).attr('data-tab');
-		console.log(activeTab);
+                
 		$.ajax({
 			type: 'GET',
 			url: activeTab + ".do",
@@ -53,6 +44,15 @@
 			}
 		});
 
+    }
+    
+    $(".tab-button-item-link").click(function(e) {
+    	e.preventDefault();
+    	
+    	var activeTab = $(this).attr('data-tab');
+		console.log(activeTab);
+		
+    	loadTab(activeTab);
     });
     
     $(function() {
@@ -61,8 +61,7 @@
     	console.log(tab);
     	console.log(tab.substring(1) );
     	
-    	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
-    	
+    	loadTab(tab.substring(1));
     });
 
     $( window ).on( 'hashchange', function( e ) {
@@ -74,7 +73,7 @@
     	}
     	console.log(tab.substring(1) );
 
-    	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
+    	loadTab(tab.substring(1));
     } );
     
     
