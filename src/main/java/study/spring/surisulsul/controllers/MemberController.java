@@ -80,6 +80,7 @@ public class MemberController {
 				// 일치하는 메일이 존재할 시 이메일과 비밀번호로 login 처리 (단일행 조회 결과를 output에 받음, 실패하면 catch 블록으로)
 				output = memberService.getMemberLogin(input);
 				// 로그인한 정보를 업데이트(edit_date())
+				output = memberService.editMemberLogin(output);
 			} else {
 				return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
 				
@@ -100,7 +101,7 @@ public class MemberController {
 		// C. 홈페이지로 이동
 		//String redirectUrl = contextPath + "/";
 		//System.out.println(output.toString());
-		return webHelper.redirect(null, "수리술술에 오신 것을 환영합니다.");
+		return webHelper.redirect("login", "수리술술에 오신 것을 환영합니다.");
 	}
 
 	/** 회원가입 페이지로 이동 */

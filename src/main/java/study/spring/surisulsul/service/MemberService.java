@@ -14,6 +14,9 @@ public interface MemberService {
 	// 로그인을 위한 회원정보 조회
 	public Member getMemberLogin(Member input) throws Exception;
 	
+	// 로그인을 위한 회원정보 업데이트
+	public Member editMemberLogin(Member input) throws Exception;
+	
 	// 회원 목록 조회 (관리자용)
 	public List<Member> getMemberList(Member input) throws Exception;
 	

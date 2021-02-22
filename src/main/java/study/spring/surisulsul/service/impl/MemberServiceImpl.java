@@ -83,6 +83,25 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+	
+	/** 로그인 일시를 회원 정보에 업데이트 */
+	@Override
+	public Member editMemberLogin(Member input) throws Exception {
+		Member result = null;
+
+		try {
+			sqlSession.update("MemberMapper.loginEditMember", input);
+			result = input;
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("로그인 일시 기록에 실패했습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 회원 목록 조회 (관리자용) */
 	@Override

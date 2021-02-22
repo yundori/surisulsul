@@ -102,7 +102,7 @@ public class WebHelper {
 		//페이지 이동
 		if(url!=null) {
 			html+="<meta http-equiv='refresh' content='0; url=" + url + "'/>";
-		}else {
+		} else {
 			html+="<script type='text/javascript'>history.back();</script>";
 		}
 
