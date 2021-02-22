@@ -98,15 +98,6 @@
             $(".content").not($(target)).slideUp(100);
         });
     });
-    $(function() {
-        $(".collapse-title a").click(function(e) {
-            e.preventDefault();
-
-            var target = $(this).attr('href');
-            $(target).slideToggle(100);
-            $(".content").not($(target)).slideUp(100);
-        });
-    });
     $(document).on("click", ".page-link", function(e) {
 		e.preventDefault();
 		const url = $(this).attr('href');
