@@ -62,8 +62,8 @@
             <br />
             <br />
             <br />
-            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do">알립니다</a></li>
-            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do">자주 묻는 질문</a></li>
+            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do#notice">알립니다</a></li>
+            <li><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do#faq">자주 묻는 질문</a></li>
          </ul>
       </div>
       <section></section>
