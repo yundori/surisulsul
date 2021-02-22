@@ -35,5 +35,19 @@ public class ManageCscenterController {
 		return new ModelAndView("manage/manage_cscenter_add");
 	}
 	
+	/** 알립니다 & FAQ 수정 팝업 페이지 */
+	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
+	public ModelAndView cscenter_edit(Model model)  throws Exception {
+		
+		return new ModelAndView("manage/manage_cscenter_edit");
+	}
+	
+	/** 알립니다 & FAQ 삭제 페이지 */
+	@RequestMapping(value="/manage_cscenter_delete.do", method=RequestMethod.POST)
+	public ModelAndView cscenter_delete(Model model)  throws Exception {
+		
+		return new ModelAndView("manage/manage_cscenter_delete");
+	}
+	
 	
 }
