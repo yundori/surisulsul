@@ -9,7 +9,7 @@
     <h1>공지사항 & FAQ 관리 </h1>
     <br />
     <br />
-    <input type="button" value="등록" onclick="javascript:opencsPop();" class="cs_add"/>
+    <input type="button" value="등록" onclick="javascript:open_cs_add_Pop();" class="cs_add"/>
     <br />
     <form name="m_cscenter_form" id="m_cscenter_form">
     	<table class="manage_cs_table">
@@ -30,7 +30,7 @@
     			<td>수리술술은 언제나 무료배송 !</td>
     			<td>2021-02-18 00:00:00</td>
     			<td>
-    				<input type="submit" value="수정" onclick="" class="edit_button"/>
+    				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
     			</td>
     		</tr>
     		<tr>
@@ -42,7 +42,7 @@
     			<td>대량 주문도 가능한가요?</td>
     			<td>2021-02-18 00:00:00</td>
     			<td>
-    				<input type="submit" value="수정" onclick="" class="edit_button"/>
+    				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
     			</td>
     		</tr>
     	</table>
@@ -57,8 +57,13 @@
 <script type="text/javascript">
 
 //팝업열기
-function opencsPop() {
+function open_cs_add_Pop() {
 	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_add.do','_blank',
-					'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+					'width=560, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+}
+
+function open_cs_edit_Pop() {
+	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_edit.do','_blank',
+					'width=560, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }
 </script>
