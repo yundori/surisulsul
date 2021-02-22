@@ -11,7 +11,7 @@
     <br />
     <input type="button" value="등록" onclick="javascript:open_cs_add_Pop();" class="cs_add"/>
     <br />
-    <form name="m_cscenter_form" id="m_cscenter_form">
+    <form name="m_cscenter_form" id="m_cscenter_form" method="post" action="${pageContext.request.contextPath }/manage/manage_cscenter_delete.do">
     	<table class="manage_cs_table">
     		<tr>
     			<th><input type="checkbox" name="all" class="check_all"></th>
@@ -46,8 +46,9 @@
     			</td>
     		</tr>
     	</table>
+    	<input type="submit" value="선택 삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
     </form>
-    <input type="submit" value="삭제" onclick="" class="cs_delete"/>
+    
     
     <!-- 페이지네이션 처리 -->
     
