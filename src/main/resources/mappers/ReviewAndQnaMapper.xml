@@ -69,22 +69,50 @@
 		</if>
 	</select>
 	
+	<!-- 리뷰 목록 조회(다중행 조회)를 위한 기능 정의 (검색어 있음, 관리자용) -->
+	<select id="manageReviewSearch"
+		parameterType="study.spring.surisulsul.model.Review"
+		resultMap="reviewMap">
+		SELECT r.id, r.m_id, r.m_name, r.p_id, r.content, r.star, date_format(r.reg_date,'%Y-%m-%d') as reg_date, r.edit_date, r.rev_img, p.name `p_name` FROM review r
+		INNER JOIN products p ON r.p_id = p.id
+		<where>
+			<if test="p_name!=null and p_name!=''">
+				p_name like concat('%',#{p_name},'%')
+			</if>
+			<if test="m_name!=null and m_name!=''">
+				r.m_name like concat('%',#{m_name},'%')
+			</if>
+		</where>
+		ORDER BY r.reg_date DESC
+		<if test="listCount>0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+	
 	<!-- 상품별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
 	<select id="selectCountProductReview"
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">
 		SELECT count(*) FROM review WHERE p_id=#{p_id};
 	</select>
 	
-	<!-- 상품별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<!-- 별점 합산을 위한 기능 정의 (관리자용, 임시 작성) -->
 	<select id="sumStarProductReview"
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">
 		SELECT sum(star) FROM review WHERE p_id=#{p_id};
 	</select>
 	
-	<!-- 회원별 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
-	<select id="selectCountMemberReview"
+	<!-- 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
+	<select id="selectCountReview"
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">
-		SELECT count(*) FROM review WHERE m_id=#{m_id};
+		SELECT count(*) FROM review
+		<where>
+			<if test="p_name!=null and p_name!=''">
+				p_name like concat('%',#{p_name},'%')
+			</if>
+			<if test="m_name!=null and m_name!=''">
+				r.m_name like concat('%',#{m_name},'%')
+			</if>
+		</where>
 	</select>
 
 	<!-- 리뷰 작성을 위한 기능 정의 -->

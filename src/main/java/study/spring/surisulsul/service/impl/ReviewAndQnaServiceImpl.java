@@ -81,6 +81,28 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 		return result;
 	}
+	
+	/** 회원별 리뷰 목록 조회 */
+	@Override
+	public List<Review> getManageReview(Review input) throws Exception {
+		List<Review> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.manageReviewSearch", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 상품별 리뷰 수 조회 */
 	@Override
@@ -112,13 +134,13 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 	
-	/** 회원별 리뷰 수 조회 */
+	/** 리뷰 수 조회 */
 	@Override
-	public int getMemberReviewCount(Review input) throws Exception {
+	public int getReviewCount(Review input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountMemberReview", input);
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountReview", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
