@@ -13,7 +13,7 @@
     <form action="" action="POST" name="manage_orders_form" id="manage_orders_form">
     	<div class="manage_orders_details">
 	    	<label for="order_status"><b>주문상태</b></label>
-	    	<input type="radio" name="order_status" value="all" />전체
+	    	<input type="radio" name="order_status" value="all" checked/>전체
 	    	<input type="radio" name="order_status" value="order_cmpl" />주문완료
 	    	<input type="radio" name="order_status" value="pay_cmpl" />입금완료
 	    	<input type="radio" name="order_status" value="send_cmpl" />배송완료
@@ -21,7 +21,7 @@
     	
     	<div class="manage_orders_details">
 	    	<label for="pay_method"><b>결제수단</b></label>
-	    	<input type="radio" name="pay_method" value="all" />전체
+	    	<input type="radio" name="pay_method" value="all" checked/>전체
 	    	<input type="radio" name="pay_method" value="cash1" />무통장(국민)
 	    	<input type="radio" name="pay_method" value="cash2" />무통장(신한)
 	    	<input type="radio" name="pay_method" value="cash3" />무통장(농협)
@@ -33,9 +33,8 @@
 	    	<label for="date"><b>주문일자</b></label>
 	    	<input type="date" name="from_date"/> ~ 
 	    	<input type="date" name="to_date"/>
-    		<button type="submit" class="search_button">조회</button>
+    	<button type="submit" class="search_button">조회</button>
     	</div>
-    	
     </form>
     <table class="manage_order_table">
     	<tr>

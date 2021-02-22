@@ -8,10 +8,10 @@
 	<br />
 	<div class="sitemap">
 		<ul>
-			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do">알립니다</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do#notice">알립니다</a></li>
 		</ul>
 		<ul>
-			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do">자주 묻는 질문</a></li>
+			<li class="title"><a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do#faq">자주 묻는 질문</a></li>
 		</ul>
 		<ul>
 			<li class="title"><a href="${pageContext.request.contextPath}/item_filtered.do">내가 찾는 술</a></li>

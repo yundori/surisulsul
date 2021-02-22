@@ -25,63 +25,60 @@
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript">
-    
-    $(".tab-button-item-link").click(function(e) {
+    <script type="text/javascript">   
+    /*$(".tab-button-item-link").click(function(e) {
+    	console.log('>>>>>>>>>>>>>>0');
     	e.preventDefault();
     	var tab = $(this).data('tab');
     	window.location.replace('#' + tab);
-    });
+    });*/
+    
+    $(".tab-button-item-link").click(function(e) {
+        console.log( '>>>>>>>>>>>>>>1' );
+        e.preventDefault();
+        
+        var activeTab = $(this).attr('data-tab');
+		console.log(activeTab);
+		$.ajax({
+			type: 'GET',
+			url: activeTab + ".do",
+			dataType: "html",
+			error: function() {
+				alert('통신실패');
+				console.log(">>에러" + error.status);
+			},
+			success: function(data) {
+				console.log(">>성공>>");
+				$('.tab-panel').html(data);
+			}
+		});
 
+    });
+    
     $(function() {
+    	console.log('>>>>>>>>>>>>>>2');
     	var tab = window.location.hash;
     	console.log(tab);
-    	if (!tab) {
-    		tab = "#notice";
-    	}
+    	console.log(tab.substring(1) );
     	
     	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
     	
     });
 
     $( window ).on( 'hashchange', function( e ) {
-        console.log( 'hash changed' );
+        console.log( '>>>>>>>>>>>>>>3' );
         var tab = window.location.hash;
     	console.log(tab);
     	if (!tab) {
-    		tab = "#notice";
+    		tab = "notice";
     	}
-    	
+    	console.log(tab.substring(1) );
+
     	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
     } );
     
-    $(document).ready(function() {
-    	$(function() {
-            $(".tab-button-item-link").click(function(e) {
-                e.preventDefault();
-                
-                var activeTab = $(this).attr('data-tab');
-        		console.log(activeTab);
-        		$.ajax({
-        			type: 'GET',
-        			url: activeTab + ".do",
-        			dataType: "html",
-        			error: function() {
-        				alert('통신실패');
-        				console.log(">>에러" + error.status);
-        			},
-        			success: function(data) {
-        				console.log(">>성공>>");
-        				$('.tab-panel').html(data);
-        			}
-        		});
-
-            });
-            
-        });
-    	
-    });
     
+        
     </script>
 
 <%@ include file="/WEB-INF/views/_inc/footer.jsp"%>
