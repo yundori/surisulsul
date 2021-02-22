@@ -27,11 +27,13 @@
 	font-weight:normal;
 	line-height:220%;
 	font-size:15px;
+	vertical-align:middle;
 }
 .manage_order_table td{
 	border:1px solid #aaa;
 	line-height:230%;
 	font-size:15px;
+	vertical-align:middle;
 }
 
 /**------------------------
@@ -92,7 +94,31 @@ manage_sales 페이지 단일 스타일
 	text-align:right;
 	padding-right:5px;
 }
-.sales .price{
+.sales .price, .manage_order_table .price{
 	text-align:right;
 	padding-right:10px;
+}
+
+/*-----------------------------
+-------------------------------
+manage_orders 페이지 단일 스타일
+-------------------------------
+------------------------------*/
+#manage_orders_form{
+	margin-bottom:20px;
+}
+.manage_orders_count{
+	margin-top:25px;
+}
+.manage_orders_details{
+	margin:10px 0;
+}
+.search_button{
+	border:none;
+	padding:5px 10px;
+	font-size:16px;
+	font-weight:bold;
+	background-color:#fbd14b;
+	margin-left:500px;
+	cursor:pointer;
 }
