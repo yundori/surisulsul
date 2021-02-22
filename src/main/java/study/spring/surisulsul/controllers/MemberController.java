@@ -39,7 +39,18 @@ public class MemberController {
 
 	/** 로그인 페이지로 이동 */
 	@RequestMapping(value = "/account/login.do", method = RequestMethod.GET)
-	public ModelAndView login(Model model) {
+	public ModelAndView login(Model model,
+			HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
+				
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession!=null) { 
+			return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
+		}
+				
 		return new ModelAndView("account/login");
 	}
 
@@ -68,24 +79,13 @@ public class MemberController {
 			if(chkEmailCount>0) {
 				// 일치하는 메일이 존재할 시 이메일과 비밀번호로 login 처리 (단일행 조회 결과를 output에 받음, 실패하면 catch 블록으로)
 				output = memberService.getMemberLogin(input);
-				//chkLogin = 1;
+				// 로그인한 정보를 업데이트(edit_date())
+				output = memberService.editMemberLogin(output);
 			} else {
-				//model.addAttribute("chkEmailCount", chkEmailCount);
-				//model.addAttribute("chkLogin", chkLogin);
 				return webHelper.redirect(null, "입력한 이메일이 올바르지 않습니다.");
-				//return new ModelAndView("account/login");
-				// return webHelper.redirect(null, "로그인 실패");
-				//return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 이메일이 올바르지 않습니다.","warning");
 				
 			}
 		} catch (Exception e) {
-			// 이메일 조회 건수는 있으나 이메일과 비밀번호로 단일행 조회에 실패 : 비밀번호 오류
-			// chkEmailCount와 chkLogin 값, 기존에 입력했던 이메일을 넣어서 리다이렉트한다.
-			//chkEmailCount = 1;
-			//model.addAttribute("chkEmailCount", chkEmailCount);
-			//model.addAttribute("chkLogin", chkLogin);
-			//model.addAttribute("email", email);
-			//return new ModelAndView("account/login");
 			return webHelper.redirect(null, "입력한 비밀번호가 올바르지 않습니다.");
 			//return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 비밀번호가 올바르지 않습니다.","warning");
 		}
@@ -99,14 +99,24 @@ public class MemberController {
 			session.setAttribute("loginInfo", output);
 		}
 		// C. 홈페이지로 이동
-		String redirectUrl = contextPath + "/";
-		System.out.println(output.toString());
-		return webHelper.redirect(redirectUrl, "수리술술에 오신 것을 환영합니다.");
+		//String redirectUrl = contextPath + "/";
+		//System.out.println(output.toString());
+		return webHelper.redirect("login", "수리술술에 오신 것을 환영합니다.");
 	}
 
 	/** 회원가입 페이지로 이동 */
 	@RequestMapping(value = "/account/join.do", method = RequestMethod.GET)
-	public ModelAndView join(Model model) {
+	public ModelAndView join(Model model,
+			HttpServletRequest request) {
+		//세션값 받아오기
+				HttpSession session = request.getSession();		
+				Member loginSession = (Member) session.getAttribute("loginInfo");
+						
+								
+				//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+				if(loginSession!=null) { 
+					return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
+				}
 		return new ModelAndView("account/join");
 	}
 
@@ -186,13 +196,17 @@ public class MemberController {
 	@RequestMapping(value = "/account/find_email.do", method = RequestMethod.GET)
 	public ModelAndView find_email(Model model,
 			@RequestParam(value="findEmailCount", defaultValue="-1") int findEmailCount,
-			@RequestParam(value="findEmail", required=false) Member findEmail) {
-		model.addAttribute("findEmailCount", findEmailCount);
-		if(findEmail!=null) {
-			model.addAttribute("findEmail", findEmail);
-		} else {
-			model.addAttribute("findEmail", null);
+			@RequestParam(value="findEmail", required=false) Member findEmail,
+			HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");			
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession!=null) { 
+			return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
 		}
+		
 		return new ModelAndView("account/find_email");
 	}
 
@@ -233,8 +247,18 @@ public class MemberController {
 
 	/** 비밀번호 찾기 페이지로 이동 */
 	@RequestMapping(value = "/account/find_pw.do", method = RequestMethod.GET)
-	public String find_pw(Model model) {
-		return "account/find_pw";
+	public ModelAndView find_pw(Model model,
+			HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");			
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession!=null) { 
+			return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
+		}
+
+		return webHelper.redirect("account/find_pw",null);
 	}
 
 	
@@ -242,6 +266,7 @@ public class MemberController {
 	/** 비밀번호 확인 페이지로 이동 */
 	@RequestMapping(value = "/mypage/chk_pw.do", method = RequestMethod.GET)
 	public String chk_pw(Model model) {
+		
 		return "mypage/chk_pw";
 	}
 

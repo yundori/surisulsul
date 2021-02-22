@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.model.Product;
 
 @Slf4j
 @Controller
@@ -24,6 +26,13 @@ public class ManageCscenterController {
 	public ModelAndView manage_cscenter(Model model) throws Exception {
 
 		return new ModelAndView("manage/manage_cscenter");
+	}
+	
+	/** 알립니다 & FAQ 등록 팝업 페이지 */
+	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.GET)
+	public ModelAndView cecenter_add(Model model)  throws Exception {
+		
+		return new ModelAndView("manage/manage_cscenter_add");
 	}
 	
 	

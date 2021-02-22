@@ -3,24 +3,36 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/manage/manage_common.css" />
+	href="${contextPath}/assets/manage/manage_home.css" />
 
 <div class="content_home">
 	<h1>관리자 페이지</h1>
 	<hr />
 	<div class="all_main">
 		<div class="chart">
-			<canvas id="canvas">
-			</canvas>
+			<canvas id="canvas"></canvas>
 		</div>
-		<div class="manage_main">
-			<ul>
-				<li><a href="#">새로 가입한 회원 수</a> : n 명</li>
-				<li><a href="#">새로 들어온 질문</a> : n 건</li>
-				<li><a href="#">탈퇴한 회원 수</a> : n 명</li>
-				<li><a href="#">오늘 방문 고객</a> : n 명</li>
-			</ul>
-		</div>
+		<table class="manage_main">
+			<tr>
+				<th colspan="2">오늘의 수리술술</th>
+			</tr>
+			<tr>
+				<td>새로 가입한 회원 수</td>
+				<td width=100>n 명</td>
+			</tr>
+			<tr>
+				<td>오늘 탈퇴한 회원 수</td>
+				<td>n 명</td>
+			</tr>
+			<tr>
+				<td>새로 등록된 문의사항</td>
+				<td>n 건</td>
+			</tr>
+			<tr>
+				<td>오늘 방문고객 수</td>
+				<td>n 명</td>
+			</tr>
+		</table>
 	</div>
 </div>
 

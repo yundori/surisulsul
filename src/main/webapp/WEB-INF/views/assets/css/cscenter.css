@@ -36,6 +36,7 @@
     width: 80%;
     margin: 20px auto;
     padding-top: 200px;
+    
 }
 
 /*
@@ -113,6 +114,10 @@
     background: #eee;
     border: 1px solid #d5d5d5;
     text-align: center;
+}
+
+.pageNumber{
+	padding-top : 50px;
 }
 
 /*

@@ -46,6 +46,15 @@
 		SELECT * FROM members WHERE email=#{email} AND pw=md5(#{pw}) AND is_out='N';
 	</select>
 	
+	<!-- 로그인 일시를 회원정보에 업데이트 -->
+	<update id="loginEditMember"
+		parameterType="study.spring.surisulsul.model.Member">
+		UPDATE members SET
+		edit_date=now()
+		WHERE
+		id=#{id};
+	</update>
+	
 	<!-- 정보 수정 시 비밀번호 확인을 위한 기능 정의 -->
 	<select id="chkPw"
 		parameterType="study.spring.surisulsul.model.Member"

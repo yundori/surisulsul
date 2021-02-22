@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 
+ <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/cscenter.css" />
 
     <!-- 버튼 클릭 시 페이지가 이동하는 게 아니라 include 하고 있는 두 페이지 중 hide 되는 것과 show 되는 것이바뀜 -->
@@ -25,6 +26,35 @@
     </div>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">
+    
+    $(".tab-button-item-link").click(function(e) {
+    	e.preventDefault();
+    	var tab = $(this).data('tab');
+    	window.location.replace('#' + tab);
+    });
+
+    $(function() {
+    	var tab = window.location.hash;
+    	console.log(tab);
+    	if (!tab) {
+    		tab = "#notice";
+    	}
+    	
+    	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
+    	
+    });
+
+    $( window ).on( 'hashchange', function( e ) {
+        console.log( 'hash changed' );
+        var tab = window.location.hash;
+    	console.log(tab);
+    	if (!tab) {
+    		tab = "#notice";
+    	}
+    	
+    	$(".tab-button-item-link[data-tab='" + tab.substring(1) + "']").trigger('click');
+    } );
+    
     $(document).ready(function() {
     	$(function() {
             $(".tab-button-item-link").click(function(e) {
@@ -45,16 +75,10 @@
         				$('.tab-panel').html(data);
         			}
         		});
-                
-                /*$(".tab-button-item-link").not(this).removeClass("selected");
-                $(this).addClass("selected");
-                var target = $(this).attr('href');
-                $(target).removeClass('hide');
-                $(".tab-panel>div").not($(target)).addClass('hide');*/
+
             });
             
         });
-        $('#default').click();
     	
     });
     

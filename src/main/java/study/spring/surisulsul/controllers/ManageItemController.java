@@ -16,9 +16,18 @@ public class ManageItemController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
+	/** 관리자 - 상품목록 페이지 **/
 	@RequestMapping(value="/manage_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_itemlist(Model model) throws Exception {
 		
 		return new ModelAndView("manage/manage_itemlist");
 	}
+	
+	/** 관리자 - 상품등록 페이지 **/
+	@RequestMapping(value="/manage_itemadd.do", method=RequestMethod.GET)
+	public ModelAndView manage_itemadd(Model model) throws Exception {
+		
+		return new ModelAndView("manage/manage_itemadd");
+	}
+	
 }
