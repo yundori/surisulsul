@@ -99,9 +99,9 @@ public class MemberController {
 			session.setAttribute("loginInfo", output);
 		}
 		// C. 홈페이지로 이동
-		//String redirectUrl = contextPath + "/";
+		String redirectUrl = contextPath + "/";
 		//System.out.println(output.toString());
-		return webHelper.redirect("login", "수리술술에 오신 것을 환영합니다.");
+		return webHelper.redirect(redirectUrl, "수리술술에 오신 것을 환영합니다.");
 	}
 
 	/** 회원가입 페이지로 이동 */
