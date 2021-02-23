@@ -63,6 +63,7 @@
 						<li><a href="#">상품 판매순위</a></li>
 						<li><a href="#">보관함 현황</a></li>
 					</div>
+				<li><a href="${pageContext.request.contextPath}/">사용자 페이지</a></li>
 				</ul>
 			</div>
 		</div>

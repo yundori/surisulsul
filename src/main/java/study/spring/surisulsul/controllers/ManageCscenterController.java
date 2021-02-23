@@ -24,7 +24,7 @@ public class ManageCscenterController {
 	/** manage_cscenter 페이지 처리 */
 	@RequestMapping(value = "/manage_cscenter.do", method = RequestMethod.GET)
 	public ModelAndView manage_cscenter(Model model) throws Exception {
-
+		
 		return new ModelAndView("manage/manage_cscenter");
 	}
 	
