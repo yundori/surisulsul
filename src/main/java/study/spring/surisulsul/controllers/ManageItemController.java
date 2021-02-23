@@ -30,4 +30,11 @@ public class ManageItemController {
 		return new ModelAndView("manage/manage_itemadd");
 	}
 	
+	/** 관리자 - 인기상품목록 페이지 **/
+	@RequestMapping(value="/manage_best_itemlist.do", method=RequestMethod.GET)
+	public ModelAndView manage_best_itemlist(Model model) throws Exception {
+		
+		return new ModelAndView("manage/manage_best_itemlist");
+	}
+	
 }
