@@ -60,11 +60,11 @@
 //팝업열기
 function open_cs_add_Pop() {
 	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_add.do','_blank',
-					'width=560, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }
 
 function open_cs_edit_Pop() {
 	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_edit.do','_blank',
-					'width=560, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }
 </script>

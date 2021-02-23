@@ -34,7 +34,7 @@
 <body link="none" vlink="none" alink="none">
 	<div class="header">
 		<h1>
-			<a href="${pageContext.request.contextPath}/"> <img
+			<a href="${pageContext.request.contextPath}/manage_home.do"> <img
 				src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
 		</h1>
 		<input type="checkbox" id="check"> <label for="check">
