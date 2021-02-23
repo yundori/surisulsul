@@ -19,6 +19,7 @@ import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.SalesService;
 
 @Controller
 @Slf4j
@@ -34,6 +35,9 @@ public class ManageItemController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	SalesService salesService;
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -93,7 +97,25 @@ public class ManageItemController {
 	/** 관리자 - 인기상품목록 페이지 **/
 	@RequestMapping(value="/manage_best_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_best_itemlist(Model model) throws Exception {
+		List<Product> output = null;
+		int sales_cnt = 0;
 		
+		try {
+			sales_cnt = salesService.getSalesCount(null);
+			
+			if(sales_cnt == 0) {
+				output = productService.best_ProductList_price(null);
+			}
+			else {
+				output = productService.best_ProductList(null);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("totalCount", output.size());
+		model.addAttribute("output",output);
 		return new ModelAndView("manage/manage_best_itemlist");
 	}
 	
