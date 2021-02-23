@@ -134,7 +134,7 @@
 	
 	<!-- 주문내역(manage_orders)페이지에서 사용되는 SELECT SQL 구문 -->
 	<select id="selectManageOrders"  parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
-		SELECT id as o_id, b_name, b_phone, r_name, r_phone, price, pay_result, send_result, 
+		SELECT id as o_id, b_id, b_name, b_phone, r_name, r_phone, price, pay_result, send_result, payment, 
 			   date_format(reg_date, '%Y%m%d') AS reg_date, date_format(edit_date, '%Y-%m-%d') AS edit_date
 		FROM orders
 		<where>
@@ -148,7 +148,7 @@
 				AND payment==#{payment}
 			</if>
 			<if test="from_date!=null and from_date!='' and to_date!=null and to_date!=''">
-				AND reg_date BETWEEN TO_DATE(#{from_date}) AND TO_DATE(#{to_date})
+				AND reg_date BETWEEN #{from_date} AND #{to_date}
 			</if>
 		</where>
 		ORDER BY reg_date DESC

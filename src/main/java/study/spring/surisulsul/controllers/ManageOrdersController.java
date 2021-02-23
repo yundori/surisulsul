@@ -1,5 +1,8 @@
 package study.spring.surisulsul.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Order;
+import study.spring.surisulsul.service.ManageOrdersService;
+import study.spring.surisulsul.service.OrderService;
 
 @Controller
 public class ManageOrdersController {
@@ -19,6 +25,10 @@ public class ManageOrdersController {
 	WebHelper webHelper;
 
 	/** Service 패턴 구현체 주입 */
+	@Autowired
+	ManageOrdersService manageService;
+	@Autowired
+	OrderService orderService;
 
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -37,6 +47,7 @@ public class ManageOrdersController {
 		int sub_cnt = 0; //주문상품 수
 		
 		Order input = new Order();
+		List<Order> output = new ArrayList<Order>();
 		
 		//받아온 파라미터를 가지고 impl메서드에 넘겨줄 input객체 내용 부여
 		if(order_status!=null || order_status!="all") {
@@ -68,7 +79,21 @@ public class ManageOrdersController {
 				input.setTo_date(to_date);
 			}
 		}
+
+		//input에 담은 데이터를 가지고 테이블 조회 수행
+		try {
+			// 데이터 조회하기
+			output = manageService.getOrderList(input);
+			for(int i=0; i<output.size(); i++) {
+				int tmp = manageService.getMemOrderCount(output.get(i));
+				System.out.println("output.get("+i+").getB_id : "+output.get(i).getB_id()+",,,,,,, manageService에서 불러온 누적주문수 : "+tmp);
+				output.get(i).setOrder_cnt(tmp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+		model.addAttribute("output", output);
 		model.addAttribute("total_cnt", total_cnt);
 		model.addAttribute("sub_cnt", sub_cnt);
 		return new ModelAndView("manage/manage_orders");

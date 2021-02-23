@@ -38,7 +38,7 @@
     		<th colspan="3">주문일-주문번호</th>
     		<th>주문자</th>
     		<th>주문자전화</th>
-    		<th>주문상품수</th>
+    		<th>받는분</th>
     		<th rowspan="2">주문합계</th>
     		<th rowspan="2">입금합계</th>
     		<th rowspan="2">미수금</th>
@@ -48,28 +48,30 @@
     		<th>주문상태</th>
     		<th>결제수단</th>
     		<th>최근변경일</th>
-    		<th>수령자</th>
-    		<th>수령자전화</th>
-    		<th>누적주문수</th>
+    		<th colspan="2">주문상품수</th>
+    		<th colspan="2">누적주문수</th>
     	</tr>
-    	<tr>
-    		<td colspan="3">20210222-10</td>
-    		<td>마수리</td>
-    		<td>01012345678</td>
-    		<td>3개</td>
-    		<td rowspan="2" class="price">110,000</td>
-    		<td rowspan="2" class="price">0</td>
-    		<td rowspan="2" class="price">110,000</td>
-    		<td rowspan="2"><a href="${pageContext.request.contextPath}/manage_order_details.do" class="show_button">보기</a></td>
-    	</tr>
-    	<tr>
-    		<td>입금대기</td>
-    		<td>무통장</td>
-    		<td>2021-02-22</td>
-    		<td>수리술</td>
-    		<td>01098765432</td>
-    		<td>1건</td>
-    	</tr>    	
+    	
+		<%-- 조회 결과에 따른 반복 처리 --%>
+    	<c:forEach var="item" items="${output }" varStatus="status">
+	    	<tr>
+	    		<td colspan="3">${item.reg_date }-${item.o_id }</td>
+	    		<td>${item.b_name }</td>
+	    		<td>${item.b_phone }</td>
+	    		<td>${item.r_name }</td>
+	    		<td rowspan="2" class="price"><fmt:formatNumber value="${item.price }" pattern="#,###"/></td>
+	    		<td rowspan="2" class="price">0</td>
+	    		<td rowspan="2" class="price">110,000</td>
+	    		<td rowspan="2"><a href="${pageContext.request.contextPath}/manage_order_details.do" class="show_button">보기</a></td>
+	    	</tr>
+	    	<tr>
+	    		<td>입금대기</td>
+	    		<td>무통장</td>
+	    		<td>${item.edit_date }</td>
+    			<td colspan="2">3개</td>
+    			<td>${item.order_cnt }건</td>
+	    	</tr> 
+    	</c:forEach>   	
     </table>
 </div>
 
