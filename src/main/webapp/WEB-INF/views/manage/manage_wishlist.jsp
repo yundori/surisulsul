@@ -27,7 +27,7 @@
 		<thead>
 			<tr>
 				<th width="100">상품번호</th>
-				<th width="200">상품명</th>
+				<th width="500">상품명</th>
 				<th width="100">❤</th>
 				<th width="100">장바구니</th>
 				<th width="100">판매수량</th>
