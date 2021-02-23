@@ -176,6 +176,15 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
+	
+	<select id="allItemlist"
+		parameterType="study.spring.surisulsul.model.Product"
+		resultMap="productMap">
+		SELECT * FROM products
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
 
 	<!-- 상품 데이터 수 조회하기 -->
 	<select id="selectCountAll"

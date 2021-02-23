@@ -87,7 +87,7 @@ public interface ProductService {
 	 * @throws Exception
 	 */
 	public List<Product> types_ProductList(Product input) throws Exception;
-
+	
 	/**
 	 * 상품 데이터 수 조회하기
 	 * 
@@ -97,6 +97,16 @@ public interface ProductService {
 	public int getProductCount(Product input) throws Exception;
 
 	/** <<관리자 페이지에 필요한 서비스>> */
+	
+	/**
+	 * 상품 목록 전체 조회 (manage_itemlist)
+	 * 
+	 * @param Product Beans
+	 * @return 조회된 데이터가 저장된 Beans
+	 * @throws Exception
+	 */
+	public List<Product> getAllProductList(Product input) throws Exception;
+	
 	/**
 	 * 상품 데이터 저장
 	 * 
