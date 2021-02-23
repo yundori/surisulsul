@@ -23,7 +23,7 @@
 
 .newitem_add {
 	width: 100px;
-	height: 30px;
+	height: 35px;
 	margin: 30px 0;
 	background-color : #FBD14B;
 	border-radius: 5px;
@@ -31,6 +31,8 @@
 	border: none;
 	cursor: pointer;
 	font-size: 15px;
+	text-align: center;
+	line-height: 35px;
 	position: absolute;
 	display:inline-block;
 	right: 50px;

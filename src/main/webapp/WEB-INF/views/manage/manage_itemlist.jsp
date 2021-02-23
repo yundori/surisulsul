@@ -9,7 +9,7 @@
 <div class="content">
 	<h2>상품관리</h2>
 	<h3 class="item_total">총 등록상품 수 : ${totalCount}개</h3>
-	<button class="newitem_add">상품 등록</button>
+	<a href="${contextPath}/manage_itemadd.do" class="newitem_add">상품 등록</a>
 	
 		<table class="manage_itemlist_table">
 			<tr>

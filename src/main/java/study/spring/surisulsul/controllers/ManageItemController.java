@@ -87,6 +87,13 @@ public class ManageItemController {
 		return new ModelAndView("manage/manage_itemadd");
 	}
 	
+	/** 관리자 - 상품등록 action 페이지 **/
+	@RequestMapping(value="/manage_itemadd_ok.do", method=RequestMethod.POST)
+	public ModelAndView manage_itemadd_ok(Model model) throws Exception {
+		
+		return new ModelAndView("manage/manage_itemadd");
+	}
+	
 	/** 관리자 - 상품수정 페이지 **/
 	@RequestMapping(value="/manage_itemedit.do", method=RequestMethod.GET)
 	public ModelAndView manage_itemedit(Model model) throws Exception {
