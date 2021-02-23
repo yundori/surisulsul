@@ -5,7 +5,7 @@
 	href="${contextPath}/assets/manage/manage_itemlist.css?time=${currentTime}" />
 <div class="content">
 	<h2>인기상품관리</h2>
-	<h3 class="item_total">총 등록상품 수 : 12개</h3>
+	<h3 class="item_total">총 인기상품 수 : ${totalCount}개</h3>
 	
 	<table class="manage_itemlist_table">
 		<tr>
@@ -31,27 +31,39 @@
 			<th>상세설명</th>
 			<th>주능결과</th>
 		</tr>
+		<c:choose>
+		<c:when test="${output == null || fn:length(output) == 0 }">
+			<div class="select_none">
+				<img src="${contextPath}/assets/img/mark_alert.png" />
+				<h1>검색 결과를 찾을 수 없습니다.</h1>
+			</div>
+		</c:when>
+		<c:otherwise>
+		<c:forEach var="item" items="${output}" varStatus="status">
 		<tr>
-			<td rowspan="2">1</td>
-			<td rowspan="2">1</td>
-			<td>나루생막걸리11도 (3병)</td>
-			<td rowspan="2">33,000원</td>
-			<td rowspan="2">탁주</td>
-			<td rowspan="2">서울</td>
-			<td rowspan="2">과일, 알콜</td>
-			<td rowspan="2">3</td>
-			<td rowspan="2">1</td>
-			<td rowspan="2">11</td>
-			<td rowspan="2">500ml</td>
-			<td>정제수, 쌀(국내산), 국 등</td>
-			<td>깊고 묵직한 맛의 나루 생 막걸리</td>
-			<td>3</td>
+			<td rowspan="2">${status.count}</td>
+			<td rowspan="2">${item.id}</td>
+			<td>${item.name}</td>
+			<td rowspan="2"><fmt:formatNumber value="${item.price}" pattern="#,###"/>원</td>
+			<td rowspan="2">${item.type}</td>
+			<td rowspan="2">${item.loc}</td>
+			<td rowspan="2">${item.key1}, ${item.key2}</td>
+			<td rowspan="2">${item.sweet}</td>
+			<td rowspan="2">${item.sour}</td>
+			<td rowspan="2">${item.degree}</td>
+			<td rowspan="2">${item.size}ml</td>
+			<td>${item.igd}</td>
+			<td>${item.des1}</td>
+			<td>${item.star}</td>
 		</tr>
 		<tr>
-			<td><img src="${contextPath}/assets/img/items/item1.jpg" /></td>
-			<td>튀김, 생크림케이크, 고기만두</td>
-			<td>나루 11.5도는 묵직한 질감을 가진 술입니다. 처음에는 약간의 씁쓸함이 느껴지지만, 그 뒤로 달콤한 맛이 나면서 다소 높은 도수를 지닌 나루 생 막걸리 11.5도를 부담없이 즐길 수 있도록 도와줍니다. 탄산은 없고, 참외나 메론과 같은 박과류 풍미를 느낄 수 있는 술인데요. 평소 높은 도수의 술을 거부감 없이 잘 즐기시는 분들께 추천해드립니다! 도수가 너무 높아 부담이신 분들은 얼음을 넣어 도수를 낮춰서 마시는 방법도 있습니다. 한 모금 삼키고 난 후에 올라오는 참외나 바닐라 향을 천천히 느껴보세요!</td>
-			<td>진달래</td>
+			<td><img src="${contextPath}/assets/img/items/${item.img}" /></td>
+			<td>${item.food}</td>
+			<td>${item.des2}</td>
+			<td>${item.jn_result}</td>
 		</tr>
+		</c:forEach>
+		</c:otherwise>
+		</c:choose>
 	</table>
 </div>

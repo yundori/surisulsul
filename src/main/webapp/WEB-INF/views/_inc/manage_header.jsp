@@ -34,7 +34,7 @@
 <body link="none" vlink="none" alink="none">
 	<div class="header">
 		<h1>
-			<a href="${pageContext.request.contextPath}/"> <img
+			<a href="${pageContext.request.contextPath}/manage_home.do"> <img
 				src="${contextPath}/assets/img/logo.png" alt="로고" /></a>
 		</h1>
 		<input type="checkbox" id="check"> <label for="check">
@@ -63,6 +63,7 @@
 						<li><a href="#">상품 판매순위</a></li>
 						<li><a href="#">보관함 현황</a></li>
 					</div>
+				<li><a href="${pageContext.request.contextPath}/">사용자 페이지</a></li>
 				</ul>
 			</div>
 		</div>

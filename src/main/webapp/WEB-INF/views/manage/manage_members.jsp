@@ -10,10 +10,17 @@
 	<a href="#" class="manage_members_all"> <span class="btn_total">전체
 			</span> <span class="btn_num">0,000명</span>
 	</a>
-	<!--  -->
+
 	<a href="#" class="manage_members_out"> <span class="btn_total">탈퇴
 			</span> <span class="btn_num">0,000명</span>
 	</a>
+	
+	<form method="get" action="${pageContext.request.contextPath }/manage_members.do">
+		<input type="search" name="keyword" id="keyword" placeholder="회원명 검색"
+			value="${keyword }" />
+		<button type="submit">검색</button>
+	</form>
+	
 	<table class=manage_member_table>
 		<thead>
 			<tr>

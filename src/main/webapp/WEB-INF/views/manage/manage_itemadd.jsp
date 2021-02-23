@@ -6,7 +6,7 @@
 
 <div class="content">
 	<h2>상품등록</h2>
-	<form>
+	<form method="post" action="${pageContext.request.contextPath}/manage_itemadd_ok.do" name="itemadd_form" id="itemadd_form">
 		<table class="manage_itemadd_table">
 			<tr>
 				<th>상품명</th>

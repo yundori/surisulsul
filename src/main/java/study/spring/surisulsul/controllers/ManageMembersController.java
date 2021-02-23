@@ -22,4 +22,11 @@ public class ManageMembersController {
 		
 		return new ModelAndView("manage/manage_members");
 	}
+	
+	/** 관리자 - 위시리스트 페이지 **/
+	@RequestMapping(value="/manage_wishlist.do", method=RequestMethod.GET)
+	public ModelAndView manage_wishlist(Model model) throws Exception {
+		
+		return new ModelAndView("manage/manage_wishlist");
+	}
 }

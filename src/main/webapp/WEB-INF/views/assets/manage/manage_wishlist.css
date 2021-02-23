@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.content{
+	margin:120px 0 0 200px;
+}
+.content hr{
+	border:solid 3px #000;
+}
+.content h2{
+	font-size:1.5em;
+	font-weight:bold;
+	letter-spacing:0.2em;
+}
+
+/** 검색 필드 설정 */
+.content .date_search{
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.content #keyword{
+	width : 296px;
+}
+
+/** 테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
+.manage_wish_table{
+	margin-top:10px;
+	width:auto;
+	text-align:center;
+}
+.manage_wish_table th{
+	border:1px solid #aaa;
+	background-color:#6a60a9;
+	color:#fff;
+	font-weight:normal;
+	line-height:220%;
+	font-size:15px;
+}
+.manage_wish_table td{
+	border:1px solid #aaa;
+	line-height:230%;
+	font-size:15px;
+}
