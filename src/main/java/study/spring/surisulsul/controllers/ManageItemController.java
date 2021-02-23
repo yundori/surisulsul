@@ -61,12 +61,13 @@ public class ManageItemController {
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
 			
-			output = productService.filtered_ProductList(null);
+			output = productService.getAllProductList(null);
 						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output",output);
 		
