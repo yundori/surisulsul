@@ -63,7 +63,7 @@
     		<td rowspan="2" class="price">110,000</td>
     		<td rowspan="2" class="price">0</td>
     		<td rowspan="2" class="price">110,000</td>
-    		<td rowspan="2"><a href="#" class="show_button">보기</a></td>
+    		<td rowspan="2"><a href="${pageContext.request.contextPath}/manage_order_details.do" class="show_button">보기</a></td>
     	</tr>
     	<tr>
     		<td>입금대기</td>

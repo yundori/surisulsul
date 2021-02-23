@@ -24,6 +24,13 @@ public class ManageOrdersController {
 		return new ModelAndView("manage/manage_orders");
 	}
 	
+	/** 관리자 - manage_order_details 페이지 처리 */
+	@RequestMapping(value = "/manage_order_details.do", method = RequestMethod.GET)
+	public ModelAndView order_details(Model model) throws Exception {
+		System.out.println("manage_order_details 연결 확인");
+		return new ModelAndView("manage/manage_order_details");
+	}
+	
 	/** 관리자 - uncmpl_orders 페이지 처리 */
 	@RequestMapping(value = "/uncmpl_orders.do", method = RequestMethod.GET)
 	public ModelAndView uncmpl_orders(Model model) throws Exception {
