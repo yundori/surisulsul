@@ -129,10 +129,15 @@ manage_order.details 페이지 단일 스타일
 	margin-left:20px;
 }
 .go_list{
-	margin-top:100px;
+	margin-top:200px;
 	border:none;
 	padding:5px 10px;
 	font-size:16px;
 	font-weight:bold;
 	background-color:#fbd14b;
+}
+.warning{
+	color:red;
+	font-size:13px;
+	margin-top:20px;
 }
