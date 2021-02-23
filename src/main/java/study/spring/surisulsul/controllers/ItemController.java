@@ -177,9 +177,10 @@ public class ItemController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = productService.getProductCount(input);
-			System.out.println(">>>>>>>>상품목록개수 : " + totalCount);
+			
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
