@@ -19,6 +19,7 @@ import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.ProductService;
+import study.spring.surisulsul.service.SalesService;
 
 @Controller
 @Slf4j
@@ -32,7 +33,11 @@ public class ManageItemController {
 	RegexHelper regexHelper;
 	
 	/** Service 패턴 구현체 주입 */
+	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	SalesService salesService;
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -47,12 +52,13 @@ public class ManageItemController {
 		int listCount = 5; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
+		Product input = new Product(); //선택된 값을 넘겨줄 객체
 		List<Product> output = null;
 		PageData pageData = null;
 		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = productService.getProductCount(null);
+			totalCount = productService.getProductCount(input);
 			
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
@@ -61,7 +67,7 @@ public class ManageItemController {
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
 			
-			output = productService.getAllProductList(null);
+			output = productService.getAllProductList(input);
 						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +97,25 @@ public class ManageItemController {
 	/** 관리자 - 인기상품목록 페이지 **/
 	@RequestMapping(value="/manage_best_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_best_itemlist(Model model) throws Exception {
+		List<Product> output = null;
+		int sales_cnt = 0;
 		
+		try {
+			sales_cnt = salesService.getSalesCount(null);
+			
+			if(sales_cnt == 0) {
+				output = productService.best_ProductList_price(null);
+			}
+			else {
+				output = productService.best_ProductList(null);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("totalCount", output.size());
+		model.addAttribute("output",output);
 		return new ModelAndView("manage/manage_best_itemlist");
 	}
 	

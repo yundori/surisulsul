@@ -63,7 +63,7 @@
     <a href="${pageContext.request.contextPath}/update_single.do" class="go_list">상태변경</a>
     
     <div class="warning">
-    	상태변경 시 주문완료 > 입금완료 > 배송완료 형식으로 업데이트 됩니다.
+    	※ 상태변경 시 주문완료 > 입금완료 > 배송완료 형식으로 업데이트 됩니다.
     </div>
 </div>
 
