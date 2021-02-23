@@ -32,6 +32,7 @@ public class ManageItemController {
 	RegexHelper regexHelper;
 	
 	/** Service 패턴 구현체 주입 */
+	@Autowired
 	ProductService productService;
 	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
@@ -47,12 +48,13 @@ public class ManageItemController {
 		int listCount = 5; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
+		Product input = new Product(); //선택된 값을 넘겨줄 객체
 		List<Product> output = null;
 		PageData pageData = null;
 		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = productService.getProductCount(null);
+			totalCount = productService.getProductCount(input);
 			
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
@@ -61,7 +63,7 @@ public class ManageItemController {
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
 			
-			output = productService.getAllProductList(null);
+			output = productService.getAllProductList(input);
 						
 		} catch (Exception e) {
 			e.printStackTrace();
