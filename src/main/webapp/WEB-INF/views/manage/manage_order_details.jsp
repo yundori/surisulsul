@@ -56,7 +56,7 @@
     		<td>수리술</td>
     		<td>01098765432</td>
     		<td>서울시 서초구 강남대로 7길 3 어쩌고빌딩 301호 (00321)</td>
-    		<td>무통장 : 신한</td>
+    		<td>무통장 : 신한(마수리)</td>
     	</tr>
     </table>
     <a href="${pageContext.request.contextPath}/manage_orders.do" class="go_list">목록으로</a>

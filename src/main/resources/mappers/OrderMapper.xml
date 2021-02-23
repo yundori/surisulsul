@@ -34,6 +34,10 @@
 		<result property="has_review" column="has_review" />
 		
 		<result property="total_qty" column="total_qty" />
+		
+		<result property="order_cnt" column="order_cnt" />
+		<result property="from_date" column="from_date" />
+		<result property="to_date" column="to_date" />
 	</resultMap>
 	
 	
@@ -118,9 +122,42 @@
 		WHERE o_id=#{o_id} AND p_id=#{p_id};
 	</update>
 	
+	
+	<!-- ==================================================================================
+	!!!!!!!!!!!!!!!!!!!!!! 여기서부터 관리자 페이지 관련 SQL 구문 !!!!!!!!!!!!!!!!!!!!!!
+	========================================================================================= -->
 	<!-- sales 테이블에 INSERT할 SELECT-GROUP BY 내용 -->
 	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Order" resultMap="salesMap">
 		<!-- HAVING 절 써야하는지? 그냥 LIST로 받아오면 되는지? -->
 		SELECT p_id, p_name, p_price, count(p_id) AS total_qty FROM order_sub GROUP BY p_id;
 	</select>
+	
+	<!-- 주문내역(manage_orders)페이지에서 사용되는 SELECT SQL 구문 -->
+	<select id="selectManageOrders"  parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT id as o_id, b_name, b_phone, r_name, r_phone, price, pay_result, send_result, 
+			   date_format(reg_date, '%Y%m%d') AS reg_date, date_format(edit_date, '%Y-%m-%d') AS edit_date
+		FROM orders
+		<where>
+			<if test="pay_result!=null and pay_result!=''">
+				pay_result==#{pay_result}
+			</if>
+			<if test="send_result!=null and send_result!=''">
+				AND send_result==#{send_result}
+			</if>
+			<if test="payment!=null and payment!=''">
+				AND payment==#{payment}
+			</if>
+			<if test="from_date!=null and from_date!='' and to_date!=null and to_date!=''">
+				AND reg_date BETWEEN TO_DATE(#{from_date}) AND TO_DATE(#{to_date})
+			</if>
+		</where>
+		ORDER BY reg_date DESC
+	</select>
+	
+	<!-- 누적주문수 select 구문 (주문상품 수 SQL은 77라인의 selectOrderCount 참조)  -->
+	<select id="selectMemOrderCnt" parameterType="study.spring.surisulsul.model.Order" resultType="int">
+		SELECT COUNT(*) FROM orders WHERE b_id = #{b_id};
+	</select>
+	
+	
 </mapper>

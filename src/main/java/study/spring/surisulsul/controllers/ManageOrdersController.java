@@ -1,14 +1,22 @@
 package study.spring.surisulsul.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Order;
 
 @Controller
 public class ManageOrdersController {
+	/** WebHelper 주입 */
+	@Autowired
+	WebHelper webHelper;
 
 	/** Service 패턴 구현체 주입 */
 
@@ -18,9 +26,51 @@ public class ManageOrdersController {
 	
 
 	/** 관리자 - manage_orders 페이지 처리 */
-	@RequestMapping(value = "/manage_orders.do", method = RequestMethod.GET)
-	public ModelAndView manage_orders(Model model) throws Exception {
-
+	@RequestMapping(value = "/manage_orders.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView manage_orders(Model model,
+			@RequestParam(value = "order_status", required = false) String order_status,
+			@RequestParam(value = "pay_method", required = false) String pay_method,
+			@RequestParam(value = "from_date", required = false) String from_date,
+			@RequestParam(value = "to_date", required = false) String to_date)throws Exception {
+		
+		int total_cnt=0; //전체주문건수
+		int sub_cnt = 0; //주문상품 수
+		
+		Order input = new Order();
+		
+		//받아온 파라미터를 가지고 impl메서드에 넘겨줄 input객체 내용 부여
+		if(order_status!=null || order_status!="all") {
+			if(order_status=="order_cmpl") {
+				input.setPay_result("N");
+				input.setSend_result("N");
+			}else if(order_status=="pay_cmpl") {
+				input.setPay_result("Y");
+				input.setSend_result("N");
+			}else if(order_status=="send_cmpl") {
+				input.setPay_result("Y");
+				input.setSend_result("Y");
+			}
+		}
+		
+		if(pay_method!=null || pay_method!="all") {
+			if(pay_method=="cash") {
+				input.setPayment("cash");
+			}else if(pay_method=="card") {
+				input.setPayment("card");
+			}
+		}
+		
+		if(from_date!=null) {
+			if(to_date==null) {
+				return webHelper.redirect(null, "조회하시고자 하는 주문일자를 정확히 입력해주세요.");
+			}else {
+				input.setFrom_date(from_date);
+				input.setTo_date(to_date);
+			}
+		}
+		
+		model.addAttribute("total_cnt", total_cnt);
+		model.addAttribute("sub_cnt", sub_cnt);
 		return new ModelAndView("manage/manage_orders");
 	}
 	

@@ -33,6 +33,12 @@ public class Order {
 	private int p_price;
 	private int p_qty;
 	private String has_review;
+	
+	//관리자페이지에서 사용할 변수 추가
+	private int order_cnt; //누적주문수
+	private String from_date; //검색 from 날짜
+	private String to_date; //검색 to 날짜
+	
 
 	// sales 테이블에 INSERT하기 위해 GROUP BY로 받아올 변수
 	private int total_qty;
