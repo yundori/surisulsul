@@ -37,6 +37,17 @@
 	border-radius : 0 5px 5px 0;
 	padding : 0 5px;
 }
+/**선택삭제 버튼 정렬용*/
+.mem_table{
+	position : relative;
+	display : inline-block;
+	width : 1350px;
+}
+
+.delete_this{
+	float : right;
+	margin : 0 0 5px 0;
+}
 
 /** 테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
 .manage_member_table{
