@@ -346,4 +346,46 @@ public class ProductServiceImpl implements ProductService {
 		return result;
 	}
 
+	@Override
+	public List<Product> manage_wish_ProductList(Product input) throws Exception {
+		List<Product> result = null;
+
+		try {
+			result = sqlSession.selectList("ProductMapper.selectItemCount", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public List<Product> manage_by_wish_ProductList(Product input) throws Exception {
+		List<Product> result = null;
+
+		try {
+			result = sqlSession.selectList("ProductMapper.selectItemCountByWish", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
 }

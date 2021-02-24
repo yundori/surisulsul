@@ -39,6 +39,8 @@
 		<result property="total_qty" column="total_qty" />
 		<result property="p_id" column="p_id" />
 		<result property="m_id" column="m_id" />
+		<result property="wish" column="wish" />
+		<result property="basket" column="basket" />
 	</resultMap>
 	
 	<!-- wishlist에 존재하는 상품 조회 -->
@@ -275,5 +277,36 @@
 		parameterType="study.spring.surisulsul.model.Product">
 		DELETE FROM products WHERE id=#{id};
 	</delete>
-
+	
+	<!-- ================================================================================== 
+	!!!!!!!!!!!!!!!!!!!!!! 여기서부터 관리자 페이지 관련 SQL 구문 !!!!!!!!!!!!!!!!!!!!!! 
+	========================================================================================= -->
+	<!-- wishlist 개수 + 상품명 조회 :id순-->
+	<select id="selectItemCount"
+		parameterType="study.spring.surisulsul.model.Product"
+		resultMap="productMap">
+		select p.id as id, name, count(w.p_id) as wish, count(b.p_id) as basket
+		from products p
+		left outer join wishlist w on p.id=w.p_id
+		left outer join basket b on p.id=b.p_id
+		group by p.id
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+	
+	<!-- wishlist 개수 + 상품명 조회 :인기순 -->
+	<select id="selectItemCountByWish"
+		parameterType="study.spring.surisulsul.model.Product"
+		resultMap="productMap">
+		select p.id as id, name, count(w.p_id) as wish, count(b.p_id) as basket
+		from products p
+		left outer join wishlist w on p.id=w.p_id
+		left outer join basket b on p.id=b.p_id
+		group by p.id
+		order by wish desc
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
 </mapper> 

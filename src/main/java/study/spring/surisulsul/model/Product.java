@@ -39,6 +39,8 @@ public class Product {
 	private int total_qty; // 총 매출 수량
 	private int p_id; // wishlist product id
 	private int m_id; // wishlist product id
+	private int wish; // 해당 상품이 위시리스트에 담긴 수
+	private int basket; // 해당 상품이 장바구니에 담긴 수
 
 	// 4) 페이지 구현을 위한 static 변수
 	/** LIMIT 절에서 사용할 조회 시작 위치 */

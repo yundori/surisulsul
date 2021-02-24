@@ -8,6 +8,24 @@ import study.spring.surisulsul.model.Wishlist;
 /** 상품 데이터 조회 기능을 제공하기 위한 Service 계층 */
 public interface ProductService {
 	/**
+	 * [관리자] 위시리스트+장바구니 개수와 상품 목록 조회 : wish 인기순
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> manage_by_wish_ProductList(Product input) throws Exception;
+	
+	/**
+	 * [관리자] 위시리스트+장바구니 개수와 상품 목록 조회 : id순
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> manage_wish_ProductList(Product input) throws Exception;
+	
+	/**
 	 * 위시리스트에 있는 상품 목록 조회
 	 * 
 	 * @param Product Beans

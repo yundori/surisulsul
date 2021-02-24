@@ -11,14 +11,18 @@
 		<result property="p_id" column="p_id" />
 		<result property="m_id" column="m_id" />
 		<result property="reg_date" column="reg_date" />
+		
+		<result property="item_id" column="item_id" />
+		<result property="item_name" column="item_name" />
 	</resultMap>
-	
+
 	<!-- 중복 wishlist 개수 조회 -->
 	<select id="sameCount"
 		parameterType="study.spring.surisulsul.model.Wishlist"
 		resultType="int">
 		SELECT COUNT(*) FROM wishlist
-		WHERE m_id=#{m_id} and p_id=#{p_id};
+		WHERE m_id=#{m_id} and
+		p_id=#{p_id};
 	</select>
 
 	<!-- wishlist 개수 조회 -->
@@ -33,13 +37,16 @@
 	<insert id="insertWishlistItem"
 		parameterType="study.spring.surisulsul.model.Wishlist"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO wishlist (m_id, p_id, reg_date)
+		INSERT INTO wishlist (m_id, p_id,
+		reg_date)
 		VALUES (#{m_id}, #{p_id}, now());
 	</insert>
 
 	<!-- wishlist 상품 삭제 -->
-		<delete id="deleteWishlistItem" parameterType="study.spring.surisulsul.model.Wishlist">
-		DELETE FROM wishlist WHERE m_id=#{m_id} and p_id=#{p_id};
+	<delete id="deleteWishlistItem"
+		parameterType="study.spring.surisulsul.model.Wishlist">
+		DELETE FROM wishlist WHERE m_id=#{m_id} and
+		p_id=#{p_id};
 	</delete>
 
 </mapper>
