@@ -33,6 +33,7 @@ public class Order {
 	private int p_price;
 	private int p_qty;
 	private String has_review;
+	private String o_date;
 	
 	//관리자페이지에서 사용할 변수 추가
 	private int order_cnt; //누적주문수

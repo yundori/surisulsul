@@ -32,6 +32,7 @@
 		<result property="p_price" column="p_price" />
 		<result property="p_qty" column="qty" />
 		<result property="has_review" column="has_review" />
+		<result property="o_date" column="o_date" />
 		
 		<result property="total_qty" column="total_qty" />
 		
