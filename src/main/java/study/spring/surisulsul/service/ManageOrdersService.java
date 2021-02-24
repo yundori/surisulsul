@@ -33,4 +33,18 @@ public interface ManageOrdersService {
 	 * @throws Exception
 	 */
 	public Order getOrderDetails(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details/uncmpl_orders > 해당 주문의 pay_result='Y'로 DB업데이트
+	 * @return int
+	 * @throws Exception
+	 */
+	public int updatePayResult(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details/uncmpl_orders > 해당 주문의 send_result='Y'로 DB업데이트
+	 * @return int
+	 * @throws Exception
+	 */
+	public int updateSendResult(Order input) throws Exception;
 }

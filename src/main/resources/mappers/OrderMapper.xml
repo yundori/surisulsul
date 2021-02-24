@@ -170,6 +170,19 @@
 			r_postcode, r_address1, r_address2, payment, pay_cash, reg_date, edit_date
 		FROM orders
 		WHERE id = #{o_id} 
+		ORDER BY reg_date DESC;
 	</select>
+	
+	<!-- manage_orders_details / uncmpl_orders 에서 사용할 update 구문 -->
+	<!-- 입금대기 -> 입금완료  -->
+	<update id="updatePayResult" parameterType="study.spring.surisulsul.model.Order">
+		UPDATE orders SET pay_result='Y', edit_date=now()
+		WHERE id=#{o_id};
+	</update>
+	<!-- 입금완료 -> 배송완료  -->
+	<update id="updateSendResult" parameterType="study.spring.surisulsul.model.Order">
+		UPDATE orders SET send_result='Y', edit_date=now()
+		WHERE id=#{o_id};
+	</update>
 	
 </mapper>

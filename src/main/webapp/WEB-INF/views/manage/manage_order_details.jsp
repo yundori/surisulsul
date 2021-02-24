@@ -76,7 +76,7 @@
     	</tr>
     </table>
     <a href="${pageContext.request.contextPath}/manage_orders.do" class="go_list">목록으로</a>
-    <a href="${pageContext.request.contextPath}/update_single.do" class="go_list">상태변경</a>
+    <a href="${pageContext.request.contextPath}/update_single.do?o_id=${order_details.o_id}&pay=${order_details.pay_result}&send=${order_details.send_result}" class="go_list">상태변경</a>
     
     <div class="warning">
     	※ 상태변경 시 입금대기 > 입금완료 > 배송완료 형식으로 업데이트 됩니다.

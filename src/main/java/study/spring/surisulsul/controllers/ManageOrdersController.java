@@ -131,6 +131,32 @@ public class ManageOrdersController {
 		return new ModelAndView("manage/manage_order_details");
 	}
 	
+	/** 관리자 - manage_order_details 상태 변경 UPDATE 처리 */
+	@RequestMapping(value = "/update_single.do", method = RequestMethod.GET)
+	public ModelAndView updateSingleOrder(Model model,
+			@RequestParam(value="o_id", required = true) int o_id,
+			@RequestParam(value="pay", required = true) String pay_result,
+			@RequestParam(value="send", required = true) String send_result) throws Exception {
+		
+		System.out.println("파라미터 값 잘 받아오는지 체크 >>>>>>>>>>>>>>> pay_result : "+pay_result+", send_result : "+send_result);
+		
+		Order input = new Order();
+		input.setO_id(o_id);
+		
+		if(pay_result.equals("N") && send_result.equals("N")) {
+			// 입금 대기 >>>>>>> 입금 완료 처리 (updatePayResult)
+			manageService.updatePayResult(input);
+		}else if(pay_result.equals("Y") && send_result.equals("N")) {
+			// 입금 완료 >>>>>>> 배송 완료 처리 (updateSendResult)
+			manageService.updateSendResult(input);
+		}else{
+			//pay_result 와 send_result모두 "Y"인 경우 -> 이미 배송완료 상태이므로 UPDATE 필요X
+			return webHelper.redirect(null, "해당 주문은 이미 배송완료 되었습니다.");			
+		}
+		
+		return webHelper.redirect(contextPath+"/manage_order_details.do?o_id="+o_id, "주문상태가 정상적으로 갱신되었습니다.");
+	}
+	
 	/** 관리자 - uncmpl_orders 페이지 처리 */
 	@RequestMapping(value = "/uncmpl_orders.do", method = RequestMethod.GET)
 	public ModelAndView uncmpl_orders(Model model) throws Exception {
@@ -139,6 +165,7 @@ public class ManageOrdersController {
 	}
 	
 	/** 관리자 - uncmpl_orders -> 입금상태를 입금완료로 UPDATE 처리 */
+	
 	
 	/** 관리자 - uncmpl_orders -> 배송 상태를 배송완료로 UPDATE 처리 */
 	
