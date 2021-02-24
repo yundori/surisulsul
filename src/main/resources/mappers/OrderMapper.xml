@@ -139,13 +139,13 @@
 		FROM orders
 		<where>
 			<if test="pay_result!=null and pay_result!=''">
-				pay_result==#{pay_result}
+				pay_result=#{pay_result}
 			</if>
 			<if test="send_result!=null and send_result!=''">
-				AND send_result==#{send_result}
+				AND send_result=#{send_result}
 			</if>
 			<if test="payment!=null and payment!=''">
-				AND payment==#{payment}
+				AND payment=#{payment}
 			</if>
 			<if test="from_date!=null and from_date!='' and to_date!=null and to_date!=''">
 				AND reg_date BETWEEN #{from_date} AND #{to_date}

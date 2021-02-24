@@ -50,23 +50,25 @@ public class ManageOrdersController {
 		List<Order> output = new ArrayList<Order>();
 		
 		//받아온 파라미터를 가지고 impl메서드에 넘겨줄 input객체 내용 부여
-		if(order_status!=null || order_status!="all") {
-			if(order_status=="order_cmpl") {
+		if(order_status!=null && order_status!="all") {
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> order_status != null if구문에 들어왔습니다");
+			if(order_status.equals("order_cmpl")) {
+				System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> order_status==order_cmpl if구문에 들어왔습니다");
 				input.setPay_result("N");
 				input.setSend_result("N");
-			}else if(order_status=="pay_cmpl") {
+			}else if(order_status.equals("pay_cmpl")) {
 				input.setPay_result("Y");
 				input.setSend_result("N");
-			}else if(order_status=="send_cmpl") {
+			}else if(order_status.equals("send_cmpl")) {
 				input.setPay_result("Y");
 				input.setSend_result("Y");
 			}
 		}
 		
-		if(pay_method!=null || pay_method!="all") {
-			if(pay_method=="cash") {
+		if(pay_method!=null && pay_method!="all") {
+			if(pay_method.equals("cash")) {
 				input.setPayment("cash");
-			}else if(pay_method=="card") {
+			}else if(pay_method.equals("card")) {
 				input.setPayment("card");
 			}
 		}
@@ -79,6 +81,8 @@ public class ManageOrdersController {
 				input.setTo_date(to_date);
 			}
 		}
+		
+		System.out.println(input.toString());
 
 		//input에 담은 데이터를 가지고 테이블 조회 수행
 		try {
@@ -93,6 +97,12 @@ public class ManageOrdersController {
 			e.printStackTrace();
 		}
 		
+		// 상태유지를 위한 form 태그 내용 전달
+		model.addAttribute("order_status", order_status);
+		model.addAttribute("pay_method", pay_method);
+		model.addAttribute("from_date", from_date);
+		model.addAttribute("to_date", to_date);
+		// 데이터베이스 조회 이후 관련 내용 view에 전송
 		model.addAttribute("output", output);
 		model.addAttribute("total_cnt", total_cnt);
 		model.addAttribute("sub_cnt", sub_cnt);
