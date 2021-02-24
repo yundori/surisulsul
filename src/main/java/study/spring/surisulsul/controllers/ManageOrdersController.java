@@ -43,17 +43,12 @@ public class ManageOrdersController {
 			@RequestParam(value = "from_date", required = false) String from_date,
 			@RequestParam(value = "to_date", required = false) String to_date)throws Exception {
 		
-		int total_cnt=0; //전체주문건수
-		int sub_cnt = 0; //주문상품 수
-		
 		Order input = new Order();
 		List<Order> output = new ArrayList<Order>();
 		
 		//받아온 파라미터를 가지고 impl메서드에 넘겨줄 input객체 내용 부여
 		if(order_status!=null && order_status!="all") {
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> order_status != null if구문에 들어왔습니다");
 			if(order_status.equals("order_cmpl")) {
-				System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> order_status==order_cmpl if구문에 들어왔습니다");
 				input.setPay_result("N");
 				input.setSend_result("N");
 			}else if(order_status.equals("pay_cmpl")) {
@@ -89,9 +84,12 @@ public class ManageOrdersController {
 			// 데이터 조회하기
 			output = manageService.getOrderList(input);
 			for(int i=0; i<output.size(); i++) {
+				//누적주문건수 부여
 				int tmp = manageService.getMemOrderCount(output.get(i));
-				System.out.println("output.get("+i+").getB_id : "+output.get(i).getB_id()+",,,,,,, manageService에서 불러온 누적주문수 : "+tmp);
 				output.get(i).setOrder_cnt(tmp);
+				//해당 주문의 상품건수 부여
+				tmp = manageService.getSubCount(output.get(i));
+				output.get(i).setSub_cnt(tmp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,8 +102,6 @@ public class ManageOrdersController {
 		model.addAttribute("to_date", to_date);
 		// 데이터베이스 조회 이후 관련 내용 view에 전송
 		model.addAttribute("output", output);
-		model.addAttribute("total_cnt", total_cnt);
-		model.addAttribute("sub_cnt", sub_cnt);
 		return new ModelAndView("manage/manage_orders");
 	}
 	

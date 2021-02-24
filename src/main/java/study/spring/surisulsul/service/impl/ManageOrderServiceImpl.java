@@ -53,5 +53,19 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 
 		return result;
 	}
+	
+	@Override
+	public int getSubCount(Order input) throws Exception{
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectSubCnt", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 }

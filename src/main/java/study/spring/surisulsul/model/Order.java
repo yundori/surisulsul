@@ -36,6 +36,7 @@ public class Order {
 	
 	//관리자페이지에서 사용할 변수 추가
 	private int order_cnt; //누적주문수
+	private int sub_cnt; //해당 주문의 총 주문상품수
 	private String from_date; //검색 from 날짜
 	private String to_date; //검색 to 날짜
 	

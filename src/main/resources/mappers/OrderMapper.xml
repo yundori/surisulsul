@@ -154,9 +154,14 @@
 		ORDER BY reg_date DESC
 	</select>
 	
-	<!-- 누적주문수 select 구문 (주문상품 수 SQL은 77라인의 selectOrderCount 참조)  -->
+	<!-- 누적주문수 select 구문  -->
 	<select id="selectMemOrderCnt" parameterType="study.spring.surisulsul.model.Order" resultType="int">
 		SELECT COUNT(*) FROM orders WHERE b_id = #{b_id};
+	</select>
+	
+	<!-- 해당 주문의 총 상품 수  select 구문 -->
+	<select id="selectSubCnt" parameterType="study.spring.surisulsul.model.Order" resultType="int">
+		SELECT COUNT(*) FROM orders_sub WHERE o_id=#{o_id};
 	</select>
 	
 	

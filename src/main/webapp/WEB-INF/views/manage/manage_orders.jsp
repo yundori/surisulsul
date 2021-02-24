@@ -73,7 +73,7 @@
 			    				<c:otherwise><fmt:formatNumber value="${item.price }" pattern="#,###"/></c:otherwise>
 			    			</c:choose>
 						</td>
-			    		<td rowspan="2"><a href="${pageContext.request.contextPath}/manage_order_details.do?o_id=#{item.o_id}" class="show_button">보기</a></td>
+			    		<td rowspan="2"><a href="${pageContext.request.contextPath}/manage_order_details.do?o_id=${item.o_id}" class="show_button">보기</a></td>
 			    	</tr>
 			    	<tr>
 			    		<td>
@@ -90,7 +90,7 @@
 				    		</c:choose>
 				    	</td>
 			    		<td>${item.edit_date }</td>
-		    			<td colspan="2">3개</td>
+		    			<td colspan="2">${item.sub_cnt }개</td>
 		    			<td>${item.order_cnt }건</td>
 			    	</tr> 
 		    	</c:forEach>
