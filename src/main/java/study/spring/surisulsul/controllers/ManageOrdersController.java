@@ -76,8 +76,6 @@ public class ManageOrdersController {
 				input.setTo_date(to_date);
 			}
 		}
-		
-		System.out.println(input.toString());
 
 		//input에 담은 데이터를 가지고 테이블 조회 수행
 		try {
@@ -107,8 +105,29 @@ public class ManageOrdersController {
 	
 	/** 관리자 - manage_order_details 페이지 처리 */
 	@RequestMapping(value = "/manage_order_details.do", method = RequestMethod.GET)
-	public ModelAndView order_details(Model model) throws Exception {
-		System.out.println("manage_order_details 연결 확인");
+	public ModelAndView order_details(Model model,
+			@RequestParam(value="o_id", required = true) int o_id) throws Exception {
+		
+		Order input = new Order();
+		input.setO_id(o_id);
+		
+		//orders 테이블의 주문 상세 정보를 받아올 객체 
+		Order order_details = new Order();
+		//orders_sub 테이블의 상세 상품내역을 받아올 List
+		List<Order> order_sub = new ArrayList<Order>();
+		
+		//input에 담은 데이터를 가지고 테이블 조회 수행
+		try {
+			// 데이터 조회하기
+			order_details = manageService.getOrderDetails(input);
+			order_sub = orderService.getOrderSubList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//view 전달
+		model.addAttribute("order_details", order_details);
+		model.addAttribute("order_sub", order_sub);
 		return new ModelAndView("manage/manage_order_details");
 	}
 	

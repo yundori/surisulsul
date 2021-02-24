@@ -26,4 +26,11 @@ public interface ManageOrdersService {
 	 * @throws Exception
 	 */
 	public int getSubCount(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details > 해당 주문의 상세 정보 확인
+	 * @return 조회 결과에 대한 Order객체 내용
+	 * @throws Exception
+	 */
+	public Order getOrderDetails(Order input) throws Exception;
 }
