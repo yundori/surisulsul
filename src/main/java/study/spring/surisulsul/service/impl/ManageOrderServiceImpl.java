@@ -18,6 +18,11 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 	@Autowired
 	SqlSession sqlSession;
 	
+	/**
+	 * manage_orders > 주문내역 확인 : 주문 데이터 목록 조회
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
 	@Override
 	public List<Order> getOrderList(Order input) throws Exception {
 
@@ -40,6 +45,11 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 	return result;
 	}
 
+	/**
+	 * manage_orders > 사용자별 누적주문수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
 	@Override
 	public int getMemOrderCount(Order input) throws Exception {
 		int result = 0;
@@ -54,6 +64,11 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 		return result;
 	}
 	
+	/**
+	 * manage_orders > 해당 주문의 총 주문 상품수 조회
+	 * @return int 
+	 * @throws Exception
+	 */
 	@Override
 	public int getSubCount(Order input) throws Exception{
 		int result = 0;
