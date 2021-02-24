@@ -234,7 +234,7 @@
 		size, des1, des2, food, img, star, reg_date, edit_date, jn_result)
 		VALUES (#{name}, #{price}, #{type}, #{loc}, #{key1}, #{key2},
 		#{sweet}, #{sour}, #{degree}, #{igd}, #{size}, #{des1}, #{des2},
-		#{food}, #{img}, 0, now(), now(), null)
+		#{food}, #{img}, 0, now(), now(), #{jn_result})
 	</insert>
 
 	<!-- 상품 데이터 수정 -->

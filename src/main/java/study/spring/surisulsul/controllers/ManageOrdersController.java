@@ -76,8 +76,6 @@ public class ManageOrdersController {
 				input.setTo_date(to_date);
 			}
 		}
-		
-		System.out.println(input.toString());
 
 		//input에 담은 데이터를 가지고 테이블 조회 수행
 		try {
@@ -107,9 +105,56 @@ public class ManageOrdersController {
 	
 	/** 관리자 - manage_order_details 페이지 처리 */
 	@RequestMapping(value = "/manage_order_details.do", method = RequestMethod.GET)
-	public ModelAndView order_details(Model model) throws Exception {
-		System.out.println("manage_order_details 연결 확인");
+	public ModelAndView order_details(Model model,
+			@RequestParam(value="o_id", required = true) int o_id) throws Exception {
+		
+		Order input = new Order();
+		input.setO_id(o_id);
+		
+		//orders 테이블의 주문 상세 정보를 받아올 객체 
+		Order order_details = new Order();
+		//orders_sub 테이블의 상세 상품내역을 받아올 List
+		List<Order> order_sub = new ArrayList<Order>();
+		
+		//input에 담은 데이터를 가지고 테이블 조회 수행
+		try {
+			// 데이터 조회하기
+			order_details = manageService.getOrderDetails(input);
+			order_sub = orderService.getOrderSubList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//view 전달
+		model.addAttribute("order_details", order_details);
+		model.addAttribute("order_sub", order_sub);
 		return new ModelAndView("manage/manage_order_details");
+	}
+	
+	/** 관리자 - manage_order_details 상태 변경 UPDATE 처리 */
+	@RequestMapping(value = "/update_single.do", method = RequestMethod.GET)
+	public ModelAndView updateSingleOrder(Model model,
+			@RequestParam(value="o_id", required = true) int o_id,
+			@RequestParam(value="pay", required = true) String pay_result,
+			@RequestParam(value="send", required = true) String send_result) throws Exception {
+		
+		System.out.println("파라미터 값 잘 받아오는지 체크 >>>>>>>>>>>>>>> pay_result : "+pay_result+", send_result : "+send_result);
+		
+		Order input = new Order();
+		input.setO_id(o_id);
+		
+		if(pay_result.equals("N") && send_result.equals("N")) {
+			// 입금 대기 >>>>>>> 입금 완료 처리 (updatePayResult)
+			manageService.updatePayResult(input);
+		}else if(pay_result.equals("Y") && send_result.equals("N")) {
+			// 입금 완료 >>>>>>> 배송 완료 처리 (updateSendResult)
+			manageService.updateSendResult(input);
+		}else{
+			//pay_result 와 send_result모두 "Y"인 경우 -> 이미 배송완료 상태이므로 UPDATE 필요X
+			return webHelper.redirect(null, "해당 주문은 이미 배송완료 되었습니다.");			
+		}
+		
+		return webHelper.redirect(contextPath+"/manage_order_details.do?o_id="+o_id, "주문상태가 정상적으로 갱신되었습니다.");
 	}
 	
 	/** 관리자 - uncmpl_orders 페이지 처리 */
@@ -120,6 +165,7 @@ public class ManageOrdersController {
 	}
 	
 	/** 관리자 - uncmpl_orders -> 입금상태를 입금완료로 UPDATE 처리 */
+	
 	
 	/** 관리자 - uncmpl_orders -> 배송 상태를 배송완료로 UPDATE 처리 */
 	

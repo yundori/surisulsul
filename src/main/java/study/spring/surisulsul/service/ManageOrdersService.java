@@ -26,4 +26,25 @@ public interface ManageOrdersService {
 	 * @throws Exception
 	 */
 	public int getSubCount(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details > 해당 주문의 상세 정보 확인
+	 * @return 조회 결과에 대한 Order객체 내용
+	 * @throws Exception
+	 */
+	public Order getOrderDetails(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details/uncmpl_orders > 해당 주문의 pay_result='Y'로 DB업데이트
+	 * @return int
+	 * @throws Exception
+	 */
+	public int updatePayResult(Order input) throws Exception;
+	
+	/**
+	 * manage_order_details/uncmpl_orders > 해당 주문의 send_result='Y'로 DB업데이트
+	 * @return int
+	 * @throws Exception
+	 */
+	public int updateSendResult(Order input) throws Exception;
 }

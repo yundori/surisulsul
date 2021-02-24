@@ -14,7 +14,11 @@
 			</tr>
 			<tr>
 				<th>상품가격</th>
-				<td><input type="text" name="item_price" id="item_price" placeholder="숫자만 입력하세요." class="simple_textarea"/></td>
+				<td><input type="number" name="item_price" id="item_price" placeholder="숫자만 입력하세요." class="simple_textarea"/></td>
+			</tr>
+			<tr>
+				<th>상품 이미지</th>
+				<td><input type="text" name="item_img" id="item_img" placeholder="상품 이미지 파일이름만 입력하세요. (확장자 제외)" class="simple_textarea"/></td>
 			</tr>
 			<tr>
 				<th>종류</th>
@@ -51,7 +55,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>향</th>
+				<th>향1</th>
 				<td>
 					<input type="checkbox" name="item_incense" id="incense1" value="곡물" />
 					<label for="incense1">곡물향</label>
@@ -71,6 +75,7 @@
 				<th>당도</th>
 				<td>
 					<select id="item_sweet" name="item_sweet">
+					<option value="0" >선택</option>
 					<option value="1" >1</option>
 					<option value="2" >2</option>
 					<option value="3" >3</option>
@@ -84,6 +89,7 @@
 				<th>산미</th>
 				<td>
 					<select id="item_sour" name="item_sour">
+					<option value="0" >선택</option>
 					<option value="1" >1</option>
 					<option value="2" >2</option>
 					<option value="3" >3</option>
@@ -95,11 +101,11 @@
 			</tr>
 			<tr>
 				<th>도수</th>
-				<td><input type="text" name="item_degree" id="item_degree" placeholder="숫자만 입력하세요." class="simple_textarea" /></td>
+				<td><input type="number" name="item_degree" id="item_degree" placeholder="숫자만 입력하세요." class="simple_textarea" /></td>
 			</tr>
 			<tr>
 				<th>용량</th>
-				<td><input type="text" name="item_size" id="item_size" placeholder="숫자만 입력하세요." class="simple_textarea" /></td>
+				<td><input type="number" name="item_size" id="item_size" placeholder="숫자만 입력하세요." class="simple_textarea" /> ml</td>
 			</tr>
 			<tr>
 				<th>원재료</th>
@@ -132,7 +138,29 @@
 			</tr>
 		</table>
 		
-		<button class="add_item_btn">등록하기</button>
+		<button type="submit" class="add_item_btn">등록하기</button>
 		
 	</form>
 </div>
+
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+//하나라도 체크되었다면 이 값이 true로 변경될 것이다.
+var is_check = false;
+
+// 라디오 버튼의 길이만큼 반복
+for (var i=0; i<document.itemadd_form.type.length; i++) {
+	//i번째 항목이 체크되었다면?
+	if(document.itemadd_form.type[i].checked) {
+		is_check=true;
+		//반복문 중단
+		break;
+	}
+}
+//하나도 체크되지 않은 경우의 처리
+if (!is_check) {
+	alert('종류를 선택하세요');
+}
+
+</script>
