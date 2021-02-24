@@ -89,9 +89,133 @@ public class ManageItemController {
 	
 	/** 관리자 - 상품등록 action 페이지 **/
 	@RequestMapping(value="/manage_itemadd_ok.do", method=RequestMethod.POST)
-	public ModelAndView manage_itemadd_ok(Model model) throws Exception {
+	public ModelAndView manage_itemadd_ok(Model model, HttpServletResponse response,
+			@RequestParam(value = "item_name", required = false) String name,
+			@RequestParam(value = "item_price", defaultValue = "0") int price,
+			@RequestParam(value = "item_img", required = false) String img,
+			@RequestParam(value = "item_type", required = false) String type,
+			@RequestParam(value = "item_loc", required = false) String loc,
+			@RequestParam(value = "item_incense", required = false) List<String> keys,
+			@RequestParam(value = "item_sweet", defaultValue = "0") int sweet,
+			@RequestParam(value = "item_sour", defaultValue = "0") int sour,
+			@RequestParam(value = "item_degree", defaultValue = "0") int degree,
+			@RequestParam(value = "item_size", defaultValue = "0") int size,
+			@RequestParam(value = "item_igd", required = false) String igd,
+			@RequestParam(value = "item_food", required = false) String food,
+			@RequestParam(value = "item_des1", required = false) String des1,
+			@RequestParam(value = "item_des2", required = false) String des2,
+			@RequestParam(value = "item_jnresult", required = false) String jn_result) throws Exception {
 		
-		return new ModelAndView("manage/manage_itemadd");
+		/** 파라미터 유효성 검사 **/
+		if (name.equals("")) {
+			return webHelper.redirect(null, "상품명을 입력하세요.");
+		}
+		if (price == 0) {
+			return webHelper.redirect(null, "가격을 입력하세요.");
+		}
+		if (price < 0) {
+			return webHelper.redirect(null, "가격은 0보다 작을 수 없습니다.");
+		}
+		if(!regexHelper.isNum(Integer.toString(price))) {
+			return webHelper.redirect(null, "가격은 숫자로만 입력가능합니다.");
+		}
+		if (img.equals("")) {
+			return webHelper.redirect(null, "이미지파일명을 입력하세요.");
+		}
+		if (img.contains(".")) {
+			return webHelper.redirect(null, "이미지파일명을 다시 입력하세요.");
+		}
+		if (type.equals("") || type == null) {
+			return webHelper.redirect(null, "종류를 선택하세요.");
+		}
+		if (loc.equals("")) {
+			return webHelper.redirect(null, "지역을 선택하세요.");
+		}
+		if (keys.equals("")) {
+			return webHelper.redirect(null, "향을 선택하세요.");
+		}
+		if (keys.size() != 2) {
+			return webHelper.redirect(null, "향을 2개 선택하세요.");
+		}
+		if (sweet == 0) {
+			return webHelper.redirect(null, "당도를 입력하세요.");
+		}
+		if (sweet < 0) {
+			return webHelper.redirect(null, "당도는 0보다 작을 수 없습니다.");
+		}
+		if(!regexHelper.isNum(Integer.toString(sweet))) {
+			return webHelper.redirect(null, "당도는 숫자로만 입력가능합니다.");
+		}
+		if (sour == 0) {
+			return webHelper.redirect(null, "산미를 입력하세요.");
+		}
+		if (sour < 0) {
+			return webHelper.redirect(null, "산미는 0보다 작을 수 없습니다.");
+		}
+		if(!regexHelper.isNum(Integer.toString(sour))) {
+			return webHelper.redirect(null, "산미는 숫자로만 입력가능합니다.");
+		}
+		if (degree == 0) {
+			return webHelper.redirect(null, "도수를 입력하세요.");
+		}
+		if (degree < 0) {
+			return webHelper.redirect(null, "당도는 0보다 작을 수 없습니다.");
+		}
+		if(!regexHelper.isNum(Integer.toString(degree))) {
+			return webHelper.redirect(null, "도수는 숫자로만 입력가능합니다.");
+		}
+		if (size == 0) {
+			return webHelper.redirect(null, "상품용량(크기)를 입력하세요.");
+		}
+		if (size < 0) {
+			return webHelper.redirect(null, "용량(크기)는 0보다 작을 수 없습니다.");
+		}
+		if(!regexHelper.isNum(Integer.toString(size))) {
+			return webHelper.redirect(null, "용량(크기)은 숫자로만 입력가능합니다.");
+		}
+		if (igd.equals("")) {
+			return webHelper.redirect(null, "원재료를 입력하세요.");
+		}
+		if (food.equals("")) {
+			return webHelper.redirect(null, "음식을 입력하세요.");
+		}
+		if (des1.equals("")) {
+			return webHelper.redirect(null, "간단설명을 입력하세요.");
+		}
+		if (des2.equals("")) {
+			return webHelper.redirect(null, "상세설명을 입력하세요.");
+		}
+		if (jn_result.equals("")) {
+			return webHelper.redirect(null, "주능결과를 선택하세요.");
+		}
+		
+		
+		Product input = new Product();
+		input.setName(name);
+		input.setPrice(price);
+		input.setImg(img + ".jsp");
+		input.setType(type);
+		input.setLoc(loc);
+		input.setKey1(keys.get(0));
+		input.setKey2(keys.get(1));
+		input.setSweet(sweet);
+		input.setSour(sour);
+		input.setDegree(degree);
+		input.setSize(size);
+		input.setIgd(igd);
+		input.setFood(food);
+		input.setDes1(des1);
+		input.setDes2(des2);
+		input.setJn_result(jn_result);
+		
+		try {
+			productService.addProduct(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		String redirectUrl = contextPath + "/manage_itemlist.do";
+		return webHelper.redirect(redirectUrl, "상품이 저장되었습니다.");
 	}
 	
 	/** 관리자 - 상품수정 페이지 **/
