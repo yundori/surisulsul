@@ -28,6 +28,7 @@ public class ManageBasicController {
 	@RequestMapping(value = "/manage_home.do", method = RequestMethod.GET)
 	public String manage_login_ok() throws Exception {
 		
+		
 		return "manage/manage_home";
 	}
 }

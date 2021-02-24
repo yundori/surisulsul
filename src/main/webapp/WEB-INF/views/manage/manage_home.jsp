@@ -10,7 +10,7 @@
 	<hr />
 	<div class="all_main">
 		<div class="chart">
-			<canvas id="canvas"></canvas>
+			<canvas id="price_chart"></canvas>
 		</div>
 		<table class="manage_main">
 			<tr>
