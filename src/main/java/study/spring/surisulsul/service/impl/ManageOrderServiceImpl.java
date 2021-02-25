@@ -183,4 +183,48 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 		return result;
 	}
 
+	/**
+	 * manage_sales > 매출 조회 : 월간매출/연간매출 조회
+	 * @param type : month면 월간 매출, year면 연간매출
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	@Override
+	public List<Order> getDateSales(String type, Order input) throws Exception {
+		
+		List<Order> result = null;
+		
+		if(type.equals("month")) {
+			try {
+				result = sqlSession.selectList("OrderMapper.selectMonthSales", input);
+
+				if (result == null) {
+					throw new NullPointerException("result=null");
+				}
+			} catch (NullPointerException e) {
+				log.error(e.getLocalizedMessage());
+				throw new Exception("조회된 데이터가 없습니다.");
+			} catch (Exception e) {
+				log.error(e.getLocalizedMessage());
+				throw new Exception("데이터 조회에 실패했습니다.");
+			}
+		}else if(type.equals("year")) {
+			try {
+				result = sqlSession.selectList("OrderMapper.selectYearSales", input);
+
+				if (result == null) {
+					throw new NullPointerException("result=null");
+				}
+			} catch (NullPointerException e) {
+				log.error(e.getLocalizedMessage());
+				throw new Exception("조회된 데이터가 없습니다.");
+			} catch (Exception e) {
+				log.error(e.getLocalizedMessage());
+				throw new Exception("데이터 조회에 실패했습니다.");
+			}
+		}
+		
+		return result;
+	}
+
 }

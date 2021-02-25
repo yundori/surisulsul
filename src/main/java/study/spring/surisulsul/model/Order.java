@@ -42,6 +42,9 @@ public class Order {
 	private String to_date; //검색 to 날짜
 	
 	private int sum_price; //주문 금액 합계
+	private int cash_sum;  //무통장 주문 금액 합계
+	private int card_sum;  // 카드 주문 금액 합계
+	private int unpaid_sum; //미수금 합계
 	
 
 	// sales 테이블에 INSERT하기 위해 GROUP BY로 받아올 변수

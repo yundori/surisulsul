@@ -41,6 +41,9 @@
 		<result property="to_date" column="to_date" />
 		
 		<result property="sum_price" column="sum_price" />
+		<result property="cash_sum" column="cash_sum" />
+		<result property="card_sum" column="card_sum" />
+		<result property="unpaid_sum" column="unpaid_sum" />
 	</resultMap>
 	
 	
@@ -193,13 +196,32 @@
 		WHERE id=#{o_id};
 	</update>
 	
-	
 	<!-- uncmpl_orders 에서 받아갈 select 구문 >> pay_result가 N이거나 send_result가 N인 경우 -->
 	<select id="selectUncmplOrders" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		SELECT id as o_id, pay_result, send_result, b_name, b_phone, r_name, price, payment, reg_date
 		FROM orders
 		WHERE pay_result='N' OR send_result='N'
 		ORDER BY reg_date DESC;
+	</select>
+	
+	<!-- manage_sales에서 받아갈 select 구문 (1) >> 월간매출  -->
+	<select id="selectMonthSales" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT date_format(reg_date, '%Y%m') AS reg_date, COUNT(*) AS order_cnt, SUM(price) AS sum_price,
+				SUM(if(payment='cash', price, 0)) AS cash_sum, SUM(if(payment='card', price, 0)) AS card_sum, 
+				SUM(if(pay_result='N', price, 0)) AS unpaid_sum
+		FROM orders 
+		WHERE date_format(reg_date, '%Y%m') BETWEEN #{from_date} AND #{to_date} 
+		GROUP BY date_format(reg_date, '%Y%m') ;
+	</select>
+	
+	<!-- manage_sales에서 받아갈 select 구문 (2) >> 연간매출 -->
+	<select id="selectYearSales" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT date_format(reg_date, '%Y') AS reg_date, COUNT(*) AS order_cnt, SUM(price) AS sum_price,
+				SUM(if(payment='cash', price, 0)) AS cash_sum, SUM(if(payment='card', price, 0)) AS card_sum, 
+				SUM(if(pay_result='N', price, 0)) AS unpaid_sum
+		FROM orders 
+		WHERE date_format(reg_date, '%Y') BETWEEN #{from_date} AND #{to_date} 
+		GROUP BY date_format(reg_date, '%Y');
 	</select>
 	
 	<!-- 관리자페이지 -> manage_home.do 에서 사용할 select 구문 (차트용) -->

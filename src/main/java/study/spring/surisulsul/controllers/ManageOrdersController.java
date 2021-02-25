@@ -249,26 +249,69 @@ public class ManageOrdersController {
 	/** 관리자 - manage_sales 페이지 처리 */
 	@RequestMapping(value = "/manage_sales.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView manage_sales(Model model,
-			@RequestParam(value = "day", required = false) String today) throws Exception {
+			@RequestParam(value = "day", required = false) String today,
+			@RequestParam(value = "fromMonth", required = false) String fromMonth,
+			@RequestParam(value = "toMonth", required = false) String toMonth,
+			@RequestParam(value = "fromYear", required = false) String fromYear,
+			@RequestParam(value = "toYear", required = false) String toYear) throws Exception {
 		/** 1) 파라미터 유효성 검사 */
+		Calendar date = Calendar.getInstance();
+		SimpleDateFormat sdf;
 		if(today==null || today.equals("")) {
-			//오늘 날짜 먼저 구하기
-			Calendar date = Calendar.getInstance();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			sdf = new SimpleDateFormat("yyyy-MM-dd");			
 			today = sdf.format(date.getTime());
 		}
-				
+		if(fromMonth==null || fromMonth.equals("") && toMonth==null || toMonth.equals("")) {
+			sdf = new SimpleDateFormat("yyyyMM");
+			toMonth = sdf.format(date.getTime());
+			date.add(date.MONTH,-1);
+			fromMonth = sdf.format(date.getTime());
+		}
+		if(fromYear==null || fromYear.equals("") && toYear==null || toYear.equals("")) {
+			date = Calendar.getInstance();
+			sdf = new SimpleDateFormat("yyyy");
+			toYear = sdf.format(date.getTime());
+			date.add(date.YEAR,-1);
+			fromYear = sdf.format(date.getTime());
+		}
+		
+		
+		/** 2) 일간 매출 */
 		// SQL에 쓰일 input 객체에 찾고자 하는 reg_date 삽입
-		Order input = new Order();
-		input.setReg_date(today);
+		Order dayInput = new Order();
+		dayInput.setReg_date(today);
 		
 		List<Order> dayOutput = new ArrayList<Order>();   //일일 매출을 받아올 dayOutput 리스트
 		
-		dayOutput = manageService.getOrderList(input);
+		dayOutput = manageService.getOrderList(dayInput);
 		
-
-		model.addAttribute("today", today);
+		/** 3) 월간 매출 */
+		Order monthInput = new Order();
+		monthInput.setFrom_date(fromMonth);
+		monthInput.setTo_date(toMonth);
+		
+		List<Order> monthOutput = new ArrayList<Order>();  //월간 매출을 받아올 monthOutput 리스트
+		
+		monthOutput = manageService.getDateSales("month", monthInput);
+		
+		/** 4) 연간 매출 */
+		Order yearInput = new Order();
+		yearInput.setFrom_date(fromYear);
+		yearInput.setTo_date(toYear);
+		
+		List<Order> yearOutput = new ArrayList<Order>();  //연간 매출을 받아올 yearOutput 리스트
+		
+		yearOutput = manageService.getDateSales("year", yearInput);
+		
+		/** 5) View로 이동 */
+		// 상태유지를 위해 input요소도 view에 전달
+		model.addAttribute("dayInput", dayInput);
+		model.addAttribute("monthInput", monthInput);
+		model.addAttribute("yearInput", yearInput);
+		// select해온 각 리스트를 view에 전달
 		model.addAttribute("dayOutput", dayOutput);
+		model.addAttribute("monthOutput", monthOutput);
+		model.addAttribute("yearOutput", yearOutput);
 		return new ModelAndView("manage/manage_sales");
 	}
 

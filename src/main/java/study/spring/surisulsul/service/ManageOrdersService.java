@@ -54,4 +54,13 @@ public interface ManageOrdersService {
 	 * @throws Exception
 	 */
 	public List<Order> getUncmplOrderList(Order input) throws Exception;
+	
+	
+	/**
+	 * manage_sales > 매출 조회 : 월간매출/연간매출 조회
+	 * @param type : month면 월간 매출, year면 연간매출
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Order> getDateSales(String type, Order input) throws Exception;
 }
