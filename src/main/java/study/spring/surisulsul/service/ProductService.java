@@ -126,6 +126,15 @@ public interface ProductService {
 	public List<Product> getAllProductList(Product input) throws Exception;
 	
 	/**
+	 * 상품 데이터 단일 조회 (manage_itemedit)
+	 * 
+	 * @param Product Beans
+	 * @return 조회된 데이터가 저장된 Beans
+	 * @throws Exception
+	 */
+	public Product getProductItem(Product input) throws Exception;
+	
+	/**
 	 * 상품 데이터 저장
 	 * 
 	 * @param Product 저장할 정보를 담고 있는 Beans

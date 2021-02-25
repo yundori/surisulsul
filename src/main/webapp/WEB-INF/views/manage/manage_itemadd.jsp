@@ -18,7 +18,7 @@
 			</tr>
 			<tr>
 				<th>상품 이미지</th>
-				<td><input type="text" name="item_img" id="item_img" placeholder="상품 이미지 파일이름만 입력하세요. (확장자 제외)" class="simple_textarea"/></td>
+				<td><input type="text" name="item_img" id="item_img" placeholder="확장자(.jpg)를 포함하여 입력하세요." class="simple_textarea"/></td>
 			</tr>
 			<tr>
 				<th>종류</th>
@@ -55,7 +55,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>향1</th>
+				<th>향</th>
 				<td>
 					<input type="checkbox" name="item_incense" id="incense1" value="곡물" />
 					<label for="incense1">곡물향</label>

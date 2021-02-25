@@ -67,14 +67,17 @@
 	height: 200px;
 }
 
-.manage_itemlist_table button {
+.item_btn {
+	display: block;
 	width: 50px;
 	height: 30px;
-	margin : 5px 0;
+	margin : 5px auto;
 	background-color: #FBD14B;
 	border-radius: 5px;
 	outline: none;
 	border: none;
+	text-align: center;
+	line-height: 30px;
 	cursor: pointer;
 	font-size:14px;
 }

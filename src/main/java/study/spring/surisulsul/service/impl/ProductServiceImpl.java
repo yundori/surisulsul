@@ -213,6 +213,28 @@ public class ProductServiceImpl implements ProductService {
 
 		return result;
 	}
+	
+	/** 상품 단일행 조회 */
+	@Override
+	public Product getProductItem(Product input) throws Exception {
+		Product result = null;
+
+		try {
+			result = sqlSession.selectOne("ProductMapper.selectItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 상품 데이터 저장 */
 	@Override
