@@ -1,5 +1,6 @@
 package study.spring.surisulsul.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,14 +10,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.service.CscenterService;
 
 @Slf4j
 @Controller
 public class ManageCscenterController {
 	
 	/** Service 패턴 구현체 주입 */
-
+	
+	/** WebHelper 주입 */
+	@Autowired
+	WebHelper webHelper;
+	
+	@Autowired
+	CscenterService cscenterService;
+	
+	
 	/** 프로젝트 이름에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;

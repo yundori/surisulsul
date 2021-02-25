@@ -14,7 +14,7 @@
 
 <head>
 <meta charset="UTF-8" />
-<title>surisulsul</title>
+<title>수리술술</title>
 <!-- 크로스 브라우징 호환성 시작 -->
 <link rel="stylesheet" type="text/css"
    href="${contextPath}/assets/css/reset.css" />
