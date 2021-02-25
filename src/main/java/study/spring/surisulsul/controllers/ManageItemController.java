@@ -125,7 +125,7 @@ public class ManageItemController {
 		if (img.contains(".")) {
 			return webHelper.redirect(null, "이미지파일명을 다시 입력하세요.");
 		}
-		if (type.equals("") || type == null) {
+		if (type.equals("")) {
 			return webHelper.redirect(null, "종류를 선택하세요.");
 		}
 		if (loc.equals("")) {
@@ -140,20 +140,8 @@ public class ManageItemController {
 		if (sweet == 0) {
 			return webHelper.redirect(null, "당도를 입력하세요.");
 		}
-		if (sweet < 0) {
-			return webHelper.redirect(null, "당도는 0보다 작을 수 없습니다.");
-		}
-		if(!regexHelper.isNum(Integer.toString(sweet))) {
-			return webHelper.redirect(null, "당도는 숫자로만 입력가능합니다.");
-		}
 		if (sour == 0) {
 			return webHelper.redirect(null, "산미를 입력하세요.");
-		}
-		if (sour < 0) {
-			return webHelper.redirect(null, "산미는 0보다 작을 수 없습니다.");
-		}
-		if(!regexHelper.isNum(Integer.toString(sour))) {
-			return webHelper.redirect(null, "산미는 숫자로만 입력가능합니다.");
 		}
 		if (degree == 0) {
 			return webHelper.redirect(null, "도수를 입력하세요.");
@@ -193,7 +181,7 @@ public class ManageItemController {
 		Product input = new Product();
 		input.setName(name);
 		input.setPrice(price);
-		input.setImg(img + ".jsp");
+		input.setImg(img + ".jpg");
 		input.setType(type);
 		input.setLoc(loc);
 		input.setKey1(keys.get(0));
@@ -215,7 +203,7 @@ public class ManageItemController {
 		}
 		
 		String redirectUrl = contextPath + "/manage_itemlist.do";
-		return webHelper.redirect(redirectUrl, "상품이 저장되었습니다.");
+		return webHelper.redirect(redirectUrl, "새로운 상품이 등록되었습니다.");
 	}
 	
 	/** 관리자 - 상품수정 페이지 **/

@@ -3,6 +3,8 @@ package study.spring.surisulsul.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -160,14 +162,85 @@ public class ManageOrdersController {
 	/** 관리자 - uncmpl_orders 페이지 처리 */
 	@RequestMapping(value = "/uncmpl_orders.do", method = RequestMethod.GET)
 	public ModelAndView uncmpl_orders(Model model) throws Exception {
-
+		
+		//결과 받아올 객체
+		List<Order> output = new ArrayList<Order>();
+		
+		//input에 담은 데이터를 가지고 테이블 조회 수행
+		try {
+			// 데이터 조회하기
+			output = manageService.getUncmplOrderList(null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//view 전달
+		model.addAttribute("output", output);
 		return new ModelAndView("manage/uncmpl_orders");
 	}
 	
 	/** 관리자 - uncmpl_orders -> 입금상태를 입금완료로 UPDATE 처리 */
+	@RequestMapping(value = "/manage/update_pay.do", method = RequestMethod.POST)
+	public ModelAndView update_pay(Model model,
+			@RequestParam(value = "uncmplItem", required=false) List<String> chkItems) {
+		// 파라미터 유효성 검사
+		if(chkItems.size()<=0) {
+			webHelper.redirect(null, "입금완료 처리할 항목을 선택해주세요.");
+		}
+		
+		for(int i=0; i<chkItems.size(); i++) {
+			Order input = new Order();
+			input.setO_id(Integer.parseInt(chkItems.get(i)));
+			try {
+				manageService.updatePayResult(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return webHelper.redirect(contextPath+"/uncmpl_orders.do", "주문상태가 입금완료로 정상 갱신되었습니다.");
+	}
 	
 	
 	/** 관리자 - uncmpl_orders -> 배송 상태를 배송완료로 UPDATE 처리 */
+	@RequestMapping(value = "/manage/update_send.do", method = RequestMethod.POST)
+	public ModelAndView update_send(Model model, 
+			@RequestParam(value = "uncmplItem", required=false) List<String> chkItems) {
+		// 파라미터 유효성 검사
+		if(chkItems.size()<=0) {
+			webHelper.redirect(null, "배송완료 처리할 항목을 선택해주세요.");
+		}
+		
+		//해당 chkItems의 pay_result가 N인 품목이 하나라도 있으면
+		// -> 입금 대기 중 품목은 배송상태 변경이 불가능합니다. webHelper.redirect
+		for(int i=0; i<chkItems.size(); i++) {
+			Order input = new Order();
+			input.setO_id(Integer.parseInt(chkItems.get(i)));
+			Order output = new Order();
+			try {
+				output = manageService.getOrderDetails(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(output.getPay_result().equals("N")) { //해당 chkItems의 pay_result가 N일 경우
+				return webHelper.redirect(null, "입금 대기 중 품목은 배송상태 변경이 불가능합니다.");
+			}
+		}
+		
+		//pay_result가 모두 "Y"인 것이 확인되면 (이미 위의 반복문 수행)
+		for(int i=0; i<chkItems.size(); i++) {
+			Order input = new Order();
+			input.setO_id(Integer.parseInt(chkItems.get(i)));
+			try {
+				manageService.updateSendResult(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return webHelper.redirect(contextPath+"/uncmpl_orders.do", "주문상태가 배송완료로 정상 갱신되었습니다.");
+	}
 	
 	/** 관리자 - manage_sales 페이지 처리 */
 	@RequestMapping(value = "/manage_sales.do", method = RequestMethod.GET)

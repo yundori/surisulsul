@@ -165,12 +165,12 @@
 		SELECT COUNT(*) FROM orders_sub WHERE o_id=#{o_id};
 	</select>
 	
-	<!-- manage_orders_details에서 받아갈 select 구문 (주문정보용) -->
+	<!-- manage_orders_details 에서 받아갈 select 구문 (주문정보용) -->
 	<select id="selectOrderDetails" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		SELECT id AS o_id, price, pay_result, send_result, b_name, b_phone, r_name, r_phone, 
 			r_postcode, r_address1, r_address2, payment, pay_cash, reg_date, edit_date
 		FROM orders
-		WHERE id = #{o_id} 
+		WHERE id = #{o_id}  
 		ORDER BY reg_date DESC;
 	</select>
 	
@@ -185,5 +185,14 @@
 		UPDATE orders SET send_result='Y', edit_date=now()
 		WHERE id=#{o_id};
 	</update>
+	
+	
+	<!-- uncmpl_orders 에서 받아갈 select 구문 >> pay_result가 N이거나 send_result가 N인 경우 -->
+	<select id="selectUncmplOrders" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
+		SELECT id as o_id, pay_result, send_result, b_name, b_phone, r_name, price, payment, reg_date
+		FROM orders
+		WHERE pay_result='N' OR send_result='N'
+		ORDER BY reg_date DESC;
+	</select>
 	
 </mapper>
