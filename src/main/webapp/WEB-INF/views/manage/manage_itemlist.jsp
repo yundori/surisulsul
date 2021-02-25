@@ -61,9 +61,14 @@
 				<td>${item.des1}</td>
 				<td>${item.star}</td>
 				<td>${item.reg_date}</td>
+				
+				<%-- 수정페이지로 이동하기 위한 URL --%>
+				<c:url value="/manage_itemedit.do" var="viewUrl">
+					<c:param name="item_id" value="${item.id}" />
+				</c:url>	
 				<td rowspan="2">
-					<button>수정</button>
-					<button>삭제</button>
+					<a href="${viewUrl}" class="item_btn">수정</a>
+					<a href="#" class="item_btn">삭제</a>
 				</td>
 			</tr>
 			<tr>
