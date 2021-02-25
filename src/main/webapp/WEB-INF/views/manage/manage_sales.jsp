@@ -172,11 +172,7 @@
 </div>
 
 <script src="${contextPath}/assets/js/common.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
-<script>
-$(document).ready(function() {
-	$('#day').val(new Date().toISOString().substring(0, 10));
-});
-</script>
+
 
 </body>
 
