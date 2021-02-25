@@ -41,6 +41,8 @@ public class Order {
 	private String from_date; //검색 from 날짜
 	private String to_date; //검색 to 날짜
 	
+	private int sum_price; //주문 금액 합계
+	
 
 	// sales 테이블에 INSERT하기 위해 GROUP BY로 받아올 변수
 	private int total_qty;
