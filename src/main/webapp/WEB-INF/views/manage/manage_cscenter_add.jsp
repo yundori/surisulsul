@@ -73,6 +73,40 @@
 		src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+	$(function() {
+	// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+    $("#cscenter_add").ajaxForm({
+        // 전송 메서드 지정
+        method: "POST",
+        // 서버에서 200 응답을 전달한 경우 실행됨
+        success: function(json) {
+            console.log(json);
+            
+            if (json.result == "OK") {
+            	swal({
+                    title: "제품 문의",
+                    text: "선택하신 제품에 대한 문의 작성이 완료되었습니다.",
+                    type: "success"
+                }).then((value)=>{
+                	window.opener.location.href="${pageContext.request.contextPath}/manage_cscenter.do";
+                	window.close();	                	
+                });                   
+            } else if (json.result=="NOT_CONTENT"){
+            	swal({
+                    title: "내용 입력",
+                    text: "등록하실 내용을 입력해 주세요.",
+                    type: "warning"
+                });
+            } else {
+            	swal({
+                    title: "내용 입력",
+                    text: "공지 등록에 실패했습니다. 다시 시도해주세요.",
+                    type: "error"
+                });
+            }
+        }
+    });
+});
     $('.write-content').keyup(function(e) {
         var content = $(this).val();
         $('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅

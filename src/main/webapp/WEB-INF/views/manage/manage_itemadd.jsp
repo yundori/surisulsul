@@ -143,24 +143,4 @@
 	</form>
 </div>
 
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-
-//하나라도 체크되었다면 이 값이 true로 변경될 것이다.
-var is_check = false;
-
-// 라디오 버튼의 길이만큼 반복
-for (var i=0; i<document.itemadd_form.type.length; i++) {
-	//i번째 항목이 체크되었다면?
-	if(document.itemadd_form.type[i].checked) {
-		is_check=true;
-		//반복문 중단
-		break;
-	}
-}
-//하나도 체크되지 않은 경우의 처리
-if (!is_check) {
-	alert('종류를 선택하세요');
-}
-
-</script>
+<script src="${contextPath}/assets/manage/manage_itemadd.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>

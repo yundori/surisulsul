@@ -304,7 +304,7 @@
 		left outer join wishlist w on p.id=w.p_id
 		left outer join basket b on p.id=b.p_id
 		group by p.id
-		order by wish desc
+		order by wish desc, basket desc, p.id asc
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
