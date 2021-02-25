@@ -152,7 +152,10 @@
 				AND reg_date BETWEEN #{from_date} AND #{to_date}
 			</if>
 		</where>
-		ORDER BY reg_date DESC
+		ORDER BY id DESC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 누적주문수 select 구문  -->
@@ -170,8 +173,7 @@
 		SELECT id AS o_id, price, pay_result, send_result, b_name, b_phone, r_name, r_phone, 
 			r_postcode, r_address1, r_address2, payment, pay_cash, reg_date, edit_date
 		FROM orders
-		WHERE id = #{o_id}  
-		ORDER BY reg_date DESC;
+		WHERE id = #{o_id};
 	</select>
 	
 	<!-- manage_orders_details / uncmpl_orders 에서 사용할 update 구문 -->

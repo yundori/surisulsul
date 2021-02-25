@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .content{
 	margin:120px 0 0 200px;
+	padding-bottom:150px;
 }
 .content hr{
 	border:solid 3px #000;
