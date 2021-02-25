@@ -21,6 +21,33 @@
 	width : 296px;
 }
 
+/**정렬 버튼 설정 */
+.mng_btn_wish{
+	background-color: #FBD14B;
+    border: 0px;
+    margin-right: 3px;
+    margin-top : 10px;
+    width: auto;
+    padding: 3px 20px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 1.3em;
+    float : right;
+}
+
+.mng_btn_id{
+	background-color: #aaa;
+    border: 0px;
+    margin-right: 3px;
+    margin-top : 10px;
+    width: auto;
+    padding: 3px 20px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 1.3em;
+    float : right;
+}
+
 /** 테이블 크기 및 첫줄 배경컬러/각 셀의 높이+border설정 */
 .manage_wish_table{
 	margin-top:10px;
