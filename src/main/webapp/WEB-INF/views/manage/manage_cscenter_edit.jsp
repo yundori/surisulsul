@@ -48,6 +48,11 @@
 					</select>
 				</div>
 				<div class="form-group">
+				<label class="label text-center">제목 작성</label>
+				<br />
+				<input type="text" placeholder="제목을 입력해 주세요." id="title_add" />
+				</div>
+				<div class="form-group">
 					<label class="label text-center">수정 내용 작성하기</label><br />
 					<textarea class="write-content" placeholder="내용을 입력해 주세요."
 						name="content"></textarea>

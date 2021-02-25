@@ -39,9 +39,20 @@ public class ManageCscenterController {
 		return new ModelAndView("manage/manage_cscenter");
 	}
 	
-	/** 알립니다 & FAQ 등록  */
+	/** 알립니다 & FAQ insert  */
 	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.GET)
-	public ModelAndView cecenter_add(Model model)  throws Exception {
+	public ModelAndView cecenter_add(Model model,
+			@RequestParam(value="id", defaultValue="0") int id,
+			@RequestParam(value="type", required = false) String type,
+			@RequestParam(value="title", required = false) String title,
+			@RequestParam(value="content", required = false) String content,
+			@RequestParam(value="reg_date", required = false) String reg_date,
+			@RequestParam(value="edit_date", required = false) String edit_date)  
+	
+	{
+		
+		
+		
 		
 		return new ModelAndView("/manage/manage_cscenter_add");
 	}

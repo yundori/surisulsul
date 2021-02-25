@@ -199,8 +199,7 @@
  * --------------------- */
 .write-content {
     display: block;
-
-    padding: 14px;
+	padding: 14px;
     height: 150px;
     border: 1px solid #ddd;
     border-radius: 3px;
@@ -208,6 +207,12 @@
     white-space: normal;
     width: 94%;
     margin: 15px 0;
+}
+
+#title_add {
+	width: 94%;
+    margin-top: 14px;
+    height: 30px;
 }
 
 /*
