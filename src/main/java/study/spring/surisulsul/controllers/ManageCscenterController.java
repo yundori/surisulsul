@@ -32,14 +32,14 @@ public class ManageCscenterController {
 	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.GET)
 	public ModelAndView cecenter_add(Model model)  throws Exception {
 		
-		return new ModelAndView("redirect:/manage_cscenter.do");
+		return new ModelAndView("/manage/manage_cscenter_add");
 	}
 	
 	/** 알립니다 & FAQ 수정 */
 	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
 	public ModelAndView cscenter_edit(Model model)  throws Exception {
 		
-		return new ModelAndView("redirect:/manage_cscenter.do");
+		return new ModelAndView("/manage/manage_cscenter_edit");
 	}
 	
 	/** 알립니다 & FAQ 삭제 */
