@@ -40,7 +40,7 @@
 
 .manage_itemlist_table {
 	text-align: center;
-	margin: 0 auto;
+	margin: 0 50px;
 }
 
 .manage_itemlist_table th {
@@ -54,9 +54,9 @@
 }
 
 .manage_itemlist_table td {
-	padding: 5px;
-	max-width: 400px;
+	padding: 3px;
 	border: 1px solid #aaa;
+	white-space: normal;
 	word-wrap: break-word;
 	vertical-align: middle;
 	line-height: 20px;

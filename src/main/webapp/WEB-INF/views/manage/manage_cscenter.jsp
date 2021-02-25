@@ -18,7 +18,8 @@
     			<th>분류</th>
     			<th>이름</th>
     			<th>제목</th>
-    			<th width=210>등록날짜</th>
+    			<th width=160>등록날짜</th>
+    			<th width=160>수정날짜</th>
     			<th width=60>관리</th>
     		</tr>
     		<tr>
@@ -28,6 +29,7 @@
     			<td>공지사항</td>
     			<td>관리자</td>
     			<td>수리술술은 언제나 무료배송 !</td>
+    			<td>2021-02-18 00:00:00</td>
     			<td>2021-02-18 00:00:00</td>
     			<td>
     				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
@@ -40,6 +42,7 @@
     			<td>FAQ</td>
     			<td>관리자</td>
     			<td>대량 주문도 가능한가요?</td>
+    			<td>2021-02-18 00:00:00</td>
     			<td>2021-02-18 00:00:00</td>
     			<td>
     				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>

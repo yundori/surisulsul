@@ -8,30 +8,27 @@
 <div class="content">
 	<h2>위시리스트 관리</h2>
 
-	<form method="get"
-		action="${pageContext.request.contextPath }/manage_wishlist.do">
-		<fieldset>
-			<div class="date_search">
-				<input type="date" name="fromdate" id="fromdate" /> <label
-					for="todate"> - </label> <input type="date" name="todate"
-					id="todate" />
-			</div>
-		</fieldset>
-		<div>
-			<input type="search" name="keyword" id="keyword" placeholder="상품명 검색"
-				value="${keyword }" />
-			<button type="submit">검색</button>
-		</div>
-	</form>
+
 
 
 	<div style="display: block; width: 805px;">
-	<div style="display: inline-block; ">
-		<a href="${pageContext.request.contextPath}/manage_wishlist_asc.do"
-			class="mng_btn_wish">인기순 정렬</a> <a
-			href="${pageContext.request.contextPath}/manage_wishlist.do"
-			class="mng_btn_id">상품id순 정렬</a>
-</div>
+		<div style="display: inline-block;">
+			<a href="${pageContext.request.contextPath}/manage_wishlist_asc.do"
+				class="mng_btn_wish">인기순 정렬</a> <a
+				href="${pageContext.request.contextPath}/manage_wishlist.do"
+				class="mng_btn_id">번호순 정렬</a>
+
+			<form method="get"
+				action="${pageContext.request.contextPath }/manage_wishlist.do" class="search_by_name">
+				<div>
+					<input type="search" name="keyword" id="keyword"
+						placeholder="상품명 검색" value="${keyword }" />
+					<button type="submit">검색</button>
+				</div>
+			</form>
+		</div>
+
+
 		<table class=manage_wish_table>
 			<thead>
 				<tr>
