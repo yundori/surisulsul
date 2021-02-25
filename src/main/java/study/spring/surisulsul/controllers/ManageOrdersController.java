@@ -83,6 +83,7 @@ public class ManageOrdersController {
 		try {
 			// 데이터 조회하기
 			output = manageService.getOrderList(input);
+			
 			for(int i=0; i<output.size(); i++) {
 				//누적주문건수 부여
 				int tmp = manageService.getMemOrderCount(output.get(i));
