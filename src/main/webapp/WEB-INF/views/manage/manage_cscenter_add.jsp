@@ -35,7 +35,7 @@
 	<div class="pop-up">
 		<div class="pop-up-title">알립니다 & 자주묻는질문 등록</div>
 		<div class="pop-up-content">
-			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage_cscenter_add.do" method="POST" name="form_cs">
+			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage_cscenter_add_ok.do" method="POST" name="form_cs">
 				<input type="hidden" name="add_cs" value="" />
 				<div class="form-group">
 					<label class="label text-center">분류 선택</label> <br /> <select
@@ -47,7 +47,7 @@
 				</div>
 				<div class="form-group">
 					<label class="label text-center">제목 작성</label> <br /> <input
-						type="text" placeholder="제목을 입력해 주세요." id="title_add" />
+						type="text" placeholder="제목을 입력해 주세요." id="title_add" name="title"/>
 				</div>
 				<div class="form-group">
 					<label class="label text-center">등록 내용 작성하기</label> <br />

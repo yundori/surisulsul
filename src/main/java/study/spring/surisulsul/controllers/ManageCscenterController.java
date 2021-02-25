@@ -46,8 +46,14 @@ public class ManageCscenterController {
 	}
 	
 	/** 알립니다 & FAQ insert  */
-	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_add(Model model,
+	@RequestMapping(value = "/manage_cscenter_add.do", method = RequestMethod.GET)
+	public ModelAndView cscenter_add(Model model) throws Exception {
+		
+		return new ModelAndView("manage/manage_cscenter_add");
+	}
+	
+	@RequestMapping(value="/manage_cscenter_add_ok.do", method=RequestMethod.POST)
+	public ModelAndView cscenter_add_ok(Model model,
 			@RequestParam(value="type", required = false) String type,
 			@RequestParam(value="title", required = false) String title,
 			@RequestParam(value="content", required = false) String content,
@@ -77,17 +83,12 @@ public class ManageCscenterController {
 		input.setReg_date(reg_date);
 		input.setEdit_date(edit_date);
 		
-		Cscenter output = null;
-		
 		try {
 			cscenterService.addCscenter(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
-		
-		model.addAttribute("output", output);
-		return new ModelAndView("/manage/manage_cscenter_add");
+		return new ModelAndView("/manage/manage_cscenter");
 	}
 	
 	/** 알립니다 & FAQ 수정 */
