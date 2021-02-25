@@ -35,31 +35,28 @@
 	<div class="pop-up">
 		<div class="pop-up-title">알립니다 & 자주묻는질문 등록</div>
 		<div class="pop-up-content">
-			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage/manage_cscenter.do" method="post">
+			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage_cscenter_add.do" method="POST" name="form_cs">
 				<input type="hidden" name="add_cs" value="" />
 				<div class="form-group">
-					<label class="label text-center">분류 선택</label>
-					<br />
-					<select
+					<label class="label text-center">분류 선택</label> <br /> <select
 						id="category" class="category" name="type">
 						<option value="0">--------</option>
-						<option value=1>알립니다</option>
-						<option value=2>자주묻는질문</option>
+						<option value="A">알립니다</option>
+						<option value="B">자주묻는질문</option>
 					</select>
 				</div>
 				<div class="form-group">
-				<label class="label text-center">제목 작성</label>
-				<br />
-				<input type="text" placeholder="제목을 입력해 주세요." id="title_add" />
+					<label class="label text-center">제목 작성</label> <br /> <input
+						type="text" placeholder="제목을 입력해 주세요." id="title_add" />
 				</div>
 				<div class="form-group">
-					<label class="label text-center">등록 내용 작성하기</label><br />
+					<label class="label text-center">등록 내용 작성하기</label> <br />
 					<textarea class="write-content" placeholder="내용을 입력해 주세요."
 						name="content"></textarea>
 					<span class="input-limit">0/1,000</span>
 				</div>
 				<div>
-					<button type="submit">등록하기</button>
+					<button type="submit" id="cs_add_btn">등록하기</button>
 				</div>
 			</form>
 		</div>
@@ -78,49 +75,28 @@
 		src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	$(function() {
-	// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-    $("#cscenter_add").ajaxForm({
-        // 전송 메서드 지정
-        method: "POST",
-        // 서버에서 200 응답을 전달한 경우 실행됨
-        success: function(json) {
-            console.log(json);
-            
-            if (json.result == "OK") {
-            	swal({
-                    title: "제품 문의",
-                    text: "선택하신 제품에 대한 문의 작성이 완료되었습니다.",
-                    type: "success"
-                }).then((value)=>{
-                	window.opener.location.href="${pageContext.request.contextPath}/manage_cscenter.do";
-                	window.close();	                	
-                });                   
-            } else if (json.result=="NOT_CONTENT"){
-            	swal({
-                    title: "내용 입력",
-                    text: "등록하실 내용을 입력해 주세요.",
-                    type: "warning"
-                });
-            } else {
-            	swal({
-                    title: "내용 입력",
-                    text: "공지 등록에 실패했습니다. 다시 시도해주세요.",
-                    type: "error"
-                });
-            }
-        }
-    });
-});
-    $('.write-content').keyup(function(e) {
-        var content = $(this).val();
-        $('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
+		// 등록하기 누르면 -> 입력 값이 cscenter에 들어가고, 내용이 추가됨
+		// 내용을 다 입력하기 전에 등록하기를 누르면 , alert -> "입력하지 않은 값이 존재합니다. 다시 한번 확인해주세요."
+		window.onload = function() {
+			var cs_add_btn = document.getElementById('cs_add_btn');
+			
+			cs_add_btn onclick = function() {
+				document.form_cs.target = opener.name; // 호출하고자하는 부모창의 이름
+				document.form_cs.submit(); // 폼 전송
+				self.close(); //창 닫기 
+			}
+		};
 
-        if (content.length > 1000) {
-            alert("최대 1,000자까지 입력 가능합니다.");
-            $(this).val(content.substring(0, 1000));
-            $('.input-limit').html("1,000/1,000");
-        }
-    });
-    </script>
+
+		$('.write-content').keyup(function(e) {
+			var content = $(this).val();
+			$('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
+
+			if (content.length > 1000) {
+				alert("최대 1,000자까지 입력 가능합니다.");
+				$(this).val(content.substring(0, 1000));
+				$('.input-limit').html("1,000/1,000");
+			}
+		});
+	</script>
 </body>
