@@ -351,6 +351,32 @@ public class ManageItemController {
 		return webHelper.redirect(redirectUrl, "상품이 수정되었습니다.");
 	}
 	
+	/** 삭제 처리 페이지 */
+	@RequestMapping(value = "/manage_itemdelete_ok.do", method = RequestMethod.GET)
+	public ModelAndView delete_ok(Model model,
+			@RequestParam(value = "item_id", defaultValue = "0") int id) {
+
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (id == 0) {
+			return webHelper.redirect(null, "상품번호가 없습니다.");
+		}
+
+		/** 2) 데이터 삭제하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Product input = new Product();
+		input.setId(id);
+
+		try {
+			// 데이터 삭제
+			productService.deleteProduct(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		/** 3) 페이지 이동 */
+		return webHelper.redirect(contextPath + "/manage_itemlist.do", "상품이 삭제되었습니다.");
+	}
+	
 	/** 관리자 - 인기상품목록 페이지 **/
 	@RequestMapping(value="/manage_best_itemlist.do", method=RequestMethod.GET)
 	public ModelAndView manage_best_itemlist(Model model) throws Exception {
