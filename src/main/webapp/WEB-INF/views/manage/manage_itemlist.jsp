@@ -19,7 +19,7 @@
 				<th colspan="6">타입별(분류)</th>
 				<th rowspan="2" width="70">용량(ml)</th>
 				<th width="200">원재료</th>
-				<th width="350">상품설명</th>
+				<th width="300">상품설명</th>
 				<th width="80">별점</th>
 				<th width="130">등록날짜</th>
 				<th rowspan="2" width="80">관리</th>
@@ -67,7 +67,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><img src="${contextPath}/assets/img/items/${item.img}" /></td>
+				<td width="200"><img src="${contextPath}/assets/img/items/${item.img}" /></td>
 				<td>${item.food}</td>
 				<td>${item.des2}</td>
 				<td>${item.jn_result}</td>
