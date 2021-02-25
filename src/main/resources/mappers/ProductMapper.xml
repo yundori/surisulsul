@@ -288,7 +288,12 @@
 		select p.id as id, name, count(w.p_id) as wish, count(b.p_id) as basket
 		from products p
 		left outer join wishlist w on p.id=w.p_id
-		left outer join basket b on p.id=b.p_id
+		left outer join basket b on p.id=b.p_id	
+		<where>
+		<if test="search != null and search != ''">
+				 name LIKE concat('%', #{search}, '%')
+		</if>
+		</where>
 		group by p.id
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -303,6 +308,11 @@
 		from products p
 		left outer join wishlist w on p.id=w.p_id
 		left outer join basket b on p.id=b.p_id
+		<where>
+		<if test="search != null and search != ''">
+				 name LIKE concat('%', #{search}, '%')
+		</if>
+		</where>
 		group by p.id
 		order by wish desc, basket desc, p.id asc
 		<if test="listCount > 0">

@@ -3,6 +3,7 @@ package study.spring.surisulsul.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,10 +64,12 @@ public class ManageMembersController {
 		return new ModelAndView("manage/manage_members");
 	}
 
-	/** 관리자 - 위시리스트 페이지 **/
-	@RequestMapping(value = "/manage_wishlist.do", method = RequestMethod.GET)
-	public ModelAndView manage_wishlist(Model model, HttpServletRequest request,
-			@RequestParam(value = "page", defaultValue="1") int nowPage) throws Exception {
+	/** 관리자 - 위시리스트 페이지 : 상품id순 정렬 **/
+	@RequestMapping(value = "/manage_wishlist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView manage_wishlist(Model model, HttpServletResponse response,
+			@RequestParam(value = "keyword", required=false) String search,
+			@RequestParam(value = "page", defaultValue="1") int nowPage
+			) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 15; // 한 페이지당 표시할 목록 수
@@ -74,13 +77,19 @@ public class ManageMembersController {
 
 		PageData pageData = null;
 		
-		Product p_input = new Product(); // 선택된 값을 넘겨줄 객체	
+		Product input = new Product(); // 선택된 값을 넘겨줄 객체	
 		List<Product> p_output = null;
 		boolean result; //검색 결과 존재 여부
 		String pageLink = "ById";
+		
+		//검색어 input 객체에 담기
+		if(search != null) {
+			input.setSearch(search);
+		}
+		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = productService.getProductCount(p_input);
+			totalCount = productService.getProductCount(input);
 
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
@@ -90,7 +99,7 @@ public class ManageMembersController {
 			Product.setListCount(pageData.getListCount());
 			
 			//상품 리스트 불러오기
-			p_output = productService.manage_wish_ProductList(p_input);
+			p_output = productService.manage_wish_ProductList(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,13 +116,14 @@ public class ManageMembersController {
 		model.addAttribute("output", p_output);
 		model.addAttribute("result", result);
 		model.addAttribute("pageLink", pageLink);
-
+		model.addAttribute("keyword", search);
 		return new ModelAndView("manage/manage_wishlist");
 	}
 	
 	/** 관리자 - 위시리스트 페이지 : 인기순 정렬 **/
 	@RequestMapping(value = "/manage_wishlist_asc.do", method = RequestMethod.GET)
-	public ModelAndView manage_wishlist_asc(Model model, HttpServletRequest request,
+	public ModelAndView manage_wishlist_asc(Model model, HttpServletResponse response,
+			@RequestParam(value = "keyword", required=false) String search,
 			@RequestParam(value = "page", defaultValue="1") int nowPage) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
@@ -122,13 +132,19 @@ public class ManageMembersController {
 
 		PageData pageData = null;
 		
-		Product p_input = new Product(); // 선택된 값을 넘겨줄 객체	
+		Product input = new Product(); // 선택된 값을 넘겨줄 객체	
 		List<Product> p_output = null;
 		boolean result; //검색 결과 존재 여부
 		String pageLink = "ByWish";
+		
+		//검색어 input 객체에 담기
+				if(search != null) {
+					input.setSearch(search);
+				}
+		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = productService.getProductCount(p_input);
+			totalCount = productService.getProductCount(input);
 
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
@@ -138,7 +154,7 @@ public class ManageMembersController {
 			Product.setListCount(pageData.getListCount());
 			
 			//상품 리스트 불러오기
-			p_output = productService.manage_by_wish_ProductList(p_input);
+			p_output = productService.manage_by_wish_ProductList(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -155,7 +171,7 @@ public class ManageMembersController {
 		model.addAttribute("output", p_output);
 		model.addAttribute("result", result);
 		model.addAttribute("pageLink", pageLink);
-		
+		model.addAttribute("keyword", search);
 		return new ModelAndView("manage/manage_wishlist");
 	}
 }

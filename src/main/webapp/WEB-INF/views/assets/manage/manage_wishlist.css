@@ -12,13 +12,14 @@
 }
 
 /** 검색 필드 설정 */
-.content .date_search{
-	margin-top: 10px;
-    margin-bottom: 5px;
-}
-
 .content #keyword{
 	width : 296px;
+}
+
+.search_by_name{
+	display: inline-block;
+    margin-top: 10px;
+    margin-right: 200px;
 }
 
 /**정렬 버튼 설정 */
