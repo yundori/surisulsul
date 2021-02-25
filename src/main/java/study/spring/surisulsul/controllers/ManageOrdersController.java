@@ -1,6 +1,9 @@
 package study.spring.surisulsul.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -244,9 +247,28 @@ public class ManageOrdersController {
 	}
 	
 	/** 관리자 - manage_sales 페이지 처리 */
-	@RequestMapping(value = "/manage_sales.do", method = RequestMethod.GET)
-	public ModelAndView manage_sales(Model model) throws Exception {
+	@RequestMapping(value = "/manage_sales.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView manage_sales(Model model,
+			@RequestParam(value = "day", required = false) String today) throws Exception {
+		/** 1) 파라미터 유효성 검사 */
+		if(today==null || today.equals("")) {
+			//오늘 날짜 먼저 구하기
+			Calendar date = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			today = sdf.format(date.getTime());
+		}
+				
+		// SQL에 쓰일 input 객체에 찾고자 하는 reg_date 삽입
+		Order input = new Order();
+		input.setReg_date(today);
+		
+		List<Order> dayOutput = new ArrayList<Order>();   //일일 매출을 받아올 dayOutput 리스트
+		
+		dayOutput = manageService.getOrderList(input);
+		
 
+		model.addAttribute("today", today);
+		model.addAttribute("dayOutput", dayOutput);
 		return new ModelAndView("manage/manage_sales");
 	}
 

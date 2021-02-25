@@ -4,13 +4,18 @@
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/manage/manage_orders.css?time=${currentTime}" />
-	
+
+<c:set var="gen_sum" value="0" />
+<c:set var="cash_sum" value="0" />
+<c:set var="card_sum" value="0" />
+<c:set var="unpaid_sum" value="0" />
+
 <div class="content">
     <h2>매출현황</h2>
-    <form action="" action="POST" name="sales_form" id="sales_form">
+    <form action="${pageContext.request.contextPath}/manage_sales.do" action="POST" name="sales_form" id="sales_form">
 	    <div class="sales">
 		    <span class="title"><b>일일매출</b></span>
-		    <input type="date" name="day" id="day">
+		    <input type="date" name="day" id="day" value="${today }">
 		    <label for="day">일 하루</label>
 		    <table class="manage_order_table">
 		    	<tr>
@@ -21,28 +26,44 @@
 		    		<th>카드결제</th>
 		    		<th>미수금</th>
 		    	</tr>
+		    	<%-- 조회 결과에 따른 반복 처리 --%>
+		    	<c:forEach var="item" items="${dayOutput }" varStatus="status">
 		    	<tr>
-		    		<td>item.id</td>
-		    		<td>item.b_name</td>
-		    		<td class="price">item.price</td>
-		    		<td class="price">item.price</td>
-		    		<td class="price">0</td>
-		    		<td class="unpaid">item.price</td>
+		    		<td>${item.o_id }</td>
+		    		<td>${item.b_name }</td>
+		    		<td class="price">
+		    			<fmt:formatNumber value="${item.price }" pattern="#,###"/>
+		    			<c:set var="gen_sum" value="${gen_sum+item.price }"/>
+		    		</td>
+		    		<c:choose>
+		    			<c:when test="${item.payment=='cash' }">
+		    				<td class='price'><fmt:formatNumber value="${item.price }" pattern="#,###"/></td>
+		    				<td class='price'>0</td>
+		    				<c:set var="cash_sum" value="${cash_sum+item.price }"/>
+		    			</c:when>
+		    			<c:otherwise>
+		    				<td class='price'>0</td>
+		    				<td class='price'><fmt:formatNumber value="${item.price }" pattern="#,###"/></td>
+		    				<c:set var="card_sum" value="${card_sum+item.price }"/>
+		    			</c:otherwise>
+		    		</c:choose>
+		    		<td class="unpaid">
+		    			<c:choose>
+		    				<c:when test="${item.pay_result=='N' }">
+		    					<fmt:formatNumber value="${item.price }" pattern="#,###"/>
+		    					<c:set var="unpaid_sum" value="${unpaid_sum+item.price }"/>
+		    				</c:when>
+		    				<c:otherwise>0</c:otherwise>
+		    			</c:choose>
+		    		</td>
 		    	</tr>
-		    	<tr>
-		    		<td>item.id2</td>
-		    		<td>item.b_name</td>
-		    		<td class="price">item.price2</td>
-		    		<td class="price">0</td>
-		    		<td class="price">item.price2</td>
-		    		<td class="unpaid">0</td>
-		    	</tr>
+		    	</c:forEach>
 		    	<tr>
 		    		<td colspan="2"><b>합계</b></td>
-		    		<td class="price"><b>item.sum</b></td>
-		    		<td class="price"><b>item.sum2</b></td>
-		    		<td class="price"><b>item.sum3</b></td>
-		    		<td class="unpaid"><b>item.unpaidsum</b></td>
+		    		<td class="price"><b><fmt:formatNumber value="${gen_sum }" pattern="#,###"/></b></td>
+		    		<td class="price"><b><fmt:formatNumber value="${cash_sum }" pattern="#,###"/></b></td>
+		    		<td class="price"><b><fmt:formatNumber value="${card_sum }" pattern="#,###"/></b></td>
+		    		<td class="unpaid"><b><fmt:formatNumber value="${unpaid_sum }" pattern="#,###"/></b></td>
 		    	</tr>
 		    </table>
 	    </div>
