@@ -9,7 +9,7 @@
     <h1>공지사항 & FAQ 관리 </h1>
     <br />
     <br />
-    <input type="button" value="등록" onclick="javascript:open_cs_add_Pop();" class="cs_add"/>
+    <input type="submit" value="등록" onclick="javascript:open_cs_add_Pop();" class="cs_add"/>
     <br />
     <form name="m_cscenter_form" id="m_cscenter_form" method="post" action="${pageContext.request.contextPath }/manage/manage_cscenter_delete.do">
     	<table class="manage_cs_table">
@@ -22,32 +22,35 @@
     			<th width=160>수정날짜</th>
     			<th width=60>관리</th>
     		</tr>
-    		<tr>
+    		<c:choose>
+	    		<c:when test="${output == null}">
+	    			<h1>등록된 글이 없습니다.</h1>
+	    		</c:when>
+	    		<c:otherwise>
+	    		<c:forEach var="item" items="${output}" varStatus="status">
+	    			<tr>
     			<td>
-    				<input type="checkbox" name="cscenter" class="ab" value="">
+    				<input type="checkbox" name="cscenter" class="ab" value="${output.id}">
     			</td>
-    			<td>공지사항</td>
+    			<c:choose>
+					<c:when test="${output.type == A}">
+					알립니다
+					</c:when>
+					<c:when test="${output.type == B}">
+					자주 묻는 질문
+					</c:when>
+				</c:choose>
     			<td>관리자</td>
-    			<td>수리술술은 언제나 무료배송 !</td>
-    			<td>2021-02-18 00:00:00</td>
-    			<td>2021-02-18 00:00:00</td>
+    			<td>${output.title}</td>
+    			<td>${output.reg_date}</td>
+    			<td>${output.edit_date}</td>
     			<td>
     				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
     			</td>
     		</tr>
-    		<tr>
-    			<td>
-    				<input type="checkbox" name="cscenter" class="ab" value="">
-    			</td>
-    			<td>FAQ</td>
-    			<td>관리자</td>
-    			<td>대량 주문도 가능한가요?</td>
-    			<td>2021-02-18 00:00:00</td>
-    			<td>2021-02-18 00:00:00</td>
-    			<td>
-    				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
-    			</td>
-    		</tr>
+	    		</c:forEach>
+	    		</c:otherwise>
+    		</c:choose>
     	</table>
     	<input type="submit" value="선택 삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
     </form>
@@ -62,6 +65,7 @@
 
 //팝업열기
 function open_cs_add_Pop() {
+	window.name = "manage_cscenter"
 	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_add.do','_blank',
 					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 }

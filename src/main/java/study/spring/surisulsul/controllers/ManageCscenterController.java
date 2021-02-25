@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Cscenter;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.CscenterService;
 
@@ -23,6 +25,10 @@ public class ManageCscenterController {
 	/** WebHelper 주입 */
 	@Autowired
 	WebHelper webHelper;
+	
+	/** RegexHelper 주입 */
+	@Autowired
+	RegexHelper regexHelper;
 	
 	@Autowired
 	CscenterService cscenterService;
@@ -40,9 +46,8 @@ public class ManageCscenterController {
 	}
 	
 	/** 알립니다 & FAQ insert  */
-	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.GET)
-	public ModelAndView cecenter_add(Model model,
-			@RequestParam(value="id", defaultValue="0") int id,
+	@RequestMapping(value="/manage_cscenter_add.do", method=RequestMethod.POST)
+	public ModelAndView cscenter_add(Model model,
 			@RequestParam(value="type", required = false) String type,
 			@RequestParam(value="title", required = false) String title,
 			@RequestParam(value="content", required = false) String content,
@@ -50,10 +55,38 @@ public class ManageCscenterController {
 			@RequestParam(value="edit_date", required = false) String edit_date)  
 	
 	{
+		/** 파라미터 유효성 검사 **/
+		if (type.equals("0")) {
+			return webHelper.redirect(null, "분류를 선택하세요.");
+		}
+		
+		if (title.equals("")) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (content.equals("")) {
+			return webHelper.redirect(null, "내용을 입력하세요.");
+		}
+		
+		/** 데이터 저장하기 */
+		// 저장할 값을 beans에 담는다.
+		Cscenter input = new Cscenter();
+		input.setType(type);
+		input.setTitle(title);
+		input.setContent(content);
+		input.setReg_date(reg_date);
+		input.setEdit_date(edit_date);
+		
+		Cscenter output = null;
+		
+		try {
+			cscenterService.addCscenter(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
 		
 		
-		
-		
+		model.addAttribute("output", output);
 		return new ModelAndView("/manage/manage_cscenter_add");
 	}
 	
