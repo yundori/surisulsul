@@ -56,10 +56,10 @@
 									<!--  <input type="button" value="삭제" class="cs_delete" /> -->
 									</td>
 							</tr>
-			</tbody>
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
+			</tbody>
 		</table>
 	</form>
 
