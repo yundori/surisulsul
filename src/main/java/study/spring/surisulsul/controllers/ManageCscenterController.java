@@ -3,6 +3,7 @@ package study.spring.surisulsul.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -122,8 +123,8 @@ public class ManageCscenterController {
 	}
 	
 	/** 알립니다 & FAQ 삭제 */
-	@RequestMapping(value="/manage_cscenter_delete_ok.do", method = RequestMethod.POST)
-	public ModelAndView cscenter_delete(Model model,
+	@RequestMapping(value="/manage_cscenter_delete_ok.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView cscenter_delete(Model model, HttpServletResponse response,
 			@RequestParam(value="id", defaultValue = "0") int id)  {
 		
 		if (id == 0) {
