@@ -2,7 +2,9 @@ package study.spring.surisulsul.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +20,7 @@ import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Product;
+import study.spring.surisulsul.model.Sales;
 import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.SalesService;
 
@@ -45,10 +48,19 @@ public class ManageItemController {
 	
 	/** 관리자 - 상품목록 페이지 **/
 	@RequestMapping(value="/manage_itemlist.do", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView manage_itemlist(Model model, HttpServletResponse response,
+	public ModelAndView manage_itemlist(Model model, HttpServletResponse response,HttpServletRequest request,
 			@RequestParam(value = "item_search", required=false) String item_search,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
+				
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 5; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
@@ -90,8 +102,16 @@ public class ManageItemController {
 	
 	/** 관리자 - 상품등록 페이지 **/
 	@RequestMapping(value="/manage_itemadd.do", method=RequestMethod.GET)
-	public ModelAndView manage_itemadd(Model model) throws Exception {
+	public ModelAndView manage_itemadd(Model model, HttpServletRequest request) throws Exception {
 		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+						
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		return new ModelAndView("manage/manage_itemadd");
 	}
 	
@@ -201,8 +221,12 @@ public class ManageItemController {
 		input.setDes2(des2);
 		input.setJn_result(jn_result);
 		
+		Sales input_sales = new Sales();
+		
 		try {
 			productService.addProduct(input);
+			input_sales.setP_id(input.getId());
+			salesService.addSales(input_sales);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -213,8 +237,17 @@ public class ManageItemController {
 	
 	/** 관리자 - 상품수정 페이지 **/
 	@RequestMapping(value="/manage_itemedit.do", method=RequestMethod.GET)
-	public ModelAndView manage_itemedit(Model model,
+	public ModelAndView manage_itemedit(Model model, HttpServletRequest request,
 			@RequestParam(value = "item_id", defaultValue = "0") int item_id) throws Exception {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		
 		/** 파라미터 유효성 검사 **/
 		if (item_id == 0) {
@@ -361,9 +394,18 @@ public class ManageItemController {
 	
 	/** 삭제 처리 페이지 */
 	@RequestMapping(value = "/manage_itemdelete_ok.do", method = RequestMethod.GET)
-	public ModelAndView delete_ok(Model model,
+	public ModelAndView delete_ok(Model model, HttpServletRequest request,
 			@RequestParam(value = "item_id", defaultValue = "0") int id) {
-
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
+				
 		/** 1) 파라미터 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (id == 0) {
