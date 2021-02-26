@@ -79,6 +79,23 @@
 			limit #{offset}, #{listCount}
 		</if>
 	</select>
+	
+	<!-- (관리자용)탈퇴회원 다중행 조회를 위한 기능 정의 -->
+	<select id="selectOutList"
+		parameterType="study.spring.surisulsul.model.Member"
+		resultMap="memberMap">
+		select * from members
+		<where>
+		is_out='Y'
+			<if test="search!=null and search!=''">
+			AND	name like concat('%',#{search},'%')
+			</if>
+		</where>
+		order by id desc
+		<if test="listCount>0">
+			limit #{offset}, #{listCount}
+		</if>
+	</select>
 
 	<!-- 회원가입(데이터 저장)을 위한 기능 정의 -->
 	<insert id="addMember"
@@ -129,13 +146,19 @@
 	<!-- 데이터 수 조회하기 -->
 	<!-- 조건에 맞는 데이터 수를 집계해 int 타입으로 반환한다. count, max, min, sum, avg 함수를 사용한 
 		경우 Mapper에서는 resultMap이 아닌 resultType으로 반환한다. -->
+		
+	<!-- 전체회원 수 조회하기(관리자) -->
 	<select id="countMembers"
 		parameterType="study.spring.surisulsul.model.Member" resultType="int">
 		SELECT count(*) FROM members 
+	</select>
+	
+	<!-- 탈퇴회원 수 조회하기(관리자) -->
+	<select id="countOutMembers"
+		parameterType="study.spring.surisulsul.model.Member" resultType="int">
+		SELECT count(*) FROM members 
 		<where>
-			<if test="search != null and search != ''">
-				name LIKE concat('%', #{search}, '%')
-			</if>
+		is_out = 'Y'
 		</where>
 	</select>
 

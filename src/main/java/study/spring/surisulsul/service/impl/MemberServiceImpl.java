@@ -111,7 +111,7 @@ public class MemberServiceImpl implements MemberService {
 		try {
 			result = sqlSession.selectList("MemberMapper.selectList", input);
 
-			if (result == null) {
+			if (result.isEmpty()) {
 				throw new NullPointerException("result=null");
 			}
 		} catch (NullPointerException e) {
@@ -342,6 +342,48 @@ public class MemberServiceImpl implements MemberService {
 			result = sqlSession.selectOne("MemberMapper.countMembers", input);
 
 			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	/** 탈퇴 회원 수 조회(관리자용)*/
+	@Override
+	public int getOutMemberCount(Member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.countOutMembers", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	/** 탈퇴 회원 목록 조회(관리자용)*/
+	@Override
+	public List<Member> getOutMemberList(Member input) throws Exception {
+		List<Member> result = null;
+
+		try {
+			result = sqlSession.selectList("MemberMapper.selectOutList", input);
+
+			if (result.isEmpty()) {
 				throw new NullPointerException("result=null");
 			}
 		} catch (NullPointerException e) {

@@ -7,22 +7,35 @@
 
 <div class="content">
 	<h2>회원관리</h2>
-	<a href="#" class="manage_members_all"> <span class="btn_total">전체
-	</span> <span class="btn_num">${totalCount }</span>
-	</a> <a href="#" class="manage_members_out"> <span class="btn_total">탈퇴
-	</span> <span class="btn_num">0,000명</span>
+	<form method="get"
+		action="${pageContext.request.contextPath }/manage_members.do" style="
+    display: inline-block;">
+		<input type="hidden" name="sort" id="all" value="all" />
+	<button type="submit" class="manage_members_all"> <span class="btn_total">전체
+	</span> <span class="btn_num">${totalCount }명</span>
+	</button>
+	</form>
+	
+	<form method="get"
+		action="${pageContext.request.contextPath }/manage_members.do" style="
+    display: inline-block;">
+		<input type="hidden" name="sort" id="out" value="out" />
+	<button type="submit" class="manage_members_out"> <span class="btn_total">탈퇴
+	</span> <span class="btn_num">${outCount }명</span>
 	</a>
-
+	</button>
+	</form>
+	
 	<form method="get"
 		action="${pageContext.request.contextPath }/manage_members.do">
-		<input type="search" name="keyword" id="keyword" placeholder="회원명 검색"
-			value="${keyword }" />
+		<input type="hidden" name="sort" id="out" value="${sort }" />
+		<input type="search" name="keyword" id="keyword" placeholder="회원명 검색" value="${keyword }" />
 		<button type="submit">검색</button>
 	</form>
 	
 	<form method="post"
 			action="${pageContext.request.contextPath }/mypage/delete_ok.do"
-			name="review_form" id="review_form">
+			name="mng_mem_form" id="mng_mem_form">
 
 			
 	<div class="mem_table">
