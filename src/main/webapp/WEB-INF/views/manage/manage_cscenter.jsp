@@ -13,29 +13,34 @@
     <br />
     <form name="m_cscenter_form" id="m_cscenter_form" method="post">
     	<table class="manage_cs_table">
+    	<thead>
     		<tr>
-    			<th>번호</th>
+    			<th width=60>번호</th>
     			<th>분류</th>
     			<th>이름</th>
     			<th>제목</th>
-    			<th width=160>등록날짜</th>
-    			<th width=160>수정날짜</th>
-    			<th width=60>관리</th>
+    			<th width=150>등록날짜</th>
+    			<th width=150>수정날짜</th>
+    			<th width=130>관리</th>
     		</tr>
+    		</thead>
+    		<tbody>
     		<c:choose>
 	    		<c:when test="${output == null}">
+	    		<tr colspan="7">
 	    			<h1>등록된 글이 없습니다.</h1>
+	    		</tr>
 	    		</c:when>
 	    		<c:otherwise>
-	    		<c:forEach var="item" items="${output}" varStatus="status">
+	    		<c:forEach var="output" items="${output}" varStatus="status">
 	    			<tr>
     				<td>${output.id}</td>
     			<c:choose>
-					<c:when test="${output.type == A}">
-					알립니다
+					<c:when test="${output.type == 'A'}">
+					<td>알립니다</td>
 					</c:when>
-					<c:when test="${output.type == B}">
-					자주 묻는 질문
+					<c:when test="${output.type == 'B'}">
+					<td>자주 묻는 질문</td>
 					</c:when>
 				</c:choose>
     			<td>관리자</td>
@@ -43,10 +48,11 @@
     			<td>${output.reg_date}</td>
     			<td>${output.edit_date}</td>
     			<td>
-    				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
+    				<input type="submit" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
     				<input type="submit" value="삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
     			</td>
     		</tr>
+    		</tbody>
 	    		</c:forEach>
 	    		</c:otherwise>
     		</c:choose>
