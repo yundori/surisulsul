@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.model.Sales;
 import study.spring.surisulsul.service.SalesService;
 
