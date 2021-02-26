@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Member;
 import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.model.Wishlist;
 import study.spring.surisulsul.service.MemberService;
@@ -51,42 +52,82 @@ public class ManageMembersController {
 	String contextPath;
 
 	/** 관리자 - 회원목록 페이지 **/
-	@RequestMapping(value = "/manage_members.do", method = RequestMethod.GET)
-	public ModelAndView manage_members(Model model, HttpServletRequest request,
-			@RequestParam(value = "page", defaultValue="1") int nowPage) throws Exception {
+	@RequestMapping(value = "/manage_members.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView manage_members(Model model, HttpServletResponse response,
+			@RequestParam(value = "keyword", required = false) String search,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		PageData pageData = null;
+		Member input = new Member();
+		List<Member> output = null;
+
+		boolean result; // 검색 결과 존재 여부
+
+		// 검색어 input 객체에 담기
+		if (search != null) {
+			input.setSearch(search);
+		}
+
+		try {
+			totalCount = memberService.getMemberCount(input);
+
+			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Member.setOffset(pageData.getOffset());
+			Member.setListCount(pageData.getListCount());
+
+			// 상품 리스트 불러오기
+			output = memberService.getMemberList(input);
+			System.out.println(output);
+			System.out.println("************************************");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// 검색 조건
+		if (output == null) {
+			result = false;
+		} else {
+			result = true;
+		}
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("pageData", pageData);
+		model.addAttribute("output", output);
+		model.addAttribute("result", result);
+		model.addAttribute("keyword", search);
 
 		return new ModelAndView("manage/manage_members");
 	}
 
 	/** 관리자 - 위시리스트 페이지 : 상품id순 정렬 **/
-	@RequestMapping(value = "/manage_wishlist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/manage_wishlist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView manage_wishlist(Model model, HttpServletResponse response,
-			@RequestParam(value = "keyword", required=false) String search,
-			@RequestParam(value = "page", defaultValue="1") int nowPage
-			) throws Exception {
+			@RequestParam(value = "keyword", required = false) String search,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 15; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		PageData pageData = null;
-		
-		Product input = new Product(); // 선택된 값을 넘겨줄 객체	
+
+		Product input = new Product(); // 선택된 값을 넘겨줄 객체
 		List<Product> p_output = null;
-		boolean result; //검색 결과 존재 여부
+		boolean result; // 검색 결과 존재 여부
 		String pageLink = "ById";
-		
-		//검색어 input 객체에 담기
-		if(search != null) {
+
+		// 검색어 input 객체에 담기
+		if (search != null) {
 			input.setSearch(search);
 		}
-		
+
 		try {
 			// 전체 게시글 수 조회
 			totalCount = productService.getProductCount(input);
@@ -97,20 +138,20 @@ public class ManageMembersController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
-			
-			//상품 리스트 불러오기
+
+			// 상품 리스트 불러오기
 			p_output = productService.manage_wish_ProductList(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		//검색 조건
-		if(p_output == null) {
+
+		// 검색 조건
+		if (p_output == null) {
 			result = false;
-		}else {
+		} else {
 			result = true;
 		}
-		
+
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output", p_output);
@@ -119,29 +160,29 @@ public class ManageMembersController {
 		model.addAttribute("keyword", search);
 		return new ModelAndView("manage/manage_wishlist");
 	}
-	
+
 	/** 관리자 - 위시리스트 페이지 : 인기순 정렬 **/
 	@RequestMapping(value = "/manage_wishlist_asc.do", method = RequestMethod.GET)
 	public ModelAndView manage_wishlist_asc(Model model, HttpServletResponse response,
-			@RequestParam(value = "keyword", required=false) String search,
-			@RequestParam(value = "page", defaultValue="1") int nowPage) throws Exception {
+			@RequestParam(value = "keyword", required = false) String search,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 15; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		PageData pageData = null;
-		
-		Product input = new Product(); // 선택된 값을 넘겨줄 객체	
+
+		Product input = new Product(); // 선택된 값을 넘겨줄 객체
 		List<Product> p_output = null;
-		boolean result; //검색 결과 존재 여부
+		boolean result; // 검색 결과 존재 여부
 		String pageLink = "ByWish";
-		
-		//검색어 input 객체에 담기
-				if(search != null) {
-					input.setSearch(search);
-				}
-		
+
+		// 검색어 input 객체에 담기
+		if (search != null) {
+			input.setSearch(search);
+		}
+
 		try {
 			// 전체 게시글 수 조회
 			totalCount = productService.getProductCount(input);
@@ -152,20 +193,20 @@ public class ManageMembersController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Product.setOffset(pageData.getOffset());
 			Product.setListCount(pageData.getListCount());
-			
-			//상품 리스트 불러오기
+
+			// 상품 리스트 불러오기
 			p_output = productService.manage_by_wish_ProductList(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		//검색 조건
-		if(p_output == null) {
+
+		// 검색 조건
+		if (p_output == null) {
 			result = false;
-		}else {
+		} else {
 			result = true;
 		}
-		
+
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output", p_output);

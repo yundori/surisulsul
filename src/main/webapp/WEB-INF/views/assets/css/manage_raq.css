@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/* 후기 관리 페이지 css */
+.content {
+	width:80%;
+	padding-top:120px;
+	margin: auto;
+}
+
+.content h1 {
+	
+	font-size:1.5em;
+	font-weight:bold;
+	letter-spacing:0.2em;
+}
+
+.item_reviews {
+	width: 100%;
+	height: auto;
+	margin: 100px auto;
+	padding: auto;
+	margin-top: 20px;
+}
+
+.item_reviews .title {
+	width: auto;
+	height: 30px;
+	margin: 0;
+	margin-bottom: 30px;
+	padding: 0;
+	text-align: left;
+	line-height: 30px;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.item_reviews .title>span {
+	margin-left: 10px;
+	color: #bbbbbb;
+	font-size: 15px;
+}
+
+.item_reviews table {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	border:1px solid #aaa;
+}
+
+.item_reviews tr {
+	border-top: 1px solid #cccccc;
+	position:relative;
+}
+
+.item_reviews th {
+	line-height:2;
+	border: 1px solid #aaa;
+	background-color:#6a60a9;
+	color:#fff;
+	font-weight:normal;
+	font-size:14px;
+	vertical-align: middle;
+}
+
+.item_reviews td {
+	position : relative;
+	border: 1px solid #ddd;
+}
+
+.item_reviews .ab {
+	text-align:center;
+	position:relative;
+	top:110px;
+	margin: 0px 10px;
+}
+
+ /* 선택한 상품 썸네일 설정
+ * --------------------- */
+.item_reviews .img_area {
+	width: 20%;
+	height: 200px;
+	padding: 15px 10px;
+	margin: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.item_reviews .review_img {
+	width: 170px;
+	height: 200px;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+.item_reviews .content_area {
+	width: 60%;
+	padding: 15px 50px;
+	margin: 0;
+	vertical-align: middle;
+}
+
+.item_reviews .content_title {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.item_reviews .content_item {
+	font-size: 16px;
+	margin-bottom: 20px;
+	color: #6a60a9;
+}
+
+.item_reviews .content_text {
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.item_reviews .userinfo_area {
+	width: 20%;
+	padding: 15px 10px;
+	margin: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.user_id_filter, .reivew_date, .review_rating_text, .review_rating {
+	font-size: 16px;
+	margin-bottom: 10px;
+}

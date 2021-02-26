@@ -21,6 +21,15 @@
 	font-weight: bold;
 }
 
+.search_form {
+	display:inline-block;
+}
+
+.search_area {
+	margin-bottom: 30px;
+	margin-left: 50px;
+}
+
 .newitem_add {
 	width: 100px;
 	height: 35px;
@@ -80,4 +89,24 @@
 	line-height: 30px;
 	cursor: pointer;
 	font-size:14px;
+}
+
+/* 검색조건에 맞는 데이터가 없는 경우 */
+
+.select_none {
+	width: 100%;
+	height: auto;
+	margin: 30px auto;
+	padding: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.select_none>h1 {
+	width: auto;
+	height: auto;
+	margin: 30px auto;
+	padding: auto;
+	font-size: 30px;
+	color: #7C59B6;
 }

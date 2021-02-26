@@ -252,21 +252,25 @@ public class RAQRestController {
 	/** 리뷰 삭제에 대한 action 페이지 */
 	@RequestMapping(value = "/review", method = RequestMethod.DELETE)
 	public Map<String, Object> delete_review(
-			@RequestParam(value = "id", defaultValue = "0") int id) {
+			@RequestParam(value = "cs_review", required=false) List<String> chkItems) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-		// 필수 검사 (리뷰가 존재하는지)
-		if (id == 0) { return webHelper.getJsonWarning("잘못된 접근입니다."); }
+		// 필수 검사 (선택한 항목이 존재하는지)
+		if (chkItems==null) { return webHelper.getJsonWarning("삭제할 후기를 선택해주세요."); }
 		
 		/** 2) 데이터 삭제하기 */
-		// 데이터 삭제에 필요한 조건값을 Beans에 저장
-		Review input = new Review();
-		input.setId(id);
-		
-		try {
-			reviewAndQnaService.deleteReview(input);
-		} catch (Exception e){
-			return webHelper.getJsonError(e.getLocalizedMessage());
+		// 데이터 삭제에 필요한 변수 생성
+		int reviewId = 0;
+		for(int i=0; i<chkItems.size(); i++) {
+			// 데이터 삭제에 필요한 조건값을 Beans에 저장
+			Review input = new Review();
+			reviewId = Integer.parseInt(chkItems.get(i));
+			input.setId(reviewId);
+				
+			//데이터 삭제
+			try {
+				reviewAndQnaService.deleteReview(input);
+			} catch (Exception e) { e.printStackTrace(); }
 		}
 		
 		/** 3) 결과를 확인하기 위한 JSON 출력 */

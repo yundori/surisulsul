@@ -21,8 +21,9 @@
 		<result property="reg_date" column="reg_date" />
 		<result property="edit_date" column="edit_date" />
 		<result property="out_date" column="out_date" />
+		<result property="age" column="age" />
+		<result property="search" column="search" />
 	</resultMap>
-
 
 	<!-- 회원정보 조회(단일행 조회)를 위한 기능 정의 -->
 	<select id="selectMember"
@@ -69,8 +70,8 @@
 		resultMap="memberMap">
 		select * from members
 		<where>
-			<if test="name!=null and name!=''">
-				name like concat('%',#{name},'%')
+			<if test="search!=null and search!=''">
+				name like concat('%',#{search},'%')
 			</if>
 		</where>
 		order by id desc
@@ -96,6 +97,13 @@
 		#{birthdate}, null,
 		'N', now(), now(), null);
 	</insert>
+	
+	<!-- 회원가입 시 가입자 연령 유효성 검사를 위한 기능 정의 -->
+	<select id="chkAge"
+		parameterType="study.spring.surisulsul.model.Member"
+		resultType="int">
+		SELECT TIMESTAMPDIFF(YEAR, #{birthdate}, now()) as age;
+	</select>
 
 	<!-- 회원정보 수정 및 비밀번호 재발급(데이터 갱신)을 위한 기능 정의 -->
 	<update id="updateMember"
@@ -121,6 +129,15 @@
 	<!-- 데이터 수 조회하기 -->
 	<!-- 조건에 맞는 데이터 수를 집계해 int 타입으로 반환한다. count, max, min, sum, avg 함수를 사용한 
 		경우 Mapper에서는 resultMap이 아닌 resultType으로 반환한다. -->
+	<select id="countMembers"
+		parameterType="study.spring.surisulsul.model.Member" resultType="int">
+		SELECT count(*) FROM members 
+		<where>
+			<if test="search != null and search != ''">
+				name LIKE concat('%', #{search}, '%')
+			</if>
+		</where>
+	</select>
 
 	<!-- 회원가입 시 중복되는 이메일인지 조회하기 -->
 	<select id="chkEmailJoin"

@@ -6,9 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="/WEB-INF/views/_inc/manage_header.jsp"%>
 
-<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/item_reviews,question.css?time=${currentTime}" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/assets/css/manage_raq.css?time=${currentTime}" />
+ <link rel="stylesheet" type="text/css" href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 <div class="content">
-	<h1>공지사항 & FAQ 관리</h1>
+	<h1>소비자 후기 관리</h1>
 	<br />
 	<br />
 	<br />
@@ -25,7 +26,7 @@
 	</form>
 	
 	<%-- 조회 결과 --%>
-	<form name="m_review_form" id="m_review_form" action="/review">
+	<form name="m_review_form" class="item_reviews" id="m_review_form" action="${pageContext.request.contextPath}/review">
 		<table class="manage_review_table">
 			<c:choose>
 			<%-- 조회 결과가 없는 경우 --%>
@@ -53,9 +54,9 @@
 						<c:set var="p_name" value="${item.p_name}"/>
 						<c:set var="m_name" value="${item.m_name}"/>
 					<tr>
-						<td><input type="checkbox" name="cscenter" class="ab" value=""></td>
+						<td><input type="checkbox" name="cs_review" class="ab" value="${item.id}"></td>
 						<td class="img_area">
-							<img class="review_img" src="${contextPath}/surisulsul/assets/img/${item.rev_img}" />
+						<img class="review_img" src="${contextPath}/surisulsul/assets/upload/${item.rev_img}" />
 						</td>
 						<td class="content_area">
 							<h4 class="content_item">${item.p_name}</h4>
@@ -73,6 +74,7 @@
 					</tr>
 					</c:forEach>
 				</table>
+				<input type="submit" value="삭제" onclick="" class="review_delete" />
 				<div class="pageNumber">
 				<!-- 페이지 번호 구현 -->
 				<%-- 이전 그룹에 대한 링크 --%>
@@ -136,5 +138,44 @@
 		</c:choose>
 		</table>
 	</form>
-	<input type="submit" value="삭제" onclick="" class="review_delete" />
+	
 </div>
+<!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+    <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+    <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function() {
+    // #m_review_form에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+    $("#m_review_form").ajaxForm({
+        // 전송 메서드 지정
+        method: "DELETE",
+        // 서버에서 200 응답을 전달한 경우 실행됨
+        success: function(json) {
+            console.log(json);
+            
+            // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.                
+            if (json.rt == "OK") {
+            	swal({
+                    title: "후기 관리",
+                    text: "선택하신 후기가 삭제되었습니다.",
+                    type: "success"
+                }).then((value)=>{
+                	window.location = '${pageContext.request.contextPath}/manage_review.do';
+                	                	
+                });                   
+            } else {
+            	swal({
+                    title: "후기 삭제",
+                    text: "후기 삭제에 실패했습니다. 다시 시도해주세요.",
+                    type: "error"
+                });
+            }
+        }
+    });
+});
+</script>

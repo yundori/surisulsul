@@ -109,7 +109,7 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> result = null;
 
 		try {
-			result = sqlSession.selectList("MemberMapper.memberReviewList", input);
+			result = sqlSession.selectList("MemberMapper.selectList", input);
 
 			if (result == null) {
 				throw new NullPointerException("result=null");
@@ -139,6 +139,20 @@ public class MemberServiceImpl implements MemberService {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("회원가입이 완료되지 않았습니다. 다시 수행해 주세요.");
 		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("회원가입에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/** 회원가입 시 나이 검사 */
+	@Override
+	public int chkAge(Member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.chkAge", input);
+		}  catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("회원가입에 실패했습니다.");
 		}
@@ -315,6 +329,27 @@ public class MemberServiceImpl implements MemberService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
+	}
+	/** 회원 수 조회(관리자용)*/
+	@Override
+	public int getMemberCount(Member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.countMembers", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 
 		return result;

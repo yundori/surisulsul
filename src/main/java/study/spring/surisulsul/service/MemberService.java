@@ -20,8 +20,14 @@ public interface MemberService {
 	// 회원 목록 조회 (관리자용)
 	public List<Member> getMemberList(Member input) throws Exception;
 	
+	// 회원 수 조회 (관리자용)
+	public int getMemberCount(Member input) throws Exception;
+	
 	// 회원가입
 	public int addMember(Member input) throws Exception;
+	
+	// 회원가입 시 나이 검사
+	public int chkAge(Member input) throws Exception;
 	
 	// 회원정보 수정 및 비밀번호 재발급
 	public int editMember(Member input) throws Exception;
