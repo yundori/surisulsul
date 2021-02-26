@@ -11,10 +11,10 @@
     <br />
     <input type="submit" value="등록" onclick="javascript:open_cs_add_Pop();" class="cs_add"/>
     <br />
-    <form name="m_cscenter_form" id="m_cscenter_form" method="post" action="${pageContext.request.contextPath }/manage/manage_cscenter_delete.do">
+    <form name="m_cscenter_form" id="m_cscenter_form" method="post">
     	<table class="manage_cs_table">
     		<tr>
-    			<th><input type="checkbox" name="all" class="check_all"></th>
+    			<th>번호</th>
     			<th>분류</th>
     			<th>이름</th>
     			<th>제목</th>
@@ -29,9 +29,7 @@
 	    		<c:otherwise>
 	    		<c:forEach var="item" items="${output}" varStatus="status">
 	    			<tr>
-    			<td>
-    				<input type="checkbox" name="cscenter" class="ab" value="${output.id}">
-    			</td>
+    				<td>${output.id}</td>
     			<c:choose>
 					<c:when test="${output.type == A}">
 					알립니다
@@ -46,13 +44,13 @@
     			<td>${output.edit_date}</td>
     			<td>
     				<input type="button" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
+    				<input type="submit" value="삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
     			</td>
     		</tr>
 	    		</c:forEach>
 	    		</c:otherwise>
     		</c:choose>
     	</table>
-    	<input type="submit" value="선택 삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
     </form>
     
     

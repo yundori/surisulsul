@@ -63,6 +63,28 @@ public class CscenterServiceImpl implements CscenterService {
 
 		return result;
 	}
+	
+	/** 알립니다 & FAQ 목록 조회 -> 관리자 */
+	@Override
+	public List<Cscenter> getmanageList() throws Exception {
+		List<Cscenter> result = null;
+
+		try {
+			result = sqlSession.selectList("CscenterMapper.selectListmanage");
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 공지사항/FAQ 게시글 작성 */
 	@Override
