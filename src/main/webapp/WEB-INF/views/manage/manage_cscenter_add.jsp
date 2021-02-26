@@ -77,15 +77,7 @@
 	<script type="text/javascript">
 		// 등록하기 누르면 -> 입력 값이 cscenter에 들어가고, 내용이 추가됨
 		// 내용을 다 입력하기 전에 등록하기를 누르면 , alert -> "입력하지 않은 값이 존재합니다. 다시 한번 확인해주세요."
-		window.onload = function() {
-			var cs_add_btn = document.getElementById('cs_add_btn');
-			
-			cs_add_btn onclick = function() {
-				document.form_cs.target = opener.name; // 호출하고자하는 부모창의 이름
-				document.form_cs.submit(); // 폼 전송
-				self.close(); //창 닫기 
-			}
-		};
+		
 
 
 		$('.write-content').keyup(function(e) {

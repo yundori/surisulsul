@@ -35,11 +35,11 @@
 	font-size: 15px;
 }
 
-.edit_button {
+.edit_button, .cs_delete {
 	border:none;
 	border-radius: 5px;
 	padding:5px;
-	margin: 5px 10px;
+	margin: 5px 5px;
 	background-color:#fbd14b;
 	font-size: 15px;
 	letter-spacing: 2px;
@@ -48,10 +48,7 @@
 	margin-bottom: 10px;
 }
 
-.cs_delete {
-	margin-top: 10px;
-}
-.cs_delete, .cs_add {
+.cs_add {
 	float: right;
 	border:none;
 	border-radius: 5px;
