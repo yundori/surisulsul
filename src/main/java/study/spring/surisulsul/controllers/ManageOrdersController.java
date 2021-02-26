@@ -3,10 +3,10 @@ package study.spring.surisulsul.controllers;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.service.ManageOrdersService;
@@ -42,11 +41,19 @@ public class ManageOrdersController {
 
 	/** 관리자 - manage_orders 페이지 처리 */
 	@RequestMapping(value = "/manage_orders.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView manage_orders(Model model,
+	public ModelAndView manage_orders(Model model, HttpServletRequest request,
 			@RequestParam(value = "order_status", required = false) String order_status,
 			@RequestParam(value = "pay_method", required = false) String pay_method,
 			@RequestParam(value = "from_date", required = false) String from_date,
 			@RequestParam(value = "to_date", required = false) String to_date)throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		
 		Order input = new Order();
 		List<Order> output = new ArrayList<Order>();
@@ -111,8 +118,16 @@ public class ManageOrdersController {
 	
 	/** 관리자 - manage_order_details 페이지 처리 */
 	@RequestMapping(value = "/manage_order_details.do", method = RequestMethod.GET)
-	public ModelAndView order_details(Model model,
+	public ModelAndView order_details(Model model, HttpServletRequest request,
 			@RequestParam(value="o_id", required = true) int o_id) throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		
 		Order input = new Order();
 		input.setO_id(o_id);
@@ -139,10 +154,18 @@ public class ManageOrdersController {
 	
 	/** 관리자 - manage_order_details 상태 변경 UPDATE 처리 */
 	@RequestMapping(value = "/update_single.do", method = RequestMethod.GET)
-	public ModelAndView updateSingleOrder(Model model,
+	public ModelAndView updateSingleOrder(Model model, HttpServletRequest request,
 			@RequestParam(value="o_id", required = true) int o_id,
 			@RequestParam(value="pay", required = true) String pay_result,
 			@RequestParam(value="send", required = true) String send_result) throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		
 		System.out.println("파라미터 값 잘 받아오는지 체크 >>>>>>>>>>>>>>> pay_result : "+pay_result+", send_result : "+send_result);
 		
@@ -165,7 +188,16 @@ public class ManageOrdersController {
 	
 	/** 관리자 - uncmpl_orders 페이지 처리 */
 	@RequestMapping(value = "/uncmpl_orders.do", method = RequestMethod.GET)
-	public ModelAndView uncmpl_orders(Model model) throws Exception {
+	public ModelAndView uncmpl_orders(Model model, HttpServletRequest request) throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
+		
 		
 		//결과 받아올 객체
 		List<Order> output = new ArrayList<Order>();
@@ -248,12 +280,21 @@ public class ManageOrdersController {
 	
 	/** 관리자 - manage_sales 페이지 처리 */
 	@RequestMapping(value = "/manage_sales.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView manage_sales(Model model,
+	public ModelAndView manage_sales(Model model, HttpServletRequest request,
 			@RequestParam(value = "day", required = false) String today,
 			@RequestParam(value = "fromMonth", required = false) String fromMonth,
 			@RequestParam(value = "toMonth", required = false) String toMonth,
 			@RequestParam(value = "fromYear", required = false) String fromYear,
 			@RequestParam(value = "toYear", required = false) String toYear) throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
+				
 		/** 1) 파라미터 유효성 검사 */
 		Calendar date = Calendar.getInstance();
 		SimpleDateFormat sdf;
