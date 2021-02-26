@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -34,9 +36,21 @@
 	
 	<!-- 컨트롤러나 서비스 구현체가 포함되어 있는 패키지들 나열 -->
 	<context:component-scan base-package="study.spring.surisulsul.controllers" />
-	
-	
 	<context:component-scan base-package="study.spring.surisulsul.service.impl" />
+	
+	<!-- 스케줄러 어노테이션 선언 -->
+	<task:annotation-driven/>
+	
+	<!-- 스케줄러로 동작할 객체 생성 -->
+	<beans:bean id="scheduleJob" class="study.spring.surisulsul.controllers.SalesScheduler"/>
+	
+	<!-- 생성한 스케줄러 객체에 대한 작업 스케줄 지정 -->
+	<task:scheduled-tasks>
+		<!-- 매분 0초에 실행되는 작업 (테스트용) -->
+		<task:scheduled ref="scheduleJob" method="everyMinutes" cron="0 * * * * ?"/>
+		<!-- 매일 자정에 실행되는 작업 -->
+		<task:scheduled ref="scheduleJob" method="everyMidnight" cron="0 0 0 * * ?"/>
+	</task:scheduled-tasks>
 	
 	
 </beans:beans>

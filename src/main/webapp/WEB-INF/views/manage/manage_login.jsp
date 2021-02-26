@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.css?time=${currentTime}" />
 <link rel="stylesheet" type="text/css"
-	href="${contextPath}/assets/manage/manage.css?time=${currentTime}" />
+	href="${contextPath}/assets/manage/manage_common.css?time=${currentTime}" />
 </head>
 
 <body>
@@ -33,22 +33,20 @@
 	<!-- 로그인에 필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
 	<form name="manage_login_form" id="manage_login_form"
 		method="post"
-		action="${pageContext.request.contextPath}/manage/manage_home.do">
+		action="${pageContext.request.contextPath}/manage_home.do">
 		<div class="form-group">
 			<h3 class="account-menu" id="text-center">로그인</h3>
 		</div>
 		<div class="form-group">
-			<label for="email" class="col-md-4">이메일</label>
+			<label for="manager_id" class="col-md-4">이메일</label>
 			<div class="col-md-8">
-				<input type="email" name="email" id="email" class="form-control"
-					value="${email}" placeholder="이메일을 입력하세요." />
+				<input type="text" name="manager_id" id="manager_id" class="form-control"  placeholder="관리자 아이디를 입력하세요." />
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="user_pw" class="col-md-4">비밀번호</label>
+			<label for="manager_pw" class="col-md-4">비밀번호</label>
 			<div class="col-md-8">
-				<input type="password" name="user_pw" id="user_pw"
-					class="form-control" placeholder="비밀번호를 입력하세요." />
+				<input type="password" name="manager_pw" id="manager_pw" class="form-control" placeholder="관리자 비밀번호를 입력하세요." />
 			</div>
 		</div>
 		<div class="form-group">
