@@ -9,6 +9,12 @@
 <div class="content">
 	<h2>상품관리</h2>
 	<h3 class="item_total">총 등록상품 수 : ${totalCount}개</h3>
+	<form method="post" action="${pageContext.request.contextPath}/manage_itemlist.do" class="search_form">
+		<div class="search_area">
+			<input type="search" name="item_search" id="item_search" placeholder="상품명 검색" value="${item_search}" />
+			<button type="submit">검색</button>
+		</div>
+	</form>
 	<a href="${contextPath}/manage_itemadd.do" class="newitem_add">상품 등록</a>
 	
 		<table class="manage_itemlist_table">

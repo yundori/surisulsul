@@ -232,6 +232,12 @@
 		parameterType="study.spring.surisulsul.model.Product"
 		resultMap="productMap">
 		SELECT * FROM products
+		<where>
+			<if test="search != null and search != ''">
+				AND name LIKE concat('%', #{search}, '%')
+			</if>
+		</where>
+		
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>

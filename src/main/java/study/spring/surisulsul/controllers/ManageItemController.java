@@ -44,8 +44,9 @@ public class ManageItemController {
 	String contextPath;
 	
 	/** 관리자 - 상품목록 페이지 **/
-	@RequestMapping(value="/manage_itemlist.do", method=RequestMethod.GET)
+	@RequestMapping(value="/manage_itemlist.do", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView manage_itemlist(Model model, HttpServletResponse response,
+			@RequestParam(value = "item_search", required=false) String item_search,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 		
 		int totalCount = 0; // 전체 게시글 수
@@ -53,6 +54,12 @@ public class ManageItemController {
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
 		Product input = new Product(); //선택된 값을 넘겨줄 객체
+		
+		/** 검색창 검색어 input 객체에 담기 */
+		if(item_search != null) {
+			input.setSearch(item_search);
+		}
+		
 		List<Product> output = null;
 		PageData pageData = null;
 		

@@ -21,6 +21,15 @@
 	font-weight: bold;
 }
 
+.search_form {
+	display:inline-block;
+}
+
+.search_area {
+	margin-bottom: 30px;
+	margin-left: 50px;
+}
+
 .newitem_add {
 	width: 100px;
 	height: 35px;
