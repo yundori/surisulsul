@@ -32,29 +32,21 @@
 		<input type="search" name="keyword" id="keyword" placeholder="회원명 검색" value="${keyword }" />
 		<button type="submit">검색</button>
 	</form>
-	
-	<form method="post"
-			action="${pageContext.request.contextPath }/mypage/delete_ok.do"
-			name="mng_mem_form" id="mng_mem_form">
-
-			
+				
 	<div class="mem_table">
-		<button type="submit" class="delete_this">선택 삭제</button>
 	<table class=manage_member_table>
 
 		<thead>
 			<tr>
-				<th><input type="checkbox" name="all" class="check_all">선택
-				</th>
-				<th>회원번호</th>
+				<th width="40">번호</th>
 				<th>이메일</th>
 				<th>이름</th>
-				<th>생년월일</th>
-				<th>전화번호</th>
-				<th>최종접속일</th>
-				<th>가입일자</th>
-				<th>상태</th>
-				<th>관리</th>
+				<th width="170">생년월일</th>
+				<th width="170">전화번호</th>
+				<th width="170">최종접속일</th>
+				<th width="170">가입일자</th>
+				<th width="70">상태</th>
+				<th width="70">회원관리</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,8 +55,6 @@
 				<c:when test="${result }">
 					<c:forEach var="output" items="${output }" varStatus="status">
 					<tr>
-						<td><input type="checkbox" name="man_members" class="ab"
-							value="${output.id }"></td>
 						<td>${output.id }</td>
 						<td>${output.email }</td>
 						<td>${output.name }</td>
@@ -80,8 +70,13 @@
 						<td>정상</td>
 						</c:otherwise>
 						</c:choose>
+						<%-- 수정페이지로 이동하기 위한 URL --%>
+				<c:url value="/manage_update_info.do" var="editUrl">
+					<c:param name="item_id" value="${output.id}" />
+				</c:url>
 						<td>
-							<button>수정</button>
+							<a href="${editUrl }" class="item_btn">수정</a>
+
 						</td>
 					</tr>
 					</c:forEach>
@@ -96,7 +91,8 @@
 		</tbody>
 	</table>
 	</div>
-</form>
+	</div>
+
 
 	<div class="pageNumber">
 		<!-- 페이지 번호 구현 -->
@@ -153,3 +149,13 @@
 	</div>
 
 </div>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+//팝업열기
+function open_edit() {
+	var popup = window.open('${pageContext.request.contextPath}/manage_update_info.do','_blank',
+					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+	console.log("############################")
+}
+</script>
