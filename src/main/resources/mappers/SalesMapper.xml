@@ -34,7 +34,7 @@
 		SELECT p_id, SUM(qty) AS total_qty, p_price*SUM(qty) AS total_price
 		FROM orders_sub
 		WHERE o_date=#{edit_date}
-		GROUP BY p_id
+		GROUP BY p_id, p_price
 		ORDER BY p_id;
 	</select>
 	
@@ -45,7 +45,7 @@
 	
 	<!-- 오늘 total값들과 기존 total 값들을 합산 한 후에 수행할 UPDATE SQL 구문 -->
 	<update id="updateSales" parameterType="study.spring.surisulsul.model.Sales">
-		UPDATE sales SET total_qty=#{total_qty}, total_price=#{total_price}
+		UPDATE sales SET total_qty=#{total_qty}, total_price=#{total_price}, edit_date=now()
 		WHERE p_id=#{p_id};
 	</update>
 	
