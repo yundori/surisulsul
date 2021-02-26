@@ -7,10 +7,6 @@
 
 <div class="content">
 	<h2>위시리스트 관리</h2>
-
-
-
-
 	<div style="display: block; width: 805px;">
 		<div style="display: inline-block;">
 			<a href="${pageContext.request.contextPath}/manage_wishlist_asc.do"
@@ -27,8 +23,6 @@
 				</div>
 			</form>
 		</div>
-
-
 		<table class=manage_wish_table>
 			<thead>
 				<tr>
@@ -61,9 +55,6 @@
 				</c:choose>
 			</tbody>
 		</table>
-
-
-
 
 		<div class="pageNumber">
 			<c:choose>
