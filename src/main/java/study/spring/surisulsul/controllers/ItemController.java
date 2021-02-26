@@ -67,7 +67,7 @@ public class ItemController {
 		
 		try {
 			
-			sales_cnt = salesService.getSalesCount(null);
+			sales_cnt = salesService.getSalesCountNotNull(null);
 			
 			if(sales_cnt == 0) {
 				output = productService.best_ProductList_price(null);

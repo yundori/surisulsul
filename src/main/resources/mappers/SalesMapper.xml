@@ -52,9 +52,10 @@
 	<!-- sales에서 select해오는 SQL 구문 (=> Best_item 페이지에서 사용) -->
 	<!-- bestitem controller 메서드에서 select로 상품별 total qty를 기준으로 DESC LIMIT 0,12이렇게 끊어서 가져오기-->
 	
-	<!-- 매출 전체 데이터 수 조회하기 -->
-	<select id="selectCountAll" parameterType="study.spring.surisulsul.model.Sales"
+	<!-- 매출데이터가 있는 리스트 개수 조회하기 : 없으면(0이면) 비싼가격순으로 best_item 선정 -->
+	<select id="selectCountNotNull" parameterType="study.spring.surisulsul.model.Sales"
 	resultType="int">
-	SELECT COUNT(*) FROM sales
+	SELECT COUNT(*) FROM sales 
+	WHERE total_qty != 0 AND total_price != 0
 	</select> 
 </mapper>
