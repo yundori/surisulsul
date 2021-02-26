@@ -1,5 +1,9 @@
 package study.spring.surisulsul.controllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -40,18 +44,36 @@ public class ManageCscenterController {
 	
 	/** manage_cscenter 페이지 처리 */
 	@RequestMapping(value = "/manage_cscenter.do", method = RequestMethod.GET)
-	public ModelAndView manage_cscenter(Model model) throws Exception {
+	public ModelAndView manage_cscenter(Model model, 
+			@RequestParam(value="type", required = false) String type) throws Exception 
+	
+	{		/** 다시 하기,, */
+			Cscenter input = new Cscenter();
+			
+			
+			List<Cscenter> notice_output = null;
+			List<Cscenter> faq_output = null;
+			
+			notice_output = cscenterService.getNoticeList(input);
+			faq_output = cscenterService.getFaqList(input);
+			
+			
+	
+			model.addAttribute("notice_output", notice_output);
+			model.addAttribute("faq_output", faq_output);
+		
 		
 		return new ModelAndView("manage/manage_cscenter");
 	}
 	
-	/** 알립니다 & FAQ insert  */
+	/** 알립니다 & FAQ 등록  */
 	@RequestMapping(value = "/manage_cscenter_add.do", method = RequestMethod.GET)
 	public ModelAndView cscenter_add(Model model) throws Exception {
 		
 		return new ModelAndView("manage/manage_cscenter_add");
 	}
 	
+	/** 알립니다 & FAQ 등록 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_add_ok.do", method=RequestMethod.POST)
 	public ModelAndView cscenter_add_ok(Model model,
 			@RequestParam(value="type", required = false) String type,
@@ -98,11 +120,18 @@ public class ManageCscenterController {
 		return new ModelAndView("/manage/manage_cscenter_edit");
 	}
 	
+	/** 알립니다 & FAQ 수정 action 페이지 */
+	@RequestMapping(value="/manage_cscenter_edit_ok.do", method=RequestMethod.POST)
+	public ModelAndView cscenter_edit_ok(Model model)  throws Exception {
+		
+		return new ModelAndView("/manage/manage_cscenter");
+	}
+	
 	/** 알립니다 & FAQ 삭제 */
 	@RequestMapping(value="/manage_cscenter_delete.do", method=RequestMethod.POST)
 	public ModelAndView cscenter_delete(Model model)  throws Exception {
 		
-		return new ModelAndView("redirect:/manage_cscenter.do");
+		return new ModelAndView("/manage/manage_cscenter");
 	}
 	
 	

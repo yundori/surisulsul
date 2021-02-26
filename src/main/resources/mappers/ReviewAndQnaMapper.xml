@@ -77,7 +77,7 @@
 		INNER JOIN products p ON r.p_id = p.id
 		<where>
 			<if test="p_name!=null and p_name!=''">
-				p_name like concat('%',#{p_name},'%')
+				p.name like concat('%',#{p_name},'%')
 			</if>
 			<if test="m_name!=null and m_name!=''">
 				r.m_name like concat('%',#{m_name},'%')
@@ -104,10 +104,10 @@
 	<!-- 리뷰 수 조회를 위한 기능 정의 (관리자용, 임시 작성) -->
 	<select id="selectCountReview"
 		parameterType="study.spring.surisulsul.model.Review" resultType="int">
-		SELECT count(*) FROM review
+		SELECT count(*) FROM review r INNER JOIN products p ON r.p_id = p.id
 		<where>
 			<if test="p_name!=null and p_name!=''">
-				p_name like concat('%',#{p_name},'%')
+				p.name like concat('%',#{p_name},'%')
 			</if>
 			<if test="m_name!=null and m_name!=''">
 				r.m_name like concat('%',#{m_name},'%')

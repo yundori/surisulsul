@@ -292,12 +292,11 @@
 	vertical-align: middle;
 }
 
-.select_none>h1 {
+.select_none h1 {
 	width: auto;
 	height: auto;
 	margin: 30px auto;
 	padding: auto;
 	font-size: 30px;
 	color: #7C59B6;
-	
 }
