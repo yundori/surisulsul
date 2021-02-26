@@ -8,8 +8,6 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
 		<result property="id" column="id" />
 		<result property="p_id" column="p_id" />
-		<result property="p_name" column="p_name" />
-		<result property="p_price" column="p_price" />
 		<result property="total_qty" column="total_qty" />
 		<result property="total_price" column="total_price" />
 		<result property="edit_date" column="edit_date" />
@@ -25,12 +23,22 @@
 	-->
 	
 	<!-- 상품별 주문 수량 CHECK 및 sales TABLE에 판매 내역 INSERT -->
-	<insert id="insertSales" parameterType="study.spring.surisulsul.model.Sales" useGeneratedKeys="true" keyProperty="sub_id">
+	<insert id="insertSales" parameterType="study.spring.surisulsul.model.Sales" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO sales
-			(p_id, p_name, p_price, total_qty, total_price, edit_date)
+			(p_id, total_qty, total_price, edit_date)
 		VALUES
-			(#{p_id}, #{p_name}, #{p_price}, #{total_qty}, #{p_price}*#{total_qty}, now());			
+			(#{p_id}, 0, 0, now());			
 	</insert>
+	
+	<!-- sales 테이블에 UPDATE하기 전에 orders_sub에서 받아올 SELECT-GROUP BY 내용 -->
+	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
+		SELECT p_id, SUM(qty) AS total_qty, p_price*SUM(qty) AS total_price
+		FROM orders_sub
+		WHERE o_date =#{edit_date}
+		GROUP BY p_id
+		ORDER BY p_id;
+	</select>
+	
 	
 	<!-- sales에서 select해오는 SQL 구문 (=> Best_item 페이지에서 사용) -->
 	<!-- bestitem controller 메서드에서 select로 상품별 total qty를 기준으로 DESC LIMIT 0,12이렇게 끊어서 가져오기-->

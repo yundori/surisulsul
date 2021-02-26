@@ -47,18 +47,6 @@
 	</resultMap>
 	
 	
-	<resultMap id="salesMap" type="study.spring.surisulsul.model.Sales">
-		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column) 연결 -->
-		<result property="id" column="id" />
-		<result property="p_id" column="p_id" />
-		<result property="p_name" column="p_name" />
-		<result property="p_price" column="p_price" />
-		<result property="total_qty" column="total_qty" />
-		<result property="total_price" column="total_price" />
-		<result property="edit_date" column="edit_date" />
-	</resultMap>
-	
-	
 	<!-- 주문내역 - 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
 		<!-- orders테이블과 orders_sub 테이블의 JOIN -->
@@ -132,11 +120,6 @@
 	<!-- ==================================================================================
 	!!!!!!!!!!!!!!!!!!!!!! 여기서부터 관리자 페이지 관련 SQL 구문 !!!!!!!!!!!!!!!!!!!!!!
 	========================================================================================= -->
-	<!-- sales 테이블에 INSERT할 SELECT-GROUP BY 내용 -->
-	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Order" resultMap="salesMap">
-		<!-- HAVING 절 써야하는지? 그냥 LIST로 받아오면 되는지? -->
-		SELECT p_id, p_name, p_price, count(p_id) AS total_qty FROM order_sub GROUP BY p_id;
-	</select>
 	
 	<!-- 주문내역(manage_orders)페이지에서 사용되는 SELECT SQL 구문 -->
 	<select id="selectManageOrders"  parameterType="study.spring.surisulsul.model.Order" resultMap="orderMap">
