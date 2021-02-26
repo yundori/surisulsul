@@ -47,22 +47,31 @@
 		<tbody>
 			<c:choose>
 				<%--c:when test 조건 -> 회원이 존재하는가 -> 검색 DB 내용 존재 --%>
-				<c:when test='false'>
+				<c:when test="${result }">
+					<c:forEach var="output" items="${output }" varStatus="status">
 					<tr>
 						<td><input type="checkbox" name="man_members" class="ab"
-							value="${member.id }"></td>
-						<td>id</td>
-						<td>email@email.com</td>
-						<td>name</td>
-						<td>birthdate</td>
-						<td>phone</td>
-						<td>edit_date</td>
-						<td>reg_date</td>
+							value="${output.id }"></td>
+						<td>${output.id }</td>
+						<td>${output.email }</td>
+						<td>${output.name }</td>
+						<td>${output.birthdate}</td>
+						<td>${output.phone }</td>
+						<td>${output.edit_date}</td>
+						<td>${output.reg_date}</td>
+						<c:choose>
+						<c:when test="${output.is_out == 'Y' }">
+						<td>탈퇴</td>
+						</c:when>
+						<c:otherwise>
 						<td>정상</td>
+						</c:otherwise>
+						</c:choose>
 						<td>
 							<button>수정</button>
 						</td>
 					</tr>
+					</c:forEach>
 				</c:when>
 				<%--c:otherwise --> 회원이 없는 경우 -> 데이터 X --%>
 				<c:otherwise>
@@ -83,7 +92,7 @@
 			<%-- 이전 그룹으로 이동 가능하다면? --%>
 			<c:when test="${pageData.prevPage > 0}">
 				<%-- 이동할 URL 생성 --%>
-				<c:url value="/mypage/past_order.do" var="prevPageUrl">
+				<c:url value="/manage_members.do" var="prevPageUrl">
 					<c:param name="page" value="${pageData.prevPage}" />
 				</c:url>
 				<a href="${prevPageUrl}" class="page-link">[이전]</a>
@@ -97,7 +106,7 @@
 		<c:forEach var="i" begin="${pageData.startPage}"
 			end="${pageData.endPage}" varStatus="status">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/mypage/past_order.do" var="pageUrl">
+			<c:url value="/manage_members.do" var="pageUrl">
 				<c:param name="page" value="${i}" />
 			</c:url>
 
@@ -119,7 +128,7 @@
 			<%-- 다음 그룹으로 이동 가능하다면? --%>
 			<c:when test="${pageData.nextPage > 0}">
 				<%-- 이동할 URL 생성 --%>
-				<c:url value="/mypage/past_order.do" var="nextPageUrl">
+				<c:url value="/manage_members.do" var="nextPageUrl">
 					<c:param name="page" value="${pageData.nextPage}" />
 				</c:url>
 				<a href="${nextPageUrl}" class="page-link">[다음]</a>
