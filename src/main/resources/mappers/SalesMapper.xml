@@ -13,15 +13,6 @@
 		<result property="edit_date" column="edit_date" />
 	</resultMap>
 	
-	<!-- 
-		order_sub테이블에서 p_id로 묶어서 group by 
-		-> 걔를 몇개인지 얻어와서 total_qty로 삽입
-		-> 그러면 group by로 select를 하는 구문은 OrderMapper에 있고 
-		-> select해온 값을 Sales객체에 .setTotal_qty()
-		-> input으로 Impl에 넘기면 Impl이 insertSales를 호출하고
-		-> SalesMapper에서 insertSales가 받아온 input 객체 내 값을 통해 INSERT 구문 수행
-	-->
-	
 	<!-- 상품별 주문 수량 CHECK 및 sales TABLE에 판매 내역 INSERT -->
 	<insert id="insertSales" parameterType="study.spring.surisulsul.model.Sales" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO sales
@@ -29,6 +20,14 @@
 		VALUES
 			(#{p_id}, 0, 0, now());			
 	</insert>
+	
+	<!-- 
+		order_sub테이블에서 오늘날짜에 해당하는 주문들을 p_id로 묶어서 group by 
+		-> 걔를 몇개인지 얻어와서 total_qty로,
+		-> 상품가격과 주문 수량을 곱해 얻은 값을 total_price로
+		-> 그리고 기존 sales에 있는 total_qty / total_price를 얻어서 오늘 것과 합산
+		-> 그러고 나서 UPDATE 구문 수행!
+	-->
 	
 	<!-- sales 테이블에 UPDATE하기 전에 orders_sub에서 받아올 SELECT-GROUP BY 내용 -->
 	<select id="selectTodaySales" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
@@ -39,10 +38,16 @@
 		ORDER BY p_id;
 	</select>
 	
-	<!-- 기존에 있던 sales  -->
+	<!-- 기존에 있던 sales 상세 내용 불러오기 (합산용) -->
 	<select id="selectSalesDetails" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
 		SELECT total_qty, total_price FROM sales where p_id=#{p_id};
 	</select>
+	
+	<!-- 오늘 total값들과 기존 total 값들을 합산 한 후에 수행할 UPDATE SQL 구문 -->
+	<update id="updateSales" parameterType="study.spring.surisulsul.model.Sales">
+		UPDATE sales SET total_qty=#{total_qty}, total_price=#{total_price}
+		WHERE p_id=#{p_id};
+	</update>
 	
 	<!-- sales에서 select해오는 SQL 구문 (=> Best_item 페이지에서 사용) -->
 	<!-- bestitem controller 메서드에서 select로 상품별 total qty를 기준으로 DESC LIMIT 0,12이렇게 끊어서 가져오기-->

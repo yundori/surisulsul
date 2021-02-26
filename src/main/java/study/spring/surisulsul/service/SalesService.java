@@ -1,5 +1,7 @@
 package study.spring.surisulsul.service;
 
+import java.util.List;
+
 import study.spring.surisulsul.model.Sales;
 
 public interface SalesService {
@@ -13,8 +15,28 @@ public interface SalesService {
 	public int addSales(Sales input) throws Exception;
 	
 	/**
+	 * 오늘 상품별 매출 현황 확인 (from orders_sub)
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Sales> getTodaySales(Sales input) throws Exception;
+	
+	/**
+	 * 기존 상품별 매출 현황 확인 (합산용)
+	 * @return 조회 결과에 대한 Sales객체
+	 * @throws Exception
+	 */
+	public Sales getSalesItem(Sales input) throws Exception;
+		
+	/**
+	 * 오늘매출+기존상품을 합산한 값을 가지고 sales테이블에 대한 update 수행
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateSales(Sales input) throws Exception;
+	
+	/**
 	 * 매출 전체 수 조회하기
-	 * 
 	 * @return int
 	 * @throws Exception
 	 */
