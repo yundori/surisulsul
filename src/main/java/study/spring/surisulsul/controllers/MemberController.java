@@ -179,6 +179,12 @@ public class MemberController {
 		input.setAddress2(address2);
 		
 		try {
+			// 생일에 대한 유효성 검사
+			int chkAge = memberService.chkAge(input);
+			
+			if(chkAge<20) {
+				return webHelper.redirect(null, "아직 수리술술을 이용하실 수 있는 연령대가 아닙니다.");
+			}
 			// 데이터 저장
 			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
 			memberService.addMember(input);
@@ -257,8 +263,8 @@ public class MemberController {
 		if(loginSession!=null) { 
 			return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
 		}
-
-		return webHelper.redirect("account/find_pw",null);
+		return new ModelAndView("account/find_pw");
+		//return webHelper.redirect("account/find_pw",null);
 	}
 
 	

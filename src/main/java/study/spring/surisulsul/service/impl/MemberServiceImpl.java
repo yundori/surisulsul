@@ -144,6 +144,20 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+	
+	/** 회원가입 시 나이 검사 */
+	@Override
+	public int chkAge(Member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.chkAge", input);
+		}  catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("회원가입에 실패했습니다.");
+		}
+		return result;
+	}
 
 	/** 회원정보 수정 및 비밀번호 재발급 */
 	@Override

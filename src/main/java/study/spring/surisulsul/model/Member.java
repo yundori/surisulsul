@@ -21,5 +21,6 @@ public class Member {
 	private String out_date;
 	
 	// 2) Join 절에 따른 추가 컬럼
+	private int age;
 	
 }

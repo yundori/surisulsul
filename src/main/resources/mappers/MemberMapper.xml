@@ -21,6 +21,7 @@
 		<result property="reg_date" column="reg_date" />
 		<result property="edit_date" column="edit_date" />
 		<result property="out_date" column="out_date" />
+		<result property="age" column="age" />
 	</resultMap>
 
 
@@ -96,6 +97,13 @@
 		#{birthdate}, null,
 		'N', now(), now(), null);
 	</insert>
+	
+	<!-- 회원가입 시 가입자 연령 유효성 검사를 위한 기능 정의 -->
+	<select id="chkAge"
+		parameterType="study.spring.surisulsul.model.Member"
+		resultType="int">
+		SELECT TIMESTAMPDIFF(YEAR, #{birthdate}, now()) as age;
+	</select>
 
 	<!-- 회원정보 수정 및 비밀번호 재발급(데이터 갱신)을 위한 기능 정의 -->
 	<update id="updateMember"
