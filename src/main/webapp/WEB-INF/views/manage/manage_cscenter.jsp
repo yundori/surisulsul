@@ -49,7 +49,7 @@
     			<td>${output.edit_date}</td>
     			<td>
     				<input type="submit" value="수정" onclick="javascript:open_cs_edit_Pop();" class="edit_button"/>
-    				<input type="submit" value="삭제" onclick="javascript: form.action='/manage_cscenter_delete';" class="cs_delete"/>
+    				<input type="submit" value="삭제" onclick="" class="cs_delete"/>
     			</td>
     		</tr>
     		</tbody>
@@ -58,9 +58,6 @@
     		</c:choose>
     	</table>
     </form>
-    
-    
-    <!-- 페이지네이션 처리 -->
     
 </div>
 

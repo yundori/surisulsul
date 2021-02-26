@@ -42,8 +42,8 @@ public class ManageCscenterController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	/** manage_cscenter 페이지 처리 */
-	@RequestMapping(value = "/manage_cscenter.do", method = RequestMethod.GET)
+	/** manage_cscenter 목록 조회  */
+	@RequestMapping(value = "/manage_cscenter.do", method =  RequestMethod.GET)
 	public ModelAndView manage_cscenter(Model model) throws Exception {		
 		
 			List<Cscenter> output = null;
@@ -52,7 +52,7 @@ public class ManageCscenterController {
 				output = cscenterService.getmanageList();
 				System.out.println(output);
 			} catch (Exception e) {
-				e.printStackTrace();
+				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 			
 			model.addAttribute("output", output);
@@ -122,10 +122,24 @@ public class ManageCscenterController {
 	}
 	
 	/** 알립니다 & FAQ 삭제 */
-	@RequestMapping(value="/manage_cscenter_delete.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_delete(Model model)  throws Exception {
+	@RequestMapping(value="/manage_cscenter_delete_ok.do", method = RequestMethod.POST)
+	public ModelAndView cscenter_delete(Model model,
+			@RequestParam(value="id", defaultValue = "0") int id)  {
 		
-		return new ModelAndView("/manage/manage_cscenter");
+		if (id == 0) {
+			return webHelper.redirect(null, "글 등록 번호가 없습니다."); 
+		}
+		
+		Cscenter input = new Cscenter();
+		input.setId(id);
+		
+		try {
+			cscenterService.deleteCscenter(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		return webHelper.redirect(contextPath + "/manage_cscenter.do", "삭제되었습니다.");
 	}
 	
 	
