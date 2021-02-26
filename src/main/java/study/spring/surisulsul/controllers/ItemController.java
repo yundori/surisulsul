@@ -72,6 +72,9 @@ public class ItemController {
 			if(sales_cnt == 0) {
 				output = productService.best_ProductList_price(null);
 			}
+			else if(sales_cnt < 12) {
+				output = productService.best_ProductList_sales_price(null);
+			}
 			else {
 				output = productService.best_ProductList(null);
 			}
