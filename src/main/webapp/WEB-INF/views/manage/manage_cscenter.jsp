@@ -50,7 +50,7 @@
 									
 									<form method="get" action="${pageContext.request.contextPath }/manage_cscenter_delete_ok.do" style="display: inline-block;">
 										<input type="hidden" name="id" id="all" value="${output.id}" />
-										<button type="submit" class="cs_delete"></button>
+										<button type="submit" class="cs_delete">삭제</button>
 									</form> 
 									
 									<!--  <input type="button" value="삭제" class="cs_delete" /> -->
@@ -67,7 +67,6 @@
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-
 //팝업열기
 function open_cs_add_Pop() {
 	window.name = "manage_cscenter"

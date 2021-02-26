@@ -35,7 +35,7 @@
 	<div class="pop-up">
 		<div class="pop-up-title">알립니다 & 자주묻는질문 등록</div>
 		<div class="pop-up-content">
-			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage_cscenter_add_ok.do" method="POST" name="form_cs">
+			<form id="cscenter_add" action="${pageContext.request.contextPath}/manage_cscenter.do" method="POST" name="form_cs">
 				<input type="hidden" name="add_cs" value="" />
 				<div class="form-group">
 					<label class="label text-center">분류 선택</label> <br /> <select
@@ -56,7 +56,7 @@
 					<span class="input-limit">0/1,000</span>
 				</div>
 				<div>
-					<button type="submit" onclick="moveClose();">등록하기</button>
+					<button type="submit">등록하기</button>
 				</div>
 			</form>
 		</div>
@@ -75,8 +75,9 @@
 		src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+	 
 	
-		$('.write-content').keyup(function(e) {
+	$('.write-content').keyup(function(e) {
 			var content = $(this).val();
 			$('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
 
