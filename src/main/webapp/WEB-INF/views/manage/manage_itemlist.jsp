@@ -9,9 +9,23 @@
 <div class="content">
 	<h2>상품관리</h2>
 	<h3 class="item_total">총 등록상품 수 : ${totalCount}개</h3>
+	<form method="post" action="${pageContext.request.contextPath}/manage_itemlist.do" class="search_form">
+		<div class="search_area">
+			<input type="search" name="item_search" id="item_search" placeholder="상품명 검색" value="${item_search}" />
+			<button type="submit">검색</button>
+		</div>
+	</form>
 	<a href="${contextPath}/manage_itemadd.do" class="newitem_add">상품 등록</a>
 	
 		<table class="manage_itemlist_table">
+			<c:choose>
+			<c:when test="${output == null || fn:length(output) == 0 }">
+				<div class="select_none">
+					<img src="${contextPath}/assets/img/mark_alert.png" />
+					<h1>검색 결과를 찾을 수 없습니다.</h1>
+				</div>
+			</c:when>
+			<c:otherwise>
 			<tr>
 				<th rowspan="2" width="50">상품ID</th>
 				<th width="200">상품명</th>
@@ -37,14 +51,6 @@
 				<th>주능결과</th>
 				<th>수정날짜</th>
 			</tr>
-			<c:choose>
-			<c:when test="${output == null || fn:length(output) == 0 }">
-				<div class="select_none">
-					<img src="${contextPath}/assets/img/mark_alert.png" />
-					<h1>검색 결과를 찾을 수 없습니다.</h1>
-				</div>
-			</c:when>
-			<c:otherwise>
 			<c:forEach var="item" items="${output}" varStatus="status">
 			<tr>
 				<td rowspan="2">${item.id}</td>
