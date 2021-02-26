@@ -11,6 +11,9 @@ public interface CscenterService {
 	
 	// FAQ 목록 조회
 	public List<Cscenter> getFaqList(Cscenter input) throws Exception;
+	
+	// FAQ & 알립니다 목록 조회 -> 관리자
+	public List<Cscenter> getmanageList() throws Exception;
 
 	// 공지사항/FAQ 작성
 	public int addCscenter(Cscenter input) throws Exception;

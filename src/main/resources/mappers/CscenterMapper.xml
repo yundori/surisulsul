@@ -34,6 +34,13 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
+	
+	<!-- 공지사항 & FAQ 조회를 위한 기능 정의 -->
+	<select id="selectListmanage"
+		parameterType="study.spring.surisulsul.model.Cscenter"
+		resultMap="cscenterMap">
+		SELECT c.id, c.title, c.content, date_format(c.reg_date,'%Y-%m-%d') as reg_date FROM cscenter c ORDER BY c.id;
+	</select>
 
 	<!-- 게시글 작성(데이터 저장, 관리자 전용)을 위한 기능 정의 -->
 	<insert id="addCscenter"

@@ -44,24 +44,18 @@ public class ManageCscenterController {
 	
 	/** manage_cscenter 페이지 처리 */
 	@RequestMapping(value = "/manage_cscenter.do", method = RequestMethod.GET)
-	public ModelAndView manage_cscenter(Model model, 
-			@RequestParam(value="type", required = false) String type) throws Exception 
-	
-	{		/** 다시 하기,, */
-			Cscenter input = new Cscenter();
-			
-			
-			List<Cscenter> notice_output = null;
-			List<Cscenter> faq_output = null;
-			
-			notice_output = cscenterService.getNoticeList(input);
-			faq_output = cscenterService.getFaqList(input);
-			
-			
-	
-			model.addAttribute("notice_output", notice_output);
-			model.addAttribute("faq_output", faq_output);
+	public ModelAndView manage_cscenter(Model model) throws Exception {		
 		
+			List<Cscenter> output = null;
+			
+			try {
+				output = cscenterService.getmanageList();
+				System.out.println(output);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			model.addAttribute("output", output);
 		
 		return new ModelAndView("manage/manage_cscenter");
 	}
