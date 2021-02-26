@@ -82,6 +82,7 @@ public class ManageItemController {
 		
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("item_search", item_search);	//검색어
 		model.addAttribute("output",output);
 		
 		return new ModelAndView("manage/manage_itemlist");
