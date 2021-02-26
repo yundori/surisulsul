@@ -8,7 +8,7 @@
 <div class="content">
 	<h2>회원관리</h2>
 	<a href="#" class="manage_members_all"> <span class="btn_total">전체
-	</span> <span class="btn_num">0,000명</span>
+	</span> <span class="btn_num">${totalCount }</span>
 	</a> <a href="#" class="manage_members_out"> <span class="btn_total">탈퇴
 	</span> <span class="btn_num">0,000명</span>
 	</a>
