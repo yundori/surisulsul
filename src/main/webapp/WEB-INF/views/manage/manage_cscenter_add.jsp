@@ -56,7 +56,7 @@
 					<span class="input-limit">0/1,000</span>
 				</div>
 				<div>
-					<button type="submit" onclick="cs_add_write">등록하기</button>
+					<button type="submit" onclick="moveClose();">등록하기</button>
 				</div>
 			</form>
 		</div>

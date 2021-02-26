@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,8 +46,17 @@ public class ManageCscenterController {
 	
 	/** manage_cscenter 목록 조회  */
 	@RequestMapping(value = "/manage_cscenter.do", method =  RequestMethod.GET)
-	public ModelAndView manage_cscenter(Model model) throws Exception {		
+	public ModelAndView manage_cscenter(Model model, HttpServletRequest request) {		
 		
+		//세션값 받아오기
+	      HttpSession session = request.getSession();      
+	      String manageLoginSession = (String) session.getAttribute("manager_id");         
+	      
+	      //로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+	      if(manageLoginSession==null) { 
+	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+	      }
+	      
 			List<Cscenter> output = null;
 			
 			try {
@@ -63,8 +73,17 @@ public class ManageCscenterController {
 	
 	/** 알립니다 & FAQ 등록  */
 	@RequestMapping(value = "/manage_cscenter_add.do", method = RequestMethod.GET)
-	public ModelAndView cscenter_add(Model model) throws Exception {
+	public ModelAndView cscenter_add(Model model, HttpServletRequest request) {
 		
+		//세션값 받아오기
+	      HttpSession session = request.getSession();      
+	      String manageLoginSession = (String) session.getAttribute("manager_id");         
+	      
+	      //로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+	      if(manageLoginSession==null) { 
+	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+	      }
+	      
 		return new ModelAndView("manage/manage_cscenter_add");
 	}
 	
@@ -110,8 +129,17 @@ public class ManageCscenterController {
 	
 	/** 알립니다 & FAQ 수정 */
 	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
-	public ModelAndView cscenter_edit(Model model)  throws Exception {
+	public ModelAndView cscenter_edit(Model model, HttpServletRequest request)  {
 		
+		//세션값 받아오기
+	      HttpSession session = request.getSession();      
+	      String manageLoginSession = (String) session.getAttribute("manager_id");         
+	      
+	      //로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+	      if(manageLoginSession==null) { 
+	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+	      }
+	      
 		return new ModelAndView("/manage/manage_cscenter_edit");
 	}
 	
