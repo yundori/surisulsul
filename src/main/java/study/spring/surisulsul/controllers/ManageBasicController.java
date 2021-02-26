@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.helper.WebHelper;
-import study.spring.surisulsul.model.Member;
 
-@Slf4j
 @Controller
 public class ManageBasicController {
 	/** WebHelper 주입 */
@@ -35,8 +32,7 @@ public class ManageBasicController {
 			HttpServletRequest request) throws Exception {
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
-		String manageLoginSession = (String) session.getAttribute("manager_id");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> manageLoginSession >>>>>>>>>>>>>>>>>>>>>>> "+manageLoginSession);				
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
 								
 		if(manageLoginSession!=null) { 
 			return webHelper.redirect(null,"관리자 페이지 로그인이 이미 되어있습니다.");
@@ -52,7 +48,6 @@ public class ManageBasicController {
 			HttpServletRequest request,
 			@RequestParam(value = "manager_id", required = false) String id,
 			@RequestParam(value = "manager_pw", required = false) String pw) throws Exception {
-		
 		/** 관리자 ID / password와 일치하는지 확인 */
 		if(id.equals("managerSuri")) {
 			if(pw.equals("sul123!@#")) {

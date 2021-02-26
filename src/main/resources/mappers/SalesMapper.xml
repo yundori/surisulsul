@@ -31,14 +31,18 @@
 	</insert>
 	
 	<!-- sales 테이블에 UPDATE하기 전에 orders_sub에서 받아올 SELECT-GROUP BY 내용 -->
-	<select id="selectSalesInfo" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
+	<select id="selectTodaySales" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
 		SELECT p_id, SUM(qty) AS total_qty, p_price*SUM(qty) AS total_price
 		FROM orders_sub
-		WHERE o_date =#{edit_date}
+		WHERE o_date=#{edit_date}
 		GROUP BY p_id
 		ORDER BY p_id;
 	</select>
 	
+	<!-- 기존에 있던 sales  -->
+	<select id="selectSalesDetails" parameterType="study.spring.surisulsul.model.Sales" resultMap="salesMap">
+		SELECT total_qty, total_price FROM sales where p_id=#{p_id};
+	</select>
 	
 	<!-- sales에서 select해오는 SQL 구문 (=> Best_item 페이지에서 사용) -->
 	<!-- bestitem controller 메서드에서 select로 상품별 total qty를 기준으로 DESC LIMIT 0,12이렇게 끊어서 가져오기-->
