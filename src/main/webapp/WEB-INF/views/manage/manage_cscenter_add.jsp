@@ -56,7 +56,7 @@
 					<span class="input-limit">0/1,000</span>
 				</div>
 				<div>
-					<button type="submit" id="cs_add_btn">등록하기</button>
+					<button type="submit" onclick="cs_add_write">등록하기</button>
 				</div>
 			</form>
 		</div>
@@ -75,9 +75,7 @@
 		src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		
-		
-
+	
 		$('.write-content').keyup(function(e) {
 			var content = $(this).val();
 			$('.input-limit').html(content.length + "/1,000"); //글자수 실시간 카운팅
