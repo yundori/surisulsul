@@ -55,6 +55,7 @@ public class ManageMembersController {
 	@RequestMapping(value = "/manage_members.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView manage_members(Model model, HttpServletResponse response,
 			@RequestParam(value = "keyword", required = false) String search,
+			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) throws Exception {
 
 		int totalCount = 0; // 전체 게시글 수
@@ -64,31 +65,53 @@ public class ManageMembersController {
 		PageData pageData = null;
 		Member input = new Member();
 		List<Member> output = null;
-
+		int outCount = 0; //탈퇴 회원 수
 		boolean result; // 검색 결과 존재 여부
 
 		// 검색어 input 객체에 담기
 		if (search != null) {
 			input.setSearch(search);
 		}
-
+		
+		//페이지 수 계산 & 회원수 계산
 		try {
 			totalCount = memberService.getMemberCount(input);
-
+			outCount = memberService.getOutMemberCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
-			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-			Member.setOffset(pageData.getOffset());
-			Member.setListCount(pageData.getListCount());
+				// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+				Member.setOffset(pageData.getOffset());
+				Member.setListCount(pageData.getListCount());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		System.out.println(sort);
+		System.out.println("***************************************************");
+		//전체 회원 리스트
+		if(sort == null || sort.equals("all")) {
 
-			// 상품 리스트 불러오기
+		try {
+			System.out.println(">>>>>>>>>>>1>>>>>>>>>>>");
+			// 회원 리스트 불러오기
 			output = memberService.getMemberList(input);
-			System.out.println(output);
-			System.out.println("************************************");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}else if(sort.equals("out")){
+			try {
+				System.out.println(">>>>>>>>>>>2>>>>>>>>>>>");
+				
+				// 회원 리스트 불러오기
+				output = memberService.getOutMemberList(input);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		// 검색 조건
@@ -97,11 +120,16 @@ public class ManageMembersController {
 		} else {
 			result = true;
 		}
+		System.out.println(result);
+		
+		
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("outCount", outCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("output", output);
 		model.addAttribute("result", result);
 		model.addAttribute("keyword", search);
+		model.addAttribute("sort", sort);
 
 		return new ModelAndView("manage/manage_members");
 	}

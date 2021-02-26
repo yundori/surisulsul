@@ -75,10 +75,8 @@
 		src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		// 등록하기 누르면 -> 입력 값이 cscenter에 들어가고, 내용이 추가됨
-		// 내용을 다 입력하기 전에 등록하기를 누르면 , alert -> "입력하지 않은 값이 존재합니다. 다시 한번 확인해주세요."
 		
-
+		
 
 		$('.write-content').keyup(function(e) {
 			var content = $(this).val();
