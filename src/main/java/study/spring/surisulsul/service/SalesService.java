@@ -36,10 +36,10 @@ public interface SalesService {
 	public int updateSales(Sales input) throws Exception;
 	
 	/**
-	 * 매출 전체 수 조회하기
+	 * 매출데이터가 있는 리스트 개수 조회하기
 	 * @return int
 	 * @throws Exception
 	 */
-	public int getSalesCount(Sales input) throws Exception;
+	public int getSalesCountNotNull(Sales input) throws Exception;
 
 }

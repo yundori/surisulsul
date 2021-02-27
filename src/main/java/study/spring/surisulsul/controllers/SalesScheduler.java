@@ -44,8 +44,8 @@ public class SalesScheduler {
 		
 		//input 객체를 재활용하기 전 edit_date 초기화
 		input.setEdit_date(null);
-		
-		/** 2) 받아온 리스트를 가지고 기존 total_qty / total_price와 합산 후 sales 테이블 업데이트 처리
+		*/
+		/** 2) 받아온 리스트를 가지고 기존 total_qty / total_price와 합산 후 sales 테이블 업데이트 처리 
 		for(int i=0; i<todaySales.size(); i++) {
 			input.setP_id(todaySales.get(i).getP_id()); //오늘 팔린 상품의 p_id 삽입
 			Sales salesDetails = new Sales(); // sales에서 받아올 기존 매출금액
@@ -61,7 +61,7 @@ public class SalesScheduler {
 				// c) input 객체에 삽입된 값 (p_id, 합산된 total_qty, 합산된 total_price)을 가지고 sales 테이블 UPDATE
 				salesService.updateSales(input);
 			} catch (Exception e) { e.printStackTrace(); }			
-		}*/		
+		}	*/	
 	}
 	
 	// 매일 자정에 수행되는 스케줄러 메서드 - 실제 사이트에 사용할 메서드

@@ -118,18 +118,18 @@ public class SalesServiceImpl implements SalesService{
 		}
 		return result;
 	}
-	 
+
 	/**
-	 * 매출 전체 수 조회하기
+	 * 매출 데이터가 있는 리스트 수 조회하기
 	 * @return int
 	 * @throws Exception
 	 */
 	@Override
-	public int getSalesCount(Sales input) throws Exception {
+	public int getSalesCountNotNull(Sales input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.selectOne("SalesMapper.selectCountAll", input);
+			result = sqlSession.selectOne("SalesMapper.selectCountNotNull", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("매출 데이터 수 조회에 실패했습니다.");
