@@ -6,7 +6,7 @@
 
 <div class="content_1">
 	<h2>알립니다 & 자주묻는질문 등록</h2>
-	<form method="post" action="${pageContext.request.contextPath}/manage_cscenter_add_ok.do" name="csedit_form" id="csedit_form">
+	<form method="post" action="${pageContext.request.contextPath}/manage_cscenter_add_ok.do" name="csadd_form" id="csadd_form">
 		<table class="manage_csadd_table">
 			<tr>
 				<th>제목</th>
@@ -17,8 +17,8 @@
 				<td>
 					<select id="cs_section" name="cs_section">
 					<option value="0" >--------</option>
-					<option value=A >알립니다</option>
-					<option value=B >자주묻는질문</option>
+					<option value="A" >알립니다</option>
+					<option value="B" >자주묻는질문</option>
 					</select>
 				</td>
 			</tr>

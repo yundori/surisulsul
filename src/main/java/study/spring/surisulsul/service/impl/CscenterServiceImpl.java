@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.spring.surisulsul.model.Cscenter;
+import study.spring.surisulsul.model.Product;
 import study.spring.surisulsul.service.CscenterService;
 
 /** 공지사항과 FAQ 게시글을 관리하기 위한 기능을 제공하는 Service 계층에 대한 구현체 */
@@ -146,6 +147,28 @@ public class CscenterServiceImpl implements CscenterService {
 		}
 
 		return result;
+	}
+
+	@Override
+	public Cscenter getCscenter(Cscenter input) throws Exception {
+		Cscenter result = null;
+
+		try {
+			result = sqlSession.selectOne("CscenterMapper.selectItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+		
 	}
 
 }

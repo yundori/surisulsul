@@ -89,10 +89,10 @@ public class ManageCscenterController {
 	
 	/** 알립니다 & FAQ 등록 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_add_ok.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_add_ok(Model model, HttpServletResponse response,
-			@RequestParam(value="type", required = false) String type,
-			@RequestParam(value="title", required = false) String title,
-			@RequestParam(value="content", required = false) String content,
+	public ModelAndView cscenter_add_ok(Model model,
+			@RequestParam(value="cs_section", required = false) String type,
+			@RequestParam(value="cs_title", required = false) String title,
+			@RequestParam(value="cs_content", required = false) String content,
 			@RequestParam(value="reg_date", required = false) String reg_date,
 			@RequestParam(value="edit_date", required = false) String edit_date)  
 	
@@ -133,7 +133,7 @@ public class ManageCscenterController {
 	/** 알립니다 & FAQ 수정 */
 	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
 	public ModelAndView cscenter_edit(Model model, HttpServletRequest request,
-			@RequestParam(value="id", defaultValue = "0") int id)  {
+			@RequestParam(value="cs_id", defaultValue = "0") int id)  {
 		
 		//세션값 받아오기
 	      HttpSession session = request.getSession();      
@@ -148,10 +148,16 @@ public class ManageCscenterController {
 				return webHelper.redirect(null, "글 등록 번호가 없습니다."); 
 			}
 			
-			List<Cscenter> output = null;
+	      /** 데이터 조회하기 **/
+			Cscenter input = new Cscenter();
+			input.setId(id);
+			
+			//조회한 상품데이터 저장할 객체
+			Cscenter output = null;
+			
 			
 			try {
-				output = cscenterService.getmanageList();
+				output = cscenterService.getCscenter(input);
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
@@ -163,21 +169,22 @@ public class ManageCscenterController {
 	/** 알립니다 & FAQ 수정 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_edit_ok.do", method=RequestMethod.POST)
 	public ModelAndView cscenter_edit_ok(Model model,
-			@RequestParam(value="id", defaultValue = "0") int id,
-			@RequestParam(value="type", required = false) String type,
-			@RequestParam(value="title", required = false) String title,
-			@RequestParam(value="content", required = false) String content,
+			@RequestParam(value="cs_id", defaultValue = "0") int id,
+			@RequestParam(value="cs_section", required = false) String type,
+			@RequestParam(value="cs_title", required = false) String title,
+			@RequestParam(value="cs_content", required = false) String content,
 			@RequestParam(value="reg_date", required = false) String reg_date,
 			@RequestParam(value="edit_date", required = false) String edit_date)  
 	
 	{
 		/** 파라미터 유효성 검사 **/
-		if (type == "0") {
-			return webHelper.redirect(null, "분류를 선택하세요.");
-		}
 		
 		if (title.equals("")) {
 			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (type.equals("")) {
+			return webHelper.redirect(null, "분류를 선택하세요.");
 		}
 		
 		if (content.equals("")) {

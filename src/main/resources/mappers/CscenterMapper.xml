@@ -67,5 +67,15 @@
 		parameterType="study.spring.surisulsul.model.Cscenter">
 		DELETE FROM cscenter WHERE id=#{id}
 	</delete>
+	
+	<!-- cscenter 단일행 조회를 위한 기능 정의 -->
+	<select id="selectCs"
+		parameterType="study.spring.surisulsul.model.Cscenter"
+		resultMap="cscenterMap">
+		SELECT id, title, type, content, reg_date, edit_date
+		FROM cscenter
+		WHERE id=#{id}
+	</select>
+	
 
 </mapper>
