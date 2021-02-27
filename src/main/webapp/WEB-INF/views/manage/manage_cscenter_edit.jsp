@@ -9,6 +9,10 @@
 	<form method="post" action="${pageContext.request.contextPath}/manage_cscenter_edit_ok.do" name="csedit_form" id="csedit_form">
 		<table class="manage_csedit_table">
 			<tr>
+				<th>번호</th>
+				<td><input type="hidden" name="cs_id" id="cs_id" value="${output.id}" />${output.id}번</td>
+			</tr>
+			<tr>
 				<th>제목</th>
 				<td><input type="text" name="cs_title" id="cs_title" class="title_textarea" value="${output.title}" placeholder="제목을 입력해주세요."/></td>
 			</tr>
@@ -16,6 +20,7 @@
 				<th>분류</th>
 				<td>
 					<select id="cs_section" name="cs_section">
+					<option value="0" >--------</option>
 					<option value="A" <c:if test="${output.type == 'A'}">selected</c:if>>알립니다</option>
 					<option value="B" <c:if test="${output.type == 'B'}">selected</c:if>>자주묻는질문</option>
 					</select>

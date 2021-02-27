@@ -1,6 +1,6 @@
 /** 정규표현식 검사 */
 $(function() {
-	$("#csedit_form").submit(function(e) {
+	$("#csadd_form").submit(function(e) {
 		
 		/** 제목 입력 여부 검사 **/
 		var cs_title = $("#cs_title").val();
@@ -12,7 +12,7 @@ $(function() {
             
 		/** 분류 입력 검사 **/
 		var cs_section = $("#cs_section").val();
-        if (!cs_section) {
+        if (cs_section == "0") {
         	alert("분류를 선택하세요.");
             $("#cs_section").focus();
             return false;
