@@ -154,7 +154,7 @@ public class CscenterServiceImpl implements CscenterService {
 		Cscenter result = null;
 
 		try {
-			result = sqlSession.selectOne("CscenterMapper.selectItem", input);
+			result = sqlSession.selectOne("CscenterMapper.selectCs", input);
 
 			if (result == null) {
 				throw new NullPointerException("result=null");

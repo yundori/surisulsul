@@ -163,12 +163,12 @@ public class ManageCscenterController {
 			}
 			
 			model.addAttribute("output", output);
-	      return new ModelAndView("/manage/manage_cscenter_edit");
+	      return new ModelAndView("manage/manage_cscenter_edit");
 	}
 	
 	/** 알립니다 & FAQ 수정 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_edit_ok.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_edit_ok(Model model,
+	public ModelAndView cscenter_edit_ok(Model model, HttpServletResponse response,
 			@RequestParam(value="cs_id", defaultValue = "0") int id,
 			@RequestParam(value="cs_section", required = false) String type,
 			@RequestParam(value="cs_title", required = false) String title,
@@ -206,7 +206,6 @@ public class ManageCscenterController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
 		
 		String redirectUrl = contextPath + "/manage/manage_cscenter.do";
 		return webHelper.redirect(redirectUrl, "문의가 수정되었습니다.");
