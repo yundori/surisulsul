@@ -133,7 +133,7 @@ public class ManageCscenterController {
 	/** 알립니다 & FAQ 수정 */
 	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
 	public ModelAndView cscenter_edit(Model model, HttpServletRequest request,
-			@RequestParam(value="cs_id", defaultValue = "0") int id)  {
+			@RequestParam(value="cs_id", defaultValue = "0") int cs_id)  {
 		
 		//세션값 받아오기
 	      HttpSession session = request.getSession();      
@@ -144,13 +144,13 @@ public class ManageCscenterController {
 	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
 	      }
 	      
-	      if (id == 0) {
+	      if (cs_id == 0) {
 				return webHelper.redirect(null, "글 등록 번호가 없습니다."); 
 			}
 			
 	      /** 데이터 조회하기 **/
 			Cscenter input = new Cscenter();
-			input.setId(id);
+			input.setId(cs_id);
 			
 			//조회한 상품데이터 저장할 객체
 			Cscenter output = null;

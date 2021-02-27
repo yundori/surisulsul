@@ -29,8 +29,8 @@
 				<td>n 건</td>
 			</tr>
 			<tr>
-				<td>오늘 방문고객 수</td>
-				<td>n 명</td>
+				<td>오늘 들어온 주문 수</td>
+				<td>n 건</td>
 			</tr>
 		</table>
 	</div>

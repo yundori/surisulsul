@@ -72,8 +72,8 @@
 	<select id="selectCs"
 		parameterType="study.spring.surisulsul.model.Cscenter"
 		resultMap="cscenterMap">
-		SELECT id, title, type, content, reg_date, edit_date
-		FROM cscenter
+		SELECT c.id, c.title, c.content, date_format(c.reg_date,'%Y-%m-%d') as reg_date, date_format(c.edit_date,'%Y-%m-%d') as edit_date, c.type 
+		FROM cscenter c
 		WHERE id=#{id}
 	</select>
 	
