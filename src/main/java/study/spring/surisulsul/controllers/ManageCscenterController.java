@@ -89,7 +89,7 @@ public class ManageCscenterController {
 	
 	/** 알립니다 & FAQ 등록 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_add_ok.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_add_ok(Model model,
+	public ModelAndView cscenter_add_ok(Model model, HttpServletResponse response,
 			@RequestParam(value="type", required = false) String type,
 			@RequestParam(value="title", required = false) String title,
 			@RequestParam(value="content", required = false) String content,
@@ -98,12 +98,13 @@ public class ManageCscenterController {
 	
 	{
 		/** 파라미터 유효성 검사 **/
-		if (type.equals("0")) {
-			return webHelper.redirect(null, "분류를 선택하세요.");
-		}
 		
 		if (title.equals("")) {
 			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (type.equals("")) {
+			return webHelper.redirect(null, "분류를 선택하세요.");
 		}
 		
 		if (content.equals("")) {
@@ -124,12 +125,15 @@ public class ManageCscenterController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		return new ModelAndView("/manage/manage_cscenter");
+		
+		String redirectUrl = contextPath + "/manage_cscenter.do";
+		return webHelper.redirect(redirectUrl, "새로운 글이 등록되었습니다.");
 	}
 	
 	/** 알립니다 & FAQ 수정 */
 	@RequestMapping(value="/manage_cscenter_edit.do", method=RequestMethod.GET)
-	public ModelAndView cscenter_edit(Model model, HttpServletRequest request)  {
+	public ModelAndView cscenter_edit(Model model, HttpServletRequest request,
+			@RequestParam(value="id", defaultValue = "0") int id)  {
 		
 		//세션값 받아오기
 	      HttpSession session = request.getSession();      
@@ -140,14 +144,65 @@ public class ManageCscenterController {
 	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
 	      }
 	      
-		return new ModelAndView("/manage/manage_cscenter_edit");
+	      if (id == 0) {
+				return webHelper.redirect(null, "글 등록 번호가 없습니다."); 
+			}
+			
+			List<Cscenter> output = null;
+			
+			try {
+				output = cscenterService.getmanageList();
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+			model.addAttribute("output", output);
+	      return new ModelAndView("/manage/manage_cscenter_edit");
 	}
 	
 	/** 알립니다 & FAQ 수정 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_edit_ok.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_edit_ok(Model model)  throws Exception {
+	public ModelAndView cscenter_edit_ok(Model model,
+			@RequestParam(value="id", defaultValue = "0") int id,
+			@RequestParam(value="type", required = false) String type,
+			@RequestParam(value="title", required = false) String title,
+			@RequestParam(value="content", required = false) String content,
+			@RequestParam(value="reg_date", required = false) String reg_date,
+			@RequestParam(value="edit_date", required = false) String edit_date)  
+	
+	{
+		/** 파라미터 유효성 검사 **/
+		if (type == "0") {
+			return webHelper.redirect(null, "분류를 선택하세요.");
+		}
 		
-		return new ModelAndView("/manage/manage_cscenter");
+		if (title.equals("")) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (content.equals("")) {
+			return webHelper.redirect(null, "내용을 입력하세요.");
+		}
+		
+		/** 데이터 저장하기 */
+		// 저장할 값을 beans에 담는다.
+		Cscenter input = new Cscenter();
+		input.setId(id);
+		input.setType(type);
+		input.setTitle(title);
+		input.setContent(content);
+		input.setReg_date(reg_date);
+		input.setEdit_date(edit_date);
+		
+		try {
+			cscenterService.editCscenter(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		
+		String redirectUrl = contextPath + "/manage/manage_cscenter.do";
+		return webHelper.redirect(redirectUrl, "문의가 수정되었습니다.");
 	}
 	
 	/** 알립니다 & FAQ 삭제 */

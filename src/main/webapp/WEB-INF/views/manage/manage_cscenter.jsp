@@ -7,8 +7,9 @@
 
 <div class="content">
 	<h1>공지사항 & FAQ 관리</h1>
-	<br /> <br /> <input type="submit" value="등록"
-		onclick="javascript:open_cs_add_Pop();" class="cs_add" /> <br />
+	<br /> <br /> <a
+		href="${pageContext.request.contextPath}/manage_cscenter_add.do"
+		class="add_button">등록</a> <br />
 	<form name="m_cscenter_form" id="m_cscenter_form" method="post">
 		<table class="manage_cs_table">
 			<thead>
@@ -45,20 +46,17 @@
 								<td>${output.title}</td>
 								<td>${output.reg_date}</td>
 								<td>${output.edit_date}</td>
-								<td><input type="submit" value="수정"
-									onclick="javascript:open_cs_edit_Pop();" class="edit_button" />
-									
-									<form method="get" action="${pageContext.request.contextPath }/manage_cscenter_delete_ok.do" style="display: inline-block;">
-										<input type="hidden" name="id" id="all" value="${output.id}" />
-										<button type="submit" class="cs_delete">삭제</button>
-									</form> 
-									
-									<!--  <input type="button" value="삭제" class="cs_delete" /> -->
-									</td>
-							</tr>
-			</c:forEach>
-			</c:otherwise>
-			</c:choose>
+								<td><a href="${pageContext.request.contextPath}/manage_cscenter_edit.do" class="edit_button">수정</a>
+
+				<form method="get" action="${pageContext.request.contextPath }/manage_cscenter_delete_ok.do" style="display: inline-block;">
+				<input type="hidden" name="id" id="all" value="${output.id}" />
+				<button type="submit" class="cs_delete">삭제</button>
+				</form>
+					</td>
+					</tr>
+							</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</tbody>
 		</table>
 	</form>
@@ -66,16 +64,3 @@
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-//팝업열기
-function open_cs_add_Pop() {
-	window.name = "manage_cscenter"
-	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_add.do','_blank',
-					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
-}
-
-function open_cs_edit_Pop() {
-	var popup = window.open('${pageContext.request.contextPath}/manage_cscenter_edit.do','_blank',
-					'width=648, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
-}
-</script>
