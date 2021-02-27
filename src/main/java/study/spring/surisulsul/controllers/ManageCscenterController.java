@@ -158,6 +158,7 @@ public class ManageCscenterController {
 			
 			try {
 				output = cscenterService.getCscenter(input);
+				System.out.println("cs_id");
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
@@ -168,7 +169,7 @@ public class ManageCscenterController {
 	
 	/** 알립니다 & FAQ 수정 action 페이지 */
 	@RequestMapping(value="/manage_cscenter_edit_ok.do", method=RequestMethod.POST)
-	public ModelAndView cscenter_edit_ok(Model model, HttpServletResponse response,
+	public ModelAndView cscenter_edit_ok(Model model,
 			@RequestParam(value="cs_id", defaultValue = "0") int id,
 			@RequestParam(value="cs_section", required = false) String type,
 			@RequestParam(value="cs_title", required = false) String title,

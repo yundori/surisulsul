@@ -33,7 +33,7 @@
 					<c:otherwise>
 						<c:forEach var="output" items="${output}" varStatus="status">
 							<tr>
-								<td>${output.id}</td>
+								<td>${status.count}</td>
 								<c:choose>
 									<c:when test="${output.type == 'A'}">
 										<td>알립니다</td>
@@ -46,7 +46,12 @@
 								<td>${output.title}</td>
 								<td>${output.reg_date}</td>
 								<td>${output.edit_date}</td>
-								<td><a href="${pageContext.request.contextPath}/manage_cscenter_edit.do" class="edit_button">수정</a>
+								
+								<%-- 수정페이지로 이동하기 위한 URL --%>
+				<c:url value="/manage_cscenter_edit.do" var="editUrl">
+					<c:param name="cs_id" value="${output.id}" />
+				</c:url>
+				<td><a href="${editUrl}" class="edit_button">수정</a>
 
 				<form method="get" action="${pageContext.request.contextPath }/manage_cscenter_delete_ok.do" style="display: inline-block;">
 				<input type="hidden" name="id" id="all" value="${output.id}" />
