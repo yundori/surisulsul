@@ -67,6 +67,13 @@ public class HomeController {
 		// 세션 값 받아오기
 		HttpSession session = request.getSession();
 		Member loginSession = (Member)session.getAttribute("loginInfo");
+		String manageLoginSession = (String) session.getAttribute("manager_id"); //관리자 로그인 세션			
+								
+		// 관리자 세션을 없앤다 (관리자 로그아웃 처리)
+		if(manageLoginSession!=null) { 
+			session.removeAttribute("manager_id");
+		}
+		
 		Member output = null;
 
 		boolean jn_result = false;
