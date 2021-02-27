@@ -45,12 +45,18 @@ public interface ReviewAndQnaService {
 
 	// 회원별 문의 목록 조회
 	public List<Qna> getMemberQnaList(Qna input) throws Exception;
+	
+	// 문의 목록 조회 (검색어 있음, 관리자용)
+	public List<Qna> getManageQna(Qna input) throws Exception;
 
 	// 상품별 문의 수 조회
 	public int getProductQnaCount(Qna input) throws Exception;
 	
-	// 상품별 문의 수 조회
+	// 회원별 문의 수 조회
 	public int getMemberQnaCount(Qna input) throws Exception;
+	
+	// 문의 수 조회
+	public int getQnaCount(Qna input) throws Exception;
 
 	// 문의 작성
 	public int addQna(Qna input) throws Exception;

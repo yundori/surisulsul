@@ -82,7 +82,7 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 	
-	/** 회원별 리뷰 목록 조회 */
+	/** 리뷰 목록 조회 (검색어 있음) */
 	@Override
 	public List<Review> getManageReview(Review input) throws Exception {
 		List<Review> result = null;
@@ -273,6 +273,28 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 		return result;
 	}
+	
+	/** 문의 목록 조회 (검색어 있음) */
+	@Override
+	public List<Qna> getManageQna(Qna input) throws Exception {
+		List<Qna> result = null;
+
+		try {
+			result = sqlSession.selectList("ReviewAndQnaMapper.manageQnaSearch", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 상품별 문의 수 조회 */
 	@Override
@@ -296,6 +318,21 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 		try {
 			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountMemberQna", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/** 회원별 문의 수 조회 */
+	@Override
+	public int getQnaCount(Qna input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountQna", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

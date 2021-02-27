@@ -131,7 +131,7 @@
 
 
 
-/* 후기 관리 페이지 css */
+/* 문의 관리 페이지 css */
 .content {
 	width:80%;
 	padding-top:120px;
@@ -206,34 +206,25 @@
 	margin: 0px 10px;
 }
 
- /* 선택한 상품 썸네일 설정
- * --------------------- */
-.item_qna .img_area {
-	width: 20%;
-	height: 200px;
-	padding: 15px 10px;
-	margin: 0;
-	vertical-align: middle;
-	text-align: center;
-}
-
-.item_qna .review_img {
-	width: 170px;
-	height: 200px;
-	object-fit: cover;
-	overflow: hidden;
-}
-
-.item_qna .content_area {
-	width: 60%;
+.item_qna .type_area {
+	width: 10%;
 	padding: 15px 50px;
 	margin: 0;
 	vertical-align: middle;
 }
 
-.item_qna .content_title {
-	font-size: 20px;
-	margin-bottom: 10px;
+.item_qna .product_area {
+	width: 10%;
+	padding: 15px 50px;
+	margin: 0;
+	vertical-align: middle;
+}
+
+.item_qna .content_area {
+	width: 50%;
+	padding: 15px 50px;
+	margin: 0;
+	vertical-align: middle;
 }
 
 .item_qna .content_item {
@@ -248,14 +239,9 @@
 }
 
 .item_qna .userinfo_area {
-	width: 20%;
+	width: 15%;
 	padding: 15px 10px;
 	margin: 0;
 	text-align: center;
 	vertical-align: middle;
-}
-
-.user_id_filter, .reivew_date, .review_rating_text, .review_rating {
-	font-size: 16px;
-	margin-bottom: 10px;
 }

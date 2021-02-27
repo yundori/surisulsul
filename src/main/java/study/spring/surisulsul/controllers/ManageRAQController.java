@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import study.spring.surisulsul.helper.PageData;
 import study.spring.surisulsul.helper.RegexHelper;
 import study.spring.surisulsul.helper.WebHelper;
+import study.spring.surisulsul.model.Qna;
 import study.spring.surisulsul.model.Review;
 import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.ReviewAndQnaService;
@@ -108,28 +109,28 @@ public class ManageRAQController {
 		
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-		Review input = new Review();
+		Qna input = new Qna();
 
 		// 검색 조건으로 상품명을 선택했을 때 
 		if (type==1){ input.setP_name(keyword); }
 		// 검색 조건으로 이름을 선택했을 때 
 		else if (type==2){ input.setM_name(keyword); }
 		
-		List<Review> output = null; // 조회 결과가 저장될 객체
+		List<Qna> output = null; // 조회 결과가 저장될 객체
 		PageData pageData = null;
 		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = reviewAndQnaService.getReviewCount(input);
+			totalCount = reviewAndQnaService.getQnaCount(input);
 						
 			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 						
 			// SQL의 limit 절에서 사용될 값을 Beans의 static 변수에 저장
-			Review.setOffset(pageData.getOffset());
-			Review.setListCount(pageData.getListCount()); 
+			Qna.setOffset(pageData.getOffset());
+			Qna.setListCount(pageData.getListCount()); 
 			// 데이터 조회
-			output = reviewAndQnaService.getManageReview(input);
+			output = reviewAndQnaService.getManageQna(input);
 			
 		} catch(Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());

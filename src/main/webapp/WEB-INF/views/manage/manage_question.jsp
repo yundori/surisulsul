@@ -26,7 +26,7 @@
 	</form>
 	
 	<%-- 조회 결과 --%>
-	<form name="m_qna_form" class="item_qna" id="m_qna_form" action="${pageContext.request.contextPath}/qna">
+	<form name="m_qna_form" class="item_qna" id="m_qna_form" action="${pageContext.request.contextPath}/question">
 		<table class="manage_qna_table">
 			<c:choose>
 			<%-- 조회 결과가 없는 경우 --%>
@@ -45,9 +45,11 @@
 				<table>
 				<tr>
 				<th><input type="checkbox" name="all" class="check_all"></th>
-				<th>이미지</th>
-    			<th>후기 내용</th>
+				<th>문의 분류</th>
+				<th>상품 정보</th>
+    			<th>문의 내용</th>
     			<th>작성 정보</th>
+    			<th>답변 여부</th>
 				</tr>
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<%-- 출력을 위한 상품명 / 이름 --%>
@@ -55,22 +57,16 @@
 						<c:set var="m_name" value="${item.m_name}"/>
 					<tr>
 						<td><input type="checkbox" name="cs_qna" class="ab" value="${item.id}"></td>
-						<td class="img_area">
-						<img class="qna_img" src="${contextPath}/surisulsul/assets/upload/${item.rev_img}" />
-						</td>
+						<td class="type_area"><h4 class="content_type">${item.type}</h4></td>
+						<td class="product_area"><h4 class="content_item">${item.p_name}</h4></td>
 						<td class="content_area">
-							<h4 class="content_item">${item.p_name}</h4>
 							<div class="content_text">${item.content}</div>
 						</td>
 						<td class="userinfo_area">
 							<h4 class="user_id_filter">${item.m_name}</h4>
 							<h4 class="reivew_date">${item.reg_date}</h4>
-							<h4 class="qna_rating_text">평점</h4>
-							
-							<h4 class="qna_rating">
-							<c:forEach var="i" begin="1" end="${item.star}" step="1">★</c:forEach><c:forEach var="i" begin="1" end="${5-item.star}" step="1">☆</c:forEach>
-							</h4>
 						</td>
+						<td><a href="#">작성중</a></td>
 					</tr>
 					</c:forEach>
 				</table>
