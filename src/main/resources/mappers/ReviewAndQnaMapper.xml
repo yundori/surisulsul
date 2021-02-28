@@ -139,6 +139,12 @@
 		DELETE FROM review WHERE id=#{id}
 	</delete>
 	
+	<!-- 리뷰 삭제를 위한 기능 정의 -->
+	<delete id="manage_deleteReview"
+		parameterType="study.spring.surisulsul.model.Product">
+		DELETE FROM review WHERE p_id=#{id}
+	</delete>
+	
 	<!-- 단일 문의 조회를 위한 기능 정의 -->
 	<select id="selectQnaItem"
 		parameterType="study.spring.surisulsul.model.Qna"
@@ -240,6 +246,12 @@
 	<delete id="deleteQna"
 		parameterType="study.spring.surisulsul.model.Qna">
 		DELETE FROM qna WHERE id=#{id}
+	</delete>
+	
+	<!-- 리뷰 삭제를 위한 기능 정의 -->
+	<delete id="manage_deleteQna"
+		parameterType="study.spring.surisulsul.model.Product">
+		DELETE FROM qna WHERE p_id=#{id}
 	</delete>
 
 </mapper>
