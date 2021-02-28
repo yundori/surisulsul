@@ -158,7 +158,6 @@ public class ManageCscenterController {
 			
 			try {
 				output = cscenterService.getCscenter(input);
-				System.out.println("cs_id");
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
@@ -173,9 +172,7 @@ public class ManageCscenterController {
 			@RequestParam(value="cs_id", defaultValue = "0") int id,
 			@RequestParam(value="cs_section", required = false) String type,
 			@RequestParam(value="cs_title", required = false) String title,
-			@RequestParam(value="cs_content", required = false) String content,
-			@RequestParam(value="reg_date", required = false) String reg_date,
-			@RequestParam(value="edit_date", required = false) String edit_date)  
+			@RequestParam(value="cs_content", required = false) String content)  
 	
 	{
 		/** 파라미터 유효성 검사 **/
@@ -199,8 +196,6 @@ public class ManageCscenterController {
 		input.setType(type);
 		input.setTitle(title);
 		input.setContent(content);
-		input.setReg_date(reg_date);
-		input.setEdit_date(edit_date);
 		
 		try {
 			cscenterService.editCscenter(input);
@@ -208,7 +203,7 @@ public class ManageCscenterController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		String redirectUrl = contextPath + "/manage/manage_cscenter.do";
+		String redirectUrl = contextPath + "/manage_cscenter.do";
 		return webHelper.redirect(redirectUrl, "문의가 수정되었습니다.");
 	}
 	

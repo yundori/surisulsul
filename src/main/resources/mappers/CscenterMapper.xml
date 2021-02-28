@@ -56,9 +56,9 @@
 	<!-- 게시글 수정(데이터 갱신, 관리자 전용)을 위한 기능 정의 -->
 	<update id="updateCscenter"
 		parameterType="study.spring.surisulsul.model.Cscenter">
-		UPDATE cscenter SET
+		UPDATE cscenter c SET
 		id=#{id}, type=#{type}, title=#{title},
-		content=#{content}, reg_date=#{reg_date}, edit_date=now()
+		content=#{content}, edit_date=now()
 		WHERE id=#{id};
 	</update>
 
