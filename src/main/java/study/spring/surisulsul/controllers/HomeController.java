@@ -114,9 +114,21 @@ public class HomeController {
 
 		// 인기 많은 술 best 4
 		List<Product> best_output = new ArrayList<Product>();
+		int sales_cnt = 0; // sales테이블에 데이터 수 조회 결과 저장
 
 		try {
-			best_output = productService.main_best_ProductList(null);
+			sales_cnt = salesService.getSalesCountNotNull(null);
+			
+			if(sales_cnt == 0) {
+				best_output = productService.main_best_ProductList_price(null);
+			}
+			else if(sales_cnt < 12) {
+				best_output = productService.main_best_ProductList_sales_price(null);
+			}
+			else {
+				best_output = productService.main_best_ProductList(null);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

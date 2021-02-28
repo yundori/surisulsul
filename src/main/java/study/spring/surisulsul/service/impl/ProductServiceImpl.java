@@ -106,6 +106,50 @@ public class ProductServiceImpl implements ProductService {
 
 		return result;
 	}
+	
+	/** 상품 베스트 4개 목록 조회 : main -> 매출내역이 4개미만일 경우 (매출내역 + 비싼가격순) 으로 조회 */
+	@Override
+	public List<Product> main_best_ProductList_sales_price(Product input) throws Exception {
+		List<Product> result = null;
+
+		try {
+			result = sqlSession.selectList("ProductMapper.mainbestItemList_sales_price", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 베스트 데이터(4개)가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 베스트 데이터(4개) 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	/** 상품 베스트 12개 목록 조회 : main -> 매출내역이 없을 비싼가격순으로 조회 */
+	@Override
+	public List<Product> main_best_ProductList_price(Product input) throws Exception {
+		List<Product> result = null;
+
+		try {
+			result = sqlSession.selectList("ProductMapper.mainbestItemList_price", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 상품 베스트 데이터(4개)가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("상품 베스트 데이터(4개) 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	/** 조건에 맞는 상품 목록 조회 : item_filetered */
 	@Override

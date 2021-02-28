@@ -80,6 +80,24 @@ public interface ProductService {
 	public List<Product> main_best_ProductList(Product input) throws Exception;
 	
 	/**
+	 * 상품 베스트 4개 목록 조회 (main ->best_items) -> 매출내역이 4개미만일 경우 (매출내역 + 비싼가격순)으로 조회
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> main_best_ProductList_sales_price(Product input) throws Exception;
+	
+	/**
+	 * 상품 베스트 4개 목록 조회 (main ->best_items) -> 매출내역이 없을 경우 비싼가격순으로 조회
+	 * 
+	 * @param Product Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Product> main_best_ProductList_price(Product input) throws Exception;
+	
+	/**
 	 * 조건에 맞는 상품 목록 조회 (item_filtered)
 	 * 
 	 * @param Product Beans
