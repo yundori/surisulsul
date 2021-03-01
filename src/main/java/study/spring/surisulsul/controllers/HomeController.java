@@ -72,6 +72,7 @@ public class HomeController {
 		// 관리자 세션을 없앤다 (관리자 로그아웃 처리)
 		if(manageLoginSession!=null) { 
 			session.removeAttribute("manager_id");
+			System.out.println("관리자 로그아웃 성공>>>>>>>>>>>>");
 		}
 		
 		Member output = null;

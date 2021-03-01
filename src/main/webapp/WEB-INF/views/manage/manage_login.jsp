@@ -33,7 +33,7 @@
 	<!-- 로그인에 필요한 정보를 입력하는 폼 : 데이터 조회(where) 조건 -->
 	<form name="manage_login_form" id="manage_login_form"
 		method="post"
-		action="${pageContext.request.contextPath}/manage_home.do">
+		action="${pageContext.request.contextPath}/manage_login_ok.do">
 		<div class="form-group">
 			<h3 class="account-menu" id="text-center">로그인</h3>
 		</div>

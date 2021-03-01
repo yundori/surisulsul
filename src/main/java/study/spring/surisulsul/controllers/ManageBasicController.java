@@ -42,12 +42,13 @@ public class ManageBasicController {
 		
 	}
 	
-	/** 관리자 - 로그인 확인 후 manage_home 페이지로 이동 처리 */
-	@RequestMapping(value = "/manage_home.do", method = RequestMethod.POST)
-	public ModelAndView manage_login_ok(Model model,
+	/** 관리자 - 로그인 action 페이지 */
+	@RequestMapping(value = "/manage_login_ok.do", method = RequestMethod.POST)
+	public ModelAndView login_ok(Model model,
 			HttpServletRequest request,
 			@RequestParam(value = "manager_id", required = false) String id,
-			@RequestParam(value = "manager_pw", required = false) String pw) throws Exception {
+			@RequestParam(value = "manager_pw", required = false) String pw) {
+				
 		/** 관리자 ID / password와 일치하는지 확인 */
 		if(id.equals("managerSuri")) {
 			if(pw.equals("sul123!@#")) {
@@ -61,7 +62,25 @@ public class ManageBasicController {
 			return webHelper.redirect(null,"ID가 잘못되었습니다. 다시 시도해주세요.");
 		}
 		
-		/** 정상로그인이 확인되면 manae_home.do로 정상이동 */
+		/** 관리자 홈으로 이동*/
+		String redirectUrl = contextPath+"/manage_home.do";
+		return webHelper.redirect(redirectUrl, "관리자 로그인 성공");
+	}
+	
+	
+	/** 관리자 - 로그인 확인 후 manage_home 페이지로 이동 처리 */
+	@RequestMapping(value = "/manage_home.do", method = RequestMethod.GET)
+	public ModelAndView manage_login_ok(Model model,
+			HttpServletRequest request) {
+		// 세션 값 받아오기
+		HttpSession session = request.getSession();
+		String manageLoginSession = (String) session.getAttribute("manager_id"); //관리자 로그인 세션			
+		
+		// 로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if (manageLoginSession == null) {
+			return webHelper.redirect(contextPath + "/manage.do", "관리자 로그인 후 이용해주세요..");
+		}
+		
 		return new ModelAndView("manage/manage_home");
 	}
 }
