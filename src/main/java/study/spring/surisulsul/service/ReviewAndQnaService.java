@@ -55,6 +55,9 @@ public interface ReviewAndQnaService {
 	// 회원별 문의 수 조회
 	public int getMemberQnaCount(Qna input) throws Exception;
 	
+	// 오늘 작성된 문의 수 조회(관리자용)
+	public int getNewQnaCount() throws Exception;
+	
 	// 문의 수 조회
 	public int getQnaCount(Qna input) throws Exception;
 

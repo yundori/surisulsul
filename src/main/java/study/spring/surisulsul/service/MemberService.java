@@ -19,7 +19,7 @@ public interface MemberService {
 
 	// 전체 회원 목록 조회 (관리자용)
 	public List<Member> getMemberList(Member input) throws Exception;
-	
+
 	// 탈퇴 회원 목록 조회 (관리자용)
 	public List<Member> getOutMemberList(Member input) throws Exception;
 
@@ -28,7 +28,13 @@ public interface MemberService {
 
 	// 탈퇴 회원 수 조회 (관리자용)
 	public int getOutMemberCount(Member input) throws Exception;
-	
+
+	// 오늘 가입 회원 수 조회(관리자용)
+	public int getMemberInTodayCount() throws Exception;
+
+	// 오늘 탈퇴 회원 수 조회(관리자용)
+	public int getMemberOutTodayCount() throws Exception;
+
 	// 회원정보 수정(관리자용)
 	public int editMemberAll(Member input) throws Exception;
 

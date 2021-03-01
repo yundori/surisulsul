@@ -296,7 +296,7 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 
-	/** 상품별 문의 수 조회 */
+	/** 상품별 문의 수 조회(관리자용) */
 	@Override
 	public int getProductQnaCount(Qna input) throws Exception {
 		int result = 0;
@@ -311,7 +311,7 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 	
-	/** 회원별 문의 수 조회 */
+	/** 회원별 문의 수 조회(관리자용) */
 	@Override
 	public int getMemberQnaCount(Qna input) throws Exception {
 		int result = 0;
@@ -326,7 +326,7 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 	
-	/** 회원별 문의 수 조회 */
+	/** 전체 문의 수 조회(관리자용) */
 	@Override
 	public int getQnaCount(Qna input) throws Exception {
 		int result = 0;
@@ -400,6 +400,23 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
 
+		return result;
+	}
+	
+	/** 오늘 작성된 문의 수 확인(관리자용)*/
+	@Override
+	public int getNewQnaCount() throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectNewQnaCount");
+		}catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		}  catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 		return result;
 	}
 

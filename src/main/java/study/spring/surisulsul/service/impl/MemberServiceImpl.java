@@ -396,7 +396,7 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
-
+	/** 회원정보 수정 (관리자용)*/
 	@Override
 	public int editMemberAll(Member input) throws Exception {
 		int result = 0;
@@ -416,5 +416,39 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+	/** 오늘 가입 회원 수 조회(관리자용)*/
+	@Override
+	public int getMemberInTodayCount() throws Exception {
+		int result = 0;
 
+		try {
+			result = sqlSession.selectOne("MemberMapper.countInMembersToday");
+
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	/** 오늘 탈퇴 회원 수 조회(관리자용)*/
+	@Override
+	public int getMemberOutTodayCount() throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.countOutMembersToday");
+
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
 }

@@ -63,4 +63,12 @@ public interface ManageOrdersService {
 	 * @throws Exception
 	 */
 	public List<Order> getDateSales(String type, Order input) throws Exception;
+	
+	/**
+	 * manage_home > 오늘 새로 들어온 주문 수 조회
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getNewOrderCount() throws Exception;
+	
 }

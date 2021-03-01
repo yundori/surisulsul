@@ -226,5 +226,25 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 		
 		return result;
 	}
+	
+	/**
+	 * manage_home > 오늘 들어온 주문 수
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getNewOrderCount() throws Exception {
+		int result = 0;
 
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectNewOrderCount");
+		}catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		}  catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
 }
