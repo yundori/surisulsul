@@ -247,4 +247,46 @@ public class ManageOrderServiceImpl implements ManageOrdersService{
 		}
 		return result;
 	}
+	
+	/**
+	 * manage_home > (차트용) : 해당 날짜 매출 여부 조회
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getOrderChk(Order input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectChartChk", input);
+		}catch (Exception e) {
+		}
+		return result;
+	}
+	
+	/**
+	 * manage_home > (차트용) : 해당 날짜 매출 총금액 조회
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public Order getOrderSum(Order input) throws Exception {
+		Order result = null;
+
+		try {
+			result = sqlSession.selectOne("OrderMapper.selectChartSum", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 }

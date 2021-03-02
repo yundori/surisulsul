@@ -50,4 +50,9 @@
 	border: 1px solid #aaa;
 	line-height: 325%;
 	font-size: 20px;
+	cursor: pointer;
+}
+
+.manage_main td a{
+	cursor: pointer;
 }

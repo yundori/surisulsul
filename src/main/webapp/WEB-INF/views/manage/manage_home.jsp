@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
 
 <div class="content_home">
-	<h1>관리자 메인</h1>
+	<h1>관리자 페이지</h1>
 	<hr />
 	<div class="all_main">
 		<div class="chart">
@@ -18,10 +18,8 @@
 				<th colspan="2">오늘의 수리술술</th>
 			</tr>
 			<tr>
-			
 				<td><a href="${pageContext.request.contextPath}/manage_members.do">새로 가입한 회원 수</a></td>
 				<td width=100><a href="${pageContext.request.contextPath}/manage_members.do">${todayIn }</a></td>
-			
 			</tr>
 			<tr>
 				<td><a href="${pageContext.request.contextPath}/manage_members.do">오늘 탈퇴한 회원 수</a></td>
@@ -38,6 +36,7 @@
 		</table>
 	</div>
 </div>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 /** 차트 구현 **/
@@ -45,10 +44,16 @@ var ctx = document.getElementById('price_chart').getContext('2d');
 var itemChart = new Chart(ctx, {
 	type : 'bar', //가로막대그래프
 	data : {
-		labels : ['1일','2일','3일', '4일', '5일', '6일', '7일'],
+		labels : ['${dateList[6]}','${dateList[5]}','${dateList[4]}', '${dateList[3]}', '${dateList[2]}', '${dateList[1]}', '${dateList[0]}'],
 		datasets : [ {
-			label : '최근 일주일 매출 현황',
-			data : [ 10, 20, 30, 40, 50, 60, 70 ] // 최근 일주일 매출 데이터
+			label : '일 매출액',
+			data : [ ${output.get(6).sum_price}, 
+				${output.get(5).sum_price}, 
+				${output.get(4).sum_price}, 
+				${output.get(3).sum_price}, 
+				${output.get(2).sum_price}, 
+				${output.get(1).sum_price}, 
+				${output.get(0).sum_price} ] // 최근 일주일 매출 데이터
 		}],
 
 	},

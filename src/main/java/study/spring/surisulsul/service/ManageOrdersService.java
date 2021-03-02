@@ -71,4 +71,17 @@ public interface ManageOrdersService {
 	 */
 	public int getNewOrderCount() throws Exception;
 	
+	/**
+	 * manage_home > 차트용 : 해당 날짜 매출 여부 조회
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getOrderChk(Order input) throws Exception;
+	
+	/**
+	 * manage_home > 차트용 : 해당 날짜 총 매출금액 조회
+	 * @return int
+	 * @throws Exception
+	 */
+	public Order getOrderSum(Order input) throws Exception;
 }

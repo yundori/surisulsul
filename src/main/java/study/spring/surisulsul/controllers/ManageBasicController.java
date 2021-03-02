@@ -1,5 +1,8 @@
 package study.spring.surisulsul.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import study.spring.surisulsul.helper.WebHelper;
 import study.spring.surisulsul.model.Member;
+import study.spring.surisulsul.model.Order;
 import study.spring.surisulsul.service.ManageOrdersService;
 import study.spring.surisulsul.service.MemberService;
 import study.spring.surisulsul.service.OrderService;
@@ -129,12 +133,66 @@ public class ManageBasicController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		/**차트용*/
+		//결과를 담을 객체
+		List<Order> output = new ArrayList<Order>();		
+		List<String> dateList = new ArrayList<String>();
+		
+		//오늘의 날짜
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calendar = Calendar.getInstance();
+		String todayDate = null; 
+		
+		//해당 날짜 주문 여부 확인 : 주문이 있을 때 = 1, 주문이 없을 때 0
+		int count = 0;
+		
+		// 7일 반복문
+		for(int i=0; i<7; i++) {
+			//날짜 List에 넣기
+			todayDate = format.format(calendar.getTime());
+			dateList.add(todayDate);
+			
+			//새로운 객체 생성 -> for문 밖에서 생성시 오류
+			Order input = new Order();
+			input.setFrom_date(todayDate);
+			
+			//해당 날짜에 주문이 있는지 여부 확인
+			try {
+				count = manageService.getOrderChk(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			//주문 내역이 없다면 -> 0으로 설정
+			if(count == 0) {
+				input.setSum_price(0);
+				input.setReg_date(todayDate);
+				output.add(input);
+
+			}else {
+				//주문 내역이 있다면 -> 데이터 불러오기
+				Order tmp = new Order();
+				try {
+					tmp = manageService.getOrderSum(input);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				output.add(tmp);
+			}
+			calendar.add(calendar.DATE, -1);
+		}
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println(output);
+		
 
 		model.addAttribute("todayIn", todayIn);
 		model.addAttribute("todayOut", todayOut);
 		model.addAttribute("qnaCount", qnaCount);
 		model.addAttribute("orderCount", orderCount);
-
+		model.addAttribute("output", output);
+		model.addAttribute("dateList", dateList);
+		
 		return new ModelAndView("manage/manage_home");
 	}
 }
