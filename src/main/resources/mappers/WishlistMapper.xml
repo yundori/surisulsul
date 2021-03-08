@@ -48,5 +48,11 @@
 		DELETE FROM wishlist WHERE m_id=#{m_id} and
 		p_id=#{p_id};
 	</delete>
+	
+	<!-- 해당상품 삭제 전 위시리스트 삭제  -->
+	<delete id="manage_deleteWishlistItem"
+		parameterType="study.spring.surisulsul.model.Wishlist">
+		DELETE FROM wishlist WHERE p_id=#{id};
+	</delete>
 
 </mapper>
