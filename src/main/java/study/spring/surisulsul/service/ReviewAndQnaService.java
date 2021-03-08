@@ -66,6 +66,9 @@ public interface ReviewAndQnaService {
 
 	// 문의 수정
 	public int editQna(Qna input) throws Exception;
+	
+	// 관리 문의 수정
+	public int editManageQna(Qna input) throws Exception;
 
 	// 문의 삭제
 	public int deleteQna(Qna input) throws Exception;

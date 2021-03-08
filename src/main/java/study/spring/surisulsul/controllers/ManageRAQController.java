@@ -143,4 +143,15 @@ public class ManageRAQController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("manage/manage_question");
 	}
+	
+	/** 문의 수정 페이지로 이동 */
+	@RequestMapping(value="/manage_question_edit.do", method=RequestMethod.GET)
+	public ModelAndView manage_quetion_edit(Model model, @RequestParam(value="id", defaultValue="0") int id) {
+		if (id==0) {
+			webHelper.redirect(null, "잘못된 접근입니다.");
+		}
+		
+		model.addAttribute("id", id);
+		return new ModelAndView("manage/manage_edit_qna");
+	}
 }

@@ -37,7 +37,6 @@
         </div>
         <div>
             <button type="submit">확인</button>
-            <button type="reset" class="button-cancle">취소</button>
         </div>
         </form>
     </div>

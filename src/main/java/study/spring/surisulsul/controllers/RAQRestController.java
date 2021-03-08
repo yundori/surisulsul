@@ -417,6 +417,39 @@ public class RAQRestController {
 		map.put("result", result);
 		return webHelper.getJsonData(map);
 	}
+	
+	/** 문의 답변 상태 변경에 대한 action 페이지 */
+	/** 문의 수정에 대한 action 페이지 */
+	@RequestMapping(value = "edit_chk", method = RequestMethod.PUT)
+	public Map<String, Object> edit_question(
+			HttpServletRequest request,
+			@RequestParam(value = "q_id", defaultValue = "0") int id) {				
+				
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		String result = null;
+		// 필수 검사 (문의가 존재하는지)
+		if (id == 0) {
+			return webHelper.getJsonWarning("잘못된 접근입니다.");
+		}
+
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Qna input = new Qna();
+		input.setId(id);
+
+		try {
+			// 데이터 수정
+			reviewAndQnaService.editManageQna(input);
+			result="OK";
+		} catch (Exception e) {
+			result="FAIL";
+		}
+
+		/** 3) 결과를 확인하기 위한 JSON 출력 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", result);
+		return webHelper.getJsonData(map);
+	}
 
 	/** 문의 삭제에 대한 action 페이지 */
 	@RequestMapping(value = "question", method = RequestMethod.DELETE)

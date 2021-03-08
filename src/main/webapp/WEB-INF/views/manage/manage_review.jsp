@@ -74,7 +74,7 @@
 					</tr>
 					</c:forEach>
 				</table>
-				<input type="submit" value="삭제" onclick="" class="review_delete" />
+				<input type="submit" value="삭제" onclick="" class="delete_btn" />
 				<div class="pageNumber">
 				<!-- 페이지 번호 구현 -->
 				<%-- 이전 그룹에 대한 링크 --%>

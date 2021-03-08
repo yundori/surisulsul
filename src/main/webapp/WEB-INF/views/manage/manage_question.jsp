@@ -56,8 +56,27 @@
 						<c:set var="p_name" value="${item.p_name}"/>
 						<c:set var="m_name" value="${item.m_name}"/>
 					<tr>
-						<td><input type="checkbox" name="cs_qna" class="ab" value="${item.id}"></td>
-						<td class="type_area"><h4 class="content_type">${item.type}</h4></td>
+						<td class="check_area"><input type="checkbox" name="cs_qna" class="ab" value="${item.id}"></td>
+						<td class="type_area"><h4 class="content_type">
+						<c:choose>
+							<c:when test="${item.type==1}">
+								상품 문의
+							</c:when>
+							<c:when test="${item.type==2}">
+								배송 문의
+							</c:when>
+							<c:when test="${item.type==3}">
+								대량 구매
+							</c:when>
+							<c:when test="${item.type==4}">
+								기타 문의
+							</c:when>
+							<c:otherwise>
+								분류 없음
+							</c:otherwise>
+						</c:choose>
+						
+						</h4></td>
 						<td class="product_area"><h4 class="content_item">${item.p_name}</h4></td>
 						<td class="content_area">
 							<div class="content_text">${item.content}</div>
@@ -66,11 +85,15 @@
 							<h4 class="user_id_filter">${item.m_name}</h4>
 							<h4 class="reivew_date">${item.reg_date}</h4>
 						</td>
-						<td><a href="#">작성중</a></td>
+						<td class="status_area"><c:if test="${item.status=='N'}"><a href="javascript:openPop(${item.id});" class="update_btn">대기</a></c:if><c:if test="${item.status=='Y'}">답변완료</c:if></td>
 					</tr>
 					</c:forEach>
 				</table>
-				<input type="submit" value="삭제" onclick="" class="qna_delete" />
+				
+				<div class="submit_buttons">
+					<input type="submit" value="삭제" class="delete_btn"/>
+    			</div> 
+    			<!-- <input type="submit" value="삭제" action="question"/>-->
 				<div class="pageNumber">
 				<!-- 페이지 번호 구현 -->
 				<%-- 이전 그룹에 대한 링크 --%>
@@ -145,6 +168,37 @@
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+//체크박스 모두 선택 처리
+$( '.check_all' ).click( function() {
+	 var chk = $(".check_all").prop("checked");
+	 if(chk) {
+	  $(".ab").prop("checked", true);
+	 } else {
+	  $(".ab").prop("checked", false);
+	 }
+} );
+
+//체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
+$( '.ab' ).click( function() {
+	var qnaItems = $('input:checkbox[name=cs_qna]').length;
+	var selectedQna = $('input:checkbox[name=cs_qna]:checked').length;
+	
+	if(qnaItems != selectedQna) {
+		$(".check_all").prop("checked", false);
+     	
+    }else{
+    	console.log('qnaItems==selectedQna');
+	  	$(".check_all").prop("checked", true);
+    }	    
+} );
+
+function openPop(qnaId) {
+	var popup = window
+			.open('${pageContext.request.contextPath }/manage_question_edit.do?id='
+							+ qnaId, '문의수정',
+					'width=500, height=260, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
+}
+
 $(function() {
     // #m_qna_form에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
     $("#m_qna_form").ajaxForm({
@@ -174,4 +228,5 @@ $(function() {
         }
     });
 });
+
 </script>
