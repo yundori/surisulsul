@@ -33,7 +33,7 @@
 			<h4>주로 찾는 사람들</h4>
 			<c:choose>
 			<c:when test="${'무궁화' eq output.jn_result}">
-				<img src="${contextPath}/assets/img/mypage/flower01.png" />
+				<img src="${contextPath}/bigdata_B_01/assets/img/mypage/flower01.png" />
 				<ul>
 					<li>#국내파</li>
 					<li>#육류파</li>
@@ -42,7 +42,7 @@
 				</ul>
 			</c:when>
 			<c:when test="${'수국' eq output.jn_result}">
-				<img src="${contextPath}/assets/img/mypage/flower04.png" />
+				<img src="${contextPath}/bigdata_B_01/assets/img/mypage/flower04.png" />
 				<ul>
 					<li>#해외파</li>
 					<li>#가벼운</li>
@@ -51,7 +51,7 @@
 				</ul>
 			</c:when>
 			<c:when test="${'진달래' eq output.jn_result}">
-				<img src="${contextPath}/assets/img/mypage/flower03.png" />
+				<img src="${contextPath}/bigdata_B_01/assets/img/mypage/flower03.png" />
 				<ul>
 					<li>#국내파</li>
 					<li>#가벼운</li>
@@ -60,7 +60,7 @@
 				</ul>
 			</c:when>
 			<c:otherwise>
-				<img src="${contextPath}/assets/img/mypage/flower02.png" />
+				<img src="${contextPath}/bigdata_B_01/assets/img/mypage/flower02.png" />
 				<ul>
 					<li>#해외파</li>
 					<li>#육류파</li>
