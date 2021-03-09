@@ -9,7 +9,7 @@
     <div class="tab">
         <ul class="tab-button">
             <li class="tab-button-item fix-center">
-                <a data-tab="notice" class="tab-button-item-link" href="#" id="default">알립니다</a>
+                <a data-tab="notice" class="tab-button-item-link selected" href="#">알립니다</a>
             </li>
             <li class="tab-button-item fix-center">
                 <a data-tab="faq" class="tab-button-item-link" href="#">자주 묻는 질문</a>
@@ -40,13 +40,21 @@
 			},
 			success: function(data) {
 				console.log(">>성공>>");
+				//탭 클릭시 이미지 변경
+				$(".tab-button-item-link").not(this).removeClass("selected");
+				$(this).addClass("selected");
 				$('.tab-panel').html(data);
 			}
 		});
 
     }
+  
     
     $(".tab-button-item-link").click(function(e) {
+    	//탭 클릭시 이미지 변경
+    	$(".tab-button-item-link").not(this).removeClass("selected");
+    	$(this).addClass("selected");
+    	
     	e.preventDefault();
     	
     	var activeTab = $(this).attr('data-tab');
