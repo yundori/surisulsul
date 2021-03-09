@@ -68,7 +68,7 @@
 					
 					</span>
 					<div class="que_content">${item.p_name}</div>
-					<span class="que_answer"><c:choose><c:when test="${item.status eq Y}">답변완료</c:when><c:otherwise>대기중</c:otherwise></c:choose></span>
+					<span class="que_answer"><c:choose><c:when test="${item.status=='Y'}">답변완료</c:when><c:otherwise>대기중</c:otherwise></c:choose></span>
 					<span class="que_date">${item.reg_date}</span>
 					<div class="question_detail">
 						<span>${item.content}</span>
