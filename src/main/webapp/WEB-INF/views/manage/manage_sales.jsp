@@ -94,7 +94,7 @@
 			    	<tr>
 			    		<td>${item.reg_date }</td>
 			    		<td>${item.order_cnt }</td>
-			    		<c:set var="gen_sum" value="${cnt_sum+item.order_cnt }"/>
+			    		<c:set var="cnt_sum" value="${cnt_sum+item.order_cnt }"/>
 			    		<td class="price"><fmt:formatNumber value="${item.sum_price }" pattern="#,###"/></td>
 			    		<c:set var="gen_sum" value="${gen_sum+item.sum_price }"/>
 			    		<td class="price"><fmt:formatNumber value="${item.cash_sum }" pattern="#,###"/></td>
@@ -142,7 +142,7 @@
 			    	<tr>
 			    		<td>${item.reg_date }</td>
 			    		<td>${item.order_cnt }</td>
-			    		<c:set var="gen_sum" value="${cnt_sum+item.order_cnt }"/>
+			    		<c:set var="cnt_sum" value="${cnt_sum+item.order_cnt }"/>
 			    		<td class="price"><fmt:formatNumber value="${item.sum_price }" pattern="#,###"/></td>
 			    		<c:set var="gen_sum" value="${gen_sum+item.sum_price }"/>
 			    		<td class="price"><fmt:formatNumber value="${item.cash_sum }" pattern="#,###"/></td>

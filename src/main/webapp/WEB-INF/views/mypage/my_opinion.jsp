@@ -53,7 +53,7 @@
 										<div class="table_min_height">
 											<a href="#" class="review_item_thumb"> <img
 												class="review_img"
-												src="${contextPath}/assets/upload/${review.rev_img}" />
+												src="${contextPath}/upload/${review.rev_img}" />
 											</a>
 											<div class="review_item_info">
 												<a href="#" class="item"> <c:set var="stars"

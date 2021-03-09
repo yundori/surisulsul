@@ -32,7 +32,7 @@
 						<td class="img_area">
 							<%-- <c:choose> --%>
 							<%-- <c:when 사진 db있으면 해당 사진 노출> --%>
-							<img class="review_img" src="${contextPath}/surisulsul/assets/img/${item.rev_img}" />
+							<img class="review_img" src="${contextPath}/upload/${item.rev_img}" />
 							<%-- </c:if> --%>
 							<%-- <c:otherwise 없으면 디폴트 이미지 사용> --%>
 							<%-- </c:otherwise> --%>
