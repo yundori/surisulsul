@@ -184,8 +184,23 @@
 									<td>
 										<div class="table_min_height">
 											<div class="qna_item_info">
-												<a href="#"> <%--분류 : c:choose와 c:when으로 나누기 --%> <span
-													class="qna_area">[분류 : 대량구매]</span>
+												<a href="#">  <span
+													class="qna_area">
+													<c:choose>
+													<c:when test="${qna.type == '1' }">
+													[분류 : 상품문의]
+													</c:when>
+													<c:when test="${qna.type == '2' }">
+													[분류 : 배송문의]
+													</c:when>
+													<c:when test="${qna.type == '3' }">
+													[분류 : 대량구매]
+													</c:when>
+													<c:when test="${qna.type == '4' }">
+													[분류 : 기타문의]
+													</c:when>
+													</c:choose>
+													</span>
 													<p class="qna_item_name">${qna.content }</p>
 												</a>
 											</div>
@@ -193,8 +208,14 @@
 
 									</td>
 									<td>${qna.reg_date }</td>
-									<%--처리상태 : c:choose와 c:when으로 나누기 --%>
+									<c:choose>
+									<c:when test="${qna.status eq 'N' }">
 									<td>답변 대기중</td>
+									</c:when>
+									<c:when test="${qna.status eq 'Y' }">
+									<td>답변 완료</td>
+									</c:when>
+									</c:choose>
 								</tr>
 							</c:forEach>
 						</c:when>
