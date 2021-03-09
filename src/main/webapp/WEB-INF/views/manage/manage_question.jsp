@@ -35,7 +35,7 @@
 				<div class="qna_none">
 					<table>
 						<tr>
-							<td><h1>조건에 해당하는 후기가 없습니다.</h1></td>
+							<td><h1>조건에 해당하는 문의가 없습니다.</h1></td>
 						</tr>
 					</table>
 				</div>
