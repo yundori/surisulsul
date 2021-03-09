@@ -149,6 +149,29 @@
     <script src="${contextPath}/assets/js/jquery.barrating.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
     <script src="${contextPath}/assets/plugins/sweetalert/sweetalert2.min.js?time=${currentTime}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+//체크박스 모두 선택 처리
+$( '.check_all' ).click( function() {
+	 var chk = $(".check_all").prop("checked");
+	 if(chk) {
+	  $(".ab").prop("checked", true);
+	 } else {
+	  $(".ab").prop("checked", false);
+	 }
+} );
+
+//체크박스 개별적으로 선택 시 모두 체크인지 확인해서 .check_all에도 자동 선택처리 되도록
+$( '.ab' ).click( function() {
+	var reviewItems = $('input:checkbox[name=cs_review]').length;
+	var selectedReview = $('input:checkbox[name=cs_review]:checked').length;
+	
+	if(reviewItems != selectedReview) {
+		$(".check_all").prop("checked", false);
+     	
+    }else{
+    	console.log('reviewItems==selectedReview');
+	  	$(".check_all").prop("checked", true);
+    }	    
+} );
 $(function() {
     // #m_review_form에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
     $("#m_review_form").ajaxForm({
