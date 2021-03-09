@@ -56,7 +56,7 @@
 					<tr>
 						<td><input type="checkbox" name="cs_review" class="ab" value="${item.id}"></td>
 						<td class="img_area">
-						<img class="review_img" src="/home/student/bigdata_B_01/upload/${item.rev_img}" />
+						<img class="review_img" src="${contextPath}/upload/${item.rev_img}" />
 						</td>
 						<td class="content_area">
 							<h4 class="content_item">${item.p_name}</h4>
