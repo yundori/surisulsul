@@ -48,14 +48,6 @@
     height: 40px;
 }
 
-/*
- * 선택된 탭 버튼 디자인
- * -------------------------- */
-
-.selected {
-    background-color: #fbd14b;
-    color: #fff;
-}
 
 /*
  * 선택 해제된 탭 버튼 디자인
@@ -71,6 +63,16 @@
     text-decoration: none;
     border-radius: 5px 5px 0 0;
 }
+
+/*
+ * 선택된 탭 버튼 디자인
+ * -------------------------- */
+
+.selected {
+    background-color: #fbd14b;
+    color: #fff;
+}
+
 
 /*
  * 탭 버튼이 탭 패널 위로 오게 z-index 부여
