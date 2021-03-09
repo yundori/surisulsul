@@ -177,10 +177,16 @@
 						<%--c:when test 조건 -> 최근 문의 내역 존재 여부 -> 문의 내역 DB 내용 존재 --%>
 						<c:when test="${qnaOutput.size()!=0 }">
 							<c:forEach var="qna" items="${qnaOutput }" varStatus="status">
+							
+							<%--상세 페이지로 이동하는 URL --%>
+								<c:url value="/item_details.do" var="view_Url">
+									<c:param name="prod_id" value="${qna.p_id}" />
+								</c:url>
+								
 								<tr>
 									<td><input type="checkbox" name="qnaItem"
 										id="qna${qna.id }" class="cd" value="${qna.id }"></td>
-									<td><a href="#">${qna.p_name }</a></td>
+									<td><a href="${view_Url }">${qna.p_name }</a></td>
 									<td>
 										<div class="table_min_height">
 											<div class="qna_item_info">
