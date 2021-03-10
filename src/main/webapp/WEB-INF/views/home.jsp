@@ -10,9 +10,9 @@
 	<div id="main_banner">
 		<div id="slides">
 			<ul class="slides-container">
-				<!-- 슬라이드 1 (무료배송, 이동 페이지 없음.)-->
+				<!-- 슬라이드 1 (무료배송, 고객센터로 이동)-->
 				<li>
-				<a href="#"> 
+				<a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do"> 
 				<img src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" />
 				</a>
 				</li>
