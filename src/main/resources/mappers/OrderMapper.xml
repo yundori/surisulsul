@@ -139,14 +139,8 @@
 			<if test="from_date!=null and from_date!='' and to_date!=null and to_date!=''">
 				AND reg_date BETWEEN #{from_date} AND #{to_date}
 			</if>
-			<if test="reg_date!=null and reg_date!=''">
-				AND date_format(reg_date, '%Y-%m-%d')=#{reg_date}
-			</if>
 		</where>
 		ORDER BY id DESC
-		<if test="listCount > 0">
-			LIMIT #{offset}, #{listCount}
-		</if>
 	</select>
 	
 	<!-- 누적주문수 select 구문  -->
