@@ -75,9 +75,9 @@ public class HomeController {
 			System.out.println("관리자 로그아웃 성공>>>>>>>>>>>>");
 		}
 		
-		Member output = null;
-
+		// 결과를 저장할 객체
 		boolean jn_result = false;
+		Member output = null;
 		List<Product> jn_output = null;
 
 		// 로그인 세션이 없을 경우 = 로그인이 안됐을 경우 alert 발생
@@ -99,7 +99,8 @@ public class HomeController {
 				jn_result = false;
 			} else {// 로그인 O , 주능결과 O
 				jn_result = true;
-
+				
+				// 주능 결과에 맞는 상품 불러오기
 				Product input = new Product();
 				input.setJn_result(loginSession.getJn_result());
 
