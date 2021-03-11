@@ -90,7 +90,7 @@
 				<button type="submit" class="delete_this btn_nor">선택 삭제</button>
 			</div>
 		</form>
-					<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+					<!--*****  PAGINATION  *****-->
 			<div class="pageNumber">
 				<!-- 페이지 번호 구현 -->
 				<%-- 이전 그룹에 대한 링크 --%>
@@ -239,7 +239,7 @@
 				<button type="submit" class="delete_this btn_nor">선택 삭제</button>
 			</div>
 		</form>
-			<!--***** 여기에 PAGINATION 들어가야 함 *****-->
+			<!--*****  PAGINATION  *****-->
 			<div class="pageNumber">
 				<!-- 페이지 번호 구현 -->
 				<%-- 이전 그룹에 대한 링크 --%>

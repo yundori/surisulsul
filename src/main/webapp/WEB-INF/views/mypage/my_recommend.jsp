@@ -141,7 +141,6 @@
 		<span class="psn_gotest">나만을 위한 술을 추천받기 위해 술학능력시험:주(酒)능을 응시하러 가볼까요? </span>
 		</h3>
 		<a href="${pageContext.request.contextPath}/juneung.do" class="btn_yellow">👉1분 만에 보는 주(酒)능</a>
-		<%--나중에 윗 줄 <a> 주소 수정 --%>
 	</div>
 		</c:otherwise>
 </c:choose>

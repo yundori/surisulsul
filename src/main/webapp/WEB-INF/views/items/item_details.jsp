@@ -8,8 +8,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
 
 <div class="item_details">
-	<%-- <c:choose> --%>
-		<%-- <c:when PK값 맞으면> --%>
 		
 	<span class="title">상품 상세</span>
 	<div class="item_detail">
@@ -89,9 +87,7 @@
 	<div class="item_details_footer">
 		<img src="${contextPath}/assets/img/items/cart_top_btn.PNG" class="btn_top" />
 	</div>
-	
-	<%-- </c:when> --%>
-	<%-- </c:choose> --%>
+
 </div>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -152,9 +148,6 @@
 	        return false;
 	    });
 	});
-	
-	/** 위시리스트 체크 **/
-
 	
 </script>
 

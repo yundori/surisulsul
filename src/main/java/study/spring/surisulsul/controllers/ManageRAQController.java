@@ -2,6 +2,9 @@ package study.spring.surisulsul.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -43,13 +46,21 @@ public class ManageRAQController {
 	
 	/** 리뷰 관리 페이지로 이동 */
 	@RequestMapping(value = "/manage_review.do", method = RequestMethod.GET)
-	public ModelAndView manage_review(Model model,
+	public ModelAndView manage_review(Model model, HttpServletRequest request,
 			//검색 조건
 			@RequestParam(value="type", defaultValue="0") int type,
 			//검색어
 			@RequestParam(value="keyword", required=false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage) throws Exception {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+				
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
 		
 		/** 1) 페이지 구현에 필요한 변수값 생성*/
 		int totalCount = 0;
@@ -95,13 +106,23 @@ public class ManageRAQController {
 	
 	/** 문의 관리 페이지로 이동 */
 	@RequestMapping(value="/manage_question.do", method=RequestMethod.GET)
-	public ModelAndView manage_question(Model model,
+	public ModelAndView manage_question(Model model, HttpServletRequest request,
 			//검색 조건
 			@RequestParam(value="type", defaultValue="0") int type,
 			//검색어
 			@RequestParam(value="keyword", required=false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage)  throws Exception {
+		
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		String manageLoginSession = (String) session.getAttribute("manager_id");			
+		
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(manageLoginSession==null) { 
+			return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
+		}
+		
 		/** 1) 페이지 구현에 필요한 변수값 생성*/
 		int totalCount = 0;
 		int listCount = 10;

@@ -253,19 +253,6 @@
     margin-bottom: 50px;
 }
 
-.swiper-wrapper {}
-
-/*.swiper-container .swiper-wrapper .swiper-slide,
-li .pick_item .swiper-slide .swiper-slide-active,
-li .pick_item .swiper-slide .swiper-slideduplicate,
-li .pick_item .swiper-slide .swiper-slide-next {
-    height: auto;
-    margin-right: 0;
-    margin-top: 30px;
-    margin-bottom: 0;
-    display: flex;
-}*/
-
 /**button 세부설정*/
 .swiper-container .swiper-button-prev,
 .swiper-container .swiper-container-rtl {
@@ -379,9 +366,11 @@ li .pick_item .swiper-slide .swiper-slide-next {
 
 .order_table img {
     height: 130px;
-    width: auto;
     vertical-align: middle;
     left: 10px;
+    max-width: 98px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 /**구매했어요 표 속 상품정보 위치 설정*/
@@ -451,9 +440,11 @@ li .pick_item .swiper-slide .swiper-slide-next {
 .psn_review_table img {
     height: 130px;
     width: auto;
-    max-width : 130px;
     vertical-align: middle;
     left: 10px;
+    max-width: 130px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 /**나의 후기 표 border 설정*/
