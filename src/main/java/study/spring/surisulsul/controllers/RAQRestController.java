@@ -119,23 +119,23 @@ public class RAQRestController {
 		Review output = null;
 		
 		try {
-			// 데이터 저장
-			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
-			reviewAndQnaService.addReview(input);
-			
-			// 데이터 조회
-			output = reviewAndQnaService.getReviewItem(input);
-			orderService.updateReview(inputOrder);
-			
-			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
-			int star_total = reviewAndQnaService.getProductReviewStar(input);
-			int prod_star = (int) Math.floor(star_total / star_cnt);
-			
-			Product star_input = new Product();
-			star_input.setId(p_id);
-			star_input.setStar(prod_star);
-			productService.editStarProduct(star_input);
 			if (!content.equals("")) {
+				// 데이터 저장
+				// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
+				reviewAndQnaService.addReview(input);
+				
+				// 데이터 조회
+				output = reviewAndQnaService.getReviewItem(input);
+				orderService.updateReview(inputOrder);
+				
+				int star_cnt = reviewAndQnaService.getProductReviewCount(input);
+				int star_total = reviewAndQnaService.getProductReviewStar(input);
+				int prod_star = (int) Math.floor(star_total / star_cnt);
+				
+				Product star_input = new Product();
+				star_input.setId(p_id);
+				star_input.setStar(prod_star);
+				productService.editStarProduct(star_input);
 				result = "OK";
 			}
 		} catch (Exception e) {
@@ -220,22 +220,23 @@ public class RAQRestController {
 		
 
 		try {
-			// 데이터 수정
-			reviewAndQnaService.editReview(input);
-
-			// 데이터 조회
-			output = reviewAndQnaService.getReviewItem(input);
 			
-			
-			int star_cnt = reviewAndQnaService.getProductReviewCount(input);
-			int star_total = reviewAndQnaService.getProductReviewStar(input);
-			int prod_star = (int) Math.floor(star_total / star_cnt);
-			
-			Product star_input = new Product();
-			star_input.setId(p_id);
-			star_input.setStar(prod_star);
-			productService.editStarProduct(star_input);
 			if (!content.equals("")) {
+				// 데이터 수정
+				reviewAndQnaService.editReview(input);
+
+				// 데이터 조회
+				output = reviewAndQnaService.getReviewItem(input);
+				
+				
+				int star_cnt = reviewAndQnaService.getProductReviewCount(input);
+				int star_total = reviewAndQnaService.getProductReviewStar(input);
+				int prod_star = (int) Math.floor(star_total / star_cnt);
+				
+				Product star_input = new Product();
+				star_input.setId(p_id);
+				star_input.setStar(prod_star);
+				productService.editStarProduct(star_input);
 				result = "OK";
 			}
 		} catch (Exception e) {
@@ -324,13 +325,14 @@ public class RAQRestController {
 		Qna output = null;
 
 		try {
-			// 데이터 저장
-			// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
-			reviewAndQnaService.addQna(input);
-
-			// 데이터 조회
-			output = reviewAndQnaService.getQnaItem(input);
+			
 			if(!content.equals("")&& type!=0) {
+				// 데이터 저장
+				// 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK 값이 저장된다.
+				reviewAndQnaService.addQna(input);
+
+				// 데이터 조회
+				output = reviewAndQnaService.getQnaItem(input);
 				result="OK";
 			}
 		} catch (Exception e) {
@@ -399,12 +401,11 @@ public class RAQRestController {
 		Qna output = null;
 
 		try {
-			// 데이터 수정
-			reviewAndQnaService.editQna(input);
-
-			// 데이터 조회
-			output = reviewAndQnaService.getQnaItem(input);
 			if (!content.equals("")&& type!=0) {
+				// 데이터 수정
+				reviewAndQnaService.editQna(input);
+				// 데이터 조회
+				output = reviewAndQnaService.getQnaItem(input);
 				result="OK";
 			}
 		} catch (Exception e) {
