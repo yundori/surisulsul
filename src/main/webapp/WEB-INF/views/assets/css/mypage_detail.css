@@ -451,6 +451,7 @@ li .pick_item .swiper-slide .swiper-slide-next {
 .psn_review_table img {
     height: 130px;
     width: auto;
+    max-width : 130px;
     vertical-align: middle;
     left: 10px;
 }

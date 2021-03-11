@@ -262,7 +262,7 @@ public class MypageController {
 				
 				try {
 					//전체 리뷰 수 조회
-					totalCount=reviewAndQnaService.getReviewCount(input);
+					totalCount=reviewAndQnaService.getMemberReviewCount(input);
 					System.out.println(">>해당회원의 리뷰개수 :"+totalCount);
 					
 					// 페이지 번호 계산 --> 계산 결과를 로그로 출력

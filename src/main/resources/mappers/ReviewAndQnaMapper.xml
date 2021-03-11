@@ -75,7 +75,14 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-
+	
+	<!-- 회원별 리뷰 수 조회를 위한 기능 정의 -->
+	<select id="selectCountMemberReview"
+		parameterType="study.spring.surisulsul.model.Review" resultType="int">
+		SELECT
+		count(*) FROM review WHERE m_id=#{m_id};
+	</select>
+	
 	<!-- 리뷰 목록 조회(다중행 조회)를 위한 기능 정의 (검색어 있음, 관리자용) -->
 	<select id="manageReviewSearch"
 		parameterType="study.spring.surisulsul.model.Review"

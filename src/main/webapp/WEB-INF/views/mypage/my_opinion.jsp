@@ -56,7 +56,7 @@
 												src="${contextPath}/upload/${review.rev_img}" />
 											</a>
 											<div class="review_item_info">
-												<a href="#" class="item"> <c:set var="stars"
+												<a href="${viewUrl }" class="item"> <c:set var="stars"
 														value="${review.star}" /> <c:choose>
 														<c:when test="${stars != 0}">
 															<c:forEach var="i" begin="1" end="${stars}">⭐</c:forEach>
@@ -180,7 +180,7 @@
 							
 							<%--상세 페이지로 이동하는 URL --%>
 								<c:url value="/item_details.do" var="view_Url">
-									<c:param name="prod_id" value="${qna.p_id}" />
+									<c:param name="prodid" value="${qna.p_id}" />
 								</c:url>
 								
 								<tr>
@@ -190,7 +190,7 @@
 									<td>
 										<div class="table_min_height">
 											<div class="qna_item_info">
-												<a href="#">  <span
+												<a href="${view_Url }">  <span
 													class="qna_area">
 													<c:choose>
 													<c:when test="${qna.type == '1' }">

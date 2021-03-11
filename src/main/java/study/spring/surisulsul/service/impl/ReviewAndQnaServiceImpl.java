@@ -148,6 +148,21 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 
 		return result;
 	}
+	/** 회원별 리뷰 수 조회 */
+	@Override
+	public int getMemberReviewCount(Review input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ReviewAndQnaMapper.selectCountMemberReview", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
 
 	/** 리뷰 작성 */
 	@Override
@@ -441,4 +456,5 @@ public class ReviewAndQnaServiceImpl implements ReviewAndQnaService{
 		return result;
 	}
 
+	
 }
