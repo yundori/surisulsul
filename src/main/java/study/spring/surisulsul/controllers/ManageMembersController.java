@@ -267,13 +267,6 @@ public class ManageMembersController {
 		input.setAddress1(address1);
 		input.setAddress2(address2);
 
-		// 비밀번호 수정 여부 확인
-		if (pw_changed.equals("")) {
-			input.setPw(pw);
-		} else {
-			input.setPw(pw_changed);
-		}
-
 		// 회원 상태를 변경했는지 여부 확인
 		// 여러 조건에 따라 out_date 변경이 필요하다.
 		if (is_out.equals("N") && is_out_changed.equals("Y")) {
@@ -294,12 +287,30 @@ public class ManageMembersController {
 		// 드롭다운에 선택되어 있는 값을 적용한다.
 		input.setIs_out(is_out_changed);
 
-		try {
-			// 데이터 수정
-			memberService.editMemberAll(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
+		// 비밀번호 수정 여부 확인
+				if (pw_changed.equals("")) {
+					input.setPw(pw);
+					/** 비밀번호가 바뀌지 않았을 경우에는 
+					 * 원래 비밀번호가 md5로 암호화 되어 있기 때문에
+					 * 문자열 그대로 저장한다.*/
+					try {
+						// 데이터 수정
+						memberService.editMemberAll(input);
+					} catch (Exception e) {
+						return webHelper.redirect(null, e.getLocalizedMessage());
+					}
+				} else {
+					/**비밀번호가 바뀌었을 경우에는
+					 * md5로 암호화해서 저장한다.*/
+					input.setPw(pw_changed);
+					try {
+						// 데이터 수정
+						memberService.editMemberPwAll(input);
+					} catch (Exception e) {
+						return webHelper.redirect(null, e.getLocalizedMessage());
+					}
+				}
+		
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장 시 생성된 PK 값을 상세 페이지로 전달해야 한다.
