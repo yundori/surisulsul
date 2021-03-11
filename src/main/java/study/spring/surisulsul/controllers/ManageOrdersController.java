@@ -88,6 +88,7 @@ public class ManageOrdersController {
 				input.setTo_date(to_date);
 			}
 		}
+		input.setReg_date(null);
 
 		//input에 담은 데이터를 가지고 테이블 조회 수행
 		try {

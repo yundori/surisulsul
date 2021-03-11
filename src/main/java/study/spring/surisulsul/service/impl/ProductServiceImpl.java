@@ -424,7 +424,7 @@ public class ProductServiceImpl implements ProductService {
 		int result = 0;
 
 		try {
-			// 해당 상품의 리뷰, 문의 삭제 후 해당 상품 삭제처리 진행
+			// 해당 상품의 리뷰, 문의, 위시리스트 삭제 후 해당 상품 삭제처리 진행
 			sqlSession.delete("ReviewAndQnaMapper.manage_deleteReview", input);
 			sqlSession.delete("ReviewAndQnaMapper.manage_deleteQna", input);
 			sqlSession.delete("WishlistMapper.manage_deleteWishlistItem", input);
