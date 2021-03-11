@@ -15,7 +15,8 @@
 				class="mng_btn_id">번호순 정렬</a>
 
 			<form method="get"
-				action="${pageContext.request.contextPath }/manage_wishlist.do" class="search_by_name">
+				action="${pageContext.request.contextPath }/manage_wishlist.do"
+				class="search_by_name">
 				<div>
 					<input type="search" name="keyword" id="keyword"
 						placeholder="상품명 검색" value="${keyword }" />

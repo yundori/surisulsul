@@ -61,19 +61,24 @@
 									pattern="#,###" />원</td>
 							<c:choose>
 								<c:when test="${item.pay_result=='Y' && item.send_result=='N' }">
-									<td>상품준비중<br /> 
-									<a href="javascript:cancelOrder(${item.o_id});" class="cancel_order btn_nor" type="button">주문취소</a></td>
+									<td>상품준비중<br /> <a
+										href="javascript:cancelOrder(${item.o_id});"
+										class="cancel_order btn_nor" type="button">주문취소</a></td>
 								</c:when>
 								<c:when test="${item.pay_result=='N' && item.send_result=='N' }">
-									<td>입금대기중<br /> <a href="javascript:cancelOrder(${item.o_id});" class="cancel_order btn_nor" type="button">주문취소</a></td>
+									<td>입금대기중<br /> <a
+										href="javascript:cancelOrder(${item.o_id});"
+										class="cancel_order btn_nor" type="button">주문취소</a></td>
 								</c:when>
-								<c:when test="${item.pay_result=='Y' && item.send_result=='Y' && item.has_review=='N'}">
-									<td>배송완료<br /> 
-									<a href="javascript:openPop(${item.p_id}, ${item.o_id });" class="write_review btn_yellow">후기쓰기</a></td>
+								<c:when
+									test="${item.pay_result=='Y' && item.send_result=='Y' && item.has_review=='N'}">
+									<td>배송완료<br /> <a
+										href="javascript:openPop(${item.p_id}, ${item.o_id });"
+										class="write_review btn_yellow">후기쓰기</a></td>
 								</c:when>
 								<c:otherwise>
-									<td>배송완료<br /> 
-									후기작성완료</td>
+									<td>배송완료<br /> 후기작성완료
+									</td>
 								</c:otherwise>
 							</c:choose>
 						</tr>
@@ -151,7 +156,7 @@
 		var popup = window
 				.open(
 						'${pageContext.request.contextPath }/mypage/write_review.do?p_id='
-								+ prodId+'&o_id='+orderId, '후기쓰기',
+								+ prodId + '&o_id=' + orderId, '후기쓰기',
 						'width=700, height=960, toolbar=no, menubar=no, scrollbars=yes, resizable=no');
 	}
 	//주문취소
