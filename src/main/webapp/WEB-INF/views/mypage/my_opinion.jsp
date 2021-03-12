@@ -51,7 +51,7 @@
 									<td><a href="${viewUrl }">${review.p_name }</a></td>
 									<td>
 										<div class="table_min_height">
-											<a href="#" class="review_item_thumb"> <img
+											<a href="${viewUrl }" class="review_item_thumb"> <img
 												class="review_img"
 												src="${contextPath}/upload/${review.rev_img}" />
 											</a>
