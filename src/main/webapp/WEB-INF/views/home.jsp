@@ -12,7 +12,7 @@
 			<ul class="slides-container">
 				<!-- 슬라이드 1 (무료배송, 고객센터로 이동)-->
 				<li>
-				<a href="${pageContext.request.contextPath}/cscenter/cscenter_main.do"> 
+				<a href="${contextPath}/cscenter/cscenter_main.do#notice"> 
 				<img src="${contextPath}/assets/img/index/banner1.png" alt="메인배너" />
 				</a>
 				</li>
