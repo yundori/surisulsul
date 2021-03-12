@@ -138,7 +138,7 @@
 		    		<th>미수금</th>
 		    	</tr>
 		    	<%-- 조회 결과에 따른 반복 처리 --%>
-		    	<c:forEach var="item" items="${monthOutput }" varStatus="status">
+		    	<c:forEach var="item" items="${yearOutput }" varStatus="status">
 			    	<tr>
 			    		<td>${item.reg_date }</td>
 			    		<td>${item.order_cnt }</td>
