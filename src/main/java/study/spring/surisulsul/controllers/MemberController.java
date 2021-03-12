@@ -69,7 +69,6 @@ public class MemberController {
 
 		Member output = null;		 // 사용자가 입력한 정보로 DB를 조회한 결과를 받을 객체 준비
 		int chkEmailCount = 0;		 // 사용자가 입력한 이메일로 조회되는 건수를 받을 변수 준비
-		//int chkLogin = 0;			 // 사용자가 입력한 이메일과 비밀번호로 로그인이 성공하는지 여부를 받을 변수 준비 
 		
 		try {
 			// 사용자가 입력한 이메일과 일치하는 정보 건수 조회
@@ -87,7 +86,6 @@ public class MemberController {
 			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, "입력한 비밀번호가 올바르지 않습니다.");
-			//return webHelper.sweetalertRedirect(null, "로그인 실패","입력한 비밀번호가 올바르지 않습니다.","warning");
 		}
 		
 		/** 3) 로그인 성공 시 Session에 output을 저장, 홈페이지로 이동 */
@@ -100,7 +98,6 @@ public class MemberController {
 		}
 		// C. 홈페이지로 이동
 		String redirectUrl = contextPath + "/";
-		//System.out.println(output.toString());
 		return webHelper.redirect(redirectUrl, "수리술술에 오신 것을 환영합니다.");
 	}
 
@@ -112,7 +109,6 @@ public class MemberController {
 				HttpSession session = request.getSession();		
 				Member loginSession = (Member) session.getAttribute("loginInfo");
 						
-								
 				//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
 				if(loginSession!=null) { 
 					return webHelper.redirect(null,"로그아웃 후 이용해주세요.");
@@ -271,9 +267,19 @@ public class MemberController {
 	
 	/** 비밀번호 확인 페이지로 이동 */
 	@RequestMapping(value = "/mypage/chk_pw.do", method = RequestMethod.GET)
-	public String chk_pw(Model model) {
+	public ModelAndView chk_pw(Model model, HttpServletRequest request) {
+		//세션값 받아오기
+		HttpSession session = request.getSession();		
+		Member loginSession = (Member) session.getAttribute("loginInfo");
 		
-		return "mypage/chk_pw";
+		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
+		if(loginSession==null) { 
+			return webHelper.redirect(null,"로그인 후 이용해주세요.");
+		} else {
+			System.out.println(loginSession.toString());
+		}
+		model.addAttribute("chk-email", loginSession.getEmail());
+		return webHelper.redirect("mypage/chk_pw", null);
 	}
 
 	/** 회원정보 수정 페이지로 이동 */

@@ -140,7 +140,9 @@ public class MemberRestController {
 					memberService.editMember(update_info);      // 새로 세팅한 비밀번호로 회원 정보 업데이트
 					
 					try {
-						mailHelper.sendMail(update_info.getEmail(), update_info.getName() + " 회원님의 비밀번호가 재발급되었습니다.", "안녕하세요, 회원님. 수리술술에서 발송한 메일입니다.\n "+update_info.getEdit_date()+"에 재발급된 회원님의 비밀번호는 " + newPw.toString() +" 입니다.");
+						mailHelper.sendMail(update_info.getEmail(), update_info.getName() +
+								" 회원님의 비밀번호가 재발급되었습니다.", "안녕하세요, 회원님. 수리술술에서 발송한 메일입니다.\n " + 
+						update_info.getEdit_date()+"에 재발급된 회원님의 비밀번호는 " + newPw.toString() +" 입니다.");
 					} catch (Exception e) {
 						e.printStackTrace();
 						result = "SEND_MAIL_FAIL";
@@ -166,6 +168,7 @@ public class MemberRestController {
 	@RequestMapping(value = "chk_pw", method = RequestMethod.POST)
 	public Map<String, Object> chk_pw(Model model,
 			HttpServletRequest request,
+			@RequestParam(value="chk-email", required=false) String email,
 			@RequestParam(value="chk-pw", required=false) String password) {
 		//세션값 받아오기
 		HttpSession session = request.getSession();		
@@ -188,6 +191,7 @@ public class MemberRestController {
 		/** 2) 데이터 조회하기 */
 		// 데이터를 조회하기 위해 필요한 값을 Beans에 담는다.
 		Member input = new Member();
+		input.setEmail(email);
 		input.setPw(password);
 		
 		Member output = null;

@@ -31,6 +31,7 @@
         </div>
         <span class="box-alert">회원정보 수정을 위해<br />비밀번호를 한 번 더 입력해 주세요.</span>
         <form name="chk_pw" action="${pageContext.request.contextPath}/chk_pw" id="chk_pw">
+        <input type="hidden" name="chk-email" id="chk-email" value="${chk-email}"/>
         <div class="input-pw-box">
             <label for="chk-pw col-md-4">비밀번호</label>
             <input type="password" name="chk-pw" id="chk-pw" placeholder="비밀번호를 입력해주세요." />

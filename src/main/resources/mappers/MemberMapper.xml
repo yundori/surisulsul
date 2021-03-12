@@ -61,7 +61,7 @@
 	<select id="chkPw"
 		parameterType="study.spring.surisulsul.model.Member"
 		resultMap="memberMap">
-		SELECT email, pw FROM members WHERE pw=md5(#{pw}) AND
+		SELECT email, pw FROM members WHERE email=#{email} AND pw=md5(#{pw}) AND
 		is_out='N';
 	</select>
 
